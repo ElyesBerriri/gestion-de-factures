@@ -7,7 +7,7 @@ const InputClient = () => {
     e.preventDefault();
     try {
       const body = { description };
-      await fetch("/Clients", {
+      await fetch("/Clients/list", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

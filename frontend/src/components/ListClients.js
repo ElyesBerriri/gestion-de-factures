@@ -4,7 +4,7 @@ const ListClients = () => {
   const [Clients, setClients] = useState([]);
 
   async function getClients() {
-    const res = await fetch("/Clients");
+    const res = await fetch("/Clients/list");
     const ClientArray = await res.json();
     setClients(ClientArray);
   }

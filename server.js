@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === "production") {
 // ROUTES
 
 // get all Clients
-app.get("/Clients", async (req, res) => {
+app.get("/Clients/list", async (req, res) => {
   try {
     const allClients = await pool.query("SELECT * from clients");
     res.status(200).json(allClients.rows);
@@ -30,7 +30,7 @@ app.get("/Clients", async (req, res) => {
 });
 
 // get a client
-app.get("/Clients/:id", async (req, res) => {
+app.get("/Clients/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const client = await pool.query("SELECT * FROM clients WHERE client_id = $1", [
@@ -43,7 +43,7 @@ app.get("/Clients/:id", async (req, res) => {
 });
 
 // create a client
-app.post("/Clients", async (req, res) => {
+app.post("/Clients/list", async (req, res) => {
   try {
     const { description } = req.body;
     const newClient = await pool.query(
@@ -58,7 +58,7 @@ app.post("/Clients", async (req, res) => {
 });
 
 // update a client
-app.put("/Clients/:id", async (req, res) => {
+app.put("/Clients/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { description } = req.body;
@@ -74,7 +74,7 @@ app.put("/Clients/:id", async (req, res) => {
 });
 
 // delete a client
-app.delete("/Clients/:id", async (req, res) => {
+app.delete("/Clients/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
     await pool.query("DELETE FROM clients WHERE client_id = $1", [
@@ -91,5 +91,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is starting on port ${PORT}`);
+  console.log(`Server is starting on port ${PORT} ${process.env.NODE_ENV}`);
 });
