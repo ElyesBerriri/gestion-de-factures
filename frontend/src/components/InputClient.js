@@ -4,7 +4,6 @@ const InputClient = () => {
   const [description, setDescription] = useState("");
 
   const onSubmitForm = async (e) => {
-    e.preventDefault();
     try {
       const body = { description };
       await fetch("/Clients/list", {
@@ -12,8 +11,8 @@ const InputClient = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-
-      window.location = "/";
+      
+      window.location.reload(false);
     } catch (err) {
       console.error(err.message);
     }
