@@ -6,7 +6,7 @@ const path = require("path");
 const PORT = process.env.PORT || 5000;
 
 const bodyParser = require("body-parser");//transforme les données en format .json
-app.use(bodyParser.json());
+
 
 // process.env.NODE_ENV => production or undefined
 
