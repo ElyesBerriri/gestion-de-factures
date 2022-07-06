@@ -16,7 +16,7 @@ const EditDossier = ({dossier}) => {
         }
       );
 
-      window.location.reload(false);
+      window.location.reload();
     } catch (err) {
       console.error(err.message);
     }
