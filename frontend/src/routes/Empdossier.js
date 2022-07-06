@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import InputDossier from "./InputDossier";
-import ListDossier from "./ListDossier";
+import InputDossier from "../components/InputDossier";
+import ListDossier from "../components/ListDossier";
 
 function Empdossier() {
   return (

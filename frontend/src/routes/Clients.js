@@ -1,5 +1,5 @@
-import InputClient from './InputClient';
-import ListClients from './ListClients';
+import InputClient from '../components/InputClient';
+import ListClients from '../components/ListClients';
 
 function Clients() {
   return (

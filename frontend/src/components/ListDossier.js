@@ -36,8 +36,8 @@ const ListDossier = () => {
   return (
     <Fragment>
       {" "}
-      <table class="table mt-5 text-center">
-        <thead>
+      <table class="table table table-hover mt-5 text-center">
+        <thead  class="table-dark">
           <tr>
             <th>Libelle</th>
             <th>Modifier</th>
