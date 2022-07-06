@@ -1,3 +1,4 @@
+import e from "cors";
 import React, { Fragment, useState } from "react";
 
 const InputClient = () => {
@@ -12,8 +13,8 @@ const InputClient = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-
-      window.location = "/";
+      
+      window.location.reload(false);
     } catch (err) {
       console.error(err.message);
     }

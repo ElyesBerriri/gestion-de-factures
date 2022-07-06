@@ -1,30 +1,34 @@
 import './App.css';
+import Nav from './components/Nav';
 import React from "react";
 import {
   Route,
-  NavLink,
   HashRouter,
   Routes
 } from "react-router-dom";
 import Home from "./components/Home";
 import Clients from './components/Clients';
+import TribetAdmini from './components/tribetadmini';
+import Empdossier from './components/Empdossier';
+import Collab from './components/Collab';
 
 function App() {
   return (
     <HashRouter>
-      <div className="App">
-        <ul>
-          <li><NavLink to='/'>Home</NavLink></li>
-          <li><NavLink to='/Clients'>Clients</NavLink></li>
-        </ul>
-        <div className='content'>
-          <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route path="/Clients" element={<Clients />}/>
-          </Routes>
-        </div>
+    <div className="App">
+      <Nav></Nav>
+      <div className='content'>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/Clients" element={<Clients />}/>
+          <Route path="/tribetadmini" element={<TribetAdmini />}/>
+          <Route path="/tribetadmini" element={<TribetAdmini />}/>
+          <Route path="/Empdossier" element={<Empdossier/>}/>
+          <Route path="/Collab" element={<Collab/>}/>
+        </Routes>
       </div>
-    </HashRouter>
+    </div>
+  </HashRouter>
   );
 }
 
