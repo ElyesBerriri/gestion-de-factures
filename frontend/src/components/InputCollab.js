@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React  from "react";
 import { Link } from "react-router-dom";
 
 
@@ -6,7 +6,7 @@ const InputCollab = () => {
  
   return (
 
-        <div className="container ">
+        <div className="container mt-5">
     <form>
 
     <div class="row mb-3">

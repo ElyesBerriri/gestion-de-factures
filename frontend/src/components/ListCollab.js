@@ -1,4 +1,6 @@
 import React, { Fragment, useState ,useEffect} from "react";
+import InputCollab from "./InputCollab";
+import { Link } from "react-router-dom";
 
 const ListCollab = () => {
     const [collab, setCollab] = useState([]);
@@ -84,7 +86,10 @@ const ListCollab = () => {
           ))}
         </tbody>
         </table>
+        <Link to={"/InputCollab"}>
         <button className="btn btn-success">Ajouter</button>
+        </Link>
+         
     </Fragment>
  
 

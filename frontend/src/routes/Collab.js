@@ -1,5 +1,4 @@
-import InputCollab from "../components/InputCollab";
-import ListCollab from "../components/ListCollab";
+ import ListCollab from "../components/ListCollab";
 
 function Collab() {
     return (
