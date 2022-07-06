@@ -4,11 +4,8 @@ const cors = require("cors");
 const pool = require("./db");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
-<<<<<<< Updated upstream
-const bodyParser = require("body-parser");
-=======
 const bodyParser = require("body-parser");//transforme les données en format .json
->>>>>>> Stashed changes
+
 
 
 // process.env.NODE_ENV => production or undefined
@@ -545,9 +542,6 @@ app.get("*", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is starting on port ${PORT}`);
-<<<<<<< Updated upstream
-});
-=======
 });
 
 
@@ -824,4 +818,3 @@ app.delete("/greffier/list/:id", async (req, res) => {
   }
 });
 
->>>>>>> Stashed changes
