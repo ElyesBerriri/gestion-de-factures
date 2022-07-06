@@ -2,34 +2,40 @@ import './App.css';
 import Nav from './components/Nav';
 import React from "react";
 import {
+  BrowserRouter,
+  Routes,
   Route,
-  HashRouter,
-  Routes
+  Link,
 } from "react-router-dom";
-import Home from "./components/Home";
-import Clients from './components/Clients';
-import TribetAdmini from './components/tribetadmini';
-import Empdossier from './components/Empdossier';
-import Collab from './components/Collab';
+import Home from "./routes/Home";
+import Clients from './routes/Clients';
+ import Empdossier from './routes/Empdossier';
+import Collab from './routes/Collab';
+import Tribetadmini from './routes/Tribetadmini';
 
 function App() {
-  return (
-    <HashRouter>
-    <div className="App">
+
+    return (
+      <BrowserRouter>
+      <div className='App'>
       <Nav></Nav>
-      <div className='content'>
+       
+        <div className='content'>
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/Clients" element={<Clients />}/>
-          <Route path="/tribetadmini" element={<TribetAdmini />}/>
-          <Route path="/tribetadmini" element={<TribetAdmini />}/>
-          <Route path="/Empdossier" element={<Empdossier/>}/>
-          <Route path="/Collab" element={<Collab/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="Clients" element={<Clients />} />
+          <Route path="TribetAdmini" element={<Tribetadmini />} />
+          <Route path="Empdossier" element={<Empdossier />} />
+          <Route path="Collab" element={<Collab />} />
         </Routes>
-      </div>
-    </div>
-  </HashRouter>
-  );
+        </div>
+        </div>
+      </BrowserRouter>
+      
+    );
+   
 }
+
+ 
 
 export default App;

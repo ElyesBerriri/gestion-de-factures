@@ -13,7 +13,7 @@ const InputDossier = () => {
         body: JSON.stringify(body)
       });
 
-      window.location.reload(false);
+      window.location.reload();
     } catch (err) {
       console.error(err.message);
     }
