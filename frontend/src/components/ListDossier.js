@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-
+import EditDossier from "./EditDossier";
 
 const ListDossier = () => {
   const [dossiers, setDossiers] = useState([]);
@@ -39,9 +39,9 @@ const ListDossier = () => {
       <table class="table mt-5 text-center">
         <thead>
           <tr>
-            <th>Description</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Libelle</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
           </tr>
         </thead>
         <tbody>
@@ -49,14 +49,14 @@ const ListDossier = () => {
             <tr key={dossier.dossier_id}>
               <td>{dossier.libelle}</td>
               <td>
-                edit            
+                <EditDossier dossier={dossier} />
               </td>
               <td>
               <button
                   className="btn btn-danger"
                   onClick={() => deletedossier(dossier.dossier_id)}
                 >
-                  Delete
+                  Supprimer
                 </button>
               </td>
             </tr>

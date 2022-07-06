@@ -1,3 +1,4 @@
+import e from "cors";
 import React, { Fragment, useState } from "react";
 
 const InputClient = () => {

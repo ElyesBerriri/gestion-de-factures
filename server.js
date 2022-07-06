@@ -100,16 +100,6 @@ app.get("/type_dossiers/list", async (req, res) => {
   }
 });
 
-//emplacement dossiers
-//get dossiers
-app.get("/dossiers/list", async (req, res) => {
-  try {
-    const dossiers = await pool.query("SELECT * from emplacementdossiers");
-    res.status(200).json(dossiers.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
 
 // get a type_dossier
 app.get("/type_dossiers/list/:id", async (req, res) => {
@@ -138,20 +128,7 @@ app.post("/type_dossiers/list", async (req, res) => {
     console.error(err.message);
   }
 });
-// ajouter dossier
-app.post("/dossiers/list", async (req, res) => {
-  try {
-    const { libelle } = req.body;
-    const newdossier = await pool.query(
-      "INSERT INTO emplacementdossiers (libelle) VALUES($1) RETURNING *",
-      [libelle]
-    );
 
-    res.status(200).json(newdossier.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
 
 // update a type_dossier
 app.put("/type_dossiers/list/:id", async (req, res) => {
@@ -176,18 +153,6 @@ app.delete("/type_dossiers/list/:id", async (req, res) => {
       id,
     ]);
     res.status(200).json("client was deleted");
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-// delete dossier
-app.delete("/dossiers/list/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    await pool.query("DELETE FROM emplacementdossiers WHERE dossier_id = $1", [
-      id,
-    ]);
-    res.status(200).json("folder was deleted");
   } catch (err) {
     console.error(err.message);
   }
@@ -509,6 +474,64 @@ app.delete("/tribunaux/list/:id", async (req, res) => {
   }
 });
 
+
+
+
+
+                                             //dossiers Mayssa//
+  // modifier dossier
+app.put("/dossiers/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { libelle } = req.body;
+    await pool.query(
+      "UPDATE emplacementdossiers SET libelle = $1 WHERE dossier_id = $2",
+      [libelle, id]
+    );
+
+    res.status(200).json("folder was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// delete dossier
+app.delete("/dossiers/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM emplacementdossiers WHERE dossier_id = $1", [
+      id,
+    ]);
+    res.status(200).json("folder was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+//get dossiers
+app.get("/dossiers/list", async (req, res) => {
+  try {
+    const dossiers = await pool.query("SELECT * from emplacementdossiers");
+    res.status(200).json(dossiers.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// ajouter dossier
+app.post("/dossiers/list", async (req, res) => {
+  try {
+    const { libelle } = req.body;
+    const newdossier = await pool.query(
+      "INSERT INTO emplacementdossiers (libelle) VALUES($1) RETURNING *",
+      [libelle]
+    );
+
+    res.status(200).json(newdossier.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 //else
 
