@@ -6,7 +6,7 @@ const InputCollab = () => {
  
   return (
 
-        <div className="container ">
+        <div className="container mt-5">
     <form>
 
     <div class="row mb-3">

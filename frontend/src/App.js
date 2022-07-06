@@ -11,6 +11,7 @@ import Clients from './routes/Clients';
  import Empdossier from './routes/Empdossier';
 import Collab from './routes/Collab';
 import Tribetadmini from './routes/Tribetadmini';
+import InputCollab from './components/InputCollab';
 
 function App() {
 
@@ -26,6 +27,8 @@ function App() {
           <Route path="TribetAdmini" element={<Tribetadmini />} />
           <Route path="Empdossier" element={<Empdossier />} />
           <Route path="Collab" element={<Collab />} />
+          <Route path="Inputcollab" element={<InputCollab />} />
+
         </Routes>
         </div>
         </div>
