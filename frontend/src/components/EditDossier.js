@@ -4,8 +4,7 @@ const EditDossier = ({dossier}) => {
   const [libelle, setLibelle] = useState(dossier.libelle);
 
   const updateLibelle = async e => {
-    e.preventDefault();
-    try {
+     try {
       const body = { libelle };
        await fetch(
         `http://localhost:5000/dossiers/list/${dossier.dossier_id}`,
