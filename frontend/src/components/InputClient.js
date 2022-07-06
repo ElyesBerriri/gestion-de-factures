@@ -5,6 +5,7 @@ const InputClient = () => {
   const [description, setDescription] = useState("");
 
   const onSubmitForm = async (e) => {
+    e.preventDefault();
     try {
       const body = { description };
       await fetch("/Clients/list", {

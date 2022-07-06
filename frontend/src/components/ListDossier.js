@@ -7,7 +7,7 @@ const ListDossier = () => {
 
   const deletedossier = async id => {
     try {
-      const deletedossier = await fetch(`/dossiers/list/${id}`, {
+      await fetch(`/dossiers/list/${id}`, {
         method: "DELETE"
       });
 
