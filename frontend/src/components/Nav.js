@@ -8,7 +8,7 @@ function Nav() {
   useEffect(() => {
     const navs = [
       {name:"Emplacement Dossier", path:"/Empdossier"},
-      {name:"Tribunaux et Administrations", path:"/tribetadmini"},
+      {name:"Tribunaux et Administrations", path:"/Tribetadmini"},
       {name:"Collaborateurs", path:"/Collab"},
     ];
     const navs1 = [
@@ -36,11 +36,13 @@ function Nav() {
             <ul class="dropdown-menu dropdown-menu-end">
               {navLinks.map((d, i) => (
                 <li key={i}>
+                  
                   <Link to={d.path}>
                     <button class="dropdown-item" type="button">
                       {d.name}
                     </button>
                   </Link> 
+                 
                 </li>
               ))}
             </ul>
