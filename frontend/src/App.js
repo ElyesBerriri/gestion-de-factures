@@ -3,10 +3,7 @@ import Nav from './components/Nav';
 import React from "react";
 import {
   Route,
-  NavLink,
   HashRouter,
-  BrowserRouter,
-  Link,
   Routes
 } from "react-router-dom";
 import Home from "./components/Home";

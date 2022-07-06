@@ -1,9 +1,11 @@
+import e from "cors";
 import React, { Fragment, useState } from "react";
 
 const InputClient = () => {
   const [description, setDescription] = useState("");
 
   const onSubmitForm = async (e) => {
+    e.preventDefault();
     try {
       const body = { description };
       await fetch("/Clients/list", {

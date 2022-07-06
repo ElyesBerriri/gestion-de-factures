@@ -4,6 +4,7 @@ const InputDossier = () => {
   const [libelle, setLibelle] = useState("");
 
   const onSubmitForm = async (e) => {
+    e.preventDefault();
     try {
       const body = { libelle };
       await fetch("/dossiers/list", {
