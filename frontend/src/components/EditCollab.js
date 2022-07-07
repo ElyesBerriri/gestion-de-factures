@@ -66,85 +66,85 @@ onClick={() => setnom(collab.nom)}
                 type="text"
                 className="form-control"
                 value={nom}
-                onChange={e => setnom(collab.nom)}
+                onChange={e => setnom(e.target.value)}
               />
                <input
                 type="number"
                 className="form-control"
                 value={cin }
-                onChange={e => setcin(collab.cin)}
+                onChange={e => setcin(e.target.value)}
               />
                <input
                 type="text"
                 className="form-control"
                 value={ville}
-                onChange={e => setville(collab.ville)}
+                onChange={e => setville(e.target.value)}
               />
                <input
                 type="text"
                 className="form-control"
                 value={rue}
-                onChange={e => setrue(collab.rue)}
+                onChange={e => setrue(e.target.value)}
               />    
                <input
                 type="number"
                 className="form-control"
                 value={num}
-                onChange={e => setnum(collab.num)}
+                onChange={e => setnum(e.target.value)}
               />
                <input
                 type="number"
                 className="form-control"
                 value={codepostale}
-                onChange={e => setcodepostale(collab.codepostale)}
+                onChange={e => setcodepostale(e.target.value)}
               />
                <input
                 type="text"
                 className="form-control"
                 value={activite}
-                onChange={e => setactivite(collab.activite)}
+                onChange={e => setactivite(e.target.value)}
               />
                <input
                 type="number"
                 className="form-control"
                 value={tel}
-                onChange={e => settel(collab.tel)}
+                onChange={e => settel(e.target.value)}
               />    
                <input
                 type="number"
                 className="form-control"
                 value={fax}
-                onChange={e => setfax(collab.fax)}
+                onChange={e => setfax(e.target.value)}
               />
                <input
                 type="text"
                 className="form-control"
                 value={email}
-                onChange={e => setemail(collab.email)}
+                onChange={e => setemail(e.target.value)}
               />
                <input
                 type="number"
                 className="form-control"
                 value={matricule}
-                onChange={e => setmatricule(collab.matricule)}
+                onChange={e => setmatricule(e.target.value)}
               />
                <input
                 type="text"
                 className="form-control"
                 value={methodepaiment}
-                onChange={e => setmethodepaiment(collab.methodepaiment)}
+                onChange={e => setmethodepaiment(e.target.value)}
               />
                <input
                 type="number"
                 className="form-control"
                 value={montant}
-                onChange={e => setmontant(collab.montant)}
+                onChange={e => setmontant(e.target.value)}
               />
                <input
                 type="number"
                 className="form-control"
                 value={nombre_dossier}
-                onChange={e => setnombre_dossier(collab.nombre_dossier)}
+                onChange={e => setnombre_dossier(e.target.value)}
               />
 
             </div>
