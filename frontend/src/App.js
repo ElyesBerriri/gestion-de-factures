@@ -16,6 +16,7 @@ import InputCollab from './components/InputCollab';
 function App() {
 
     return (
+    
       <BrowserRouter>
       <div className='App'>
       <Nav></Nav>
@@ -33,7 +34,8 @@ function App() {
         </div>
         </div>
       </BrowserRouter>
-      
+     
+       
     );
    
 }
