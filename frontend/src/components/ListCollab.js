@@ -1,6 +1,6 @@
 import React, { Fragment, useState ,useEffect} from "react";
-import InputCollab from "./InputCollab";
 import { Link } from "react-router-dom";
+import EditCollab from "./EditCollab";
 
 const ListCollab = () => {
     const [collab, setCollab] = useState([]);
@@ -80,11 +80,7 @@ const ListCollab = () => {
               <td>{collab.nombre_dossier}</td>
 
               <td>
-              <button
-                  className="btn btn-primary"
-                >
-                  Modifier
-                </button>
+                <EditCollab collab={collab} />
               </td>
 
               <td>
