@@ -65,7 +65,7 @@ onClick={() => setnom(collab.nom)}
               <input
                 type="text"
                 className="form-control"
-                value={libelle}
+                value={nom}
                 onChange={e => setnom(collab.nom)}
               />
                <input
