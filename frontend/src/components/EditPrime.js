@@ -61,24 +61,36 @@ const EditPrime = ({prime}) => {
                 value={montant}
                 onChange={e => setMontant(e.target.value)} />
               <div class="form-check">
-                <input className="form-check-input" type="checkbox" id="dissociableEdit"
-                onChange={e => setDissociable(e.target.checked)} />
-                <label class="form-check-label" for="dissociableEdit">
-                  Dissociable
+                <label class="form-check-label">
+                  <input className="form-check-input" type="checkbox"
+                    checked = {dissociable}
+                    onChange={e => {
+                      setDissociable(e.target.checked);
+                      e.target.checked = dissociable;
+                    }} />
+                    Dissociable
                 </label>
               </div>
               <div class="form-check">
-                <input className="form-check-input" type="checkbox" id="impotEdit"
-                onChange={e => setImpot(e.target.checked)} />
-                <label class="form-check-label" for="impotEdit">
+                <label class="form-check-label">
+                  <input className="form-check-input" type="checkbox"
+                    checked = {impot}
+                    onChange={e => {
+                      setImpot(e.target.checked);
+                      e.target.checked = impot;
+                    }} />
                   Impot
                 </label>
               </div>
               <div class="form-check">
-                <input className="form-check-input" type="checkbox" id="mensuelEdit"
-                onChange={e => setMensuel(e.target.checked) }/>
-                <label class="form-check-label" for="mensuelEdit">
-                  Mensuel
+                <label class="form-check-label">
+                  <input className="form-check-input" type="checkbox"
+                    checked = {mensuel}
+                    onChange={e => {
+                      setMensuel(e.target.checked);
+                      e.target.checked = mensuel;
+                    }} />
+                    Mensuel
                 </label>
               </div>
             </div>
@@ -92,8 +104,7 @@ const EditPrime = ({prime}) => {
                 setDissociable(prime.dissociable);
                 setImpot(prime.impot);
                 setMensuel(prime.mensuel);
-              }
-              }>Fermer</button>
+              }}>Fermer</button>
             </div>
           </div>
         </div>
