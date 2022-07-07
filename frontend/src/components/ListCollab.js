@@ -5,6 +5,18 @@ import { Link } from "react-router-dom";
 const ListCollab = () => {
     const [collab, setCollab] = useState([]);
 
+    const deletecollab = async id => {
+      try {
+        await fetch(`/collaborateurs/list/${id}`, {
+          method: "DELETE"
+        });
+  
+        setCollab(collab.filter(collab => collab.collab_id !== id));
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+
 
     const getCollab = async () => {
         try {
@@ -78,6 +90,7 @@ const ListCollab = () => {
               <td>
               <button
                   className="btn btn-danger"
+                  onClick={() => deletecollab(collab.collab_id)}
                 >
                   Supprimer
                 </button>
