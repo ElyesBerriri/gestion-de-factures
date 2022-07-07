@@ -7,7 +7,7 @@ const EditDossier = ({dossier}) => {
     e.preventDefault();
     try {
       const body = { libelle };
-       await fetch(
+       const response = await fetch(
         `http://localhost:5000/dossiers/list/${dossier.dossier_id}`,
         {
           method: "PUT",
