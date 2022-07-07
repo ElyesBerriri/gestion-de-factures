@@ -42,18 +42,17 @@ const InputPrime = () => {
         <input
           type="checkbox"
           className="form-control"
-          value={dissociable}
           onChange={e => setDissociable(e.checked)} />
         <input
           type="checkbox"
           className="form-control"
           value={impot}
           onChange={e => setImpot(e.checked)} />
-        <input
+        <label><input
           type="checkbox"
           className="form-control"
           value={mensuel}
-          onChange={e => setMensuel(e.checked)} />
+          onChange={e => setMensuel(e.checked)} />mensuel</label>
         <button className="btn btn-success">Ajouter</button>
       </form>
     </>
