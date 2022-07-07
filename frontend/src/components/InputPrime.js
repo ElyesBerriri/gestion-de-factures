@@ -55,8 +55,10 @@ const InputPrime = () => {
         </div>
         <div class="form-check">
           <input className="form-check-input" type="checkbox" id="mensuel"
-          label="Mensuel"
-          onChange={e => setMensuel(e.checked)} />
+          onChange={(e.checked) ? e => setMensuel(true) : e => setMensuel(false)} />
+          <label class="form-check-label" for="mensuel">
+            Mensuel
+          </label>
         </div>
         <button className="btn btn-success">Ajouter</button>
       </form>
