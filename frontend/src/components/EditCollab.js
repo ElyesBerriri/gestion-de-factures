@@ -1,20 +1,20 @@
 import React, { Fragment, useState } from "react";
 
 const EditCollab = ({collab}) => {
-    const [nom,setnom] = useState("" );
-    const [cin,setcin]  = useState();
-    const [ville,setville]  = useState("");
-    const [ rue,setrue]  = useState("");
-    const [num,setnum]  = useState();
-    const [codepostale,setcodepostale]  = useState();
-    const [activite,setactivite]  = useState("");
-    const [tel,settel]  = useState();
-    const [fax,setfax]  = useState();
-    const [email,setemail]  = useState("");
-    const [matricule,setmatricule]  = useState("");
-    const [methodepaiment,setmethodepaiment]  = useState("");
-    const [montant,setmontant]  = useState( );
-    const [nombre_dossier,setnombre_dossier]  = useState( );
+    const [nom,setnom] = useState(collab.nom);
+    const [cin,setcin]  = useState(collab.cin);
+    const [ville,setville]  = useState(collab.ville);
+    const [ rue,setrue]  = useState(collab.rue);
+    const [num,setnum]  = useState(collab.num);
+    const [codepostale,setcodepostale]  = useState(collab.codepostale);
+    const [activite,setactivite]  = useState(collab.activite);
+    const [tel,settel]  = useState(collab.tel);
+    const [fax,setfax]  = useState(collab.fax);
+    const [email,setemail]  = useState(collab.email);
+    const [matricule,setmatricule]  = useState(collab.matricule);
+    const [methodepaiment,setmethodepaiment]  = useState(collab.methodepaiment);
+    const [montant,setmontant]  = useState(collab.montant);
+    const [nombre_dossier,setnombre_dossier]  = useState(collab.nombre_dossier);
 
 
   const updateCollab = async e => {
@@ -68,6 +68,85 @@ onClick={() => setnom(collab.nom)}
                 value={libelle}
                 onChange={e => setnom(collab.nom)}
               />
+               <input
+                type="number"
+                className="form-control"
+                value={cin }
+                onChange={e => setcin(collab.cin)}
+              />
+               <input
+                type="text"
+                className="form-control"
+                value={ville}
+                onChange={e => setville(collab.ville)}
+              />
+               <input
+                type="text"
+                className="form-control"
+                value={rue}
+                onChange={e => setrue(collab.rue)}
+              />    
+               <input
+                type="number"
+                className="form-control"
+                value={num}
+                onChange={e => setnum(collab.num)}
+              />
+               <input
+                type="number"
+                className="form-control"
+                value={codepostale}
+                onChange={e => setcodepostale(collab.codepostale)}
+              />
+               <input
+                type="text"
+                className="form-control"
+                value={activite}
+                onChange={e => setactivite(collab.activite)}
+              />
+               <input
+                type="number"
+                className="form-control"
+                value={tel}
+                onChange={e => settel(collab.tel)}
+              />    
+               <input
+                type="number"
+                className="form-control"
+                value={fax}
+                onChange={e => setfax(collab.fax)}
+              />
+               <input
+                type="text"
+                className="form-control"
+                value={email}
+                onChange={e => setemail(collab.email)}
+              />
+               <input
+                type="number"
+                className="form-control"
+                value={matricule}
+                onChange={e => setmatricule(collab.matricule)}
+              />
+               <input
+                type="text"
+                className="form-control"
+                value={methodepaiment}
+                onChange={e => setmethodepaiment(collab.methodepaiment)}
+              />
+               <input
+                type="number"
+                className="form-control"
+                value={montant}
+                onChange={e => setmontant(collab.montant)}
+              />
+               <input
+                type="number"
+                className="form-control"
+                value={nombre_dossier}
+                onChange={e => setnombre_dossier(collab.nombre_dossier)}
+              />
+
             </div>
 
       
