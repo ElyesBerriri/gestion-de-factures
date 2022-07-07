@@ -11,7 +11,7 @@ const ListDossier = () => {
         method: "DELETE"
       });
 
-      settrib(dossiers.filter(trib => trib.trib_id !== id));
+      settrib(trib.filter(trib => trib.trib_id !== id));
     } catch (err) {
       console.error(err.message);
     }

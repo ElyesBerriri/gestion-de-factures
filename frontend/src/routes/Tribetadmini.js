@@ -1,8 +1,13 @@
+import React, { Fragment } from "react";
+import ListTrib from "../components/ListTrib";
+
 function TribetAdmini() {
     return (
-      <>
-          <h1>Liste des tribunaux</h1>
-      </>
+      <Fragment>
+      <div className="container">
+        <ListTrib/>
+      </div>
+    </Fragment>
     );
   }
   
