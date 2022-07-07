@@ -62,6 +62,7 @@ const EditPrime = ({prime}) => {
                 onChange={e => setMontant(e.target.value)} />
               <div class="form-check">
                 <input className="form-check-input" type="checkbox" id="dissociableEdit"
+                checked={prime.dissociable}
                 onChange={e => setDissociable(e.target.checked)} />
                 <label class="form-check-label" for="dissociableEdit">
                   Dissociable
@@ -69,6 +70,7 @@ const EditPrime = ({prime}) => {
               </div>
               <div class="form-check">
                 <input className="form-check-input" type="checkbox" id="impotEdit"
+                checked={prime.impot}
                 onChange={e => setImpot(e.target.checked)} />
                 <label class="form-check-label" for="impotEdit">
                   Impot
@@ -76,7 +78,8 @@ const EditPrime = ({prime}) => {
               </div>
               <div class="form-check">
                 <input className="form-check-input" type="checkbox" id="mensuelEdit"
-                onChange={e => setMensuel(e.target.checked) }/>
+                checked={prime.mensuel}
+                onChange={e => setMensuel(e.target.checked)} />
                 <label class="form-check-label" for="mensuelEdit">
                   Mensuel
                 </label>
