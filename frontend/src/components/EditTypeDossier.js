@@ -43,6 +43,7 @@ const EditTypeDossier = ({type}) => {
             <input
               type="text"
               className="form-control"
+              placeholder="libellé"
               value={libelle}
               onChange={e => setLibelle(e.target.value)} />
             </div>

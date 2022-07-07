@@ -53,16 +53,19 @@ const EditUtilisateurs = ({user}) => {
             <input
               type="text"
               className="form-control"
+              placeholder="login"
               value={login}
               onChange={e => setLogin(e.target.value)} />
             <input
               type="text"
               className="form-control"
+              placeholder="pwd"
               value={pwd}
               onChange={e => setPwd(e.target.value)} />
             <input
               type="text"
               className="form-control"
+              placeholder="domaine"
               value={domaine}
               onChange={e => setDomaine(e.target.value)} />
             </div>
