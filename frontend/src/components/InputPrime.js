@@ -39,20 +39,25 @@ const InputPrime = () => {
           placeholder="montant"
           value={montant}
           onChange={e => setMontant(e.target.value)} />
-        <input
-          type="checkbox"
-          className="form-control"
+        <div class="form-check">
+          <input className="form-check-input" type="checkbox" id="dissociable"
           onChange={e => setDissociable(e.checked)} />
-        <input
-          type="checkbox"
-          className="form-control"
-          value={impot}
+          <label class="form-check-label" for="dissociable">
+            Dissociable
+          </label>
+        </div>
+        <div class="form-check">
+          <input className="form-check-input" type="checkbox" id="impot"
           onChange={e => setImpot(e.checked)} />
-        <label><input
-          type="checkbox"
-          className="form-control"
-          value={mensuel}
-          onChange={e => setMensuel(e.checked)} />mensuel</label>
+          <label class="form-check-label" for="impot">
+            Impot
+          </label>
+        </div>
+        <div class="form-check">
+          <input className="form-check-input" type="checkbox" id="mensuel"
+          label="Mensuel"
+          onChange={e => setMensuel(e.checked)} />
+        </div>
         <button className="btn btn-success">Ajouter</button>
       </form>
     </>
