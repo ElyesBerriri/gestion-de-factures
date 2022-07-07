@@ -10,6 +10,9 @@ function Nav() {
       {name:"Emplacement Dossier", path:"/Empdossier"},
       {name:"Tribunaux et Administrations", path:"/Tribetadmini"},
       {name:"Collaborateurs", path:"/Collab"},
+      //{name:"Utilisateurs", path:"/utilisateurs"},
+      //{name:"Primes", path:"/primes"},
+      {name:"Types de dossiers", path:"/type_dossiers"}
     ];
     const navs1 = [
       { name: "clients", path: "/Clients" }
@@ -70,7 +73,6 @@ function Nav() {
             </ul>
           </div>
         </div>
-    
     </div>
   );
 }

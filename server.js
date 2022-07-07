@@ -140,7 +140,7 @@ app.put("/type_dossiers/list/:id", async (req, res) => {
       [libelle, id]
     );
 
-    res.status(200).json("client was updated");
+    res.status(200).json("type_dossier was updated");
   } catch (err) {
     console.error(err.message);
   }
@@ -149,10 +149,10 @@ app.put("/type_dossiers/list/:id", async (req, res) => {
 app.delete("/type_dossiers/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    await pool.query("DELETE FROM clients WHERE type_id = $1", [
+    await pool.query("DELETE FROM type_dossiers WHERE type_id = $1", [
       id,
     ]);
-    res.status(200).json("client was deleted");
+    res.status(200).json("type_dossier was deleted");
   } catch (err) {
     console.error(err.message);
   }
