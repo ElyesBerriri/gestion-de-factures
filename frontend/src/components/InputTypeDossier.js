@@ -26,6 +26,7 @@ const InputTypeDossier = () => {
         <input
           type="text"
           className="form-control"
+          placeholder="écrivez un libellé"
           value={libelle}
           onChange={e => setLibelle(e.target.value)}
         />

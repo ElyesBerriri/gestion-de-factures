@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 
 const EditTypeDossier = ({type}) => {
   const [libelle, setLibelle] = useState(type.libelle);
@@ -43,6 +43,7 @@ const EditTypeDossier = ({type}) => {
             <input
               type="text"
               className="form-control"
+              placeholder="libellé"
               value={libelle}
               onChange={e => setLibelle(e.target.value)} />
             </div>
