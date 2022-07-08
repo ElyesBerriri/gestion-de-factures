@@ -49,7 +49,8 @@ const ListDossier = () => {
             <tr key={trib.trib_id}>
               <td>{trib.lieux}</td>
               <td>
-                 
+              <EditTrib trib={trib} />
+
               </td>
               <td>
               <button

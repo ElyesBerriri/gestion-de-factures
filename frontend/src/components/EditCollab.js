@@ -47,7 +47,21 @@ data-bs-target={`#id${collab.collab_id}`}>
 
  
 <div class="modal"
-onClick={() => setnom(collab.nom)}
+onClick={() => {setnom(collab.nom);
+  setcin(collab.cin);
+  setville(collab.ville);
+  setrue(collab.rue);
+  setnum(collab.num);
+  setcodepostale(collab.codepostale);
+  setactivite(collab.activite);
+  settel(collab.tel);
+  setfax(collab.fax);
+  setemail(collab.email);
+  setmatricule(collab.matricule);
+  setmethodepaiment(collab.methodepaiment);
+  setmontant(collab.montant);
+  setnombre_dossier(collab.nombre_dossier);}}
+  
  id={`id${collab.collab_id}`}>
   <div class="modal-dialog">
     <div class="modal-content">
@@ -56,96 +70,151 @@ onClick={() => setnom(collab.nom)}
       <div class="modal-header">
         <h4 class="modal-title">Modification de dossier</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"
-          onClick={() =>setnom(collab.nom)}
+          onClick={() =>{setnom(collab.nom);
+            setcin(collab.cin);
+            setville(collab.ville);
+            setrue(collab.rue);
+            setnum(collab.num);
+            setcodepostale(collab.codepostale);
+            setactivite(collab.activite);
+            settel(collab.tel);
+            setfax(collab.fax);
+            setemail(collab.email);
+            setmatricule(collab.matricule);
+            setmethodepaiment(collab.methodepaiment);
+            setmontant(collab.montant);
+            setnombre_dossier(collab.nombre_dossier);}}
         ></button>
       </div>
 
     
       <div class="modal-body">
+              <div className="d-flex">
+              <label>Nom:</label>
               <input
                 type="text"
                 className="form-control"
                 value={nom}
                 onChange={e => setnom(e.target.value)}
               />
-               <input
+              </div>
+
+              <div className="d-flex">
+              <label>Cin:</label>
+                <input
                 type="number"
                 className="form-control"
                 value={cin }
-                onChange={e => setcin(e.target.value)}
-              />
+                onChange={e => setcin(e.target.value)} 
+              /></div>
+
+              <div className="d-flex">
+              <label>Ville:</label>
                <input
                 type="text"
                 className="form-control"
                 value={ville}
                 onChange={e => setville(e.target.value)}
-              />
+              /></div>
+
+<div className="d-flex">
+              <label>Rue:</label>
                <input
                 type="text"
                 className="form-control"
                 value={rue}
                 onChange={e => setrue(e.target.value)}
-              />    
+              />    </div>
+
+<div className="d-flex">
+              <label>Num:</label>
                <input
                 type="number"
                 className="form-control"
                 value={num}
                 onChange={e => setnum(e.target.value)}
-              />
+              /></div>
+
+<div className="d-flex">
+              <label>Code Postale:</label>
                <input
                 type="number"
                 className="form-control"
                 value={codepostale}
                 onChange={e => setcodepostale(e.target.value)}
-              />
+              /></div>
+
+<div className="d-flex">
+              <label>Activité:</label>
                <input
                 type="text"
                 className="form-control"
                 value={activite}
                 onChange={e => setactivite(e.target.value)}
-              />
+              /></div>
+
+<div className="d-flex">
+              <label>Téléphone:</label>
                <input
                 type="number"
                 className="form-control"
                 value={tel}
                 onChange={e => settel(e.target.value)}
-              />    
+              />  </div>
+
+               <div className="d-flex">
+              <label>Fax:</label>  
                <input
                 type="number"
                 className="form-control"
                 value={fax}
                 onChange={e => setfax(e.target.value)}
-              />
+              /></div>
+
+<div className="d-flex">
+              <label>Email:</label>
                <input
                 type="text"
                 className="form-control"
                 value={email}
                 onChange={e => setemail(e.target.value)}
-              />
+              /></div>
+
+<div className="d-flex">
+              <label>Matricule:</label>
                <input
                 type="number"
                 className="form-control"
                 value={matricule}
                 onChange={e => setmatricule(e.target.value)}
-              />
+              /></div>
+
+<div className="d-flex">
+              <label>Methode de paiement:</label>
                <input
                 type="text"
                 className="form-control"
                 value={methodepaiment}
                 onChange={e => setmethodepaiment(e.target.value)}
-              />
+              /></div>
+
+<div className="d-flex">
+              <label>Montant:</label>
                <input
                 type="number"
                 className="form-control"
                 value={montant}
                 onChange={e => setmontant(e.target.value)}
-              />
-               <input
+              /></div>
+
+<div className="d-flex ">
+              <label >Nomnre_dossier:</label>
+               <input 
                 type="number"
                 className="form-control"
                 value={nombre_dossier}
                 onChange={e => setnombre_dossier(e.target.value)}
-              />
+              /></div>
 
             </div>
 
@@ -155,7 +224,20 @@ onClick={() => setnom(collab.nom)}
       onClick={e => updateCollab(e)}
       >Valider</button>
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-        onClick={() => setnom(collab.nom)}
+        onClick={() => {setnom(collab.nom);
+          setcin(collab.cin);
+          setville(collab.ville);
+          setrue(collab.rue);
+          setnum(collab.num);
+          setcodepostale(collab.codepostale);
+          setactivite(collab.activite);
+          settel(collab.tel);
+          setfax(collab.fax);
+          setemail(collab.email);
+          setmatricule(collab.matricule);
+          setmethodepaiment(collab.methodepaiment);
+          setmontant(collab.montant);
+          setnombre_dossier(collab.nombre_dossier);}}
         >Fermer</button>
       </div>
 

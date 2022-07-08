@@ -245,10 +245,10 @@ app.post("/collaborateurs/list", async (req, res) => {
 app.put("/collaborateurs/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { nom } = req.body;
+    const { nom,cin,ville,rue,num,codepostale,activite,tel,fax,email,matricule,methodepaiment,montant,nombre_dossier} = req.body;
     await pool.query(
-      "UPDATE collaborateurs SET nom = $1 WHERE collab_id = $2",
-      [nom, id]
+      "UPDATE collaborateurs SET nom=$1,cin=$2,ville=$3,rue=$4,num=$5,codepostale=$6,activite=$7,tel=$8,fax=$9,email=$10,matricule=$11,methodepaiment=$12,montant=$13,nombre_dossier=$14 WHERE collab_id = $15",
+      [nom,cin,ville,rue,num,codepostale,activite,tel,fax,email,matricule,methodepaiment,montant,nombre_dossier, id]
     );
 
     res.status(200).json("folder was updated");
