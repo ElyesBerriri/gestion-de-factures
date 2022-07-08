@@ -39,10 +39,10 @@ const EditClient = ({client}) => {
   return (
     <>
       <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
-        data-bs-target={`#id${client.id}`}>
+        data-bs-target={`#id${client.client_id}`}>
           Modifier
       </button>
-      <div className="modal" id={`id${client.id}`}>
+      <div className="modal" id={`id${client.client_id}`}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -104,7 +104,7 @@ const EditClient = ({client}) => {
                   <label className="col-form-label">Situation Fiscale</label>
                   <div className="form-check">
                       <label className="form-check-label" >
-                          <input className="form-check-input" type="radio" name="situationfiscale"
+                          <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
                           value="Non Assujetie" 
                           defaultChecked={client.situation_fiscale==='Non Assujetie'}
                           onChange={e => {
@@ -116,7 +116,7 @@ const EditClient = ({client}) => {
                   </div>
                   <div className="form-check">
                       <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name="situationfiscale"
+                          <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
                           value="Assujetie" 
                           defaultChecked={client.situation_fiscale==='Assujetie'}
                           onChange={e => {
@@ -128,7 +128,7 @@ const EditClient = ({client}) => {
                   </div>
                   <div className="form-check">
                       <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name="situationfiscale"
+                          <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
                           value="Exonoré" 
                           defaultChecked={client.situation_fiscale==='Exonoré'}
                           onChange={e => {
@@ -144,7 +144,7 @@ const EditClient = ({client}) => {
                   <label className="col-form-label">Type Client</label>
                   <div className="form-check">
                       <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name="typeclient"
+                          <input className="form-check-input" type="radio" name={`typeclient${client.client_id}`}
                             defaultChecked={client.type_client==='Personne Physique'}
                             onChange={e => {
                               setType_client((e.target.checked) ? 'Personne Physique' : 'Personne Morale');
@@ -154,7 +154,7 @@ const EditClient = ({client}) => {
                   </div>
                   <div className="form-check">
                       <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name="typeclient"
+                          <input className="form-check-input" type="radio" name={`typeclient${client.client_id}`}
                           defaultChecked={client.type_client==='Personne Morale'}
                           onChange={e => {
                             setType_client((e.target.checked) ? 'Personne Morale' : 'Personne Physique');

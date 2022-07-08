@@ -28,8 +28,7 @@ const InputClient = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body)
           });
-    
-          window.location.reload();
+          window.location.assign("/Clients");
         } catch (err) {
           console.error(err.message);
         }
@@ -230,9 +229,7 @@ const InputClient = () => {
                     onChange={e => setEmail(e.target.value)}/>
                 </div>
             </div>
-            <Link to={"/Clients"}>
-                <button onClick={onSubmitForm} type="submit" class="btn btn-primary">Ajouter</button>
-            </Link>
+            <button onClick={onSubmitForm} type="submit" class="btn btn-primary">Ajouter</button>
         </form>
         </div>
     );
