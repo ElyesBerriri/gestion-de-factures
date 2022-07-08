@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditTrib from "./EditTrib";
+import ListServices from "./Services";
 
-const ListDossier = () => {
+const ListTrib = () => {
   const [trib, settrib] = useState([]);
 
 
@@ -46,11 +47,11 @@ const ListDossier = () => {
         </thead>
         <tbody>
           {trib.map(trib => (
+
             <tr key={trib.trib_id}>
-              <td>{trib.lieux}</td>
+             <td>{trib.lieux}</td>
               <td>
               <EditTrib trib={trib} />
-
               </td>
               <td>
               <button
@@ -58,6 +59,14 @@ const ListDossier = () => {
                   onClick={() => deletetrib(trib.trib_id)}
                 >
                   Supprimer
+                </button>
+              </td>
+              <td>
+              <button
+                  className="btn btn-danger"
+                  onClick={()=>getservice(trib.lieux)}
+                >
+                  Services
                 </button>
               </td>
             </tr>
@@ -68,4 +77,4 @@ const ListDossier = () => {
   );
 };
 
-export default ListDossier;
+export default ListTrib;

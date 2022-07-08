@@ -98,6 +98,7 @@ const ListCollab = () => {
         <Link to={"/InputCollab"}>
         <button className="btn btn-success">Ajouter</button>
         </Link>
+        
          
     </Fragment>
  

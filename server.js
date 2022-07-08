@@ -181,6 +181,16 @@ app.get("/collaborateurs/list", async (req, res) => {
   }
 });
 
+app.get("/collaborateurs/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const allColab = await pool.query("SELECT * from collaborateurs where nom=$1",[id]);
+    res.status(200).json(allColab.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 // get a utilisateur
 app.get("/utilisateurs/list/:id", async (req, res) => {
   try {
@@ -805,12 +815,52 @@ app.put("/greffier/list/:id", async (req, res) => {
   }
 });
 
+
+
 // delete one
 app.delete("/greffier/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
     await pool.query("DELETE FROM greffier WHERE gref_id = $1", [id]);
     res.status(200).json("delete is done");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+
+// services
+
+app.get("/services/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const services = await pool.query("SELECT * FROM services WHERE tribunal = $1", [
+      id,
+    ]);
+    res.status(200).json(services.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+ 
+
+app.post("/services/list", async (req, res) => {
+  try {
+    const { tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi } = req.body;
+    const services = await pool.query(
+    "INSERT INTO services (tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",[tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi]);
+    res.status(200).json(services.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/services/list", async (req, res) => {
+  try {
+    const services = await pool.query("SELECT * from services");
+    res.status(200).json(services.rows);
   } catch (err) {
     console.error(err.message);
   }

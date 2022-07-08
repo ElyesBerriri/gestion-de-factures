@@ -25,7 +25,7 @@ CREATE TABLE tribunaux(
   lieux VARCHAR(255)
 );
 
-CREATE TABLE services(
+CREATE TABLE servicess(
   service_id SERIAL PRIMARY KEY,
   tribunal VARCHAR(255),
   nom VARCHAR(255),
