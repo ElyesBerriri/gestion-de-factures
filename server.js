@@ -545,13 +545,7 @@ app.post("/dossiers/list", async (req, res) => {
 
 //else
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/build/index.html"));
-});
 
-app.listen(PORT, () => {
-  console.log(`Server is starting on port ${PORT}`);
-});
 
 
 
@@ -866,3 +860,10 @@ app.get("/services/list", async (req, res) => {
   }
 });
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/build/index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is starting on port ${PORT}`);
+});
