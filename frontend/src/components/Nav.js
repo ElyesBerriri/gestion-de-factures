@@ -15,7 +15,7 @@ function Nav() {
       {name:"Types de dossiers", path:"/type_dossiers"}
     ];
     const navs1 = [
-      { name: "clients", path: "/Clients" }
+      { name: "clients", path: "/clients" }
     ];
     setNavLinks(navs);
     setNavLinks1(navs1);

@@ -6,6 +6,7 @@
 .pnp.js
 .env
 database.sql
+mydb.sql
 
 # testing
 /coverage
