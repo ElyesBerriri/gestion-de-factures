@@ -8,11 +8,13 @@ function Nav() {
   useEffect(() => {
     const navs = [
       {name:"Emplacement Dossier", path:"/Empdossier"},
-      {name:"Tribunaux et Administrations", path:"/Tribetadmini"},
+      {name:"Tribunaux", path:"/Tribetadmini"},
+      {name:"Administrations", path:"/Services"},
       {name:"Collaborateurs", path:"/Collab"},
       {name:"Utilisateurs", path:"/utilisateurs"},
       {name:"Primes", path:"/primes"},
       {name:"Types de dossiers", path:"/type_dossiers"}
+      
     ];
     const navs1 = [
       { name: "clients", path: "/Clients" }

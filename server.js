@@ -172,7 +172,7 @@ app.get("/utilisateurs/list", async (req, res) => {
 //liste des collaborateurs
 //get all colab
 
-app.get("/collaborateurs/list", async (req, res) => {
+/*app.get("/collaborateurs/list", async (req, res) => {
   try {
     const allColab = await pool.query("SELECT * from collaborateurs");
     res.status(200).json(allColab.rows);
@@ -189,7 +189,7 @@ app.get("/collaborateurs/list/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
   }
-});
+});*/
 
 // get a utilisateur
 app.get("/utilisateurs/list/:id", async (req, res) => {
@@ -826,7 +826,7 @@ app.delete("/greffier/list/:id", async (req, res) => {
 
 // services
 
-app.get("/services/list/:id", async (req, res) => {
+/*app.get("/services/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const services = await pool.query("SELECT * FROM services WHERE tribunal = $1", [
@@ -836,7 +836,7 @@ app.get("/services/list/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
   }
-});
+});*/
 
  
 
@@ -851,10 +851,82 @@ app.post("/services/list", async (req, res) => {
   }
 });
 
-app.get("/services/list", async (req, res) => {
+/*app.get("/services/list", async (req, res) => {
   try {
     const services = await pool.query("SELECT * from services");
     res.status(200).json(services.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});*/
+
+app.get("/services/list", async (req, res) => {
+  try{
+    const { q } = req.query;
+
+  const keys = ["tribunal"];
+  
+  const services = await pool.query("SELECT * from services");
+  console.log(services);
+  const rows = services.rows;
+  
+  const search = (data) => {
+    return data.filter((item) =>
+      keys.some((key) => item[key].toLowerCase().includes(q))
+    );
+  };
+
+  q ? res.json(search(rows)) : res.json(rows);
+  }catch (err) {
+    console.error(err.message);
+  }
+  
+});
+
+app.get("/collaborateurs/list", async (req, res) => {
+  try {
+    const { q } = req.query;
+    const keys = ["nom","cin","ville","rue","num","codepostale","activite","tel","fax","email","matricule","methodepaiment","montant","nombre_dossier"];
+
+    const allColab = await pool.query("SELECT * from collaborateurs");
+    const rows = allColab.rows;
+
+    const search = (data) => {
+    return data.filter((item) =>
+      keys.some((key) => item[key].toString().toLowerCase().includes(q))
+    );
+  };
+
+  q ? res.json(search(rows)) : res.json(rows);
+
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.put("/services/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { nom,lundi,mardi,mercredi,jeudi,vendredi,samedi} = req.body;
+    await pool.query(
+      "UPDATE services SET nom=$1,lundi=$2,mardi=$3,mercredi=$4,jeudi=$5,vendredi=$6,samedi=$7  WHERE service_id = $8",
+      [nom,lundi,mardi,mercredi,jeudi,vendredi,samedi, id]
+    );
+
+    res.status(200).json("service was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/services/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM services WHERE service_id = $1", [
+      id,
+    ]);
+    res.status(200).json("service was deleted");
   } catch (err) {
     console.error(err.message);
   }

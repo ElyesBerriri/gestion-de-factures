@@ -15,7 +15,7 @@ import Collab from './routes/Collab';
 import Tribetadmini from './routes/Tribetadmini';
 import InputCollab from './components/InputCollab';
 import Primes from './routes/Primes';
-
+import ListServices from './routes/Services';
 
 function App() {
 
@@ -35,6 +35,7 @@ function App() {
               <Route path="Inputcollab" element={<InputCollab />} />
               <Route path="Utilisateurs" element={<Utilisateurs />} />
               <Route path="Primes" element={<Primes />} />
+              <Route path="Services" element={<ListServices />} />
             </Routes>
           </div>
         </div>

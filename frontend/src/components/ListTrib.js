@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditTrib from "./EditTrib";
-import ListServices from "./Services";
 
 const ListTrib = () => {
   const [trib, settrib] = useState([]);
@@ -53,20 +52,13 @@ const ListTrib = () => {
               <td>
               <EditTrib trib={trib} />
               </td>
+
               <td>
               <button
                   className="btn btn-danger"
                   onClick={() => deletetrib(trib.trib_id)}
                 >
                   Supprimer
-                </button>
-              </td>
-              <td>
-              <button
-                  className="btn btn-danger"
-                  onClick={()=>getservice(trib.lieux)}
-                >
-                  Services
                 </button>
               </td>
             </tr>

@@ -4,6 +4,25 @@ import EditCollab from "./EditCollab";
 
 const ListCollab = () => {
     const [collab, setCollab] = useState([]);
+    const [query, setQuery] = useState("");
+
+    /*const [datasource,setdatasource]=useState(collab);
+    const [tablefilter,settablefilter]=useState([]);
+*/
+
+    /*const filterdata = (e)=>{
+      if(e.target.value != ""){
+        setvalue(e.target.value);
+        const filtertable= datasource.filter(o=>Object.keys(o).some(k=>
+          String(o[k].toLowerCase().includes(e.target.value.toLowerCase()))));
+          settablefilter([...filtertable])
+      }
+      else{
+        setvalue(e.target.value);
+        setdatasource([...datasource])
+      }
+    };
+*/
 
     const deletecollab = async id => {
       try {
@@ -17,25 +36,34 @@ const ListCollab = () => {
       }
     };
 
+  
 
     const getCollab = async () => {
         try {
-          const response = await fetch("/collaborateurs/list");
+          const response = await fetch(`/collaborateurs/list/?q=${query}`);
           const jsonData = await response.json();
-          
           setCollab(jsonData);
-        } catch (err) {
+        }
+         catch (err) {
           console.error(err.message);
         }
       };
+
     
       useEffect(() => {
         getCollab();
-      }, []);
+      }, [query]);
 
 
     return(
         <Fragment>
+           <input
+          className="search"
+          placeholder="Recherche .."
+          onChange={(e) => setQuery(e.target.value.toLowerCase())}
+        />
+  
+
       {" "}
       <table class="table table table-hover mt-5 text-center">
         <thead  class="table-dark">
@@ -60,49 +88,46 @@ const ListCollab = () => {
             </tr>
             </thead>
             <tbody>
-          {collab && collab.map(collab => (
-            <tr key={collab.collab_id}>
 
-              <td>{collab.collab_id}</td>
-              <td>{collab.nom}</td>
-              <td>{collab.cin}</td>
-              <td>{collab.ville}</td>
-              <td>{collab.rue}</td>
-              <td>{collab.num}</td>
-              <td>{collab.codepostale}</td>
-              <td>{collab.activite}</td>
-              <td>{collab.tel}</td>
-              <td>{collab.fax}</td>
-              <td>{collab.email}</td>
-              <td>{collab.matricule}</td>
-              <td>{collab.methodepaiment}</td>
-              <td>{collab.montant}</td>
-              <td>{collab.nombre_dossier}</td>
-
-              <td>
-                <EditCollab collab={collab} />
-              </td>
-
-              <td>
-              <button
-                  className="btn btn-danger"
-                  onClick={() => deletecollab(collab.collab_id)}
-                >
-                  Supprimer
-                </button>
-              </td>
-            </tr>
-          ))}
+            {collab.map(collab => (
+                  <tr key={collab.collab_id}>
+      
+                    <td>{collab.collab_id}</td>
+                    <td>{collab.nom}</td>
+                    <td>{collab.cin}</td>
+                    <td>{collab.ville}</td>
+                    <td>{collab.rue}</td>
+                    <td>{collab.num}</td>
+                    <td>{collab.codepostale}</td>
+                    <td>{collab.activite}</td>
+                    <td>{collab.tel}</td>
+                    <td>{collab.fax}</td>
+                    <td>{collab.email}</td>
+                    <td>{collab.matricule}</td>
+                    <td>{collab.methodepaiment}</td>
+                    <td>{collab.montant}</td>
+                    <td>{collab.nombre_dossier}</td>
+      
+                    <td>
+                      <EditCollab collab={collab} />
+                    </td>
+      
+                    <td>
+                    <button
+                        className="btn btn-danger"
+                        onClick={() => deletecollab(collab.collab_id)}
+                      >
+                        Supprimer
+                      </button>
+                    </td>
+                  </tr>
+                ))}
         </tbody>
         </table>
         <Link to={"/InputCollab"}>
         <button className="btn btn-success">Ajouter</button>
         </Link>
-        
-         
     </Fragment>
- 
-
     )
     
 };
