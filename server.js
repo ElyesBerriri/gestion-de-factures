@@ -926,7 +926,7 @@ app.delete("/services/list/:id", async (req, res) => {
     await pool.query("DELETE FROM services WHERE service_id = $1", [
       id,
     ]);
-    res.status(200).json("service was deleted");
+    res.status(200).json("services was deleted");
   } catch (err) {
     console.error(err.message);
   }
