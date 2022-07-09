@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditServices from "../components/EditServices";
-import InputService from "../components/InputService";
 
 const ListServices = () => {
   const [service, setservice] = useState([]);
@@ -129,7 +128,7 @@ const ListServices = () => {
     <h5 style={{'backgroundColor': '#89CFF0'
     }}>Jours d'Audience</h5>
             </div>
-            <InputService />
+            
        
     </Fragment>
   );
