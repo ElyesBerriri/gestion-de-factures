@@ -3,20 +3,20 @@ import { Link } from "react-router-dom";
 
 
 const InputCollab = () => {
-    const [nom,setnom] = useState("" );
-    const [cin,setcin]  = useState();
-    const [ville,setville]  = useState("");
-    const [ rue,setrue]  = useState("");
-    const [num,setnum]  = useState();
-    const [codepostale,setcodepostale]  = useState();
-    const [activite,setactivite]  = useState("");
-    const [tel,settel]  = useState();
-    const [fax,setfax]  = useState();
-    const [email,setemail]  = useState("");
-    const [matricule,setmatricule]  = useState("");
-    const [methodepaiment,setmethodepaiment]  = useState("");
-    const [montant,setmontant]  = useState( );
-    const [nombre_dossier,setnombre_dossier]  = useState( );
+    const [nom,setnom] = useState(".." );
+    const [cin,setcin]  = useState(0);
+    const [ville,setville]  = useState("..");
+    const [ rue,setrue]  = useState("..");
+    const [num,setnum]  = useState(0);
+    const [codepostale,setcodepostale]  = useState(0);
+    const [activite,setactivite]  = useState("..");
+    const [tel,settel]  = useState(0);
+    const [fax,setfax]  = useState(0);
+    const [email,setemail]  = useState("..");
+    const [matricule,setmatricule]  = useState("..");
+    const [methodepaiment,setmethodepaiment]  = useState("..");
+    const [montant,setmontant]  = useState( 0);
+    const [nombre_dossier,setnombre_dossier]  = useState( 0);
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
