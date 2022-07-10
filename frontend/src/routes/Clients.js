@@ -1,12 +1,10 @@
-import InputClient from '../components/InputClient';
-import ListClients from '../components/ListClients';
+import ListClient from '../components/ListClient';
 
 function Clients() {
   return (
     <>
         <h1>Liste des clients</h1>
-        <InputClient />
-        <ListClients />
+        <ListClient />
     </>
   );
 }

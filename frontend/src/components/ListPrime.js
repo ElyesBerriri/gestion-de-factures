@@ -34,9 +34,9 @@ const ListPrime = () => {
   return (
     <>
       {" "}
-      <table className="table table table-hover mt-5 text-center">
+      <table className="table table-hover mt-5 text-center">
         <thead  className="table-dark">
-          <tr>
+          <tr >
             <th>Libellé</th>
             <th>Montant</th>
             <th>Dissociable</th>

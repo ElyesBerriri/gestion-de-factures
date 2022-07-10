@@ -17,7 +17,7 @@ function Nav() {
       
     ];
     const navs1 = [
-      { name: "clients", path: "/Clients" }
+      { name: "Clients", path: "/clients" }
     ];
     setNavLinks(navs);
     setNavLinks1(navs1);
