@@ -864,6 +864,59 @@ app.delete("/services/list/:id", async (req, res) => {
   }
 });
 
+
+
+
+//Parametres
+
+// get all 
+app.get("/parametres/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from parametree");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.post("/parametres/list", async (req, res) => {
+  try {
+    const { timbre,tva,photocopie,transport } = req.body;
+    const services = await pool.query(
+    "INSERT INTO parametree (timbre,tva,photocopie,transport) VALUES($1,$2,$3,$4) RETURNING *",[timbre,tva,photocopie,transport]);
+    res.status(200).json(services.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.delete("/parametres/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM parametree WHERE parametre_id = $1", [
+      id,
+    ]);
+    res.status(200).json("parametre was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.put("/parametres/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { colonne} = req.body;
+    await pool.query(
+      `UPDATE parametree SET ${colonne}=$1 WHERE parametre_id = $2`,
+      [id, 3]
+    );
+
+    res.status(200).json("service was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend/build/index.html"));
 });
