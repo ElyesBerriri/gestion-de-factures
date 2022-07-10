@@ -3,6 +3,14 @@ CREATE TABLE emplacementdossiers(
   libelle VARCHAR(255)
 );
 
+CREATE TABLE parametree(
+  parametre_id SERIAL PRIMARY KEY,
+  timbre real,
+  tva real,
+  photocopie real,
+  transport real
+);
+
 CREATE TABLE collaborateurs(
   collab_id SERIAL PRIMARY KEY,
   nom VARCHAR(25),
