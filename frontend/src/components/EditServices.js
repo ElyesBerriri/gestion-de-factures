@@ -37,7 +37,45 @@ const EditServices=({service})=>{
     <Fragment>
       
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-data-bs-target={`#id${service.service_id}`}>
+data-bs-target={`#id${service.service_id}`}
+onClick={() => {
+  if (lundi==="Course"){
+    document.getElementById(`Courselun${service.service_id}`).checked = true;
+  }
+  else if(lundi==="Audience"){
+    document.getElementById(`Audiencelun${service.service_id}`).checked = true;
+  }
+  if (mardi==="Course"){
+    document.getElementById(`Coursemar${service.service_id}`).checked = true;
+  }
+  else if(mardi==="Audience"){
+    document.getElementById(`Audiencemar${service.service_id}`).checked = true;
+  }
+  if (mercredi==="Course"){
+    document.getElementById(`Coursemer${service.service_id}`).checked = true;
+  }
+  else if(mercredi==="Audience"){
+    document.getElementById(`Audiencemer${service.service_id}`).checked = true;
+  }
+  if (jeudi==="Course"){
+    document.getElementById(`Coursejeu${service.service_id}`).checked = true;
+  }
+  else if(jeudi==="Audience"){
+    document.getElementById(`Audiencejeu${service.service_id}`).checked = true;
+  }
+  if (vendredi==="Course"){
+    document.getElementById(`Courseven${service.service_id}`).checked = true;
+  }
+  else if(vendredi==="Audience"){
+    document.getElementById(`Audienceven${service.service_id}`).checked = true;
+  }
+  if (samedi==="Course"){
+    document.getElementById(`Coursesam${service.service_id}`).checked = true;
+  }
+  else if(samedi==="Audience"){
+    document.getElementById(`Audiencesam${service.service_id}`).checked = true;
+  }
+}}>
   Modifier
 </button>
 
@@ -90,44 +128,44 @@ onClick={() => setnom(service.nom)}
             <tr>
               <td>Lundi</td>
               <td>  <input type="radio" 
-               name="lun" checked = {lundi==="Course"} onChange={()=>setlundi("Course")} />
+               name="lun" id={`Courselun${service.service_id}`} onChange={()=>setlundi("Course")} />
              </td>
-             <td><input type="radio"  checked = {lundi==="Audience"} name="lun" onChange={()=>setlundi("Audience")}/>
+             <td><input type="radio" name="lun" id={`Audiencelun${service.service_id}`} onChange={()=>setlundi("Audience")}/>
              </td> 
             </tr>
             <tr>
               <td>Mardi</td>
-              <td>  <input type="radio"  name="mar" onClick={()=>setmardi("Course")}/>
+              <td>  <input type="radio"  name="mar"  id={`Coursemar${service.service_id}`} onClick={()=>setmardi("Course")}/>
              </td>
-             <td><input type="radio"  name="mar" onClick={()=>setmardi("Audience")}/>
+             <td><input type="radio"  name="mar" id={`Audiencemar${service.service_id}`} onClick={()=>setmardi("Audience")}/>
              </td> 
             </tr>
             <tr>
               <td>Mercredi</td>
-              <td>  <input type="radio"  name="mer" onClick={()=>setmercredi("Course")}/>
+              <td>  <input type="radio"  name="mer" id={`Coursemer${service.service_id}`} onClick={()=>setmercredi("Course")}/>
              </td>
-             <td><input type="radio"  name="mer" onClick={()=>setmercredi("Audience")}/>
+             <td><input type="radio"  name="mer" id={`Audiencemer${service.service_id}`} onClick={()=>setmercredi("Audience")}/>
              </td> 
             </tr>
             <tr>
               <td>Jeudi</td>
-              <td>  <input type="radio"  name="j" onClick={()=>setjeudi("Course")}/>
+              <td>  <input type="radio"  name="j" id={`Coursejeu${service.service_id}`} onClick={()=>setjeudi("Course")}/>
              </td>
-             <td><input type="radio"  name="j" onClick={()=>setjeudi("Audience")}/>
+             <td><input type="radio"  name="j" id={`Audiencejeu${service.service_id}`} onClick={()=>setjeudi("Audience")}/>
              </td> 
             </tr>
             <tr>
               <td>Vendredi</td>
-              <td>  <input type="radio"  name="v" onClick={()=>setvendredi("Course")}/>
+              <td>  <input type="radio"  name="v" id={`Courseven${service.service_id}`} onClick={()=>setvendredi("Course")}/>
              </td>
-             <td><input type="radio"  name="v" onClick={()=>setvendredi("Audience")}/>
+             <td><input type="radio"  name="v" id={`Audienceven${service.service_id}`} onClick={()=>setvendredi("Audience")}/>
              </td> 
             </tr>
             <tr>
               <td>Samedi</td>
-              <td>  <input type="radio"  name="s" onClick={()=>setsamedi("Course")}/>
+              <td>  <input type="radio"  name="s" id={`Coursesam${service.service_id}`} onClick={()=>setsamedi("Course")}/>
              </td>
-             <td><input type="radio"  name="s" onClick={()=>setsamedi("Audience")}/>
+             <td><input type="radio"  name="s" id={`Audiencesam${service.service_id}`} onClick={()=>setsamedi("Audience")}/>
              </td> 
             </tr>
           
