@@ -34,22 +34,22 @@ const ListClient = () => {
       <>
         {" "}
           <Link to={"/InputClient"}>
-            <button className="btn btn-success">Ajouter</button>
+            <button className="btn btn-success">Ajouter un client</button>
           </Link>
-          <table class="table table table-hover mt-5 text-center">
+          <table class="table table-hover mt-2 text-center">
             <thead  class="table-dark">
               <tr className="bg-primary">
                 <th scope="col">Id</th>
                 <th scope="col">Collaborateur</th>
-                <th scope="col">Code Client</th>
+                <th scope="col" className="text-nowrap">Code Client</th>
                 <th scope="col">Raison</th>
-                <th scope="col">Situation Fiscale</th>
-                <th scope="col">Type Client</th>
+                <th scope="col" className="text-nowrap">Situation Fiscale</th>
+                <th scope="col" className="text-nowrap">Type Client</th>
                 <th scope="col">Matricule</th>
                 <th scope="col">Ville</th>
                 <th scope="col">Rue </th>
                 <th scope="col">Num</th>
-                <th scope="col">Code Postale</th>
+                <th scope="col" className="text-nowrap">Code Postale</th>
                 <th scope="col">Adresse</th>
                 <th scope="col">Activité</th>
                 <th scope="col">Téléphone</th>

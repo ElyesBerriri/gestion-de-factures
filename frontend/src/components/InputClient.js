@@ -1,10 +1,11 @@
-import React, { useState }  from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect }  from "react";
 
 
 const InputClient = () => {
-    const [collaborateur,setCollaborateur] = useState("");
+    const [collaborateur,setCollaborateur] = useState("--");
     const [code_client,setCode_client] = useState("");
+    const [code_client1,setCode_client1] = useState("");
+    const [code_client2,setCode_client2] = useState("");
     const [raison,setRaison] = useState("");
     const [situation_fiscale,setSituation_fiscale] = useState("");
     const [type_client,setType_client] = useState("");
@@ -18,6 +19,7 @@ const InputClient = () => {
     const [tel,setTel] = useState("");
     const [fax,setFax] = useState("");
     const [email,setEmail] = useState("");
+    const [collab, setCollab] = useState([]);
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
@@ -34,27 +36,48 @@ const InputClient = () => {
         }
       };
     
+      const getCollab = async () => {
+        try {
+          const response = await fetch("/collaborateurs/list");
+          const jsonData = await response.json();
+          
+          setCollab(jsonData);
+        } catch (err) {
+          console.error(err.message);
+        }
+      };
+    
+      useEffect(() => {
+        getCollab();
+      }, []);
+
     return (
-        <div className="container mt-5">
+    <div className="container mt-5">
         <form>
             <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Collaborateur </label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
-                    placeholder="collaborateur"
-                    value={collaborateur}
-                    onChange={e => setCollaborateur(e.target.value)}/>
-                </div>
+                <label class="col-sm-2 col-form-label col-form-label-sm">Collaborateur</label>
+                <select class="form-select" aria-label="Default select example" 
+                    onChange={e => setCollaborateur(e.target.options[e.target.selectedIndex].value)}>
+                    <option value="--" selected>--</option>
+                    {collab.map(collab => (<option value={collab.nom}>{collab.nom}</option>))}
+                </select>
             </div>
 
-            <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Code Client</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
+            <div className="input-group mb-3">
+                <label class="col-sm-2 col-form-label col-form-label-sm">Code Client</label>
+                <input type="text" className="form-control form-control-sm"
                     placeholder="code client"
-                    value={code_client}
-                    onChange={e => setCode_client(e.target.value)}/>
-                </div>
+                    onChange={e => {
+                        setCode_client1(e.target.value);
+                        setCode_client(e.target.value+"/"+code_client2);
+                    }} />
+                <span class="input-group-text">/</span>
+                <input type="text" className="form-control form-control-sm"
+                    placeholder="code client"
+                    onChange={e => {
+                        setCode_client2(e.target.value);
+                        setCode_client(code_client1+"/"+e.target.value);
+                    }} />
             </div>
 
             <div class="row mb-3">
@@ -62,7 +85,6 @@ const InputClient = () => {
                 <div class="col-sm-10">
                     <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="raison"
-                    value={raison}
                     onChange={e => setRaison(e.target.value)}/>
                 </div>
             </div>
@@ -231,7 +253,7 @@ const InputClient = () => {
             </div>
             <button onClick={onSubmitForm} type="submit" class="btn btn-primary">Ajouter</button>
         </form>
-        </div>
+    </div>
     );
 };
 

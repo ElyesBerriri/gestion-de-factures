@@ -39,21 +39,21 @@ const InputPrime = () => {
           placeholder="montant"
           value={montant}
           onChange={e => setMontant(e.target.value)} />
-        <div class="form-check">
+        <div class="form-check m-2">
           <input className="form-check-input" type="checkbox" id="dissociable"
           onChange={e => setDissociable(e.target.checked)} />
           <label class="form-check-label" for="dissociable">
             Dissociable
           </label>
         </div>
-        <div class="form-check">
+        <div class="form-check m-2">
           <input className="form-check-input" type="checkbox" id="impot"
           onChange={e => setImpot(e.target.checked)} />
           <label class="form-check-label" for="impot">
             Impot
           </label>
         </div>
-        <div class="form-check">
+        <div class="form-check m-2">
           <input className="form-check-input" type="checkbox" id="mensuel"
           onChange={e => setMensuel(e.target.checked) } />
           <label class="form-check-label" for="mensuel">
