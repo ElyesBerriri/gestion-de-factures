@@ -1,28 +1,11 @@
 import React, { Fragment, useState ,useEffect} from "react";
-import { Link } from "react-router-dom";
-import EditCollab from "./EditCollab";
-
+ import EditCollab from "./EditCollab";
+ import InputCollab from "./InputCollab";
+ 
 const ListCollab = () => {
     const [collab, setCollab] = useState([]);
     const [query, setQuery] = useState("");
 
-    /*const [datasource,setdatasource]=useState(collab);
-    const [tablefilter,settablefilter]=useState([]);
-*/
-
-    /*const filterdata = (e)=>{
-      if(e.target.value != ""){
-        setvalue(e.target.value);
-        const filtertable= datasource.filter(o=>Object.keys(o).some(k=>
-          String(o[k].toLowerCase().includes(e.target.value.toLowerCase()))));
-          settablefilter([...filtertable])
-      }
-      else{
-        setvalue(e.target.value);
-        setdatasource([...datasource])
-      }
-    };
-*/
 
     const deletecollab = async id => {
       try {
@@ -124,9 +107,8 @@ const ListCollab = () => {
                 ))}
         </tbody>
         </table>
-        <Link to={"/InputCollab"}>
-        <button className="btn btn-success">Ajouter</button>
-        </Link>
+         <InputCollab/>
+      
     </Fragment>
     )
     

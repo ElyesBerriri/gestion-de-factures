@@ -39,7 +39,7 @@ const ListDossier = () => {
       <table className="table table table-hover mt-5 text-center">
         <thead  className="table-dark">
           <tr>
-            <th>Libelle</th>
+            <th>Libellé</th>
             <th>Modifier</th>
             <th>Supprimer</th>
           </tr>
