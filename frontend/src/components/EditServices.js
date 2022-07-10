@@ -90,16 +90,26 @@ onClick={() => setnom(service.nom)}
             <tr>
               <td>Lundi</td>
               <td>  <input type="radio" 
-               name="lun" checked = {lundi==="Course"} onChange={()=>setlundi("Course")} />
+               name="lun"   onChange={()=>setlundi("Course")} />
              </td>
-             <td><input type="radio"  checked = {lundi==="Audience"} name="lun" onChange={()=>setlundi("Audience")}/>
+             <td><input type="radio" name="lun" onChange={()=>setlundi("Audience")}/>
              </td> 
             </tr>
             <tr>
               <td>Mardi</td>
-              <td>  <input type="radio"  name="mar" onClick={()=>setmardi("Course")}/>
+              <td>  <input type="radio"  name="mar" 
+              defaultChecked={mardi==="Course"}
+                          onChange={e => {
+                              if(e.target.checked)
+                              setmardi("Course")
+                          }}  />
              </td>
-             <td><input type="radio"  name="mar" onClick={()=>setmardi("Audience")}/>
+             <td><input type="radio"  name="mar"
+              defaultChecked={mardi==="Audience"}
+                          onChange={e => {
+                              if(e.target.checked)
+                              setmardi("Audience")
+                          }}  />
              </td> 
             </tr>
             <tr>
