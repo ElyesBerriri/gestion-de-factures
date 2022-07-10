@@ -50,7 +50,7 @@ onClick={() => setnom(service.nom)}
 
    
       <div class="modal-header">
-        <h4 class="modal-title">Modification de service</h4>
+        <h4 class="modal-title">Modification d'Administration</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"
            onClick={() => setnom(service.nom)}
         ></button>
