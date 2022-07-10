@@ -4,9 +4,6 @@ const cors = require("cors");
 const pool = require("./db");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
-const bodyParser = require("body-parser");
-
-
 const bodyParser = require("body-parser");//transforme les données en format .json
 
 
@@ -24,74 +21,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // ROUTES
-
-// get all Clients
-app.get("/Clients/list", async (req, res) => {
-  try {
-    const allClients = await pool.query("SELECT * from clients");
-    res.status(200).json(allClients.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-// get a client
-app.get("/Clients/list/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const client = await pool.query("SELECT * FROM clients WHERE client_id = $1", [
-      id,
-    ]);
-    res.status(200).json(client.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-// create a client
-app.post("/Clients/list", async (req, res) => {
-  try {
-    const { description } = req.body;
-    const newClient = await pool.query(
-      "INSERT INTO clients (description) VALUES($1) RETURNING *",
-      [description]
-    );
-
-    res.status(200).json(newClient.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-// update a client
-app.put("/Clients/list/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { description } = req.body;
-    await pool.query(
-      "UPDATE clients SET description = $1 WHERE client_id = $2",
-      [description, id]
-    );
-
-    res.status(200).json("client was updated");
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-// delete a client
-app.delete("/Clients/list/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    await pool.query("DELETE FROM clients WHERE client_id = $1", [
-      id,
-    ]);
-    res.status(200).json("client was deleted");
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
 
 ///////////////////////// get all type_dossiers//////////////////////////
 app.get("/type_dossiers/list", async (req, res) => {
@@ -143,7 +72,7 @@ app.put("/type_dossiers/list/:id", async (req, res) => {
       [libelle, id]
     );
 
-    res.status(200).json("client was updated");
+    res.status(200).json("type_dossier was updated");
   } catch (err) {
     console.error(err.message);
   }
@@ -152,10 +81,10 @@ app.put("/type_dossiers/list/:id", async (req, res) => {
 app.delete("/type_dossiers/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    await pool.query("DELETE FROM clients WHERE type_id = $1", [
+    await pool.query("DELETE FROM type_dossiers WHERE type_id = $1", [
       id,
     ]);
-    res.status(200).json("client was deleted");
+    res.status(200).json("type_dossier was deleted");
   } catch (err) {
     console.error(err.message);
   }
@@ -175,7 +104,7 @@ app.get("/utilisateurs/list", async (req, res) => {
 //liste des collaborateurs
 //get all colab
 
-app.get("/collaborateurs/list", async (req, res) => {
+/*app.get("/collaborateurs/list", async (req, res) => {
   try {
     const allColab = await pool.query("SELECT * from collaborateurs");
     res.status(200).json(allColab.rows);
@@ -183,6 +112,16 @@ app.get("/collaborateurs/list", async (req, res) => {
     console.error(err.message);
   }
 });
+
+app.get("/collaborateurs/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const allColab = await pool.query("SELECT * from collaborateurs where nom=$1",[id]);
+    res.status(200).json(allColab.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});*/
 
 // get a utilisateur
 app.get("/utilisateurs/list/:id", async (req, res) => {
@@ -248,10 +187,10 @@ app.post("/collaborateurs/list", async (req, res) => {
 app.put("/collaborateurs/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { nom } = req.body;
+    const { nom,cin,ville,rue,num,codepostale,activite,tel,fax,email,matricule,methodepaiment,montant,nombre_dossier} = req.body;
     await pool.query(
-      "UPDATE collaborateurs SET nom = $1 WHERE collab_id = $2",
-      [nom, id]
+      "UPDATE collaborateurs SET nom=$1,cin=$2,ville=$3,rue=$4,num=$5,codepostale=$6,activite=$7,tel=$8,fax=$9,email=$10,matricule=$11,methodepaiment=$12,montant=$13,nombre_dossier=$14 WHERE collab_id = $15",
+      [nom,cin,ville,rue,num,codepostale,activite,tel,fax,email,matricule,methodepaiment,montant,nombre_dossier, id]
     );
 
     res.status(200).json("folder was updated");
@@ -397,68 +336,68 @@ app.delete("/primes/list/:id", async (req, res) => {
 });
 
 
-/////////////////////////get all cclients////////////////////////////
-app.get("/cclients/list", async (req, res) => {
+/////////////////////////get all clients////////////////////////////
+app.get("/clients/list", async (req, res) => {
   try {
-    const allcclients = await pool.query("SELECT * from cclients");
-    res.status(200).json(allcclients.rows);
+    const allclients = await pool.query("SELECT * from clients");
+    res.status(200).json(allclients.rows);
   } catch (err) {
     console.error(err.message);
   }
 });
 
-// get a cclient
-app.get("/cclients/list/:id", async (req, res) => {
+// get a client
+app.get("/clients/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const cclient = await pool.query("SELECT * FROM cclients WHERE cclient_id = $1", [
+    const client = await pool.query("SELECT * FROM clients WHERE client_id = $1", [
       id,
     ]);
-    res.status(200).json(cclient.rows[0]);
+    res.status(200).json(client.rows[0]);
   } catch (err) {
     console.error(err.message);
   }
 });
 
-// create a cclient
-app.post("/cclients/list", async (req, res) => {
+// create a client
+app.post("/clients/list", async (req, res) => {
   try {
     const { collaborateur,code_client,raison,situation_fiscale,type_client,matricule,ville,rue,num,code_postale,adresse,activite,tel,fax,email } = req.body;
-    const newcclient = await pool.query(
-      "INSERT INTO cclients (collaborateur,code_client,raison,situation_fiscale,type_client,matricule,ville,rue,num,code_postale,adresse,activite,tel,fax,email) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING *",
+    const newclient = await pool.query(
+      "INSERT INTO clients (collaborateur,code_client,raison,situation_fiscale,type_client,matricule,ville,rue,num,code_postale,adresse,activite,tel,fax,email) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING *",
       [collaborateur,code_client,raison,situation_fiscale,type_client,matricule,ville,rue,num,code_postale,adresse,activite,tel,fax,email]
     );
 
-    res.status(200).json(newcclient.rows[0]);
+    res.status(200).json(newclient.rows[0]);
   } catch (err) {
     console.error(err.message);
   }
 });
 
-// update a cclient
-app.put("/cclients/list/:id", async (req, res) => {
+// update a client
+app.put("/clients/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { collaborateur,code_client,raison,situation_fiscale,type_client,matricule,ville,rue,num,code_postale,adresse,activite,tel,fax,email } = req.body;
     await pool.query(
-      "UPDATE cclients SET collaborateur = $1, code_client = $2, raison = $3, situation_fiscale = $4, type_client = $5, matricule = $6, ville = $7, rue = $8, num = $9, code_postale = $10, adresse = $11, activite = $12, tel = $13, fax = $14, email = $15 WHERE cclient_id = $16",
+      "UPDATE clients SET collaborateur = $1, code_client = $2, raison = $3, situation_fiscale = $4, type_client = $5, matricule = $6, ville = $7, rue = $8, num = $9, code_postale = $10, adresse = $11, activite = $12, tel = $13, fax = $14, email = $15 WHERE client_id = $16",
       [collaborateur,code_client,raison,situation_fiscale,type_client,matricule,ville,rue,num,code_postale,adresse,activite,tel,fax,email, id]
     );
 
-    res.status(200).json("cclient was updated");
+    res.status(200).json("client was updated");
   } catch (err) {
     console.error(err.message);
   }
 });
 
-// delete a cclient
-app.delete("/cclients/list/:id", async (req, res) => {
+// delete a client
+app.delete("/clients/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    await pool.query("DELETE FROM cclients WHERE cclient_id = $1", [
+    await pool.query("DELETE FROM clients WHERE client_id = $1", [
       id,
     ]);
-    res.status(200).json("cclient was deleted");
+    res.status(200).json("client was deleted");
   } catch (err) {
     console.error(err.message);
   }
@@ -538,13 +477,6 @@ app.post("/dossiers/list", async (req, res) => {
 
 //else
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/build/index.html"));
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is starting on port ${PORT}`);
-});
 
 
 
@@ -809,6 +741,8 @@ app.put("/greffier/list/:id", async (req, res) => {
   }
 });
 
+
+
 // delete one
 app.delete("/greffier/list/:id", async (req, res) => {
   try {
@@ -820,3 +754,173 @@ app.delete("/greffier/list/:id", async (req, res) => {
   }
 });
 
+
+
+// services
+
+/*app.get("/services/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const services = await pool.query("SELECT * FROM services WHERE tribunal = $1", [
+      id,
+    ]);
+    res.status(200).json(services.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});*/
+
+ 
+
+app.post("/services/list", async (req, res) => {
+  try {
+    const { tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi } = req.body;
+    const services = await pool.query(
+    "INSERT INTO services (tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",[tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi]);
+    res.status(200).json(services.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+/*app.get("/services/list", async (req, res) => {
+  try {
+    const services = await pool.query("SELECT * from services");
+    res.status(200).json(services.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});*/
+
+app.get("/services/list", async (req, res) => {
+  try{
+    const { q } = req.query;
+
+  const keys = ["tribunal"];
+  
+  const services = await pool.query("SELECT * from services");
+  console.log(services);
+  const rows = services.rows;
+  
+  const search = (data) => {
+    return data.filter((item) =>
+      keys.some((key) => item[key].toLowerCase().includes(q))
+    );
+  };
+
+  q ? res.json(search(rows)) : res.json(rows);
+  }catch (err) {
+    console.error(err.message);
+  }
+  
+});
+
+app.get("/collaborateurs/list", async (req, res) => {
+  try {
+    const { q } = req.query;
+    const keys = ["nom","cin","ville","rue","num","codepostale","activite","tel","fax","email","matricule","methodepaiment","montant","nombre_dossier"];
+
+    const allColab = await pool.query("SELECT * from collaborateurs");
+    const rows = allColab.rows;
+
+    const search = (data) => {
+    return data.filter((item) =>
+      keys.some((key) => item[key].toString().toLowerCase().includes(q))
+    );
+  };
+
+  q ? res.json(search(rows)) : res.json(rows);
+
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.put("/services/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { nom,lundi,mardi,mercredi,jeudi,vendredi,samedi} = req.body;
+    await pool.query(
+      "UPDATE services SET nom=$1,lundi=$2,mardi=$3,mercredi=$4,jeudi=$5,vendredi=$6,samedi=$7  WHERE service_id = $8",
+      [nom,lundi,mardi,mercredi,jeudi,vendredi,samedi, id]
+    );
+
+    res.status(200).json("service was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/services/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM services WHERE service_id = $1", [
+      id,
+    ]);
+    res.status(200).json("services was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+
+
+//Parametres
+
+// get all 
+app.get("/parametres/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from parametree");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.post("/parametres/list", async (req, res) => {
+  try {
+    const { timbre,tva,photocopie,transport } = req.body;
+    const services = await pool.query(
+    "INSERT INTO parametree (timbre,tva,photocopie,transport) VALUES($1,$2,$3,$4) RETURNING *",[timbre,tva,photocopie,transport]);
+    res.status(200).json(services.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.delete("/parametres/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM parametree WHERE parametre_id = $1", [
+      id,
+    ]);
+    res.status(200).json("parametre was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.put("/parametres/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { colonne} = req.body;
+    await pool.query(
+      `UPDATE parametree SET ${colonne}=$1 WHERE parametre_id = $2`,
+      [id, 3]
+    );
+
+    res.status(200).json("service was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/build/index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is starting on port ${PORT}`);
+});

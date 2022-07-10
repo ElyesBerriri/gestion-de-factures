@@ -1,35 +1,35 @@
 import React, { Fragment, useEffect, useState } from "react";
-import EditDossier from "./EditDossier";
+import EditTrib from "./EditTrib";
 
-const ListDossier = () => {
-  const [dossiers, setDossiers] = useState([]);
+const ListTrib = () => {
+  const [trib, settrib] = useState([]);
 
 
-  const deletedossier = async id => {
+  const deletetrib = async id => {
     try {
-      await fetch(`/dossiers/list/${id}`, {
+      await fetch(`/tribunaux/list/${id}`, {
         method: "DELETE"
       });
 
-      setDossiers(dossiers.filter(dossier => dossier.dossier_id !== id));
+      settrib(trib.filter(trib => trib.trib_id !== id));
     } catch (err) {
       console.error(err.message);
     }
   };
 
-  const getDossiers = async () => {
+  const gettrib = async () => {
     try {
-      const response = await fetch("/dossiers/list");
+      const response = await fetch("/tribunaux/list");
       const jsonData = await response.json();
       
-      setDossiers(jsonData);
+      settrib(jsonData);
     } catch (err) {
       console.error(err.message);
     }
   };
 
   useEffect(() => {
-    getDossiers();
+    gettrib();
   }, []);
 
 
@@ -39,22 +39,24 @@ const ListDossier = () => {
       <table className="table table table-hover mt-5 text-center">
         <thead  className="table-dark">
           <tr>
-            <th>Libellé</th>
+            <th>Tribunaux</th>
             <th>Modifier</th>
             <th>Supprimer</th>
           </tr>
         </thead>
         <tbody>
-          {dossiers.map(dossier => (
-            <tr key={dossier.dossier_id}>
-              <td>{dossier.libelle}</td>
+          {trib.map(trib => (
+
+            <tr key={trib.trib_id}>
+             <td>{trib.lieux}</td>
               <td>
-                <EditDossier dossier={dossier} />
+              <EditTrib trib={trib} />
               </td>
+
               <td>
               <button
                   className="btn btn-danger"
-                  onClick={() => deletedossier(dossier.dossier_id)}
+                  onClick={() => deletetrib(trib.trib_id)}
                 >
                   Supprimer
                 </button>
@@ -67,4 +69,4 @@ const ListDossier = () => {
   );
 };
 
-export default ListDossier;
+export default ListTrib;

@@ -1,13 +1,13 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 
-const InputDossier = () => {
+const InputTypeDossier = () => {
   const [libelle, setLibelle] = useState("");
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
       const body = { libelle };
-      await fetch("/dossiers/list", {
+      await fetch("/type_dossiers/list", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -20,19 +20,20 @@ const InputDossier = () => {
   };
 
   return (
-    <Fragment>
-      <h1 className="text-center mt-5">Emplacement des dossiers</h1>
+    <>
+      <h1 className="text-center mt-5">Liste des types de dossiers</h1>
       <form className="d-flex mt-5" onSubmit={onSubmitForm}>
         <input
           type="text"
           className="form-control"
+          placeholder="écrivez un libellé"
           value={libelle}
           onChange={e => setLibelle(e.target.value)}
         />
         <button className="btn btn-success">Ajouter</button>
       </form>
-    </Fragment>
+    </>
   );
 };
 
-export default InputDossier;
+export default InputTypeDossier;

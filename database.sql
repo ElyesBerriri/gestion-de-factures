@@ -1,7 +1,14 @@
-
 CREATE TABLE emplacementdossiers(
   dossier_id SERIAL PRIMARY KEY,
   libelle VARCHAR(255)
+);
+
+CREATE TABLE parametree(
+  parametre_id SERIAL PRIMARY KEY,
+  timbre real,
+  tva real,
+  photocopie real,
+  transport real
 );
 
 CREATE TABLE collaborateurs(
@@ -26,7 +33,7 @@ CREATE TABLE tribunaux(
   lieux VARCHAR(255)
 );
 
-CREATE TABLE services(
+CREATE TABLE servicess(
   service_id SERIAL PRIMARY KEY,
   tribunal VARCHAR(255),
   nom VARCHAR(255),
