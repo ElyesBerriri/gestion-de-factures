@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 function Nav() {
   const [navLinks, setNavLinks] = useState([]);
   const [navLinks1, setNavLinks1] = useState([]);
+  const [timbreFiscale,setTimbreFiscale] = useState(0);
+  const [tauxTVA,setTauxTVA] = useState(0);
+  const [prixPhotocopie,setPrixPhotocopie] = useState(0);
+  const [montantTransport,setMontantTransport] = useState(0);
 
   useEffect(() => {
     const navs = [
@@ -24,10 +28,9 @@ function Nav() {
   }, []);
 
   return (
-    <div>
-        <div className="d-flex justify-content-center">
-      
-        <a class="navbar-brand" href="/">Accueil</a>
+    <>
+      <div className="d-flex justify-content-center">
+          <a class="navbar-brand" href="/">Accueil</a>
           <div class="btn-group">
             <button
               type="button"
@@ -39,6 +42,13 @@ function Nav() {
               Parametres
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                  data-bs-target="#params" >
+                  Paramétres Globales
+                </button>
+                
+              </li>
               {navLinks.map((d, i) => (
                 <li key={i}>
                   
@@ -51,6 +61,68 @@ function Nav() {
                 </li>
               ))}
             </ul>
+          </div>
+          <div class="modal fade" id="params" data-bs-backdrop="static">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Mise à jour des Paramétres</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" />
+                </div>
+                <div class="modal-body">
+                  <div className="row">
+                    <label className="col-form-label">
+                      Timbre Fiscale
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="timbre fiscale"
+                        value={timbreFiscale}
+                        onChange={e => setTimbreFiscale(e.target.value)} />
+                    </label>
+                  </div>
+                  <div className="row">
+                    <label className="col-form-label">
+                      Taux TVA
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="taux TVA"
+                        value={tauxTVA}
+                        onChange={e => setTauxTVA(e.target.value)} />
+                    </label>
+                  </div>
+                  <div className="row">
+                    <label className="col-form-label">
+                      Prix Photocopie
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="prix photocopie"
+                        value={prixPhotocopie}
+                        onChange={e => setPrixPhotocopie(e.target.value)} />
+                    </label>
+                  </div>
+                  <div className="row">
+                    <label className="col-form-label">
+                      Montant de transport par jours
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="montant"
+                        value={montantTransport}
+                        onChange={e => setMontantTransport(e.target.value)} />
+                    </label>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                  >Valider</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                  >Fermer</button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="btn-group">
             <button
@@ -75,7 +147,7 @@ function Nav() {
             </ul>
           </div>
         </div>
-    </div>
+    </>
   );
 }
 

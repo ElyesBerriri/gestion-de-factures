@@ -30,7 +30,7 @@ const EditTypeDossier = ({type}) => {
       </button>
 
       <div class="modal fade" data-bs-backdrop="static"
-      id={`id${type.type_id}`}>
+        id={`id${type.type_id}`}>
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
