@@ -17,7 +17,12 @@ function Nav() {
       {name:"Collaborateurs", path:"/Collab"},
       {name:"Utilisateurs", path:"/utilisateurs"},
       {name:"Primes", path:"/primes"},
-      {name:"Types de dossiers", path:"/type_dossiers"}
+      {name:"Types de dossiers", path:"/type_dossiers"},
+
+      {name:"RecetteFinance", path:"/RecetteFinance"},
+      {name:"Timbre", path:"/Timbre"},
+      {name:"Honoraire en extra", path:"/Hono"},
+      {name:"Greffier", path:"/Greffier"}
       
     ];
     const navs1 = [
