@@ -18,6 +18,10 @@ import Primes from './routes/Primes';
 import ListServices from './routes/Services';
 import InputClient from './components/InputClient';
 
+import RecetteFinance from './routes/RecetteFinance';
+import Timbre from './routes/Timbre';
+import Greffier from './routes/Greffier';
+import Hono from './routes/Hono';
 function App() {
 
     return (
@@ -37,6 +41,11 @@ function App() {
               <Route path="Primes" element={<Primes />} />
               <Route path="Services" element={<ListServices />} />
               <Route path="InputClient" element={<InputClient />} />
+
+              <Route path="RecetteFinance" element={<RecetteFinance />} />
+              <Route path="Timbre" element={<Timbre />} />
+              <Route path="Hono" element={<Hono />} />
+              <Route path="Greffier" element={<Greffier />} />
             </Routes>
           </div>
         </div>

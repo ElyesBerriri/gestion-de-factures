@@ -727,7 +727,7 @@ app.post("/greffier/list", async (req, res) => {
 app.put("/greffier/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { libelle,montant } = req.body;
+    const { nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2 } = req.body;
     await pool.query(
       "UPDATE greffier SET\
       nom = $1 prenom = $2 date_nais = $3 adresse = $4 etat_civile = $5 nombre_e = $6 type_payement = $7 base = $8 cin = $9 tel = $10 categorie = $11 echelon = $12 crss = $13 contrat = $14 sexe = $15 date_emb = $16 actif = $17 unk1 = $18 unk2 = $19 \
