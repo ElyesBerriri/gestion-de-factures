@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 function Nav() {
   const [navLinks, setNavLinks] = useState([]);
   const [navLinks1, setNavLinks1] = useState([]);
+  const [params, setParams] = useState([]);
   const [timbreFiscale,setTimbreFiscale] = useState(0);
   const [tauxTVA,setTauxTVA] = useState(0);
   const [prixPhotocopie,setPrixPhotocopie] = useState(0);
@@ -30,7 +31,38 @@ function Nav() {
     ];
     setNavLinks(navs);
     setNavLinks1(navs1);
+    getParams();
   }, []);
+
+  const updateParams = async e => {
+    e.preventDefault();
+    try {
+      const body = { timbreFiscale, tauxTVA, prixPhotocopie, montantTransport };
+       await fetch(
+        `/parametres/list/5`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        }
+      );
+
+      window.location.reload();
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  const getParams = async () => {
+    try {
+      const response = await fetch("/parametres/list");
+      const jsonData = await response.json();
+      
+      setParams(jsonData);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
   return (
     <>
@@ -49,7 +81,12 @@ function Nav() {
             <ul class="dropdown-menu dropdown-menu-end">
               <li>
                 <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                  data-bs-target="#params" >
+                  data-bs-target="#params" onClick={()=>{
+                    setTimbreFiscale(params[0].timbre);
+                    setTauxTVA(params[0].tva);
+                    setPrixPhotocopie(params[0].photocopie);
+                    setMontantTransport(params[0].transport);
+                  }} >
                   Paramétres Globales
                 </button>
                 
@@ -122,7 +159,7 @@ function Nav() {
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                  >Valider</button>
+                    onClick={e => updateParams(e)} >Valider</button>
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
                   >Fermer</button>
                 </div>
