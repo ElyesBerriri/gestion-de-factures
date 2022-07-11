@@ -3,7 +3,7 @@ import React, { Fragment, useState } from "react";
 const InputHono = () => {
   const [lib_arab, setLib_arab] = useState("");
   const [lib_fr, setLib_fr] = useState("");
-  const [montant, setMontant] = useState();
+  const [montant, setMontant] = useState("");
 
   const onSubmitForm = async (e) => {
     e.preventDefault();

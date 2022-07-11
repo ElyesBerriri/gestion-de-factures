@@ -51,7 +51,7 @@ const ListTimbre = () => {
               <td>{tm.libelle}</td>
               <td>{tm.montant}</td>
               <td>
-                <EditTimbre tm={tm} />
+                <EditTimbre timbre={tm} />
               </td>
               <td>
               <button

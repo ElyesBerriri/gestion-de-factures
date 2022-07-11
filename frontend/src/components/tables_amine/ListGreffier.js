@@ -88,7 +88,7 @@ const ListGreffier = () => {
             <td>Modifier</td>
             <td>Supprimer</td>
               <td>
-                <EditGreffier gr={gr} />
+                <EditGreffier gref={gr} />
               </td>
               <td>
               <button

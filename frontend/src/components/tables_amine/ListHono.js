@@ -53,7 +53,7 @@ const ListHono = () => {
               <td>{ho.lib_fr}</td>
               <td>{ho.montant}</td>
               <td>
-                <EditHono ho={ho} />
+                <EditHono hono={ho} />
               </td>
               <td>
               <button

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const EditHono = ({hono}) => {
+  console.log(hono);
   const [montant, setMontant] = useState(hono.montant);
   const [lib_arab, setLib_arab] = useState(hono.lib_arab);
   const [lib_fr, setLib_fr] = useState(hono.lib_fr);
@@ -63,6 +64,7 @@ const EditHono = ({hono}) => {
                 placeholder="montant"
                 value={montant}
                 onChange={e => setMontant(e.target.value)} />
+
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
