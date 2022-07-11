@@ -905,10 +905,10 @@ app.delete("/parametres/list/:id", async (req, res) => {
 app.put("/parametres/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { colonne} = req.body;
+    const { timbreFiscale, tauxTVA, prixPhotocopie, montantTransport} = req.body;
     await pool.query(
-      `UPDATE parametree SET ${colonne}=$1 WHERE parametre_id = $2`,
-      [id, 3]
+      `UPDATE parametree SET timbre=$1, tva=$2, photocopie=$3, transport=$4 WHERE parametre_id = $5`,
+      [timbreFiscale, tauxTVA, prixPhotocopie, montantTransport,id]
     );
 
     res.status(200).json("service was updated");
