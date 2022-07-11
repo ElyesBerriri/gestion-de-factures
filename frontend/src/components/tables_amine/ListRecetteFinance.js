@@ -51,7 +51,7 @@ const ListRecetteFinance = () => {
               <td>{rec.libelle}</td>
               <td>{rec.montant}</td>
               <td>
-                <EditRecetteFinance rec={rec} />
+                <EditRecetteFinance recette={rec} />
               </td>
               <td>
               <button

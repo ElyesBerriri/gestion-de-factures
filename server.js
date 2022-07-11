@@ -494,7 +494,7 @@ app.get("/honoraires/list", async (req, res) => {
   }
 });
 
-// get a honorary
+/*get a honorary
 app.get("/honoraires/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -503,7 +503,7 @@ app.get("/honoraires/list/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
   }
-});
+});*/
 
 // create a honorary
 app.post("/honoraires/list", async (req, res) => {
@@ -520,13 +520,15 @@ app.post("/honoraires/list", async (req, res) => {
   }
 });
 
+
+
 // update a honorary
 app.put("/honoraires/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { lib_arab,lib_fr,montant } = req.body;
     await pool.query(
-      "UPDATE honoraire_en_extra SET lib_arab = $1 lib_fr = $2 montant = $3 WHERE gr_id = $4",
+      "UPDATE honoraire_en_extra SET lib_arab = $1, lib_fr = $2, montant = $3 WHERE gr_id = $4",
       [lib_arab,lib_fr,montant,id]
     );
 
@@ -564,7 +566,7 @@ app.get("/timbres/list", async (req, res) => {
   }
 });
 
-// get a stamp
+/* get a stamp
 app.get("/timbres/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -573,7 +575,7 @@ app.get("/timbres/list/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
   }
-});
+});*/
 
 // create a stamp
 app.post("/timbres/list", async (req, res) => {
@@ -596,7 +598,7 @@ app.put("/timbres/list/:id", async (req, res) => {
     const { id } = req.params;
     const { libelle,montant } = req.body;
     await pool.query(
-      "UPDATE timbre SET libelle = $1 montant = $2 WHERE tim_id = $3",
+      "UPDATE timbre SET libelle = $1, montant = $2 WHERE tim_id = $3",
       [libelle,montant,id]
     );
 
@@ -633,7 +635,7 @@ app.get("/recettefinance/list", async (req, res) => {
   }
 });
 
-// get one
+/* get one
 app.get("/recettefinance/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -642,7 +644,7 @@ app.get("/recettefinance/list/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
   }
-});
+});*/
 
 // create one
 app.post("/recettefinance/list", async (req, res) => {
@@ -662,7 +664,7 @@ app.put("/recettefinance/list/:id", async (req, res) => {
     const { id } = req.params;
     const { libelle,montant } = req.body;
     await pool.query(
-      "UPDATE recette_finance SET libelle = $1 montant = $2 WHERE rf_id = $3",
+      "UPDATE recette_finance SET libelle = $1, montant = $2 WHERE rf_id = $3",
       [libelle,montant,id]
     );
 
@@ -698,7 +700,7 @@ app.get("/greffier/list", async (req, res) => {
   }
 });
 
-// get one
+/* get one
 app.get("/greffier/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -707,16 +709,14 @@ app.get("/greffier/list/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
   }
-});
+});*/
 
 // create one
 app.post("/greffier/list", async (req, res) => {
   try {
     const { nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2  } = req.body;
     const newone = await pool.query(
-    "INSERT INTO greffier \
-    (nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2 ) \
-    VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING *",[nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2 ]);
+    "INSERT INTO greffier (nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2 ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING *",[nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2 ]);
     res.status(200).json(newone.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -729,9 +729,7 @@ app.put("/greffier/list/:id", async (req, res) => {
     const { id } = req.params;
     const { nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2 } = req.body;
     await pool.query(
-      "UPDATE greffier SET\
-      nom = $1 prenom = $2 date_nais = $3 adresse = $4 etat_civile = $5 nombre_e = $6 type_payement = $7 base = $8 cin = $9 tel = $10 categorie = $11 echelon = $12 crss = $13 contrat = $14 sexe = $15 date_emb = $16 actif = $17 unk1 = $18 unk2 = $19 \
-        WHERE gref_id = $20",
+      "UPDATE greffier SET nom = $1, prenom = $2, date_nais = $3, adresse = $4, etat_civile = $5, nombre_e = $6, type_payement = $7, base = $8, cin = $9, tel = $10, categorie = $11, echelon = $12, crss = $13, contrat = $14, sexe = $15, date_emb = $16, actif = $17, unk1 = $18, unk2 = $19 WHERE gref_id = $20",
       [nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2,id ]
     );
 
