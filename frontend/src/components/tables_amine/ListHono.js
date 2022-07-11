@@ -19,7 +19,7 @@ const ListHono = () => {
 
   const gethono = async () => {
     try {
-      const response = await fetch("/honoraires/list");
+      const response = await fetch("/honoraires/list/");
       const jsonData = await response.json();
       
       sethono(jsonData);

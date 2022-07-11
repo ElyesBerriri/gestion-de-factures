@@ -510,7 +510,7 @@ app.post("/honoraires/list", async (req, res) => {
   try {
     const { lib_arab,lib_fr,montant } = req.body;
     const newhonorary = await pool.query(
-      "INSERT INTO clients (lib_arab,lib_fr,montant) VALUES($1,$2,$3) RETURNING *",
+      "INSERT INTO honoraire_en_extra (lib_arab,lib_fr,montant) VALUES($1,$2,$3) RETURNING *",
       [lib_arab,lib_fr,montant]
     );
 
@@ -526,7 +526,7 @@ app.put("/honoraires/list/:id", async (req, res) => {
     const { id } = req.params;
     const { lib_arab,lib_fr,montant } = req.body;
     await pool.query(
-      "UPDATE clients SET lib_arab = $1 lib_fr = $2 montant = $3 WHERE gr_id = $4",
+      "UPDATE honoraire_en_extra SET lib_arab = $1 lib_fr = $2 montant = $3 WHERE gr_id = $4",
       [lib_arab,lib_fr,montant,id]
     );
 

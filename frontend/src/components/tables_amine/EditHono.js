@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 
 const EditHono = ({hono}) => {
+  const [montant, setMontant] = useState(hono.montant);
   const [lib_arab, setLib_arab] = useState(hono.lib_arab);
   const [lib_fr, setLib_fr] = useState(hono.lib_fr);
-  const [montant, setMontant] = useState(hono.montant);
+
 
   const updateHono = async e => {
     e.preventDefault();
     try {
       const body = { lib_arab,lib_fr, montant};
        await fetch(
-        `/honoraires/list/${hono.id}`,
+        `/honoraires/list/${hono.gr_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -27,10 +28,10 @@ const EditHono = ({hono}) => {
   return (
     <>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${hono.id}`}>
+      data-bs-target={`#id${hono.gr_id}`}>
         Modifier
       </button>
-      <div class="modal" id={`id${hono.id}`}>
+      <div class="modal" id={`id${hono.gr_id}`}>
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
