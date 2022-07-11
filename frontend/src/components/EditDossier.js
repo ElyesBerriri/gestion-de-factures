@@ -27,13 +27,14 @@ const EditDossier = ({dossier}) => {
     <Fragment>
       
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-data-bs-target={`#id${dossier.dossier_id}`}>
+data-bs-target={`#id${dossier.dossier_id}`}
+onClick={() => setLibelle(dossier.libelle)}
+>
   Modifier
 </button>
 
  
 <div class="modal"
-onClick={() => setLibelle(dossier.libelle)}
  id={`id${dossier.dossier_id}`}>
   <div class="modal-dialog">
     <div class="modal-content">

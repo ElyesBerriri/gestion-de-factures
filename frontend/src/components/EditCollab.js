@@ -41,12 +41,7 @@ const EditCollab = ({collab}) => {
     <Fragment>
       
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-data-bs-target={`#id${collab.collab_id}`}>
-  Modifier
-</button>
-
- 
-<div class="modal"
+data-bs-target={`#id${collab.collab_id}`}
 onClick={() => {setnom(collab.nom);
   setcin(collab.cin);
   setville(collab.ville);
@@ -61,29 +56,21 @@ onClick={() => {setnom(collab.nom);
   setmethodepaiment(collab.methodepaiment);
   setmontant(collab.montant);
   setnombre_dossier(collab.nombre_dossier);}}
-  
+  >
+  Modifier
+</button>
+
+ 
+<div class="modal"
+
  id={`id${collab.collab_id}`}>
   <div class="modal-dialog">
     <div class="modal-content">
 
    
       <div class="modal-header">
-        <h4 class="modal-title">Modification de dossier</h4>
+        <h4 class="modal-title">Modification de collaborateur</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"
-          onClick={() =>{setnom(collab.nom);
-            setcin(collab.cin);
-            setville(collab.ville);
-            setrue(collab.rue);
-            setnum(collab.num);
-            setcodepostale(collab.codepostale);
-            setactivite(collab.activite);
-            settel(collab.tel);
-            setfax(collab.fax);
-            setemail(collab.email);
-            setmatricule(collab.matricule);
-            setmethodepaiment(collab.methodepaiment);
-            setmontant(collab.montant);
-            setnombre_dossier(collab.nombre_dossier);}}
         ></button>
       </div>
 

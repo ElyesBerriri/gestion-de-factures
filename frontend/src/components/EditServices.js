@@ -114,6 +114,7 @@ onClick={() => setnom(service.nom)}
                  value={nom}
                 onChange={e => setnom(e.target.value)}
               /> </div>
+              
               <table className="table table table-hover mt-5 text-center">
         <thead  className="table-dark">
           <tr>
