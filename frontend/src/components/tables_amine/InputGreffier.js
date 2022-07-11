@@ -187,7 +187,7 @@ const InputGreffier = () => {
       />
 
 
-        <button className="btn btn-success">Ajouter</button>
+        <button className="btn btn-success" onClick={onSubmitForm}>Ajouter</button>
       </form>
     </Fragment>
   );
