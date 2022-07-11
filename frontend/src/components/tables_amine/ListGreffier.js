@@ -85,8 +85,6 @@ const ListGreffier = () => {
             <td>{gr.actif}</td>
             <td>{gr.unk1}</td>
             <td>{gr.unk2}</td>
-            <td>Modifier</td>
-            <td>Supprimer</td>
               <td>
                 <EditGreffier gref={gr} />
               </td>

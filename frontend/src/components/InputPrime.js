@@ -30,7 +30,7 @@ const InputPrime = () => {
         <input
           type="text"
           className="form-control"
-          placeholder="libellé"
+          placeholder="libelle"
           value={libelle}
           onChange={e => setLibelle(e.target.value)} />
         <input

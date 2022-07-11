@@ -1,25 +1,25 @@
 import React, { Fragment, useState } from "react";
 
 const InputGreffier = () => {
-    const [nom, setNom] = useState();
-    const [prenom, setPrenom] = useState();
-    const [date_nais, setDate_nais] = useState();
-    const [adresse, setAdresse] = useState();
-    const [etat_civile, setEtat_civile] = useState();
-    const [nombre_e, setNombre_e] = useState();
-    const [type_payement, setType_payement] = useState();
-    const [base, setBase] = useState();
-    const [cin, setCin] = useState();
-    const [tel, setTel] = useState();
-    const [categorie, setCategorie] = useState();
-    const [echelon, setEchelon] = useState();
-    const [crss, setCrss] = useState();
-    const [contrat, setContrat] = useState();
-    const [sexe, setSexe] = useState();
-    const [date_emb, setDate_emb] = useState();
-    const [actif, setActif] = useState();
-    const [unk1, setUnk1] = useState();
-    const [unk2, setUnk2] = useState();
+    const [nom, setNom] = useState("");
+    const [prenom, setPrenom] = useState("");
+    const [date_nais, setDate_nais] = useState("");
+    const [adresse, setAdresse] = useState("");
+    const [etat_civile, setEtat_civile] = useState("");
+    const [nombre_e, setNombre_e] = useState("");
+    const [type_payement, setType_payement] = useState("");
+    const [base, setBase] = useState("");
+    const [cin, setCin] = useState("");
+    const [tel, setTel] = useState("");
+    const [categorie, setCategorie] = useState("");
+    const [echelon, setEchelon] = useState("");
+    const [crss, setCrss] = useState("");
+    const [contrat, setContrat] = useState("");
+    const [sexe, setSexe] = useState("");
+    const [date_emb, setDate_emb] = useState("");
+    const [actif, setActif] = useState("");
+    const [unk1, setUnk1] = useState("");
+    const [unk2, setUnk2] = useState("");
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -114,7 +114,7 @@ const InputGreffier = () => {
         type="tel" 
         className="form-control" 
         placeholder="12-345-678" 
-        pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" required 
+        pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}"
         value={tel}
         onChange={e => setTel(e.target.value)}/>
 
