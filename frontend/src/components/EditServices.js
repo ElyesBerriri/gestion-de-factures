@@ -81,7 +81,6 @@ onClick={() => {
 
  
 <div class="modal"
-onClick={() => setnom(service.nom)}
  id={`id${service.service_id}`}>
   <div class="modal-dialog">
     <div class="modal-content">
@@ -114,7 +113,7 @@ onClick={() => setnom(service.nom)}
                  value={nom}
                 onChange={e => setnom(e.target.value)}
               /> </div>
-              
+
               <table className="table table table-hover mt-5 text-center">
         <thead  className="table-dark">
           <tr>
