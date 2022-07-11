@@ -47,7 +47,7 @@ CREATE TABLE utilisateurs(
 
 
 
-CREATE TABLE honoraire_en_extraa(
+CREATE TABLE honoraire_en_extra(
     gr_id SERIAL PRIMARY KEY,
     lib_arab VARCHAR(255),
     lib_fr VARCHAR(255),

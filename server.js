@@ -598,8 +598,7 @@ app.put("/timbres/list/:id", async (req, res) => {
     const { id } = req.params;
     const { libelle,montant } = req.body;
     await pool.query(
-      "UPDATE timbre SET libelle = $1, montant = $2 WHERE tim_id = $3",
-      [libelle,montant,id]
+      "UPDATE timbre SET libelle = $1, montant = $2 WHERE tim_id = $3",[libelle,montant,id]
     );
 
     res.status(200).json("stamp was updated");

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const EditTimbre = ({timbre}) => {
+  console.log(timbre);
   const [libelle, setLibelle] = useState(timbre.libelle);
   const [montant, setMontant] = useState(timbre.montant);
 
@@ -9,7 +10,7 @@ const EditTimbre = ({timbre}) => {
     try {
       const body = { libelle, montant};
        await fetch(
-        `/timbres/list/${timbre.id}`,
+        `/timbres/list/${timbre.tim_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -26,10 +27,10 @@ const EditTimbre = ({timbre}) => {
   return (
     <>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${timbre.id}`}>
+      data-bs-target={`#id${timbre.tim_id}`}>
         Modifier
       </button>
-      <div class="modal" id={`id${timbre.id}`}>
+      <div class="modal" id={`id${timbre.tim_id}`}>
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">

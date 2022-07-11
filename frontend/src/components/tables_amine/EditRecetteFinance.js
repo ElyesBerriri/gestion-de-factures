@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const EditRecetteFinance = ({recette}) => {
+  console.log(recette);
   const [libelle, setLibelle] = useState(recette.libelle);
   const [montant, setMontant] = useState(recette.montant);
 
@@ -9,7 +10,7 @@ const EditRecetteFinance = ({recette}) => {
     try {
       const body = { libelle, montant};
        await fetch(
-        `/recettefinance/list/${recette.id}`,
+        `/recettefinance/list/${recette.rf_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -26,10 +27,10 @@ const EditRecetteFinance = ({recette}) => {
   return (
     <>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${recette.id}`}>
+      data-bs-target={`#id${recette.rf_id}`}>
         Modifier
       </button>
-      <div class="modal" id={`id${recette.id}`}>
+      <div class="modal" id={`id${recette.rf_id}`}>
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">

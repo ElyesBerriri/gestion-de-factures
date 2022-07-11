@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const EditGreffier = ({gref}) => {
+    console.log(gref);
     const [nom, setNom] = useState(gref.nom);
     const [prenom, setPrenom] = useState(gref.prenom);
     const [date_nais, setDate_nais] = useState(gref.date_nais);
@@ -26,7 +27,7 @@ const EditGreffier = ({gref}) => {
     try {
       const body = { nom,prenom,date_nais,adresse,etat_civile,nombre_e,type_payement,base,cin,tel,categorie,echelon,crss,contrat,sexe,date_emb,actif,unk1,unk2};
        await fetch(
-        `/greffier/list/${gref.id}`,
+        `/greffier/list/${gref.gref_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -43,10 +44,10 @@ const EditGreffier = ({gref}) => {
   return (
     <>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${gref.id}`}>
+      data-bs-target={`#id${gref.gref_id}`}>
         Modifier
       </button>
-      <div class="modal" id={`id${gref.id}`}>
+      <div class="modal" id={`id${gref.gref_id}`}>
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -226,7 +227,7 @@ const EditGreffier = ({gref}) => {
               onClick={e => updateGreffier(e)}>Valider</button>
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
               onClick={() => {
-                setNom(gref.nom);
+                    setNom(gref.nom);
                     setPrenom(gref.prenom);
                     setDate_nais(gref.date_nais);
                     setAdresse(gref.adresse);
