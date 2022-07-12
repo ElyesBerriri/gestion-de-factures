@@ -94,7 +94,7 @@ const EditGreffier = ({gref}) => {
       />
 
       <input
-        type="date"
+        type="text"
         className="form-control"
         placeholder="Date de naissance"
         value={date_nais}
@@ -146,10 +146,9 @@ const EditGreffier = ({gref}) => {
         onChange={e => setCin(e.target.value)} />
 
 <input 
-        type="tel" 
+        type="number" 
         className="form-control" 
-        placeholder="12-345-678" 
-        pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" required 
+        placeholder="Téléphone" 
         value={tel}
         onChange={e => setTel(e.target.value)}/>
 
@@ -190,7 +189,7 @@ const EditGreffier = ({gref}) => {
         onChange={e => setSexe(e.target.value)}/>
 
 <input
-        type="date"
+        type="text"
         className="form-control"
         placeholder="Date d'emb."
         value={date_emb}
