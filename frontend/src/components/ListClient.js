@@ -33,6 +33,10 @@ const ListClient = () => {
     return(
       <>
         {" "}
+          <input
+            className="search "
+            placeholder="Recherche .."
+            onChange={(e) => setQuery(e.target.value.toLowerCase())} />
           <Link to={"/InputClient"}>
             <button className="btn btn-success">Ajouter un client</button>
           </Link>
