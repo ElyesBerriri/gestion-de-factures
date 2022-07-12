@@ -4,6 +4,7 @@ import EditClient from "./EditClient";
 
 const ListClient = () => {
     const [clients, setClients] = useState([]);
+    const [query, setQuery] = useState("");
 
     const deleteClient = async id => {
       try {
@@ -18,7 +19,7 @@ const ListClient = () => {
 
     const getClient = async () => {
         try {
-          const response = await fetch("/clients/list");
+          const response = await fetch(`/clients/list/?q=${query}`);
           const jsonData = await response.json();
           setClients(jsonData);
         } catch (err) {
@@ -28,7 +29,7 @@ const ListClient = () => {
     
       useEffect(() => {
         getClient();
-      }, []);
+      }, [query]);
 
     return(
       <>
