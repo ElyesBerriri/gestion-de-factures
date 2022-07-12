@@ -339,8 +339,16 @@ app.delete("/primes/list/:id", async (req, res) => {
 /////////////////////////get all clients////////////////////////////
 app.get("/clients/list", async (req, res) => {
   try {
+    const { q } = req.query;
+    const keys = ["collaborateur","code_client","raison","situation_fiscale","type_client","matricule","ville","rue","num","code_postale","adresse","activite","tel","fax","email"];
     const allclients = await pool.query("SELECT * from clients");
-    res.status(200).json(allclients.rows);
+    const rows = allclients.rows;
+    const search = (data) => {
+      return data.filter((item) =>
+        keys.some((key) => item[key].toString().toLowerCase().includes(q))
+      );
+    };
+    q ? res.json(search(rows)) : res.json(rows);
   } catch (err) {
     console.error(err.message);
   }

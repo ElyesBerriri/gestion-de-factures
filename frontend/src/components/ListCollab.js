@@ -43,8 +43,7 @@ const ListCollab = () => {
            <input
           className="search"
           placeholder="Recherche .."
-          onChange={(e) => setQuery(e.target.value.toLowerCase())}
-        />
+          onChange={(e) => setQuery(e.target.value.toLowerCase())} />
   
 
       {" "}
