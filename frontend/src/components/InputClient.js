@@ -3,22 +3,22 @@ import React, { useState, useEffect }  from "react";
 
 const InputClient = () => {
     const [collaborateur,setCollaborateur] = useState("--");
-    const [code_client,setCode_client] = useState("*");
-    const [code_client1,setCode_client1] = useState("*");
-    const [code_client2,setCode_client2] = useState("*");
-    const [raison,setRaison] = useState("*");
-    const [situation_fiscale,setSituation_fiscale] = useState("*");
-    const [type_client,setType_client] = useState("*");
-    const [matricule,setMatricule] = useState("*");
-    const [ville,setVille] = useState("*");
-    const [rue,setRue] = useState("*");
-    const [num,setNum] = useState(0);
-    const [code_postale,setCode_postale] = useState(0);
-    const [adresse,setAdresse] = useState("*");
-    const [activite,setActivite] = useState("*");
-    const [tel,setTel] = useState("*");
-    const [fax,setFax] = useState("*");
-    const [email,setEmail] = useState("*");
+    const [code_client,setCode_client] = useState("");
+    const [code_client1,setCode_client1] = useState("");
+    const [code_client2,setCode_client2] = useState("");
+    const [raison,setRaison] = useState("");
+    const [situation_fiscale,setSituation_fiscale] = useState("");
+    const [type_client,setType_client] = useState("");
+    const [matricule,setMatricule] = useState("");
+    const [ville,setVille] = useState("");
+    const [rue,setRue] = useState("");
+    const [num,setNum] = useState();
+    const [code_postale,setCode_postale] = useState();
+    const [adresse,setAdresse] = useState("");
+    const [activite,setActivite] = useState("");
+    const [tel,setTel] = useState("");
+    const [fax,setFax] = useState("");
+    const [email,setEmail] = useState("");
     const [collab, setCollab] = useState([]);
 
     const onSubmitForm = async (e) => {
@@ -66,7 +66,7 @@ const InputClient = () => {
             <div className="input-group mb-3">
                 <label class="col-sm-2 col-form-label col-form-label-sm">Code Client</label>
                 <input type="text" className="form-control form-control-sm"
-                    placeholder="code client" value={code_client1}
+                    placeholder="code client"
                     onChange={e => {
                         setCode_client1(e.target.value);
                         setCode_client(e.target.value+"/"+code_client2);
@@ -81,10 +81,10 @@ const InputClient = () => {
             </div>
 
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label col-form-label-sm">Raison</label>
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Raison</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm"
-                    value={raison} 
+                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
+                    placeholder="raison"
                     onChange={e => setRaison(e.target.value)}/>
                 </div>
             </div>
