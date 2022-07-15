@@ -346,6 +346,24 @@ app.get("/clients/list", async (req, res) => {
   }
 });
 
+//For Mayssa
+app.get("/clients/list/creation", async (req, res) => {
+  try {
+    const { q } = req.query;
+    const keys = ["collaborateur","code_client"];
+    const allclients = await pool.query("SELECT * from clients");
+    const rows = allclients.rows;
+    const search = (data) => {
+      return data.filter((item) =>
+        keys.some((key) => item[key].toString().toLowerCase().includes(q))
+      );
+    };
+    q ? res.json(search(rows)) : res.json(rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 // get a client
 app.get("/clients/list/:id", async (req, res) => {
   try {

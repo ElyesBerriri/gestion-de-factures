@@ -22,6 +22,8 @@ import RecetteFinance from './routes/RecetteFinance';
 import Timbre from './routes/Timbre';
 import Greffier from './routes/Greffier';
 import Hono from './routes/Hono';
+import Creation from './routes/Creation';
+
 function App() {
 
     return (
@@ -46,6 +48,8 @@ function App() {
               <Route path="Timbre" element={<Timbre />} />
               <Route path="Hono" element={<Hono />} />
               <Route path="Greffier" element={<Greffier />} />
+              <Route path="Creation" element={<Creation />} />
+
             </Routes>
           </div>
         </div>
