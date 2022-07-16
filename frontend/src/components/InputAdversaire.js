@@ -1,25 +1,35 @@
 import React, { Fragment,useState }  from "react";
 
 
-const InputAdversaire = () => {
+const InputAdversaire = (props) => {
   const [nom, setNom] = useState("--");
-  const [Registre, setRegistre] = useState("--");
+  const [registre, setRegistre] = useState("--");
   const [adresse, setAdresse] = useState("--");
-  const [adressed, setAdressed] = useState("--");
+  const [adresse_d, setAdressed] = useState("--");
   const  [avocat, setAvocat] = useState("--");
-  const [adresseav, setAdresseav] = useState("--");
-
-    const onSubmitForm = () => {
-            return(
-                    console.log("submit")
-                )
-        }
+  const [adresse_a, setAdresseav] = useState("--");
+  const [dossier_id, setidd] = useState(`${props.dossier_id}`);
+ 
+  const onSubmitForm =async (e) => {
+      try {
+        const body = {dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a} ;
+        await fetch("/adversaire/list", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+   
+        props.changeadversaire();
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
       
   return (
     <Fragment>
       
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Ajouter adversaire
+    Ajouter adversaire 
   </button>
   
    
@@ -49,9 +59,9 @@ const InputAdversaire = () => {
     <div class="row mb-3">
     <label  class="col-sm-2 col-form-label col-form-label-sm">Registre :</label>
     <div class="col-sm-10">
-        <input type="number" class="form-control form-control-sm" id="colFormLabelSm" 
+        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
         placeholder="Registre"
-        value={Registre}
+        value={registre}
         onChange={e => setRegistre(e.target.value)}/>
     </div>
     </div>
@@ -71,7 +81,7 @@ const InputAdversaire = () => {
     <div class="col-sm-10">
         <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
         placeholder="Adresse Designée"
-        value={adressed}
+        value={adresse_d}
         onChange={e => setAdressed(e.target.value)}/>
     </div>
     </div>
@@ -91,12 +101,10 @@ const InputAdversaire = () => {
     <div class="col-sm-10">
         <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
         placeholder="Rue"
-        value={adresseav}
+        value={adresse_a}
         onChange={e => setAdresseav(e.target.value)}/>
     </div>
     </div>
-
-    
 
     </form>
     </div>
@@ -104,9 +112,10 @@ const InputAdversaire = () => {
         </div>
         <div class="modal-footer">
           <button 
-        type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-          <button onClick={onSubmitForm} type="submit" class="btn btn-success">Sauvegarder</button>
-        </div>
+            type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+             <button 
+            type="button" class="btn btn-success" onClick={onSubmitForm} data-bs-dismiss="modal">Sauvegarder</button>
+         </div>
       </div>
     </div>
   </div>
