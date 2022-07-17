@@ -1039,6 +1039,30 @@ app.get("/adversaire/list/:id", async (req, res) => {
 
 
 
+
+app.post("/dossierss/list", async (req, res) => {
+  try {
+    const { dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net } = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO dossiers (dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING *",
+    [dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/dossierss/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from dossiers");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend/build/index.html"));
 });
