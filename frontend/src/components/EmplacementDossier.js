@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 const EmplacementDossier = () => {
     const [dossiers, setDossiers] = useState([]);
@@ -63,7 +62,7 @@ const EmplacementDossier = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {dossiers.map(dossier => (
+                    {dossiers.map(dossier => {if(emplacement=="Tous" || emplacement==dossier.emplacement) return(
                         <tr key={dossier.dossier_id}>
                             <td>{dossier.dossier_id}</td>
                             <td>{dossier.numaff}</td>
@@ -98,7 +97,7 @@ const EmplacementDossier = () => {
                                 </button>
                             </td>
                         </tr>
-                    ))}
+                    )})}
                 </tbody>
             </table>
         </>
