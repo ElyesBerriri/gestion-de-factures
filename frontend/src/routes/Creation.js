@@ -40,8 +40,6 @@ const Creation =()=>{
         }
       };
 
-    
-
 
       const onSubmitForm = async (e) => {
         e.preventDefault();
@@ -89,6 +87,7 @@ const Creation =()=>{
             changecode1={(code1)=>setCode1(code1)} code1={code1} 
             changecode2={(code2)=>setCode2(code2)} code2={code2} 
             changeobservation={(observation)=>setObservation(observation)} observation={observation} 
+            changeadversaire={(adversaire)=>setadversaire(adversaire)} adversaire={adversaire} 
             changecalendar={(calendar)=>setCalendar(calendar)} calendar={calendar}/>}
             
             {active==="third" && <Taches/>}
