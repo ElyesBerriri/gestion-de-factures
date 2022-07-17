@@ -4,8 +4,7 @@ import React, { Fragment, useState,useEffect } from "react";
 const TabAdvers =(props)=>{
 
     const [adversaire, setadversaire] = useState([]);
-    const [dossier_id, setdossier_id] = useState(`${props.dossier_id}`);
-    const [nom, setnom] = useState("");
+     const [nom, setnom] = useState("");
     const [registre, setregistre] = useState("");
     const [adresse, setadresse] = useState("");
     const [adresse_d, setadresse_d] = useState("");
@@ -13,9 +12,9 @@ const TabAdvers =(props)=>{
     const [adresse_a, setadresse_a] = useState("");
     const [idadversaire, setIDadversaire] = useState("");
 
-    const getadversaire = async () => {
+    const getadversaire = async (id) => {
       try {
-        const response = await fetch(`/adversaire/list`);
+        const response = await fetch(`/adversaire/listtotal/${id}`);
         const jsonData = await response.json();
         setadversaire(jsonData);
         console.log(adversaire);
@@ -38,8 +37,10 @@ const TabAdvers =(props)=>{
 
     
     useEffect(() => {
-      getadversaire();
-    }, []);
+      getadversaire(props.dossier_id);
+    }, [props.dossier_id]);
+
+
 return (
     <Fragment>
        {" "}

@@ -105,7 +105,7 @@ const [nom, setNom] = useState("--");
         <div class="modal-footer">
           <button 
         type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-          <button onClick={onSubmitForm} type="submit" class="btn btn-success">Sauvegarder</button>
+          <button onClick={onSubmitForm} type="submit" class="btn btn-success">Ajouter</button>
         </div>
       </div>
     </div>

@@ -945,16 +945,6 @@ app.put("/parametres/list/:id", async (req, res) => {
 
  
 
-app.post("/iddossier/list", async (req, res) => {
-  try {
-    const { code1,code2 } = req.body;
-    const services = await pool.query(
-    "INSERT INTO iddossier (code) VALUES($1) RETURNING *",[`${code1}-${code2}`]);
-    res.status(200).json(services.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
 
 
  
@@ -963,7 +953,7 @@ app.post("/adversaire/list", async (req, res) => {
   try {
     const { dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a } = req.body;
     const donnees = await pool.query(
-    "INSERT INTO adversairesss (dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *",
+    "INSERT INTO adversaires (dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *",
     [dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a]);
     res.status(200).json(donnees.rows[0]);
   } catch (err) {
@@ -973,7 +963,7 @@ app.post("/adversaire/list", async (req, res) => {
 
 app.get("/adversaire/list", async (req, res) => {
   try {
-    const all = await pool.query("SELECT * from adversairesss");
+    const all = await pool.query("SELECT * from adversaires");
     res.status(200).json(all.rows);
   } catch (err) {
     console.error(err.message);
@@ -983,7 +973,7 @@ app.get("/adversaire/list", async (req, res) => {
 app.delete("/adversaire/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    await pool.query("DELETE FROM adversairesss WHERE adversaire_id = $1", [
+    await pool.query("DELETE FROM adversaires WHERE adversaire_id = $1", [
       id,
     ]);
     res.status(200).json("adversaire was deleted");
@@ -995,13 +985,22 @@ app.delete("/adversaire/list/:id", async (req, res) => {
 app.get("/adversaire/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const one = await pool.query("SELECT * FROM adversairesss WHERE dossier_id = $1", [id]);
-    res.status(200).json(one.rows[0]);
+    const one = await pool.query("SELECT nom FROM adversaires WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
   } catch (err) {
     console.error(err.message);
   }
 });
 
+app.get("/adversaire/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM adversaires WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 
 
@@ -1053,6 +1052,7 @@ app.get("/dossierss/list/number", async (req, res) => {
     console.error(err.message);
   }
 });
+
 
 
 

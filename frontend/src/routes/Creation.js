@@ -35,7 +35,6 @@ const Creation =()=>{
           const response = await fetch(`/dossierss/list/number`);
           const jsonData = await response.json();
           setIdd(parseInt(jsonData , 10 ) + 1);
-          console.log(typeof `${dossier_id}`);
         } catch (err) {
           console.error(err.message);
         }
@@ -88,15 +87,15 @@ const Creation =()=>{
             changecode1={(code1)=>setCode1(code1)} code1={code1} 
             changecode2={(code2)=>setCode2(code2)} code2={code2} 
             changeobservation={(observation)=>setObservation(observation)} observation={observation} 
+            changeadversaire={(adversaire)=>setadversaire(adversaire)} adversaire={adversaire} 
             changecalendar={(calendar)=>setCalendar(calendar)} calendar={calendar}/>}
             
             {active==="third" && <Taches/>}
 
         </div>
         {console.log( calendar)}
-
-        {console.log(client_id)}
-        <button onClick={onSubmitForm} type="submit" class="btn btn-success">Valider</button>
+         {console.log(client_id)}
+        <button onClick={ onSubmitForm} type="submit" class="btn btn-success">Valider</button>
         </>
 
          
