@@ -1,10 +1,9 @@
 import React, { Fragment, useState,useEffect } from "react";
 import TabDeman from "./TabDeman";
 
-const ClientDemandeur =()=>{
+const ClientDemandeur =(props)=>{
     const [clients, setClients] = useState([]);
     const [query, setQuery] = useState("");
-    const [id,setID] = useState("");
     const [client, setClient] = useState({});
      
 
@@ -21,10 +20,11 @@ const ClientDemandeur =()=>{
 
       const specificClient = async (id) => {
         try {
+
+          props.changeclient_id(id);
           const response = await fetch(`/clients/list/${id}`);
           const jsonData = await response.json();
           setClient(jsonData);
-          console.log(client);
         } catch (err) {
           console.error(err.message);
         }
@@ -33,8 +33,7 @@ const ClientDemandeur =()=>{
       
       useEffect(() => {
         getClient(query);
-        specificClient(id)
-      }, [query,id]);    
+      }, [query]);    
  
     return(
         <Fragment>
@@ -47,10 +46,10 @@ const ClientDemandeur =()=>{
             onChange={(e) => setQuery(e.target.value.toLowerCase())}
             />
 
-            <select name="select_box" class="form-select" id="select_box" value={id} onChange={(e)=>setID(e.target.value)}>
+            <select name="select_box" class="form-select" id="select_box" value={props.client_id} onChange={(e)=>{specificClient(e.target.value)}}>
                 <option value=''></option>
                 {clients.map(client => (
-                        <option key={client.client_id}  value={client.client_id}>{client.collaborateur} {client.code_client}</option>
+                        <option key={client.client_id}  value={client.client_id}>{client.raison} {client.code_client}</option>
                 ))}
             </select>
 
@@ -141,6 +140,8 @@ const ClientDemandeur =()=>{
                   </div>
               </div>
       </div>
+      {props.changeclient(client.raison)}
+
 
 <TabDeman/>
     </Fragment>

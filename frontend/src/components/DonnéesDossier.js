@@ -1,8 +1,24 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState,useEffect } from "react";
 import TabAdvers from "./Tabadvers";
 import CalendarComp from "./CalendarComp";
 
 const DonnéesDossier =(props)=>{
+  const [emplacements, setEmplacement] = useState([]);
+
+  const getemp = async (query) => {
+    try {
+      const response = await fetch(`/dossiers/list`);
+      const jsonData = await response.json();
+      setEmplacement(jsonData);
+     } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getemp();
+  }, []);
+
      
     return(
 
@@ -51,11 +67,12 @@ const DonnéesDossier =(props)=>{
               <div className="row">
                   <div className="input-group mb-3">
                     <span class="input-group-text">Emplacement :</span>
-                    <select class="form-select" aria-label="Default select example" value={props.emplacement} onChange={(e)=>props.changeemplacement(e.target.value)}>
-            <option selected>--</option>
-            <option value="Jaze2i">Jaze2i</option>
-            <option value="Madani">Madani</option>
-            </select>   
+                    <select name="select_box" class="form-select" id="select_box" value={props.emplacement} onChange={(e)=>{props.changeemplacement(e.target.value)}}>
+                <option value=''></option>
+                {emplacements.map(emp => (
+                        <option key={emp.libelle}  value={emp.libelle}>{emp.libelle}</option>
+                ))}
+            </select>
                   </div>
               </div>
 

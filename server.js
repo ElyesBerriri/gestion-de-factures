@@ -943,14 +943,7 @@ app.put("/parametres/list/:id", async (req, res) => {
 });
 
 
-app.get("/dossier/list/number", async (req, res) => {
-  try {
-    const numberclients = await pool.query("SELECT COUNT(*) FROM iddossier");
-    res.status(200).json(numberclients.rows[0].count);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
+ 
 
 app.post("/iddossier/list", async (req, res) => {
   try {
@@ -963,36 +956,8 @@ app.post("/iddossier/list", async (req, res) => {
   }
 });
 
-app.get("/iddossier/list", async (req, res) => {
-  try {
-    const all = await pool.query("SELECT * from iddossier");
-    res.status(200).json(all.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
 
-app.post("/donneesdossier/list", async (req, res) => {
-  try {
-    const { dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar } = req.body;
-    const donnees = await pool.query(
-    "INSERT INTO donneesdossier (dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *",
-    [dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar]);
-    res.status(200).json(donnees.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-app.get("/donneesdossier/list", async (req, res) => {
-  try {
-    const all = await pool.query("SELECT * from donneesdossier");
-    res.status(200).json(all.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
+ 
 
 app.post("/adversaire/list", async (req, res) => {
   try {
@@ -1042,10 +1007,10 @@ app.get("/adversaire/list/:id", async (req, res) => {
 
 app.post("/dossierss/list", async (req, res) => {
   try {
-    const { dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net } = req.body;
+    const { code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id, parent_id } = req.body;
     const donnees = await pool.query(
-    "INSERT INTO dossiers (dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING *",
-    [dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net]);
+    "INSERT INTO dossiers (code,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id, parent_id ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING *",
+    [`${code1}-${code2}`,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id, parent_id ]);
     res.status(200).json(donnees.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -1056,6 +1021,15 @@ app.get("/dossierss/list", async (req, res) => {
   try {
     const all = await pool.query("SELECT * from dossiers");
     res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/dossierss/list/number", async (req, res) => {
+  try {
+    const numberclients = await pool.query("SELECT dossier_id FROM dossiers ORDER BY dossier_id DESC LIMIT 1");
+    res.status(200).json(numberclients.rows[0].dossier_id);
   } catch (err) {
     console.error(err.message);
   }
