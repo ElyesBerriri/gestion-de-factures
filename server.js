@@ -1019,16 +1019,8 @@ app.post("/dossierss/list", async (req, res) => {
 
 app.get("/dossierss/list", async (req, res) => {
   try {
-    const all = await pool.query("SELECT * from dossiers");
-    res.status(200).json(all.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-app.get("/dossierss/list", async (req, res) => {
-  try {
     const { q } = req.query;
-    const keys = ["collaborateur","code_client","raison","situation_fiscale","type_client","matricule","ville","rue","num","code_postale","adresse","activite","tel","fax","email"];
+    const keys = ["code","typee","mission","emplacement","lieu","numaff","servicee","observation","calendar","client","tel","adversaire","honoraire","net","client_id","collab_id","parent_id"];
     const allclients = await pool.query("SELECT * from dossiers");
     const rows = allclients.rows;
     const search = (data) => {
@@ -1037,6 +1029,17 @@ app.get("/dossierss/list", async (req, res) => {
       );
     };
     q ? res.json(search(rows)) : res.json(rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+app.delete("/dossierss/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM dossiers WHERE dossier_id = $1", [
+      id,
+    ]);
+    res.status(200).json("dossier was deleted");
   } catch (err) {
     console.error(err.message);
   }

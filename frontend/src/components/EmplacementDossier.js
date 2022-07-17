@@ -66,7 +66,7 @@ const EmplacementDossier = () => {
                     {dossiers.map(dossier => (
                         <tr key={dossier.dossier_id}>
                             <td>{dossier.dossier_id}</td>
-                            <td>{dossier.num_affaire}</td>
+                            <td>{dossier.numaff}</td>
                             <td>{dossier.emplacement}</td>
                             <td>{dossier.client}</td>
                             <td>{dossier.tel}</td>
