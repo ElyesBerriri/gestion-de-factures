@@ -20,11 +20,19 @@ const Creation =()=>{
     const [code2,setCode2]= useState("");
     const [observation,setObservation]= useState("");
     const [calendar,setCalendar]= useState("");
+    const [adversaire,setadversaire]= useState("berriri");
+    const [client_id,setclient_id]= useState(0);
+    const [collab_id,setcollab_id]= useState(10);
+    const [client,setclient]= useState("");
+    const [honoraire,sethonoraire]= useState(10);
+    const [net,setnet]= useState(10);
+    const [tel,settel]= useState("");
+    const [parent_id,setparent_id]= useState(10);
 
 
     const getdossierid = async () => {
         try {
-          const response = await fetch(`/dossier/list/number`);
+          const response = await fetch(`/dossierss/list/number`);
           const jsonData = await response.json();
           setIdd(parseInt(jsonData , 10 ) + 1);
           console.log(typeof `${dossier_id}`);
@@ -38,21 +46,12 @@ const Creation =()=>{
         e.preventDefault();
         try {
 
-            const body = {dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar} ;
-            await fetch("/donneesdossier/list", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(body)
-            });
-       
-    
-          const body1 = {code1,code2} ;
-          await fetch("/iddossier/list", {
+          const body = {code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id, parent_id} ;
+          await fetch("/dossierss/list", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body1)
+            body: JSON.stringify(body)
           });
-    
 
           window.location.reload();
         } catch (err) {
@@ -74,7 +73,10 @@ const Creation =()=>{
         </nav>
         <h1>dossier n°{dossier_id}</h1>
         <div>
-            {active==="first" && <ClientDemandeur/>}
+            {active==="first" && <ClientDemandeur
+            changeclient_id={(client_id)=>setclient_id(client_id)} client_id={client_id} 
+            changeclient={(client)=>setclient(client)} client={client} 
+                        />}
             {active==="second" && <DonnéesDossier 
             idd={dossier_id}
             changetype={(type)=>setType(type)} type={typee} 
@@ -91,9 +93,13 @@ const Creation =()=>{
             {active==="third" && <Taches/>}
 
         </div>
+        {console.log( calendar)}
 
-        <button onClick={onSubmitForm} type="submit" class="btn btn-success">Sauvegarder</button>
+        {console.log(client_id)}
+        <button onClick={onSubmitForm} type="submit" class="btn btn-success">Valider</button>
         </>
+
+         
     )
 
 };

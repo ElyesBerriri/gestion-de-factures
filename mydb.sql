@@ -109,3 +109,27 @@ actif varchar(10),
 unk1 varchar(10),
 unk2 varchar(10)
 );
+
+
+
+
+CREATE TABLE dossiers(
+  dossier_id serial primary key,
+  code VARCHAR(255),
+  typee VARCHAR(255),
+  mission VARCHAR(255),
+  emplacement VARCHAR(255),
+  lieu VARCHAR(255),
+  numaff VARCHAR(255),
+  servicee VARCHAR(255),
+  observation VARCHAR(255),
+  calendar VARCHAR(255),
+  client VARCHAR(255),
+  tel VARCHAR(255),
+  adversaire VARCHAR(255),
+  honoraire float,
+  net float,
+  client_id INT,
+  collab_id INT,
+  parent_id INT
+);
