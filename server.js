@@ -995,8 +995,8 @@ app.delete("/adversaire/list/:id", async (req, res) => {
 app.get("/adversaire/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const one = await pool.query("SELECT * FROM adversairesss WHERE dossier_id = $1", [id]);
-    res.status(200).json(one.rows[0]);
+    const one = await pool.query("SELECT nom FROM adversairesss WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
   } catch (err) {
     console.error(err.message);
   }
@@ -1034,6 +1034,7 @@ app.get("/dossierss/list/number", async (req, res) => {
     console.error(err.message);
   }
 });
+
 
 
 

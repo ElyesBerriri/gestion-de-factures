@@ -20,7 +20,7 @@ const Creation =()=>{
     const [code2,setCode2]= useState("");
     const [observation,setObservation]= useState("");
     const [calendar,setCalendar]= useState("");
-    const [adversaire,setadversaire]= useState("berriri");
+    const [adversaire,setadversaire]= useState("hello");
     const [client_id,setclient_id]= useState(0);
     const [collab_id,setcollab_id]= useState(10);
     const [client,setclient]= useState("");
@@ -35,11 +35,12 @@ const Creation =()=>{
           const response = await fetch(`/dossierss/list/number`);
           const jsonData = await response.json();
           setIdd(parseInt(jsonData , 10 ) + 1);
-          console.log(typeof `${dossier_id}`);
         } catch (err) {
           console.error(err.message);
         }
       };
+
+    
 
 
       const onSubmitForm = async (e) => {
@@ -94,9 +95,8 @@ const Creation =()=>{
 
         </div>
         {console.log( calendar)}
-
-        {console.log(client_id)}
-        <button onClick={onSubmitForm} type="submit" class="btn btn-success">Valider</button>
+         {console.log(client_id)}
+        <button onClick={ onSubmitForm} type="submit" class="btn btn-success">Valider</button>
         </>
 
          
