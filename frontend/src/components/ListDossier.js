@@ -3,7 +3,7 @@ import EditDossier from "./EditDossier";
 
 const ListDossier = () => {
   const [dossiers, setDossiers] = useState([]);
-
+const [id,setID]=useState("");
 
   const deletedossier = async id => {
     try {
@@ -41,28 +41,26 @@ const ListDossier = () => {
           <tr>
             <th>Libellé</th>
             <th>Modifier</th>
-            <th>Supprimer</th>
           </tr>
         </thead>
         <tbody>
           {dossiers.map(dossier => (
             <tr key={dossier.dossier_id}>
-              <td>{dossier.libelle}</td>
+              <td onClick={()=> setID(dossier.dossier_id)}>{dossier.libelle}</td>
               <td>
                 <EditDossier dossier={dossier} />
               </td>
-              <td>
-              <button
-                  className="btn btn-danger"
-                  onClick={() => deletedossier(dossier.dossier_id)}
-                >
-                  Supprimer
-                </button>
-              </td>
+              
             </tr>
           ))}
         </tbody>
       </table>
+      <button
+                  className="btn btn-danger"
+                  onClick={() => deletedossier(id)}
+                >
+                  Supprimer
+                </button>
     </Fragment>
   );
 };

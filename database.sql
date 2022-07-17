@@ -43,3 +43,33 @@ CREATE TABLE servicess(
   jeudi VARCHAR(255),
   vendredi VARCHAR(255),
   samedi VARCHAR(255));
+
+    CREATE TABLE donneesdossier(
+    dossier_id VARCHAR(25) PRIMARY KEY,
+    typee VARCHAR(25),
+    mission VARCHAR(25),
+    emplacement VARCHAR(25),
+    lieu VARCHAR(25),
+    numaff VARCHAR(25),
+    servicee VARCHAR(25),
+    observation VARCHAR(25),
+    calendar VARCHAR(25)
+    );
+
+    CREATE TABLE iddossier(
+    dossier_id serial PRIMARY KEY,
+    code VARCHAR(25)
+    );
+
+  
+
+      CREATE TABLE adversairesss(
+      adversaire_id serial PRIMARY KEY,
+      dossier_id varchar(255),
+      nom varchar(255),
+      registre varchar(255),
+      adresse varchar(255),
+      adresse_d varchar(255),
+      avocat varchar(255),
+      adresse_a varchar(255)
+      );
