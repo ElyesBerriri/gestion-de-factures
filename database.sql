@@ -48,9 +48,9 @@ CREATE TABLE servicess(
 
   
 
-      CREATE TABLE adversairesss(
+      CREATE TABLE adversaires(
       adversaire_id serial PRIMARY KEY,
-      dossier_id varchar(255),
+      dossier_id int,
       nom varchar(255),
       registre varchar(255),
       adresse varchar(255),
