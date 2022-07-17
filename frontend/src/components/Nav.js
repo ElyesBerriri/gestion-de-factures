@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 function Nav() {
   const [navLinks, setNavLinks] = useState([]);
   const [navLinks1, setNavLinks1] = useState([]);
+  const [navLinks2, setNavLinks2] = useState([]);
   const [params, setParams] = useState([]);
   const [timbreFiscale,setTimbreFiscale] = useState(0);
   const [tauxTVA,setTauxTVA] = useState(0);
@@ -19,7 +20,6 @@ function Nav() {
       {name:"Utilisateurs", path:"/utilisateurs"},
       {name:"Primes", path:"/primes"},
       {name:"Types de dossiers", path:"/type_dossiers"},
-
       {name:"RecetteFinance", path:"/RecetteFinance"},
       {name:"Timbre", path:"/Timbre"},
       {name:"Honoraire en extra", path:"/Hono"},
@@ -30,8 +30,12 @@ function Nav() {
     const navs1 = [
       { name: "Clients", path: "/clients" }
     ];
+    const navs2 = [
+      {name:"Emplacement Dossier", path:"/EmplacementDossier"}
+    ];
     setNavLinks(navs);
     setNavLinks1(navs1);
+    setNavLinks2(navs2);
     getParams();
   }, []);
 
@@ -179,6 +183,28 @@ function Nav() {
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
               {navLinks1.map((d, i) => (
+                <li key={i}>
+                  <Link to={d.path}>
+                    <button class="dropdown-item" type="button">
+                      {d.name}
+                    </button>
+                  </Link> 
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-expanded="false"
+            >
+              Dossiers
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              {navLinks2.map((d, i) => (
                 <li key={i}>
                   <Link to={d.path}>
                     <button class="dropdown-item" type="button">

@@ -9,24 +9,24 @@ const Creation =()=>{
 
     //données dossier
 
-    const [dossier_id, setIdd] = useState("");
-    const [typee, setType] = useState("");
-    const [mission, setMission] = useState("");
-    const [emplacement,setEmplacement] = useState("");
-    const [lieu, setLieux] = useState("");
-    const [numaff, setNum] = useState("");
-    const [servicee, setService] = useState("");
-    const [code1,setCode1]= useState("");
-    const [code2,setCode2]= useState("");
-    const [observation,setObservation]= useState("");
-    const [calendar,setCalendar]= useState("");
-    const [adversaire,setadversaire]= useState("hello");
+    const [dossier_id, setIdd] = useState(0);
+    const [typee, setType] = useState("*");
+    const [mission, setMission] = useState("*");
+    const [emplacement,setEmplacement] = useState("*");
+    const [lieu, setLieux] = useState("*");
+    const [numaff, setNum] = useState("*");
+    const [servicee, setService] = useState("*");
+    const [code1,setCode1]= useState("*");
+    const [code2,setCode2]= useState("*");
+    const [observation,setObservation]= useState("*");
+    const [calendar,setCalendar]= useState("*");
+    const [adversaire,setadversaire]= useState("berriri");
     const [client_id,setclient_id]= useState(0);
     const [collab_id,setcollab_id]= useState(10);
-    const [client,setclient]= useState("");
+    const [client,setclient]= useState("*");
     const [honoraire,sethonoraire]= useState(10);
     const [net,setnet]= useState(10);
-    const [tel,settel]= useState("");
+    const [tel,settel]= useState("*");
     const [parent_id,setparent_id]= useState(10);
 
 

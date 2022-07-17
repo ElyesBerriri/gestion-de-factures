@@ -70,5 +70,4 @@ const CalendarComp = (props) => {
     </div>
   )
 }
-
 export default  CalendarComp

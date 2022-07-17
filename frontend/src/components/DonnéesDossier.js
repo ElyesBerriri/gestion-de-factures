@@ -80,7 +80,7 @@ const DonnéesDossier =(props)=>{
               <div className="row">
                   <div className="input-group mb-3">
                     <span class="input-group-text">Num Affaire :</span>
-                    <input type="number" className="form-control" 
+                    <input type="text" className="form-control" 
                         placeholder="--"
                         value={props.numaff}
                         onChange={e => props.changenumaff(e.target.value)}
