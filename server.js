@@ -1020,7 +1020,7 @@ app.post("/dossierss/list", async (req, res) => {
 app.get("/dossierss/list", async (req, res) => {
   try {
     const { q } = req.query;
-    const keys = ["code","typee","mission","emplacement","lieu","numaff","servicee","observation","calendar","client","tel","adversaire","honoraire","net","client_id","collab_id","parent_id"];
+    const keys = ["dossier_id","numaff","emplacement","client","tel","mission","adversaire"];
     const allclients = await pool.query("SELECT * from dossiers");
     const rows = allclients.rows;
     const search = (data) => {
