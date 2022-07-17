@@ -24,13 +24,14 @@ function Nav() {
       {name:"Timbre", path:"/Timbre"},
       {name:"Honoraire en extra", path:"/Hono"},
       {name:"Greffier", path:"/Greffier"},
+      {name:"Creation", path:"/Creation"},
 
     ];
     const navs1 = [
       { name: "Clients", path: "/clients" }
     ];
     const navs2 = [
-      {name:"Creation", path:"/Creation"},
+      {name:"Emplacement Dossier", path:"/EmplacementDossier"}
     ];
     setNavLinks(navs);
     setNavLinks1(navs1);

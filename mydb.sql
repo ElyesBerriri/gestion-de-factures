@@ -43,8 +43,7 @@ CREATE TABLE utilisateurs(
 
 DROP TABLE dossiers;
 CREATE TABLE dossiers(
-  dossier_id SERIAL PRIMARY KEY,
-  code VARCHAR(255),
+  dossier_id INT,
   typee VARCHAR(255),
   mission VARCHAR(255),
   emplacement VARCHAR(255),

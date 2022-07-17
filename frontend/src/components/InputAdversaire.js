@@ -8,7 +8,7 @@ const InputAdversaire = (props) => {
   const [adresse_d, setAdressed] = useState("--");
   const  [avocat, setAvocat] = useState("--");
   const [adresse_a, setAdresseav] = useState("--");
-  const [dossier_id, setidd] = useState(props.dossier_id);
+  const [dossier_id, setidd] = useState(`${props.dossier_id}`);
  
   const onSubmitForm =async (e) => {
       try {
@@ -18,7 +18,7 @@ const InputAdversaire = (props) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         });
-
+   
         props.changeadversaire();
     } catch (err) {
       console.error(err.message);
@@ -114,7 +114,7 @@ const InputAdversaire = (props) => {
           <button 
             type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
              <button 
-            type="button" class="btn btn-success" onClick={onSubmitForm} data-bs-dismiss="modal">Ajouter</button>
+            type="button" class="btn btn-success" onClick={onSubmitForm} data-bs-dismiss="modal">Sauvegarder</button>
          </div>
       </div>
     </div>
