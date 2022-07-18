@@ -144,9 +144,9 @@ const EditClient = ({client}) => {
                     <span class="input-group-text">/</span>
                     <input type="text" className="form-control"
                         placeholder="code client"
-                        value={code_client.substr(code_client.search("/")+1)}
+                        defaultValue={code_client.substr(code_client.search("/")+1)}
                         onChange={e => setCode_client(
-                          code_client.substr(0,code_client.search("/"))+"/"+e.target.value
+                          code_client.substr(0,code_client.search("/"))+"/"+e.target.value.trim()
                           )} />
                   </div>
               </div>
