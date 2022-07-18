@@ -22,7 +22,7 @@ const DonnéesDossier =(props)=>{
      
     return(
 
-        <Fragment>
+        <section id="donnees">
         <div className="container mt-5">
 
         <div className="row">
@@ -132,7 +132,7 @@ const DonnéesDossier =(props)=>{
       </div>
 
     <TabAdvers adversaire={props.adversaire} dossier_id={props.idd}/>
-    </Fragment>
+    </section>
     )
 
 };

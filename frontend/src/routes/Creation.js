@@ -2,6 +2,8 @@ import React, {useState,useEffect} from "react";
 import ClientDemandeur from "../components/ClientDemandeur";
 import DonnéesDossier from "../components/DonnéesDossier";
 import Taches from "../components/Taches";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import Sousdossier from "../components/sousdossier";
 
 const Creation =()=>{
 
@@ -28,6 +30,11 @@ const Creation =()=>{
     const [net,setnet]= useState(10);
     const [tel,settel]= useState("*");
     const [parent_id,setparent_id]= useState(10);
+
+
+        //tache 
+
+    
 
 
     const getdossierid = async () => {
@@ -58,27 +65,38 @@ const Creation =()=>{
             console.error(err.message);
           }
         }
+        else{
+          alert("Veuillez choisir un client avant de valider")
+        }
       };
 
-
+   
       useEffect(() => {
         getdossierid();
       }, []);
 
     return(
         <>
-        <nav>
-            <button onClick={()=>setActive("first")}>Client et Demandeur</button>
-            <button onClick={()=>setActive("second")}>Données Dossier</button>
-            <button onClick={()=>setActive("third")}>Taches</button>
-        </nav>
-        <h1>dossier n°{dossier_id}</h1>
+        
+
+        <div className="d-flex justify-content-center ">
+        <AnchorLink href='#client'><button>Client et Demandeur</button></AnchorLink>
+        <AnchorLink href='#donnees'><button>Données Dossier</button></AnchorLink>
+        <AnchorLink href='#tache'><button>Tâche</button></AnchorLink>
+        <AnchorLink href='#sousdossier'><button>Sous Dossier</button></AnchorLink>
+
+        </div>
+
+
+
+        <h1 >dossier n°{dossier_id}</h1>
+
         <div>
-            {active==="first" && <ClientDemandeur
+           <ClientDemandeur
             changeclient_id={(client_id)=>setclient_id(client_id)} client_id={client_id} 
             changeclient={(client)=>setclient(client)} client={client} 
-                        />}
-            {active==="second" && <DonnéesDossier 
+                        />
+           <DonnéesDossier 
             idd={dossier_id}
             changetype={(type)=>setType(type)} type={typee} 
             changemission={(mission)=>setMission(mission)} mission={mission} 
@@ -90,9 +108,10 @@ const Creation =()=>{
             changecode2={(code2)=>setCode2(code2)} code2={code2} 
             changeobservation={(observation)=>setObservation(observation)} observation={observation} 
             changeadversaire={(adversaire)=>setadversaire(adversaire)} adversaire={adversaire} 
-            changecalendar={(calendar)=>setCalendar(calendar)} calendar={calendar}/>}
+            changecalendar={(calendar)=>setCalendar(calendar)} calendar={calendar}/>
             
-            {active==="third" && <Taches/>}
+          <Taches/>
+          <Sousdossier/>
 
         </div>
         {console.log( calendar)}

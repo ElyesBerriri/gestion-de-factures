@@ -18,7 +18,7 @@ const Tache =()=>{
     const [id, setIDtache] = useState("");
 
 return (
-    <Fragment>
+    <section id='tache'>
        {" "}
       <table className="table table table-hover mt-5 text-center">
         <thead  className="table-dark">
@@ -55,7 +55,7 @@ return (
             <InputTache/>
 
                 </div>
-    </Fragment>
+    </section>
 )
      
 }

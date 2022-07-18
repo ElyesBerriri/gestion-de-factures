@@ -1,4 +1,5 @@
 import React, { Fragment,useState }  from "react";
+import CalendarComp from "./CalendarComp";
 
 
 const InputTache = () => {
@@ -13,10 +14,15 @@ const InputTache = () => {
     const [service, setservice] = useState("");
     const [dateaud, setdateaud] = useState("");
     const [dateech, setdateech] = useState("");
+    const [echeance, setecheance] = useState("");
+    const [critique, setcritique] = useState("");
+    const [audiance, setaudiance] = useState("");
+    const [rappel, setrappel] = useState("");
+
 
     const onSubmitForm = () => {
             return(
-                    console.log("submit")
+                    console.log(critique)
                 )
         }
       
@@ -52,6 +58,22 @@ const InputTache = () => {
     </div>
  
 
+    <div className="row">
+                  <div className="input-group mb-3">
+              <span class="input-group-text">Date critique :</span>
+               <CalendarComp changecalendar={(e)=>setcritique(e)} calendar={critique}/>
+              </div>
+              </div>
+
+              <div className="row">
+                  <div className="input-group mb-3">
+              <span class="input-group-text">Date rappel :</span>
+               <CalendarComp changecalendar={(e)=>setrappel(e)} calendar={rappel}/>
+              </div>
+              </div>
+
+
+
     <div class="row mb-3">
                 <label class="col-sm-2 col-form-label col-form-label-sm">Résolu :</label>
                 <div class="form-check">
@@ -73,16 +95,8 @@ const InputTache = () => {
                  
             </div>
 
-            <div class="row mb-3">
-    <label  class="col-sm-2 col-form-label col-form-label-sm">Tache : </label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Tache"
-        value={tache }
-        onChange={e => settache(e.target.value)}/>
-    </div>
-    </div>
  
+                 
 
     <div class="row mb-3">
                 <label class="col-sm-2 col-form-label col-form-label-sm">Personne_chargée:</label>
@@ -154,6 +168,24 @@ const InputTache = () => {
             <option value="Jaze2i">Jaze2i</option>
             <option value="Madani">Madani</option>
             </select>   
+
+
+            <div className="row">
+                  <div className="input-group mb-3">
+              <span class="input-group-text">Date d'audiance :</span>
+               <CalendarComp changecalendar={(e)=>setaudiance(e)} calendar={audiance}/>
+              </div>
+              </div>
+
+              <div className="row">
+                  <div className="input-group mb-3">
+              <span class="input-group-text">Date d'échéance  :</span>
+               <CalendarComp changecalendar={(e)=>setecheance(e)} calendar={echeance}/>
+              </div>
+              </div>
+
+
+            
 
     </form>
     </div>

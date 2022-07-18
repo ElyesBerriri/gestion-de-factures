@@ -57,3 +57,11 @@ input.inputBox {
   border: 1px solid #ccc;
   z-index: 999;
 }
+
+.divStyle {
+  position:fixed;
+  display:flex;
+  justify-content:center;
+  flex-direction: column;
+  margin-top: 50;
+};
