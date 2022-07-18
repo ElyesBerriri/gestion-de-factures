@@ -1,12 +1,11 @@
 import React, { Fragment, useState,useEffect } from "react";
-import TabDeman from "./TabDeman";
 
-const ClientDemandeur =(props)=>{
+
+const Sousdossier =(props)=>{
     const [clients, setClients] = useState([]);
     const [query, setQuery] = useState("");
     const [client, setClient] = useState({});
      
-
     const getClient = async (query) => {
         try {
           const response = await fetch(`/clients/list/creation/?q=${query}`);
@@ -17,6 +16,7 @@ const ClientDemandeur =(props)=>{
           console.error(err.message);
         }
       };
+
 
       const specificClient = async (id) => {
         if(id!=0){
@@ -35,16 +35,15 @@ const ClientDemandeur =(props)=>{
             props.changeclient("!");
         }
       };
-    
-      
+
       useEffect(() => {
         getClient(query);
-      }, [query]);    
- 
+      }, [query]);
+      
     return(
-        <section id="client">
-        <div className="container mt-5">
-        <label class="col-sm-2 col-form-label col-form-label-sm">Code</label>
+        <section id="sousdossier">
+ <div className="container mt-5">
+        <label class="col-sm-2 col-form-label col-form-label-sm">Code dossier</label>
             <input
             className="search "
             placeholder="Recherche .."
@@ -61,7 +60,7 @@ const ClientDemandeur =(props)=>{
 
             <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Raison :</span>
+                    <span class="input-group-text">Mission :</span>
                     <input type="text" className="form-control" 
                     disabled="true"
                         placeholder={client.raison}
@@ -72,7 +71,7 @@ const ClientDemandeur =(props)=>{
             
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Matricule/CIN :</span>
+                    <span class="input-group-text">Emplacement :</span>
                     <input type="text" className="form-control" 
                     disabled="true"
                         placeholder={client.matricule}
@@ -83,7 +82,7 @@ const ClientDemandeur =(props)=>{
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Téléphone :</span>
+                    <span class="input-group-text">Numéro affaire :</span>
                     <input type="text" className="form-control" 
                         disabled="true"
                         placeholder={client.tel}
@@ -93,7 +92,7 @@ const ClientDemandeur =(props)=>{
               </div>
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Activité :</span>
+                    <span class="input-group-text">Observation :</span>
                     <input type="text" className="form-control" 
                         placeholder={client.activite}
                         disabled="true"
@@ -102,62 +101,15 @@ const ClientDemandeur =(props)=>{
                   </div>
               </div>
               
-              <div className="row mb-3">
-                  <label className="col-form-label">Situation Fiscale</label>
-                  <div className="form-check">
-                      <label className="form-check-label" >
-                          <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
-                          id={`situation1fiscale${client.client_id}`} value="Non Assujetie" checked={client.situation_fiscale=="Non Assujetie"}
-                           />
-                          Non Assujetie
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
-                          id={`situation2fiscale${client.client_id}`} value="Assujetie" checked={client.situation_fiscale=="Assujetie"}
-                           />
-                          Assujetie
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
-                          id={`situation3fiscale${client.client_id}`} value="Exonoré" checked={client.situation_fiscale=="Exonoré"}
-                           />
-                          Exonoré
-                      </label>
-                  </div>
               </div>
 
-              <div className="row mb-3">
-                  <label className="col-form-label">Type Client</label>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name={`typeclient${client.client_id}`}
-                          id={`type1client${client.client_id}`} checked={client.type_client=="Personne Physique"}
-                             />
-                          Personne Physique
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name={`typeclient${client.client_id}`}
-                          id={`type2client${client.client_id}`} checked={client.type_client=="Personne Morale"}
-                           />
-                          Personne Morale
-                      </label>
-                  </div>
-              </div>
-      </div>
 
 
-<TabDeman/>
-    </section>
+     </section>
     )
 
 };
 
-export default ClientDemandeur;
+export default Sousdossier;
 
 
