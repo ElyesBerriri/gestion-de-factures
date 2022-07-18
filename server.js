@@ -386,6 +386,15 @@ app.get("/clients/list/:id", async (req, res) => {
     console.error(err.message);
   }
 });
+app.get("/clients/list2/", async (req, res) => {
+  try {
+    const { q } = req.query;
+    const numberclients = await pool.query(`SELECT code_client FROM clients WHERE code_client LIKE '%${q}' ORDER BY code_client DESC LIMIT 1`);
+    (numberclients.rows.length>0) ? res.status(200).json(numberclients.rows[0].code_client.substr(0,numberclients.rows[0].code_client.search("/"))) : res.status(200).json("-1");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 // create a client
 app.post("/clients/list", async (req, res) => {
