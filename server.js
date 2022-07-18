@@ -112,16 +112,16 @@ app.get("/utilisateurs/list", async (req, res) => {
     console.error(err.message);
   }
 });
-
+*/
 app.get("/collaborateurs/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const allColab = await pool.query("SELECT * from collaborateurs where nom=$1",[id]);
-    res.status(200).json(allColab.rows);
+    const allColab = await pool.query("SELECT * from collaborateurs where collab_id = $1",[id]);
+    res.status(200).json(allColab.rows[0]);
   } catch (err) {
     console.error(err.message);
   }
-});*/
+});
 
 // get a utilisateur
 app.get("/utilisateurs/list/:id", async (req, res) => {
@@ -854,6 +854,26 @@ app.get("/collaborateurs/list", async (req, res) => {
     const { q } = req.query;
     const keys = ["nom","cin","ville","rue","num","codepostale","activite","tel","fax","email","matricule","methodepaiment","montant","nombre_dossier"];
 
+    const allColab = await pool.query("SELECT * from collaborateurs");
+    const rows = allColab.rows;
+
+    const search = (data) => {
+    return data.filter((item) =>
+      keys.some((key) => item[key].toString().toLowerCase().includes(q))
+    );
+  };
+
+  q ? res.json(search(rows)) : res.json(rows);
+
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/collaborateurs/list2", async (req, res) => {
+  try {
+    const { q } = req.query;
+    const keys = ["nom"];
     const allColab = await pool.query("SELECT * from collaborateurs");
     const rows = allColab.rows;
 
