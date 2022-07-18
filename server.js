@@ -1032,6 +1032,8 @@ app.get("/dossierss/list", async (req, res) => {
     console.error(err.message);
   }
 });
+
+
 app.delete("/dossierss/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -1053,7 +1055,22 @@ app.get("/dossierss/list/number", async (req, res) => {
   }
 });
 
-
+app.get("/dossierss/list/recherche/:id", async (req, res) => {
+  try {
+    const { q } = req.query;
+    const keys = ["dossier_id"];
+    const allclients = await pool.query("SELECT * from dossiers");
+    const rows = allclients.rows;
+    const search = (data) => {
+      return data.filter((item) =>
+        keys.some((key) => item[key].toString().toLowerCase().includes(q))
+      );
+    };
+    q ? res.json(search(rows)) : res.json(rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 
 app.get("*", (req, res) => {
