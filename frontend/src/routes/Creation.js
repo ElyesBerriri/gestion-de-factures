@@ -23,7 +23,7 @@ const Creation =()=>{
     const [adversaire,setadversaire]= useState("berriri");
     const [client_id,setclient_id]= useState(0);
     const [collab_id,setcollab_id]= useState(10);
-    const [client,setclient]= useState("*");
+    const [client,setclient]= useState("!");
     const [honoraire,sethonoraire]= useState(10);
     const [net,setnet]= useState(10);
     const [tel,settel]= useState("*");
@@ -42,19 +42,21 @@ const Creation =()=>{
 
 
       const onSubmitForm = async (e) => {
-        e.preventDefault();
-        try {
+        if(client!="!"){
+          e.preventDefault();
+          try {
 
-          const body = {code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id, parent_id} ;
-          await fetch("/dossierss/list", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body)
-          });
+            const body = {code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id, parent_id} ;
+            await fetch("/dossierss/list", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(body)
+            });
 
-          window.location.reload();
-        } catch (err) {
-          console.error(err.message);
+            window.location.reload();
+          } catch (err) {
+            console.error(err.message);
+          }
         }
       };
 

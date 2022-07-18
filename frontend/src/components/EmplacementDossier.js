@@ -4,6 +4,18 @@ const EmplacementDossier = () => {
     const [dossiers, setDossiers] = useState([]);
     const [query, setQuery] = useState("");
     const [emplacement,setEmplacement] = useState("Tous");
+    const [emplacements, setEmplacements] = useState([]);
+
+    const getemp = async () => {
+        try {
+        const response = await fetch(`/dossiers/list`);
+        const jsonData = await response.json();
+        setEmplacements(jsonData);
+        } catch (err) {
+        console.error(err.message);
+        }
+    };
+
 
     const deleteDossier = async id => {
         try {
@@ -28,6 +40,7 @@ const EmplacementDossier = () => {
 
     useEffect(() => {
         getDossier();
+        getemp();
     }, [query]);
 
     return (
@@ -38,7 +51,7 @@ const EmplacementDossier = () => {
                 <select class="form-select" aria-label="Default select example" 
                     onChange={e => setEmplacement(e.target.options[e.target.selectedIndex].value)}>
                     <option value="Tous" selected>Tous</option>
-                    {dossiers.map(dossier => (<option value={dossier.emplacement}>{dossier.emplacement}</option>))}
+                    {emplacements.map(emp => (<option value={emp.libelle}>{emp.libelle}</option>))}
                 </select>
             </div>
             <input

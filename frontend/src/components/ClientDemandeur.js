@@ -19,14 +19,20 @@ const ClientDemandeur =(props)=>{
       };
 
       const specificClient = async (id) => {
-        try {
-
-          props.changeclient_id(id);
-          const response = await fetch(`/clients/list/${id}`);
-          const jsonData = await response.json();
-          setClient(jsonData);
-        } catch (err) {
-          console.error(err.message);
+        if(id!=0){
+            try {
+            props.changeclient_id(id);
+            const response = await fetch(`/clients/list/${id}`);
+            const jsonData = await response.json();
+            setClient(jsonData);
+            props.changeclient(jsonData.raison)
+            } catch (err) {
+            console.error(err.message);
+            }
+        } else {
+            props.changeclient_id(0);
+            setClient({});
+            props.changeclient("!");
         }
       };
     
@@ -47,7 +53,7 @@ const ClientDemandeur =(props)=>{
             />
 
             <select name="select_box" class="form-select" id="select_box" value={props.client_id} onChange={(e)=>{specificClient(e.target.value)}}>
-                <option value=''></option>
+                <option value='0' selected></option>
                 {clients.map(client => (
                         <option key={client.client_id}  value={client.client_id}>{client.raison} {client.code_client}</option>
                 ))}
@@ -140,7 +146,6 @@ const ClientDemandeur =(props)=>{
                   </div>
               </div>
       </div>
-      {props.changeclient(client.raison)}
 
 
 <TabDeman/>
