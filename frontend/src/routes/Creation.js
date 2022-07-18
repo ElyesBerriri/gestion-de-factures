@@ -32,12 +32,11 @@ const Creation =()=>{
     const [net,setnet]= useState(10);
     const [tel,settel]= useState("*");
     const [parent_id,setparent_id]= useState(10);
-
+    const [mode_r,setmode_r]= useState("*");
+    const [part_c,setpart_c]= useState(0);
+    const [type_r,settype_r]= useState("*");
 
         //tache 
-
-    
-
 
     const getdossierid = async () => {
         try {
@@ -54,7 +53,7 @@ const Creation =()=>{
         if(client!="!"){
           e.preventDefault();
           try {
-            const body = {code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id, parent_id} ;
+            const body = {code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r} ;
             await fetch("/dossierss/list", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -67,7 +66,7 @@ const Creation =()=>{
           }
         }
         else{
-          alert("Veuillez choisir un client avant de valider")
+          alert("Veuillez choisir un client avant de valider");
         }
       };
 
@@ -88,9 +87,7 @@ const Creation =()=>{
           <AnchorLink href='#sousdossier'><button>Sous Dossier</button></AnchorLink>
         </div>
 
-
-
-        <h1 >dossier n°{dossier_id}</h1>
+        <h1>dossier n°{dossier_id}</h1>
 
         <div>
            <ClientDemandeur
@@ -112,7 +109,10 @@ const Creation =()=>{
           <Taches />
           <Collaborateur
             changecollab_id={(collab_id)=>setcollab_id(collab_id)} collab_id={collab_id} 
-            changecollab={(collab)=>setcollab(collab)} collab={collab} />
+            changecollab={(collab)=>setcollab(collab)} collab={collab}
+            changemode_r={(mode_r)=>setmode_r(mode_r)} mode_r={mode_r}
+            changepart_c={(part_c)=>setpart_c(part_c)} part_c={part_c}
+            changetype_r={(type_r)=>settype_r(type_r)} type_r={type_r} />
           <Sousdossier />
 
         </div>
@@ -120,8 +120,6 @@ const Creation =()=>{
          {console.log(client_id)}
         <button onClick={ onSubmitForm} type="submit" class="btn btn-success">Valider</button>
       </>
-
-         
     )
 
 };

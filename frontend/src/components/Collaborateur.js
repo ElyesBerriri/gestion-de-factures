@@ -23,7 +23,7 @@ const Collaborateur =(props)=>{
             const response = await fetch(`/collaborateurs/list/${id}`);
             const jsonData = await response.json();
             setCollab(jsonData);
-            props.changecollab(jsonData.raison)
+            props.changecollab(jsonData.raison);
             } catch (err) {
             console.error(err.message);
             }
@@ -117,6 +117,72 @@ const Collaborateur =(props)=>{
                     <span class="input-group-text">Tel :</span>
                     <input type="text" className="form-control" 
                         disabled placeholder={collab.tel} defaultValue={collab.tel} />
+                  </div>
+              </div>
+
+              <div className="row mb-3">
+                  <label className="col-form-label">Mode Réglement :</label>
+                  <div className="form-check">
+                      <label className="form-check-label">
+                          <input className="form-check-input" type="radio" name="modeReg"
+                            value="Mensuel"
+                            onChange={e => {
+                              if(e.target.checked)
+                                props.changemode_r(e.target.value);
+                          }} />
+                          Mensuel
+                      </label>
+                  </div>
+                  <div className="form-check">
+                      <label className="form-check-label">
+                          <input className="form-check-input" type="radio" name="modeReg"
+                            value="Sur Dossier"
+                            onChange={e => {
+                              if(e.target.checked)
+                                props.changemode_r(e.target.value);
+                            }} />
+                          Sur Dossier 
+                      </label>
+                  </div>
+              </div>
+
+              <div className="row">
+                  <div className="input-group mb-3">
+                    <span class="input-group-text">Part Collaborateur :</span>
+                    <input type="number" className="form-control"
+                      defaultValue={props.part_c}
+                      onChange={e => {
+                        if(e.target.value!="")
+                          props.changepart_c(e.target.value);
+                        else
+                          props.changepart_c(0);
+                      }} />
+                  </div>
+              </div>
+
+              <div className="row mb-3">
+                  <label className="col-form-label">Type Réglement :</label>
+                  <div className="form-check">
+                      <label className="form-check-label">
+                          <input className="form-check-input" type="radio" name="typeReg"
+                            value="Pourcentage"
+                            onChange={e => {
+                              if(e.target.checked)
+                                props.changetype_r(e.target.value);
+                          }} />
+                          Pourcentage
+                      </label>
+                  </div>
+                  <div className="form-check">
+                      <label className="form-check-label">
+                          <input className="form-check-input" type="radio" name="typeReg"
+                            value="Forfait"
+                            onChange={e => {
+                              if(e.target.checked)
+                                props.changetype_r(e.target.value);
+                            }} />
+                          Forfait 
+                      </label>
                   </div>
               </div>
       </div>
