@@ -60,7 +60,10 @@ CREATE TABLE dossiers(
   net float,
   client_id INT,
   collab_id INT,
-  parent_id INT
+  parent_id INT,
+  mode_r VARCHAR(255),
+  part_c float,
+  type_r VARCHAR(255)
 );
 INSERT INTO dossiers (dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id) VALUES(20,'type1','m2','*','laba','12','*','*','17/07/2022','me','*','you',5.5,88.3,0,0,0) RETURNING *;
 INSERT INTO dossiers (dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id) VALUES(21,'type5','m2','emp1','ladsu','72','*','*','2022','*','*','*',0,8,0,0,0) RETURNING *;
