@@ -8,22 +8,34 @@ const ChercherDossier = (props) => {
 
 
   const getDossiers = async (query,queryy) => {
-    try {
-      const response = await fetch(`/dossierss/list/recherche/?q=${query}&${queryy}`);
-      const jsonData = await response.json();
-      setDossiers(jsonData);
-     } catch (err) {
-      console.error(err.message);
+    if(queryy!==""){
+      try {
+        const response = await fetch(`/dossierss/list/recherche/?q=${query}&p=${queryy}`);
+        const jsonData = await response.json();
+        setDossiers(jsonData);
+       } catch (err) {
+        console.error(err.message);
+      }
+    } else {
+      try {
+        const response = await fetch(`/dossierss/list/recherche`);
+        const jsonData = await response.json();
+        setDossiers(jsonData);
+       } catch (err) {
+        console.error(err.message);
+      }
     }
   };
 
   const specificDossier = async (id) => {
-    try {
-    const response = await fetch(`/dossierss/list/${id}`);
-    const jsonData = await response.json();
-    props.changerdossier(jsonData);
-    } catch (err) {
-    console.error(err.message);
+    if(id!=0){
+      try {
+        const response = await fetch(`/dossierss/list/recherche/${id}`);
+        const jsonData = await response.json();
+        props.changerdossier(jsonData);
+        } catch (err) {
+        console.error(err.message);
+        }
     }
 } 
 
@@ -65,7 +77,9 @@ const ChercherDossier = (props) => {
                       <label className="form-check-label" >
                           <input className="form-check-input" type="radio" name="filtrer"
                            value="code" 
-                           />
+                           onChange={e => {
+                            if(e.target.checked) setQueryy(e.target.value);
+                           }} />
                           Code dossier
                       </label>
                   </div>
@@ -73,7 +87,9 @@ const ChercherDossier = (props) => {
                       <label className="form-check-label">
                           <input className="form-check-input" type="radio" name="filtrer"
                            value="client" 
-                           />
+                           onChange={e => {
+                            if(e.target.checked) setQueryy(e.target.value);
+                           }} />
                           Nom client
                       </label>
                   </div>
@@ -81,7 +97,9 @@ const ChercherDossier = (props) => {
                       <label className="form-check-label">
                           <input className="form-check-input" type="radio" name="filtrer"
                           value="mission" 
-                           />
+                          onChange={e => {
+                            if(e.target.checked) setQueryy(e.target.value);
+                          }} />
                           Mission
                       </label>
                   </div>
@@ -89,7 +107,9 @@ const ChercherDossier = (props) => {
                       <label className="form-check-label">
                           <input className="form-check-input" type="radio" name="filtrer"
                           value="adversaire" 
-                           />
+                          onChange={e => {
+                            if(e.target.checked) setQueryy(e.target.value);
+                          }} />
                           Adversaire
                       </label>
                   </div>
@@ -97,7 +117,9 @@ const ChercherDossier = (props) => {
                       <label className="form-check-label">
                           <input className="form-check-input" type="radio" name="filtrer"
                           value="numaff" 
-                           />
+                          onChange={e => {
+                            if(e.target.checked) setQueryy(e.target.value);
+                          }} />
                             Numéro affaire
                           </label>
                   </div>
@@ -117,8 +139,8 @@ const ChercherDossier = (props) => {
         <tbody>
           {dossiers.map(dossier => (
             <tr key={dossier.dossier_id} onClick={()=> setDossier_id(dossier.dossier_id)}>
-              <td>{dossier.dossier_id}</td>
-              <td>{dossier.nom}</td>
+              <td>{dossier.code}</td>
+              <td>{dossier.client}</td>
               <td>{dossier.mission}</td>
               <td>{dossier.adversaire}</td>
               <td>{dossier.numaff}</td>
