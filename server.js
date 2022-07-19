@@ -1013,16 +1013,6 @@ app.get("/adversaire/listtotal/:id", async (req, res) => {
 
 
 
-app.get("/dossierss/list/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const one = await pool.query("SELECT * FROM dossiers WHERE dossier_id = $1", [id]);
-    res.status(200).json(one.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
 app.post("/dossierss/list", async (req, res) => {
   try {
     const { code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id, parent_id } = req.body;
@@ -1074,12 +1064,10 @@ app.get("/dossierss/list/number", async (req, res) => {
   }
 });
 
-app.get("/dossierss/list/recherche/", async (req, res) => {
+app.get("/dossierss/list/recherche/:id", async (req, res) => {
   try {
-    const { q,p } = req.query;
-    console.log(req.query);
-
-    const keys = [p];
+    const { q } = req.query;
+    const keys = ["dossier_id"];
     const allclients = await pool.query("SELECT * from dossiers");
     const rows = allclients.rows;
     const search = (data) => {
