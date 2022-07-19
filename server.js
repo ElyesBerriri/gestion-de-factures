@@ -1064,7 +1064,18 @@ app.get("/dossierss/list/number", async (req, res) => {
   }
 });
 
-app.get("/dossierss/list/recherche/:id", async (req, res) => {
+
+app.get("/dossierss/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from dossiers");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.get("/dossierss/list/recherche/one/", async (req, res) => {
   try {
     const { q } = req.query;
     const keys = ["dossier_id"];

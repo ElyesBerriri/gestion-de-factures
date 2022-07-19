@@ -30,9 +30,10 @@ const ChercherDossier = (props) => {
   const specificDossier = async (id) => {
     if(id!=0){
       try {
-        const response = await fetch(`/dossierss/list/recherche/${id}`);
+        const response = await fetch(`/dossierss/list/recherche/one/?q=${id}`);
         const jsonData = await response.json();
-        props.changerdossier(jsonData);
+
+        props.changerdossier(jsonData[0]);
         } catch (err) {
         console.error(err.message);
         }
@@ -153,7 +154,7 @@ const ChercherDossier = (props) => {
  
       <div className="modal-footer">
         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" className="btn btn-primary" onClick={()=>specificDossier(dossier_id)}>Choisir</button>
+        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={()=>specificDossier(dossier_id)}>Choisir</button>
       </div>
     </div>
   </div>

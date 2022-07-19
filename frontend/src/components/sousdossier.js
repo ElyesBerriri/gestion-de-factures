@@ -8,9 +8,7 @@ const Sousdossier =(props)=>{
     return(
         <section id="sousdossier">
         <div className="container mt-5">
-      
-
-          <ChercherDossier changerdossier={(e)=>setDossier(e)} />
+          <ChercherDossier changerdossier={(e)=>setDossier(e)} dossier={dossier} />
 
               <div className="row">
                   <div className="input-group mb-3">
@@ -65,6 +63,7 @@ const Sousdossier =(props)=>{
                   </div>
               </div>
               </div>
+              {console.log(dossier.mission)}
      </section>
     )
 };
