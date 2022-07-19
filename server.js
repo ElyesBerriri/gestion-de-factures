@@ -1082,6 +1082,23 @@ app.get("/dossierss/list/recherche/:id", async (req, res) => {
 });
 
 
+app.get("/dossierss/list/recherche/", async (req, res) => {
+  try {
+    const { q,p } = req.query;
+    const keys = [p];
+    const allclients = await pool.query("SELECT * from dossiers");
+    const rows = allclients.rows;
+    const search = (data) => {
+      return data.filter((item) =>
+        keys.some((key) => item[key].toString().toLowerCase().includes(q))
+      );
+    };
+    q ? res.json(search(rows)) : res.json(rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend/build/index.html"));
