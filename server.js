@@ -112,16 +112,16 @@ app.get("/utilisateurs/list", async (req, res) => {
     console.error(err.message);
   }
 });
-*/
+
 app.get("/collaborateurs/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const allColab = await pool.query("SELECT * from collaborateurs where collab_id = $1",[id]);
-    res.status(200).json(allColab.rows[0]);
+    const allColab = await pool.query("SELECT * from collaborateurs where nom=$1",[id]);
+    res.status(200).json(allColab.rows);
   } catch (err) {
     console.error(err.message);
   }
-});
+});*/
 
 // get a utilisateur
 app.get("/utilisateurs/list/:id", async (req, res) => {
@@ -870,26 +870,6 @@ app.get("/collaborateurs/list", async (req, res) => {
   }
 });
 
-app.get("/collaborateurs/list2", async (req, res) => {
-  try {
-    const { q } = req.query;
-    const keys = ["nom"];
-    const allColab = await pool.query("SELECT * from collaborateurs");
-    const rows = allColab.rows;
-
-    const search = (data) => {
-    return data.filter((item) =>
-      keys.some((key) => item[key].toString().toLowerCase().includes(q))
-    );
-  };
-
-  q ? res.json(search(rows)) : res.json(rows);
-
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
 app.put("/services/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -1045,10 +1025,10 @@ app.get("/dossierss/list/:id", async (req, res) => {
 
 app.post("/dossierss/list", async (req, res) => {
   try {
-    const { code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r } = req.body;
+    const { code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id, parent_id } = req.body;
     const donnees = await pool.query(
-    "INSERT INTO dossiers (code,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20) RETURNING *",
-    [`${code1}-${code2}`,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r ]);
+    "INSERT INTO dossiers (code,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id, parent_id ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING *",
+    [`${code1}-${code2}`,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id, parent_id ]);
     res.status(200).json(donnees.rows[0]);
   } catch (err) {
     console.error(err.message);
