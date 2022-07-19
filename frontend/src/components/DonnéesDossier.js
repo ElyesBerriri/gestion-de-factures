@@ -27,9 +27,9 @@ const DonnéesDossier =(props)=>{
 
         <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Type de dossier :</span>
-                    <select class="form-select" aria-label="Default select example" value={props.type} onChange={(e)=>props.changetype(e.target.value)}>
-                        <option selected>--</option>
+                    <span className="input-group-text">Type de dossier :</span>
+                    <select className="form-select" aria-label="Default select example" value={props.type} onChange={(e)=>props.changetype(e.target.value)}>
+                        <option >--</option>
                         <option value="Jaze2i">Jaze2i</option>
                         <option value="Madani">Madani</option>
                     </select>   
@@ -38,7 +38,7 @@ const DonnéesDossier =(props)=>{
 
             <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Code:</span>
+                    <span className="input-group-text">Code:</span>
                     
                     <input type="text" className="form-control" 
                             placeholder="--"
@@ -55,7 +55,7 @@ const DonnéesDossier =(props)=>{
             
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Mission :</span>
+                    <span className="input-group-text">Mission :</span>
                     <input type="text" className="form-control" 
                         placeholder="--"
                         value={props.mission}
@@ -66,9 +66,9 @@ const DonnéesDossier =(props)=>{
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Emplacement :</span>
-                    <select name="select_box" class="form-select" id="select_box" value={props.emplacement} onChange={(e)=>{props.changeemplacement(e.target.value)}}>
-                <option value=''></option>
+                    <span className="input-group-text">Emplacement :</span>
+                    <select name="select_box" className="form-select" id="select_box" value={props.emplacement} onChange={(e)=>{props.changeemplacement(e.target.value)}}>
+                <option ></option>
                 {emplacements.map(emp => (
                         <option key={emp.libelle}  value={emp.libelle}>{emp.libelle}</option>
                 ))}
@@ -79,7 +79,7 @@ const DonnéesDossier =(props)=>{
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Num Affaire :</span>
+                    <span className="input-group-text">Num Affaire :</span>
                     <input type="text" className="form-control" 
                         placeholder="--"
                         value={props.numaff}
@@ -90,9 +90,9 @@ const DonnéesDossier =(props)=>{
               
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Service :</span>
-                    <select class="form-select" aria-label="Default select example" value={props.service} onChange={(e)=>props.changeservice(e.target.value)}>
-            <option selected>--</option>
+                    <span className="input-group-text">Service :</span>
+                    <select className="form-select" aria-label="Default select example"  value={props.service} onChange={(e)=>props.changeservice(e.target.value)}>
+            <option >--</option>
             <option value="Jaze2i">Jaze2i</option>
             <option value="Madani">Madani</option>
             </select>   
@@ -101,9 +101,9 @@ const DonnéesDossier =(props)=>{
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Lieu :</span>
-                    <select class="form-select" aria-label="Default select example" value={props.lieu} onChange={(e)=>props.changelieu(e.target.value)}>
-            <option selected>--</option>
+                    <span className="input-group-text">Lieu :</span>
+                    <select className="form-select" aria-label="Default select example"  value={props.lieu} onChange={(e)=>props.changelieu(e.target.value)}>
+            <option >--</option>
             <option value="Jaze2i">Jaze2i</option>
             <option value="Madani">Madani</option>
             </select>   
@@ -113,7 +113,7 @@ const DonnéesDossier =(props)=>{
               
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Observation :</span>
+                    <span className="input-group-text">Observation :</span>
                     <input type="text" className="form-control" 
                         placeholder="--"
                         value={props.observation}
@@ -124,7 +124,7 @@ const DonnéesDossier =(props)=>{
 
               <div className="row">
                   <div className="input-group mb-3">
-              <span class="input-group-text">Date :</span>
+              <span className="input-group-text">Date :</span>
                <CalendarComp changecalendar={props.changecalendar} calendar={props.calendar}/>
               </div>
               </div>

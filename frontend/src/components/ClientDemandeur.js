@@ -44,7 +44,7 @@ const ClientDemandeur =(props)=>{
     return(
         <section id="client">
         <div className="container mt-5">
-        <label class="col-sm-2 col-form-label col-form-label-sm">Code</label>
+        <label className="col-sm-2 col-form-label col-form-label-sm">Code</label>
             <input
             className="search "
             placeholder="Recherche .."
@@ -52,8 +52,8 @@ const ClientDemandeur =(props)=>{
             onChange={(e) => setQuery(e.target.value.toLowerCase())}
             />
 
-            <select name="select_box" class="form-select" id="select_box" value={props.client_id} onChange={(e)=>{specificClient(e.target.value)}}>
-                <option value='0' selected></option>
+            <select name="select_box" className="form-select" id="select_box"  value={props.client_id} onChange={(e)=>{specificClient(e.target.value)}}>
+                <option ></option>
                 {clients.map(client => (
                         <option key={client.client_id}  value={client.client_id}>{client.raison} {client.code_client}</option>
                 ))}
@@ -61,9 +61,9 @@ const ClientDemandeur =(props)=>{
 
             <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Raison :</span>
+                    <span className="input-group-text">Raison :</span>
                     <input type="text" className="form-control" 
-                    disabled="true"
+                    disabled={true}
                         placeholder={client.raison}
                         defaultValue={client.raison}
                          />
@@ -72,10 +72,10 @@ const ClientDemandeur =(props)=>{
             
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Matricule/CIN :</span>
+                    <span className="input-group-text">Matricule/CIN :</span>
                     <input type="text" className="form-control" 
-                    disabled="true"
-                        placeholder={client.matricule}
+                    disabled={true}
+                    placeholder={client.matricule}
                         defaultValue={client.matricule}
                          />
                   </div>
@@ -83,9 +83,9 @@ const ClientDemandeur =(props)=>{
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Téléphone :</span>
+                    <span className="input-group-text">Téléphone :</span>
                     <input type="text" className="form-control" 
-                        disabled="true"
+                        disabled={true}
                         placeholder={client.tel}
                         defaultValue={client.tel}
                          />
@@ -93,10 +93,10 @@ const ClientDemandeur =(props)=>{
               </div>
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Activité :</span>
+                    <span className="input-group-text">Activité :</span>
                     <input type="text" className="form-control" 
                         placeholder={client.activite}
-                        disabled="true"
+                        disabled={true}
                         defaultValue={client.activite}
                          />
                   </div>
