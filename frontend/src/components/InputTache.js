@@ -29,28 +29,28 @@ const InputTache = () => {
   return (
     <Fragment>
       
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalll">
+    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalll">
     Ajouter tache
   </button>
   
    
-  <div class="modal fade" id="exampleModalll" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Nouvelle tache :</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div className="modal fade" id="exampleModalll" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div className="modal-dialog">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title" id="exampleModalLabel">Nouvelle tache :</h5>
+          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
   
   
-        <div class="modal-body">
+        <div className="modal-body">
         <div className="container ">
     <form  >
 
-    <div class="row mb-3">
-    <label  class="col-sm-2 col-form-label col-form-label-sm">Tache : </label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
+    <div className="row mb-3">
+    <label  className="col-sm-2 col-form-label col-form-label-sm">Tache : </label>
+    <div className="col-sm-10">
+        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
         placeholder="Tache"
         value={tache }
         onChange={e => settache(e.target.value)}/>
@@ -60,33 +60,33 @@ const InputTache = () => {
 
     <div className="row">
                   <div className="input-group mb-3">
-              <span class="input-group-text">Date critique :</span>
+              <span className="input-group-text">Date critique :</span>
                <CalendarComp changecalendar={(e)=>setcritique(e)} calendar={critique}/>
               </div>
               </div>
 
               <div className="row">
                   <div className="input-group mb-3">
-              <span class="input-group-text">Date rappel :</span>
+              <span className="input-group-text">Date rappel :</span>
                <CalendarComp changecalendar={(e)=>setrappel(e)} calendar={rappel}/>
               </div>
               </div>
 
 
 
-    <div class="row mb-3">
-                <label class="col-sm-2 col-form-label col-form-label-sm">Résolu :</label>
-                <div class="form-check">
-                    <label class="form-check-label" >
-                        <input class="form-check-input" type="radio" name="resolu"
+    <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-sm">Résolu :</label>
+                <div className="form-check">
+                    <label className="form-check-label" >
+                        <input className="form-check-input" type="radio" name="resolu"
                         value="Oui"
                         />
                         Oui
                     </label>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="resolu"
+                <div className="form-check">
+                    <label className="form-check-label">
+                        <input className="form-check-input" type="radio" name="resolu"
                         value="Non"
                         />
                         Non
@@ -98,19 +98,19 @@ const InputTache = () => {
  
                  
 
-    <div class="row mb-3">
-                <label class="col-sm-2 col-form-label col-form-label-sm">Personne_chargée:</label>
-                <div class="form-check">
-                    <label class="form-check-label" >
-                        <input class="form-check-input" type="radio" name="chargée"
+    <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-sm">Personne_chargée:</label>
+                <div className="form-check">
+                    <label className="form-check-label" >
+                        <input className="form-check-input" type="radio" name="chargée"
                         value="collaborateur"
                         />
                         Collaborateur
                     </label>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="chargée"
+                <div className="form-check">
+                    <label className="form-check-label">
+                        <input className="form-check-input" type="radio" name="chargée"
                         value="greffier"
                         />
                         Greffier
@@ -121,28 +121,28 @@ const InputTache = () => {
 
 
 
-    <label class="col-sm-2 col-form-label col-form-label-sm">Greffier :</label>
+    <label className="col-sm-2 col-form-label col-form-label-sm">Greffier :</label>
 
-            <select class="form-select" aria-label="Default select example">
-            <option selected></option>
+            <select className="form-select" aria-label="Default select example">
+            <option></option>
             <option value="Jaze2i">Jaze2i</option>
             <option value="Madani">Madani</option>
             </select>   
 
 
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label col-form-label-sm">Course:</label>
-                <div class="form-check">
-                    <label class="form-check-label" >
-                        <input class="form-check-input" type="radio" name="course"
+            <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-sm">Course:</label>
+                <div className="form-check">
+                    <label className="form-check-label" >
+                        <input className="form-check-input" type="radio" name="course"
                         value="oui"
                         />
                         Oui
                     </label>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="course"
+                <div className="form-check">
+                    <label className="form-check-label">
+                        <input className="form-check-input" type="radio" name="course"
                         value="non"
                         />
                         Non
@@ -153,18 +153,18 @@ const InputTache = () => {
 
 
 
-            <label class="col-sm-2 col-form-label col-form-label-sm">Lieu :</label>
+            <label className="col-sm-2 col-form-label col-form-label-sm">Lieu :</label>
 
-                <select class="form-select" aria-label="Default select example">
-                <option selected></option>
+                <select className="form-select" aria-label="Default select example">
+                <option></option>
                 <option value="Jaze2i">Jaze2i</option>
                 <option value="Madani">Madani</option>
                 </select>   
 
-<label class="col-sm-2 col-form-label col-form-label-sm">Service :</label>
+<label className="col-sm-2 col-form-label col-form-label-sm">Service :</label>
 
-            <select class="form-select" aria-label="Default select example">
-            <option selected></option>
+            <select className="form-select" aria-label="Default select example">
+            <option></option>
             <option value="Jaze2i">Jaze2i</option>
             <option value="Madani">Madani</option>
             </select>   
@@ -172,14 +172,14 @@ const InputTache = () => {
 
             <div className="row">
                   <div className="input-group mb-3">
-              <span class="input-group-text">Date d'audiance :</span>
+              <span className="input-group-text">Date d'audiance :</span>
                <CalendarComp changecalendar={(e)=>setaudiance(e)} calendar={audiance}/>
               </div>
               </div>
 
               <div className="row">
                   <div className="input-group mb-3">
-              <span class="input-group-text">Date d'échéance  :</span>
+              <span className="input-group-text">Date d'échéance  :</span>
                <CalendarComp changecalendar={(e)=>setecheance(e)} calendar={echeance}/>
               </div>
               </div>
@@ -191,10 +191,10 @@ const InputTache = () => {
     </div>
 
         </div>
-        <div class="modal-footer">
+        <div className="modal-footer">
           <button 
-        type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-          <button onClick={onSubmitForm} type="submit" class="btn btn-success">Sauvegarder</button>
+        type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button onClick={onSubmitForm} type="submit" className="btn btn-success">Sauvegarder</button>
         </div>
       </div>
     </div>

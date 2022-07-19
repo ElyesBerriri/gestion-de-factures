@@ -3,7 +3,7 @@ import ClientDemandeur from "../components/ClientDemandeur";
 import DonnéesDossier from "../components/DonnéesDossier";
 import Taches from "../components/Taches";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import Sousdossier from "../components/sousdossier";
+import Sousdossier from "../components/Sousdossier";
 
 const Creation =()=>{
 
@@ -116,7 +116,7 @@ const Creation =()=>{
         </div>
         {console.log( calendar)}
          {console.log(client_id)}
-        <button onClick={ onSubmitForm} type="submit" class="btn btn-success">Valider</button>
+        <button onClick={ onSubmitForm} type="submit" className="btn btn-success">Valider</button>
         </>
 
          

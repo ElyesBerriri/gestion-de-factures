@@ -14,20 +14,20 @@ const Sousdossier =(props)=>{
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text"> Code dossier :</span>
+                    <span className="input-group-text"> Code dossier :</span>
                     <input type="text" className="form-control" 
-                    disabled="true"
-                        placeholder={dossier.code}
+                    disabled={true}
+                    placeholder={dossier.code}
                         defaultValue={dossier.code}
                          />
                   </div>
               </div>
             <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Mission :</span>
+                    <span className="input-group-text">Mission :</span>
                     <input type="text" className="form-control" 
-                    disabled="true"
-                        placeholder={dossier.mission}
+                    disabled={true}
+                    placeholder={dossier.mission}
                         defaultValue={dossier.mission}
                          />
                   </div>
@@ -35,10 +35,10 @@ const Sousdossier =(props)=>{
             
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Emplacement :</span>
+                    <span className="input-group-text">Emplacement :</span>
                     <input type="text" className="form-control" 
-                    disabled="true"
-                        placeholder={dossier.emplacement}
+                    disabled={true}
+                    placeholder={dossier.emplacement}
                         defaultValue={dossier.emplacement}
                          />
                   </div>
@@ -46,29 +46,25 @@ const Sousdossier =(props)=>{
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Numéro affaire :</span>
+                    <span className="input-group-text">Numéro affaire :</span>
                     <input type="text" className="form-control" 
-                        disabled="true"
-                        placeholder={dossier.numaff}
+                    disabled={true}
+                    placeholder={dossier.numaff}
                         defaultValue={dossier.numaff}
                          />
                   </div>
               </div>
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Observation :</span>
+                    <span className="input-group-text">Observation :</span>
                     <input type="text" className="form-control" 
                         placeholder={dossier.observation}
-                        disabled="true"
+                        disabled={true}
                         defaultValue={dossier.observation}
                          />
                   </div>
               </div>
-              
               </div>
-
-
-
      </section>
     )
 

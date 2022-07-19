@@ -18,78 +18,78 @@ const [nom, setNom] = useState("--");
   return (
     <Fragment>
       
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Ajouter Demandeur
   </button>
   
    
-  <div class="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Nouveau Demandeur</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div className="modal-dialog">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title" id="exampleModalLabel">Nouveau Demandeur</h5>
+          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
   
   
-        <div class="modal-body">
+        <div className="modal-body">
         <div className="container ">
     <form  >
 
-    <div class="row mb-3">
-    <label  class="col-sm-2 col-form-label col-form-label-sm">Nom et Prénom </label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
+    <div className="row mb-3">
+    <label  className="col-sm-2 col-form-label col-form-label-sm">Nom et Prénom </label>
+    <div className="col-sm-10">
+        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
         placeholder="Nom et Prénom"
         value={nom}
         onChange={e => setNom(e.target.value)}/>
     </div>
     </div>
 
-    <div class="row mb-3">
-    <label  class="col-sm-2 col-form-label col-form-label-sm">CIN</label>
-    <div class="col-sm-10">
-        <input type="number" class="form-control form-control-sm" id="colFormLabelSm" 
+    <div className="row mb-3">
+    <label  className="col-sm-2 col-form-label col-form-label-sm">CIN</label>
+    <div className="col-sm-10">
+        <input type="number" className="form-control form-control-sm" id="colFormLabelSm" 
         placeholder="Cin"
         value={cin}
         onChange={e => setCin(e.target.value)}/>
     </div>
     </div>
 
-    <div class="row mb-3">
-    <label  class="col-sm-2 col-form-label col-form-label-sm">Adresse</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
+    <div className="row mb-3">
+    <label  className="col-sm-2 col-form-label col-form-label-sm">Adresse</label>
+    <div className="col-sm-10">
+        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
         placeholder="Ville"
         value={adresse}
         onChange={e => setAdresse(e.target.value)}/>
     </div>
     </div>
 
-    <div class="row mb-3">
-    <label  class="col-sm-2 col-form-label col-form-label-sm">Adresse Designée</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
+    <div className="row mb-3">
+    <label  className="col-sm-2 col-form-label col-form-label-sm">Adresse Designée</label>
+    <div className="col-sm-10">
+        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
         placeholder="Rue"
         value={adresseD}
         onChange={e => setAdresseD(e.target.value)}/>
     </div>
     </div>
 
-    <div class="row mb-3">
-    <label  class="col-sm-2 col-form-label col-form-label-sm">Téléphone</label>
-    <div class="col-sm-10">
-        <input type="number" class="form-control form-control-sm" id="colFormLabelSm" 
+    <div className="row mb-3">
+    <label  className="col-sm-2 col-form-label col-form-label-sm">Téléphone</label>
+    <div className="col-sm-10">
+        <input type="number" className="form-control form-control-sm" id="colFormLabelSm" 
         placeholder="Numéro"
         value={tel}
         onChange={e => setTel(e.target.value)}/>
     </div>
     </div>
 
-    <div class="row mb-3">
-    <label  class="col-sm-2 col-form-label col-form-label-sm">Fax</label>
-    <div class="col-sm-10">
-        <input type="number" class="form-control form-control-sm" id="colFormLabelSm" 
+    <div className="row mb-3">
+    <label  className="col-sm-2 col-form-label col-form-label-sm">Fax</label>
+    <div className="col-sm-10">
+        <input type="number" className="form-control form-control-sm" id="colFormLabelSm" 
         placeholder="Code Postale"
         value={fax}
         onChange={e => setFax(e.target.value)}/>
@@ -102,10 +102,10 @@ const [nom, setNom] = useState("--");
     </div>
 
         </div>
-        <div class="modal-footer">
+        <div className="modal-footer">
           <button 
-        type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-          <button onClick={onSubmitForm} type="submit" class="btn btn-success">Ajouter</button>
+        type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button onClick={onSubmitForm} type="submit" className="btn btn-success">Ajouter</button>
         </div>
       </div>
     </div>
