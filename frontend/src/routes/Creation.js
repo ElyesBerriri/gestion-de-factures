@@ -24,7 +24,7 @@ const Creation =()=>{
     const [code2,setCode2]= useState("*");
     const [observation,setObservation]= useState("*");
     const [calendar,setCalendar]= useState("*");
-    const [adversaire,setadversaire]= useState("berriri");
+    const [adversaire,setadversaire]= useState("");
     const [client_id,setclient_id]= useState(0);
     const [collab_id,setcollab_id]= useState(0);
     const [client,setclient]= useState("!");

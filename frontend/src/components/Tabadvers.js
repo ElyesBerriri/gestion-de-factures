@@ -28,11 +28,17 @@ const TabAdvers =(props)=>{
 
     const deleteadversaire = async id => {
       try {
+ 
         await fetch(`/adversaire/list/${id}`, {
           method: "DELETE"
         });
   
         setadversaire(adversaire.filter(adversaire => adversaire.adversaire_id !== id));
+        {        console.log(nom);
+
+          const rep=props.adversaire.replace(`${nom}`,"");
+        props.changeadversaire(rep);}
+        console.log(props.adversaire);
       } catch (err) {
         console.error(err.message);
       }
@@ -57,7 +63,7 @@ return (
         </thead>
         <tbody>
           {adversaire.map(adversaire => (
-            <tr key={adversaire.adversaire_id} onClick={()=> setIDadversaire(adversaire.adversaire_id)}>
+            <tr key={adversaire.adversaire_id} onClick={()=> {setIDadversaire(adversaire.adversaire_id);setnom(adversaire.nom)}}>
               <td>{adversaire.dossier_id}</td>
               <td>{adversaire.nom}</td>
               <td>{adversaire.registre}</td>
@@ -81,8 +87,7 @@ return (
         changeadversaire={props.changeadversaire} dossier_id={props.dossier_id} />
 
                 </div>
- 
-
+ {console.log(props.adversaire)}
     </Fragment>
 )
      
