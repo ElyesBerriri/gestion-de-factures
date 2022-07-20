@@ -32,7 +32,7 @@ const InputHono = () => {
           onChange={e => setLib_arab(e.target.value)}
         />
 
-<input
+        <input
           type="text"
           className="form-control"
           value={lib_fr}

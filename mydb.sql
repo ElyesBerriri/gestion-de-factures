@@ -88,3 +88,15 @@ actif varchar(10),
 unk1 varchar(10),
 unk2 varchar(10)
 );
+
+
+CREATE TABLE dossiers(
+    id_dossier int PRIMARY KEY,
+    num_affaire int,
+    emplacement varchar(255),
+    client varchar(255),
+    tel bigint,
+    
+
+);
+
