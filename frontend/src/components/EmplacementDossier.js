@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import {Link} from "react-router-dom";
 const EmplacementDossier = () => {
     const [dossiers, setDossiers] = useState([]);
     const [query, setQuery] = useState("");
@@ -104,10 +104,9 @@ const EmplacementDossier = () => {
                                 </button>
                             </td>
                             <td>
-                                <button
-                                    className="btn btn-success" >
-                                    Imprimer
-                                </button>
+                                <Link to="/PDF" state={{ from: dossier }} >
+                                <button className="btn btn-success">Imprimer</button>
+                                </Link>
                             </td>
                         </tr>
                     )})}
