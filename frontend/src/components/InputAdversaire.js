@@ -24,8 +24,7 @@ const InputAdversaire = (props) => {
         });
 
         props.changeadversaire(props.dossier_id);
-        console.log(props.adversaire);
-    } catch (err) {
+     } catch (err) {
       console.error(err.message);
     }
   };
@@ -128,8 +127,7 @@ const InputAdversaire = (props) => {
       </div>
     </div>
   </div>
-  {console.log(props.dossier_id)}
-  {console.log(dossier_id)}
+
 
   </Fragment>
   );

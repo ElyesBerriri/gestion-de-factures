@@ -18,11 +18,13 @@ const TabAdvers =(props)=>{
         const response = await fetch(`/adversaire/listtotal/${id}`);
         const jsonData = await response.json();
         setadversaire(jsonData);
-        console.log(adversaire);
-      } catch (err) {
+      } 
+      catch (err) {
         console.error(err.message);
       }}
     };
+
+
 
     const deleteadversaire = async id => {
       try {
@@ -35,11 +37,7 @@ const TabAdvers =(props)=>{
         console.error(err.message);
       }
     };
-
-    
-    useEffect(() => {
-      getadversaire(props.dossier_id);
-    }, [props.dossier_id]);
+ 
 
 
 return (
@@ -68,7 +66,7 @@ return (
               <td>{adversaire.avocat}</td>
               <td>{adversaire.adresse_a}</td>
             </tr>
-          ))}
+           ))}
         </tbody>
       </table>
       <div>
@@ -79,9 +77,11 @@ return (
         </button>
 
 
-        <InputAdversaire changeadversaire={(e)=>getadversaire(e)}  dossier_id={props.dossier_id}/>
+        <InputAdversaire changeadversaire={(e)=>getadversaire(e)} dossier_id={props.dossier_id}/>
 
                 </div>
+ 
+
     </Fragment>
 )
      
