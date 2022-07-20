@@ -13,6 +13,7 @@ const TabAdvers =(props)=>{
     const [idadversaire, setIDadversaire] = useState("");
 
     const getadversaire = async (id) => {
+      if (id!==0){
       try {
         const response = await fetch(`/adversaire/listtotal/${id}`);
         const jsonData = await response.json();
@@ -20,7 +21,7 @@ const TabAdvers =(props)=>{
         console.log(adversaire);
       } catch (err) {
         console.error(err.message);
-      }
+      }}
     };
 
     const deleteadversaire = async id => {
@@ -78,7 +79,7 @@ return (
         </button>
 
 
-        <InputAdversaire changeadversaire={()=>getadversaire()}  dossier_id={props.dossier_id}/>
+        <InputAdversaire changeadversaire={(e)=>getadversaire(e)}  dossier_id={props.dossier_id}/>
 
                 </div>
     </Fragment>

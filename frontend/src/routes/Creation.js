@@ -48,6 +48,16 @@ const Creation =()=>{
         }
       };
 
+      const deleteadversaire = async id => {
+        try {
+          await fetch(`/adversaire/list/`, {
+            method: "DELETE"
+          });
+    
+        } catch (err) {
+          console.error(err.message);
+        }
+      };
 
       const onSubmitForm = async (e) => {
         if(client!="!"){
@@ -60,10 +70,21 @@ const Creation =()=>{
               body: JSON.stringify(body)
             });
 
-            window.location.reload();
           } catch (err) {
             console.error(err.message);
           }
+          try {
+            await fetch("/adversaire/list/", {
+              method: "Put",
+              headers: { "Content-Type": "application/json" },
+            });
+
+          } catch (err) {
+            console.error(err.message);
+          }
+          
+          window.location.reload();
+
         }
         else{
           alert("Veuillez choisir un client avant de valider");
@@ -73,6 +94,7 @@ const Creation =()=>{
    
       useEffect(() => {
         getdossierid();
+        deleteadversaire();
       }, []);
 
     return(

@@ -56,5 +56,6 @@ CREATE TABLE servicess(
       adresse varchar(255),
       adresse_d varchar(255),
       avocat varchar(255),
-      adresse_a varchar(255)
+      adresse_a varchar(255),
+      brouillon varchar(255)
       );

@@ -972,18 +972,13 @@ app.put("/parametres/list/:id", async (req, res) => {
 });
 
 
- 
-
-
-
- 
 
 app.post("/adversaire/list", async (req, res) => {
   try {
-    const { dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a } = req.body;
+    const { dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a,brouillon} = req.body;
     const donnees = await pool.query(
-    "INSERT INTO adversaires (dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *",
-    [dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a]);
+    "INSERT INTO adversaires (dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a,brouillon) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",
+    [dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a,brouillon]);
     res.status(200).json(donnees.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -1011,6 +1006,17 @@ app.delete("/adversaire/list/:id", async (req, res) => {
   }
 });
 
+app.delete("/adversaire/list/", async (req, res) => {
+  try {
+    await pool.query("DELETE FROM adversaires WHERE brouillon = $1", [
+      "oui",
+    ]);
+    res.status(200).json("adversaire was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 app.get("/adversaire/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -1026,6 +1032,20 @@ app.get("/adversaire/listtotal/:id", async (req, res) => {
     const { id } = req.params;
     const one = await pool.query("SELECT * FROM adversaires WHERE dossier_id = $1", [id]);
     res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.put("/adversaire/list/", async (req, res) => {
+  try {
+    await pool.query(
+      `UPDATE adversaires SET brouillon=$1 WHERE brouillon = $2`,
+      ["non","oui"]
+    );
+
+    res.status(200).json("service was updated");
   } catch (err) {
     console.error(err.message);
   }

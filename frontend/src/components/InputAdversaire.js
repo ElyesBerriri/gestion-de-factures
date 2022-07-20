@@ -1,4 +1,4 @@
-import React, { Fragment,useState }  from "react";
+import React, { Fragment,useState,useEffect }  from "react";
 
 
 const InputAdversaire = (props) => {
@@ -8,22 +8,31 @@ const InputAdversaire = (props) => {
   const [adresse_d, setAdressed] = useState("--");
   const  [avocat, setAvocat] = useState("--");
   const [adresse_a, setAdresseav] = useState("--");
-  const [dossier_id, setidd] = useState(props.dossier_id);
+  const [dossier_id, setidd] = useState(10);
+  const [brouillon, setbrouillon] = useState("oui");
+
+
  
   const onSubmitForm =async (e) => {
+    console.log(dossier_id);
       try {
-        const body = {dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a} ;
+        const body = {dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a,brouillon} ;
         await fetch("/adversaire/list", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         });
 
-        props.changeadversaire();
+        props.changeadversaire(props.dossier_id);
+        console.log(props.adversaire);
     } catch (err) {
       console.error(err.message);
     }
   };
+
+  useEffect(() => {
+    setidd(props.dossier_id);
+  }, [props.dossier_id]);
       
   return (
     <Fragment>
@@ -119,6 +128,9 @@ const InputAdversaire = (props) => {
       </div>
     </div>
   </div>
+  {console.log(props.dossier_id)}
+  {console.log(dossier_id)}
+
   </Fragment>
   );
 };
