@@ -77,7 +77,8 @@ return (
         </button>
 
 
-        <InputAdversaire changeadversaire={(e)=>getadversaire(e)} dossier_id={props.dossier_id}/>
+        <InputAdversaire adversaire={props.adversaire} changeadv={(e)=>getadversaire(e)}
+        changeadversaire={props.changeadversaire} dossier_id={props.dossier_id} />
 
                 </div>
  

@@ -60,7 +60,7 @@ const Creation =()=>{
         }
       };
 
-      const onSubmitForm = async (e,adversaire) => {
+      const onSubmitForm = async (e) => {
         if(client!=="!"){
           e.preventDefault();
            try {
@@ -141,7 +141,7 @@ const Creation =()=>{
         </div>
         {console.log( calendar)}
          {console.log(client_id)}
-        <button onClick={ (e)=>{ onSubmitForm(e,"tay")}} type="submit" class="btn btn-success">Valider</button>
+        <button onClick={ (e)=>{onSubmitForm(e)}} type="submit" class="btn btn-success">Valider</button>
       </>
     )
 

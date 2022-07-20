@@ -22,8 +22,8 @@ const InputAdversaire = (props) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         });
-
-        props.changeadversaire(props.dossier_id);
+        props.changeadversaire(props.adversaire+" , "+nom);
+        props.changeadv(props.dossier_id);
      } catch (err) {
       console.error(err.message);
     }
