@@ -5,6 +5,7 @@ import Taches from "../components/Taches";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Sousdossier from "../components/sousdossier";
 import Collaborateur from "../components/Collaborateur";
+import e from "cors";
 
 const Creation =()=>{
 
@@ -60,9 +61,9 @@ const Creation =()=>{
       };
 
       const onSubmitForm = async (e) => {
-        if(client!="!"){
+        if(client!=="!"){
           e.preventDefault();
-          try {
+           try {
             const body = {code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r} ;
             await fetch("/dossierss/list", {
               method: "POST",
@@ -140,7 +141,7 @@ const Creation =()=>{
         </div>
         {console.log( calendar)}
          {console.log(client_id)}
-        <button onClick={ onSubmitForm} type="submit" class="btn btn-success">Valider</button>
+        <button onClick={ (e)=>{onSubmitForm(e)}} type="submit" class="btn btn-success">Valider</button>
       </>
     )
 

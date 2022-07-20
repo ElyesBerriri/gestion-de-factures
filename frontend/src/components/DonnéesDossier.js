@@ -131,7 +131,9 @@ const DonnéesDossier =(props)=>{
  
       </div>
 
-    <TabAdvers adversaire={props.adversaire} dossier_id={props.idd}/>
+    <TabAdvers adversaire={props.adversaire} dossier_id={props.idd}             
+    changeadversaire={props.changeadversaire}  
+/>
     </section>
     )
 

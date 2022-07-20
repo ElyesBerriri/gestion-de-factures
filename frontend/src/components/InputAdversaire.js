@@ -22,10 +22,9 @@ const InputAdversaire = (props) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         });
-
-        props.changeadversaire(props.dossier_id);
-        console.log(props.adversaire);
-    } catch (err) {
+        props.changeadversaire(props.adversaire+" , "+nom);
+        props.changeadv(props.dossier_id);
+     } catch (err) {
       console.error(err.message);
     }
   };
@@ -128,8 +127,7 @@ const InputAdversaire = (props) => {
       </div>
     </div>
   </div>
-  {console.log(props.dossier_id)}
-  {console.log(dossier_id)}
+
 
   </Fragment>
   );
