@@ -20,20 +20,24 @@ const EditClient = ({client}) => {
   const [selectTest, setSelectTest] = useState(false);
 
   const updateClient = async e => {
-    e.preventDefault();
-    try {
-      const body = { collaborateur,code_client,raison,situation_fiscale,type_client,matricule,ville,rue,num,code_postale,adresse,activite,tel,fax,email } ;
-      await fetch(
-        `/clients/list/${client.client_id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body)
-        }
-      );
-      window.location.reload();
-    } catch (err) {
-      console.error(err.message);
+    if(code_client.substr(code_client.search("/")+1)!=""){
+      e.preventDefault();
+      try {
+        const body = { collaborateur,code_client,raison,situation_fiscale,type_client,matricule,ville,rue,num,code_postale,adresse,activite,tel,fax,email } ;
+        await fetch(
+          `/clients/list/${client.client_id}`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+          }
+        );
+        window.location.reload();
+      } catch (err) {
+        console.error(err.message);
+      }
+    } else {
+      alert("hhh");
     }
   };
 
@@ -51,6 +55,27 @@ const EditClient = ({client}) => {
   useEffect(() => {
     getCollab();
   }, []);
+
+  const getCode_client = async () => {
+    let s=code_client.substr(code_client.search("/")+1);
+    if(s==client.code_client.substr(code_client.search("/")+1)){
+      setCode_client(client.code_client.substr(0,code_client.search("/"))+"/"+s);
+    } else if(s!=""){
+        try {
+            const response = await fetch(`/clients/list2/?q=${s}`);
+            const jsonData = await response.json();
+            setCode_client((parseInt(jsonData,10)+1)+"/"+s);
+        } catch (err) {
+            console.error(err.message);
+        }
+    } else {
+        setCode_client(0+"/"+s);
+    }
+  };
+
+  useEffect(() => {
+    getCode_client();
+  }, [code_client]);
 
   return (
     <>
@@ -114,18 +139,14 @@ const EditClient = ({client}) => {
               <div className="row">
                   <div className="input-group mb-3">
                     <span class="input-group-text">Code Client :</span>
-                    <input type="text" className="form-control"
-                        placeholder="code client"
-                        value={code_client.substr(0,code_client.search("/"))}
-                        onChange={e => setCode_client(
-                          e.target.value+"/"+code_client.substr(code_client.search("/")+1)
-                        )} />
+                    <input type="text" className="form-control" disabled
+                        value={code_client.substr(0,code_client.search("/"))} />
                     <span class="input-group-text">/</span>
                     <input type="text" className="form-control"
                         placeholder="code client"
-                        value={code_client.substr(code_client.search("/")+1)}
+                        defaultValue={code_client.substr(code_client.search("/")+1)}
                         onChange={e => setCode_client(
-                          code_client.substr(0,code_client.search("/"))+"/"+e.target.value
+                          code_client.substr(0,code_client.search("/"))+"/"+e.target.value.trim()
                           )} />
                   </div>
               </div>
@@ -302,7 +323,7 @@ const EditClient = ({client}) => {
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
+              <button type="button" className="btn btn-primary" id="valider"
               onClick={e => updateClient(e)}>
                 Valider
               </button>

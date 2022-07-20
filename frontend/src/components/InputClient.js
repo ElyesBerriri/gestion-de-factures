@@ -3,22 +3,22 @@ import React, { useState, useEffect }  from "react";
 
 const InputClient = () => {
     const [collaborateur,setCollaborateur] = useState("--");
-    const [code_client,setCode_client] = useState("");
-    const [code_client1,setCode_client1] = useState("");
+    const [code_client,setCode_client] = useState("0/");
+    const [code_client1,setCode_client1] = useState(0);
     const [code_client2,setCode_client2] = useState("");
-    const [raison,setRaison] = useState("");
-    const [situation_fiscale,setSituation_fiscale] = useState("");
-    const [type_client,setType_client] = useState("");
-    const [matricule,setMatricule] = useState("");
-    const [ville,setVille] = useState("");
-    const [rue,setRue] = useState("");
-    const [num,setNum] = useState();
-    const [code_postale,setCode_postale] = useState();
-    const [adresse,setAdresse] = useState("");
-    const [activite,setActivite] = useState("");
-    const [tel,setTel] = useState("");
-    const [fax,setFax] = useState("");
-    const [email,setEmail] = useState("");
+    const [raison,setRaison] = useState("*");
+    const [situation_fiscale,setSituation_fiscale] = useState("*");
+    const [type_client,setType_client] = useState("*");
+    const [matricule,setMatricule] = useState("*");
+    const [ville,setVille] = useState("*");
+    const [rue,setRue] = useState("*");
+    const [num,setNum] = useState(0);
+    const [code_postale,setCode_postale] = useState(0);
+    const [adresse,setAdresse] = useState("*");
+    const [activite,setActivite] = useState("*");
+    const [tel,setTel] = useState("*");
+    const [fax,setFax] = useState("*");
+    const [email,setEmail] = useState("*");
     const [collab, setCollab] = useState([]);
 
     const onSubmitForm = async (e) => {
@@ -46,10 +46,28 @@ const InputClient = () => {
           console.error(err.message);
         }
       };
+      const getCode_client1 = async () => {
+        if(code_client2!=""){
+            try {
+                const response = await fetch(`/clients/list2/?q=${code_client2}`);
+                const jsonData = await response.json();
+                setCode_client1(parseInt(jsonData,10)+1);
+                setCode_client((parseInt(jsonData,10)+1)+"/"+code_client2);
+              } catch (err) {
+                console.error(err.message);
+              }
+        } else {
+            setCode_client1(0);
+            setCode_client(0+"/"+code_client2);
+        }
+      };
     
       useEffect(() => {
         getCollab();
       }, []);
+      useEffect(() => {
+        getCode_client1();
+      }, [code_client2]);
 
     return (
     <div className="container mt-5">
@@ -65,26 +83,37 @@ const InputClient = () => {
 
             <div className="input-group mb-3">
                 <label class="col-sm-2 col-form-label col-form-label-sm">Code Client</label>
-                <input type="text" className="form-control form-control-sm"
-                    placeholder="code client"
+                <input type="number" className="form-control form-control-sm" id="code1client" 
+                    disabled value={code_client1}
                     onChange={e => {
                         setCode_client1(e.target.value);
                         setCode_client(e.target.value+"/"+code_client2);
                     }} />
                 <span class="input-group-text">/</span>
                 <input type="text" className="form-control form-control-sm"
-                    placeholder="code client"
+                    placeholder="code client" value={code_client2}
                     onChange={e => {
-                        setCode_client2(e.target.value);
-                        setCode_client(code_client1+"/"+e.target.value);
+                        setCode_client2(e.target.value.trim());
                     }} />
+                <div class="form-check m-2">
+                    <input className="form-check-input" type="checkbox" id="manuel"
+                    onChange={() => {
+                        if(document.getElementById("code1client").disabled)
+                            document.getElementById("code1client").disabled = false;
+                        else
+                            document.getElementById("code1client").disabled = true;
+                    }} />
+                    <label class="form-check-label" for="manuel">
+                        Manuel
+                    </label>
+                </div>
             </div>
 
             <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Raison</label>
+                <label class="col-sm-2 col-form-label col-form-label-sm">Raison</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
-                    placeholder="raison"
+                    <input type="text" class="form-control form-control-sm"
+                    value={raison} 
                     onChange={e => setRaison(e.target.value)}/>
                 </div>
             </div>

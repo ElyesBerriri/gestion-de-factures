@@ -21,7 +21,7 @@ const ListCollab = () => {
 
   
 
-    const getCollab = async () => {
+    const getCollab = async (query) => {
         try {
           const response = await fetch(`/collaborateurs/list/?q=${query}`);
           const jsonData = await response.json();
@@ -34,7 +34,7 @@ const ListCollab = () => {
 
     
       useEffect(() => {
-        getCollab();
+        getCollab(query);
       }, [query]);
 
 
@@ -43,8 +43,7 @@ const ListCollab = () => {
            <input
           className="search"
           placeholder="Recherche .."
-          onChange={(e) => setQuery(e.target.value.toLowerCase())}
-        />
+          onChange={(e) => setQuery(e.target.value.toLowerCase())} />
   
 
       {" "}

@@ -43,3 +43,19 @@ CREATE TABLE servicess(
   jeudi VARCHAR(255),
   vendredi VARCHAR(255),
   samedi VARCHAR(255));
+
+   
+
+  
+
+      CREATE TABLE adversaires(
+      adversaire_id serial PRIMARY KEY,
+      dossier_id int,
+      nom varchar(255),
+      registre varchar(255),
+      adresse varchar(255),
+      adresse_d varchar(255),
+      avocat varchar(255),
+      adresse_a varchar(255),
+      brouillon varchar(255)
+      );

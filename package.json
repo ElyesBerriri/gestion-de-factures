@@ -21,10 +21,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mayank1513/sticky-section-header": "^0.0.9",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
+    "date-fns": "^2.28.0",
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
-    "pg": "^8.3.0"
+    "pg": "^8.3.0",
+    "react-alert": "^7.0.3",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
+    "react-date-range": "^1.4.0",
+    "react-router-hash-link": "^2.4.3",
+    "react-sticky": "^6.0.3",
+    "react-sticky-box": "^1.0.2"
   }
 }

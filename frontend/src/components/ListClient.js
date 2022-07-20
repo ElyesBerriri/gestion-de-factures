@@ -4,6 +4,7 @@ import EditClient from "./EditClient";
 
 const ListClient = () => {
     const [clients, setClients] = useState([]);
+    const [query, setQuery] = useState("");
 
     const deleteClient = async id => {
       try {
@@ -18,7 +19,7 @@ const ListClient = () => {
 
     const getClient = async () => {
         try {
-          const response = await fetch("/clients/list");
+          const response = await fetch(`/clients/list/?q=${query}`);
           const jsonData = await response.json();
           setClients(jsonData);
         } catch (err) {
@@ -28,15 +29,19 @@ const ListClient = () => {
     
       useEffect(() => {
         getClient();
-      }, []);
+      }, [query]);
 
     return(
       <>
         {" "}
-          <Link to={"/InputClient"}>
+          <input
+            className="search "
+            placeholder="Recherche .."
+            onChange={(e) => setQuery(e.target.value.toLowerCase())} />
+          <Link to={"/InputClient"} >
             <button className="btn btn-success">Ajouter un client</button>
           </Link>
-          <table class="table table-hover mt-2 text-center">
+          <table rowEvent class="table table-hover mt-2 text-center">
             <thead  class="table-dark">
               <tr className="bg-primary">
                 <th scope="col">Id</th>
