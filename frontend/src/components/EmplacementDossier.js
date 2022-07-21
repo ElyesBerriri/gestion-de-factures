@@ -31,10 +31,47 @@ const EmplacementDossier = () => {
         } catch (err) {
             console.error(err.message);
         }
-        console.log(taches);
         taches.map((tache)=>{
             try {
                 fetch(`/tache/list/${tache.tache_id}`, {
+                    method: "DELETE"
+                });
+            } catch (err) {
+                console.error(err.message);
+            }
+        });
+
+        // delete adversaires
+        let adversaires = [];
+        try {
+            const response = await fetch(`/adversaire/listid/${id}`);
+            const jsonData = await response.json();
+            adversaires = jsonData;
+        } catch (err) {
+            console.error(err.message);
+        }
+        adversaires.map((adversaire)=>{
+            try {
+                fetch(`/adversaire/list/${adversaire.adversaire_id}`, {
+                    method: "DELETE"
+                });
+            } catch (err) {
+                console.error(err.message);
+            }
+        });
+
+        // delete demandeurs
+        let demandeurs = [];
+        try {
+            const response = await fetch(`/demandeurs/listid/${id}`);
+            const jsonData = await response.json();
+            demandeurs = jsonData;
+        } catch (err) {
+            console.error(err.message);
+        }
+        demandeurs.map((demandeur)=>{
+            try {
+                fetch(`/demandeurs/list/${demandeur.demandeur_id}`, {
                     method: "DELETE"
                 });
             } catch (err) {
