@@ -36,6 +36,9 @@ const Creation =()=>{
     const [mode_r,setmode_r]= useState("*");
     const [part_c,setpart_c]= useState(0);
     const [type_r,settype_r]= useState("*");
+    const [demandeur,setdemandeur]= useState("*");
+    const [tache,settache]= useState("*");
+
 
         //tache 
 
@@ -55,6 +58,31 @@ const Creation =()=>{
             method: "DELETE"
           });
     
+        } catch (err) {
+          console.error(err.message);
+        }
+      };
+
+
+      const deletedemandeur = async id => {
+        try {
+          await fetch("/demandeurs/list/", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+          });
+  
+        } catch (err) {
+          console.error(err.message);
+        }
+      };
+
+      const deletetache = async id => {
+        try {
+          await fetch("/tache/list/", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+          });
+  
         } catch (err) {
           console.error(err.message);
         }
@@ -83,7 +111,17 @@ const Creation =()=>{
           } catch (err) {
             console.error(err.message);
           }
-          
+  
+          try {
+            await fetch("/demandeurs/list/", {
+              method: "Put",
+              headers: { "Content-Type": "application/json" },
+            });
+
+          } catch (err) {
+            console.error(err.message);
+          }
+
           window.location.reload();
 
         }
@@ -96,6 +134,8 @@ const Creation =()=>{
       useEffect(() => {
         getdossierid();
         deleteadversaire();
+        deletedemandeur();
+        deletetache();
       }, []);
 
     return(
@@ -115,7 +155,10 @@ const Creation =()=>{
         <div>
            <ClientDemandeur
             changeclient_id={(client_id)=>setclient_id(client_id)} client_id={client_id} 
-            changeclient={(client)=>setclient(client)} client={client} />
+            changeclient={(client)=>setclient(client)} client={client} 
+            idd={dossier_id}
+            changedemandeur={(demandeur)=>setdemandeur(demandeur)} demandeur={demandeur} 
+            />
            <DonnéesDossier 
             idd={dossier_id}
             changetype={(type)=>setType(type)} type={typee} 
@@ -129,7 +172,10 @@ const Creation =()=>{
             changeobservation={(observation)=>setObservation(observation)} observation={observation} 
             changeadversaire={(adversaire)=>setadversaire(adversaire)} adversaire={adversaire} 
             changecalendar={(calendar)=>setCalendar(calendar)} calendar={calendar}/>
-          <Taches />
+          <Taches 
+            idd={dossier_id}
+            changeatache={(tache)=>settache(tache)} tache={tache} 
+            />
           <Collaborateur
             changecollab_id={(collab_id)=>setcollab_id(collab_id)} collab_id={collab_id} 
             changecollab={(collab)=>setcollab(collab)} collab={collab}
@@ -141,7 +187,7 @@ const Creation =()=>{
         </div>
         {console.log( calendar)}
          {console.log(client_id)}
-        <button onClick={ (e)=>{onSubmitForm(e)}} type="submit" class="btn btn-success">Valider</button>
+        <button onClick={ (e)=>{onSubmitForm(e)}} type="submit" className="btn btn-success">Valider</button>
       </>
     )
 

@@ -137,3 +137,20 @@ CREATE TABLE dossiers(
   collab_id INT,
   parent_id INT
 );
+
+CREATE TABLE tache(
+    tache_id SERIAL PRIMARY KEY,
+    dossier_id int,
+    tache VARCHAR(255),
+    datec VARCHAR(255),
+    dater VARCHAR(255),
+    resolu VARCHAR(255),
+    course VARCHAR(255),
+    lieu VARCHAR(255),
+    service VARCHAR(255),
+    dateaud VARCHAR(255),
+    dateech VARCHAR(255),
+    greffier VARCHAR(255),
+    personnech VARCHAR(255),
+    brouillon VARCHAR(255)
+);

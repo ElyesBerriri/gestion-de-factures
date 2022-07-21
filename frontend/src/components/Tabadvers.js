@@ -87,7 +87,6 @@ return (
         changeadversaire={props.changeadversaire} dossier_id={props.dossier_id} />
 
                 </div>
- {console.log(props.adversaire)}
     </Fragment>
 )
      

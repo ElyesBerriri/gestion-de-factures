@@ -152,7 +152,9 @@ const ClientDemandeur =(props)=>{
       </div>
 
 
-<TabDeman/>
+<TabDeman
+demandeur={props.demandeur} dossier_id={props.idd}             
+changedemandeur={props.changedemandeur} />
     </section>
     )
 

@@ -1,21 +1,44 @@
 import React, { Fragment, useState } from "react";
 import InputTache from "./InputTache";
 
-const Tache =()=>{
+const Tache =(props)=>{
 
     const [taches, settaches] = useState([]);
-    const [tache, settache] = useState("");
-    const [datec, setdatec] = useState("");
-    const [dater, setdater] = useState("");
-    const [resolu, setresolu] = useState("");
-    const [personnech, setpersonnech] = useState("");
-    const [greffier, setgreffier] = useState("");
-    const [course, setcourse] = useState("");
-    const [lieu, setlieu] = useState("");
-    const [service, setservice] = useState("");
-    const [dateaud, setdateaud] = useState("");
-    const [dateech, setdateech] = useState("");
-    const [id, setIDtache] = useState("");
+    const [tache, settache] = useState("*");
+    const [tache_id, setIDtache] = useState(4);
+
+
+    const gettache = async (id) => {
+      if (id!==0){
+      try {
+        const response = await fetch(`/tache/listtotal/${id}`);
+        const jsonData = await response.json();
+        settaches(jsonData);
+      } 
+      catch (err) {
+        console.error(err.message);
+      }}
+    };
+
+
+    const deletetache = async id => {
+      try {
+ 
+        await fetch(`/tache/list/${id}`, {
+          method: "DELETE"
+        });
+  
+        settaches(taches.filter(tache => tache.tache_id !== id));
+        {        console.log(tache);
+
+        const rep=props.tache.replace(`${tache}`,"");
+        props.changetache(rep);}
+        console.log(props.tache);
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+
 
 return (
     <section id='tache'>
@@ -34,25 +57,36 @@ return (
             <th>Service</th>
             <th>Date_d'audience</th>
             <th>Date_d'echeance</th>
-
-
           </tr>
         </thead>
         <tbody>
           {taches.map(tache => (
             <tr key={tache.tache_id} onClick={()=> setIDtache(tache.tache_id)}>
-              <td>{tache.nom}</td>
-              
+              <td>{tache.tache}</td>
+              <td>{tache.datec}</td>
+              <td>{tache.dater}</td>
+              <td>{tache.resolu}</td>
+              <td>{tache.personnech}</td>
+              <td>{tache.greffier}</td>
+              <td>{tache.course}</td>
+              <td>{tache.lieu}</td>
+              <td>{tache.service}</td>
+              <td>{tache.dateaud}</td>
+              <td>{tache.dateech}</td>
+
             </tr>
           ))}
         </tbody>
       </table>
       <div>
         <button
-            className="btn btn-danger">
+            className="btn btn-danger"
+            onClick={() => deletetache(tache_id)}>
                     Supprimer tache
         </button>
-            <InputTache/>
+            <InputTache
+            tache={props.tache} changetach={(e)=>gettache(e)}
+            changetache={props.changetache} dossier_id={props.idd}/>
 
                 </div>
     </section>
