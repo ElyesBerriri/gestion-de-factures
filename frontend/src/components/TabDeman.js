@@ -27,11 +27,11 @@ const TabDeman =(props)=>{
         });
   
         setDemandeur(demandeurs.filter(demandeur => demandeur.demandeur_id !== id));
-        {        console.log(nom);
+       /* {        console.log(nom);
 
           const rep=props.demandeur.replace(`${nom}`,"");
         props.changedemandeur(rep);}
-        console.log(props.demandeur);
+        console.log(props.demandeur);*/
       } catch (err) {
         console.error(err.message);
       }
@@ -72,8 +72,8 @@ return (
             
                     Supprimer demandeur
         </button>
-            <InputDemandeur demandeur={props.demandeur} changedem={(e)=>getdemandeur(e)}
-        changedemandeur={props.changedemandeur} dossier_id={props.dossier_id}/>
+            <InputDemandeur /*demandeur={props.demandeur}  
+        changedemandeur={props.changedemandeur}*/ dossier_id={props.dossier_id} changedem={(e)=>getdemandeur(e)}/>
 
                 </div>
     </Fragment>

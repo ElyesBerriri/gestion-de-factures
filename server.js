@@ -1184,7 +1184,7 @@ app.get("/tache/list", async (req, res) => {
 app.get("/tache/listtotal/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const one = await pool.query("SELECT * FROM tache WHERE tache_id = $1", [id]);
+    const one = await pool.query("SELECT * FROM tache WHERE dossier_id = $1", [id]);
     res.status(200).json(one.rows);
   } catch (err) {
     console.error(err.message);

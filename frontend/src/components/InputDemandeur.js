@@ -20,7 +20,7 @@ const InputDemandeur = (props) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         });
-        props.changedemandeur(props.demandeur+" , "+nom);
+        //props.changedemandeur(props.demandeur+" , "+nom);
         props.changedem(props.dossier_id);
      } catch (err) {
       console.error(err.message);

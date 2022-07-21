@@ -24,6 +24,7 @@ const InputAdversaire = (props) => {
         });
         props.changeadversaire(props.adversaire+" , "+nom);
         props.changeadv(props.dossier_id);
+        console.log("advv");
      } catch (err) {
       console.error(err.message);
     }
