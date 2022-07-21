@@ -29,11 +29,7 @@ const Tache =(props)=>{
         });
   
         settaches(taches.filter(tache => tache.tache_id !== id));
-        {        console.log(tache);
-
-        const rep=props.tache.replace(`${tache}`,"");
-        props.changetache(rep);}
-        console.log(props.tache);
+     
       } catch (err) {
         console.error(err.message);
       }
@@ -85,8 +81,8 @@ return (
                     Supprimer tache
         </button>
             <InputTache
-            tache={props.tache} changetach={(e)=>gettache(e)}
-            changetache={props.changetache} dossier_id={props.idd}/>
+            changetach={(e)=>gettache(e)}
+            dossier_id={props.idd}/>
 
                 </div>
     </section>

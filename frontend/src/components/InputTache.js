@@ -27,9 +27,8 @@ const InputTache = (props) => {
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(body)
             });
-            props.changetache(props.tache+" , "+tache);
-            console.log("tach");
-            props.changetach(props.tache_id);
+            
+            props.changetach(props.dossier_id);
          } catch (err) {
           console.error(err.message);
         }

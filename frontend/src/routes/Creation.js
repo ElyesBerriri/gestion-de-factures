@@ -173,9 +173,7 @@ const Creation =()=>{
             changeadversaire={(adversaire)=>setadversaire(adversaire)} adversaire={adversaire} 
             changecalendar={(calendar)=>setCalendar(calendar)} calendar={calendar}/>
           <Taches 
-            idd={dossier_id}
-            changeatache={(tache)=>settache(tache)} tache={tache} 
-            />
+            idd={dossier_id}      />
           <Collaborateur
             changecollab_id={(collab_id)=>setcollab_id(collab_id)} collab_id={collab_id} 
             changecollab={(collab)=>setcollab(collab)} collab={collab}
