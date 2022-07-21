@@ -55,7 +55,9 @@ const Creation =()=>{
       const deleteadversaire = async id => {
         try {
           await fetch(`/adversaire/list/`, {
-            method: "DELETE"
+            method: "DELETE",            
+            headers: { "Content-Type": "application/json" },
+
           });
     
         } catch (err) {
