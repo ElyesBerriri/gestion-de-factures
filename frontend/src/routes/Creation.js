@@ -24,7 +24,6 @@ const Creation =()=>{
     const [code2,setCode2]= useState("*");
     const [observation,setObservation]= useState("*");
     const [calendar,setCalendar]= useState("*");
-    const [adversaire,setadversaire]= useState("berriri");
     const [client_id,setclient_id]= useState(0);
     const [collab_id,setcollab_id]= useState(0);
     const [client,setclient]= useState("!");
@@ -36,6 +35,8 @@ const Creation =()=>{
     const [mode_r,setmode_r]= useState("*");
     const [part_c,setpart_c]= useState(0);
     const [type_r,settype_r]= useState("*");
+    const [adversaires,setadversaires]= useState([]);
+    var adversaire = "";
 
         //tache 
 
@@ -62,6 +63,8 @@ const Creation =()=>{
 
       const onSubmitForm = async (e) => {
         if(client!=="!"){
+          adversaires.map((adv) => {adversaire+=" , "+adv.nom});
+          adversaire=adversaire.substr(3);
           e.preventDefault();
            try {
             const body = {code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r} ;
@@ -127,7 +130,7 @@ const Creation =()=>{
             changecode1={(code1)=>setCode1(code1)} code1={code1} 
             changecode2={(code2)=>setCode2(code2)} code2={code2} 
             changeobservation={(observation)=>setObservation(observation)} observation={observation} 
-            changeadversaire={(adversaire)=>setadversaire(adversaire)} adversaire={adversaire} 
+            changeadversaires={(adversaires)=>setadversaires(adversaires)} 
             changecalendar={(calendar)=>setCalendar(calendar)} calendar={calendar}/>
           <Taches />
           <Collaborateur

@@ -6,7 +6,7 @@ const InputAdversaire = (props) => {
   const [registre, setRegistre] = useState("--");
   const [adresse, setAdresse] = useState("--");
   const [adresse_d, setAdressed] = useState("--");
-  const  [avocat, setAvocat] = useState("--");
+  const [avocat, setAvocat] = useState("--");
   const [adresse_a, setAdresseav] = useState("--");
   const [dossier_id, setidd] = useState(10);
   const [brouillon, setbrouillon] = useState("oui");
@@ -22,7 +22,6 @@ const InputAdversaire = (props) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         });
-        props.changeadversaire(props.adversaire+" , "+nom);
         props.changeadv(props.dossier_id);
      } catch (err) {
       console.error(err.message);

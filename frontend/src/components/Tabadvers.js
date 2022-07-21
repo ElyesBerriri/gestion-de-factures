@@ -4,7 +4,8 @@ import React, { Fragment, useState,useEffect } from "react";
 const TabAdvers =(props)=>{
 
     const [adversaire, setadversaire] = useState([]);
-     const [nom, setnom] = useState("");
+    const [adv, setadv] = useState("--");
+    const [nom, setnom] = useState("");
     const [registre, setregistre] = useState("");
     const [adresse, setadresse] = useState("");
     const [adresse_d, setadresse_d] = useState("");
@@ -12,27 +13,27 @@ const TabAdvers =(props)=>{
     const [adresse_a, setadresse_a] = useState("");
     const [idadversaire, setIDadversaire] = useState("");
 
-    const getadversaire = async (id) => {
+    const getadversaire = async (id,a) => {
       if (id!==0){
       try {
         const response = await fetch(`/adversaire/listtotal/${id}`);
         const jsonData = await response.json();
         setadversaire(jsonData);
+        setadv(a);
+        props.changeadversaires(jsonData);
       } 
       catch (err) {
         console.error(err.message);
       }}
     };
 
-
-
     const deleteadversaire = async id => {
       try {
         await fetch(`/adversaire/list/${id}`, {
           method: "DELETE"
         });
-  
         setadversaire(adversaire.filter(adversaire => adversaire.adversaire_id !== id));
+        props.changeadversaires(adversaire.filter(adversaire => adversaire.adversaire_id !== id));
       } catch (err) {
         console.error(err.message);
       }
@@ -77,8 +78,8 @@ return (
         </button>
 
 
-        <InputAdversaire adversaire={props.adversaire} changeadv={(e)=>getadversaire(e)}
-        changeadversaire={props.changeadversaire} dossier_id={props.dossier_id} />
+        <InputAdversaire changeadv={(e,a)=>getadversaire(e,a)}
+         dossier_id={props.dossier_id} />
 
                 </div>
  
