@@ -23,6 +23,7 @@ import Timbre from './routes/Timbre';
 import Greffier from './routes/Greffier';
 import Hono from './routes/Hono';
 import Creation from './routes/Creation';
+import PDF from './components/PDF';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
               <Route path="Hono" element={<Hono />} />
               <Route path="Greffier" element={<Greffier />} />
               <Route path="Creation" element={<Creation />} />
+              <Route path="PDF" element={<PDF />} />
 
             </Routes>
           </div>
