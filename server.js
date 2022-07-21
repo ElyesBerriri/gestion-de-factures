@@ -1191,6 +1191,16 @@ app.get("/tache/listtotal/:id", async (req, res) => {
   }
 });
 
+app.get("/tache/listid/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT tache_id FROM tache WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 app.get("/tache/list/:id", async (req, res) => {
   try {
     const { id } = req.params;

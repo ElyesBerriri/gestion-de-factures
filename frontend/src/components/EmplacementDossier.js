@@ -22,6 +22,26 @@ const EmplacementDossier = () => {
     const deleteDossier = async id => {
         setRow("");
         setDoc({});
+        // delete taches
+        let taches = [];
+        try {
+            const response = await fetch(`/tache/listid/${id}`);
+            const jsonData = await response.json();
+            taches = jsonData;
+        } catch (err) {
+            console.error(err.message);
+        }
+        console.log(taches);
+        taches.map((tache)=>{
+            try {
+                fetch(`/tache/list/${tache.tache_id}`, {
+                    method: "DELETE"
+                });
+            } catch (err) {
+                console.error(err.message);
+            }
+        });
+
         try {
             await fetch(`/dossierss/list/${id}`, {
                 method: "DELETE"
