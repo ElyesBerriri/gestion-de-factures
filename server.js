@@ -1051,6 +1051,7 @@ app.put("/adversaire/list/", async (req, res) => {
 });
 
 
+//Gestion de la table qui contient les détails des dossiers//////////
 
 app.post("/dossierss/list", async (req, res) => {
   try {
@@ -1059,6 +1060,22 @@ app.post("/dossierss/list", async (req, res) => {
     "INSERT INTO dossiers (code,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20) RETURNING *",
     [`${code1}-${code2}`,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r ]);
     res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.put("/dossierss/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { emplacement } = req.body;
+    await pool.query(
+      "UPDATE dossiers SET emplacement = $1 WHERE id = $2",
+      [emplacement, id]
+    );
+
+    res.status(200).json("dossier reclassé avec succés");
   } catch (err) {
     console.error(err.message);
   }

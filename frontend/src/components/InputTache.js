@@ -45,7 +45,7 @@ const InputTache = () => {
   
         <div className="modal-body">
         <div className="container ">
-    <form  >
+    <form>
 
     <div className="row mb-3">
     <label  className="col-sm-2 col-form-label col-form-label-sm">Tache : </label>
@@ -59,14 +59,14 @@ const InputTache = () => {
  
 
     <div className="row">
-                  <div className="input-group mb-3">
+            <div className="input-group mb-3">
               <span className="input-group-text">Date critique :</span>
                <CalendarComp changecalendar={(e)=>setcritique(e)} calendar={critique}/>
-              </div>
-              </div>
+            </div>
+    </div>
 
               <div className="row">
-                  <div className="input-group mb-3">
+                <div className="input-group mb-3">
               <span className="input-group-text">Date rappel :</span>
                <CalendarComp changecalendar={(e)=>setrappel(e)} calendar={rappel}/>
               </div>
