@@ -41,7 +41,32 @@ CREATE TABLE utilisateurs(
 
 
 
-
+DROP TABLE dossiers;
+CREATE TABLE dossiers(
+  dossier_id SERIAL PRIMARY KEY,
+  code VARCHAR(255),
+  typee VARCHAR(255),
+  mission VARCHAR(255),
+  emplacement VARCHAR(255),
+  lieu VARCHAR(255),
+  numaff VARCHAR(255),
+  servicee VARCHAR(255),
+  observation VARCHAR(255),
+  calendar VARCHAR(255),
+  client VARCHAR(255),
+  tel VARCHAR(255),
+  adversaire VARCHAR(255),
+  honoraire float,
+  net float,
+  client_id INT,
+  collab_id INT,
+  parent_id INT,
+  mode_r VARCHAR(255),
+  part_c float,
+  type_r VARCHAR(255)
+);
+INSERT INTO dossiers (dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id) VALUES(20,'type1','m2','*','laba','12','*','*','17/07/2022','me','*','you',5.5,88.3,0,0,0) RETURNING *;
+INSERT INTO dossiers (dossier_id,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id) VALUES(21,'type5','m2','emp1','ladsu','72','*','*','2022','*','*','*',0,8,0,0,0) RETURNING *;
 
 
 
@@ -87,4 +112,45 @@ date_emb varchar(255),
 actif varchar(10),
 unk1 varchar(10),
 unk2 varchar(10)
+);
+
+
+
+
+CREATE TABLE dossiers(
+  dossier_id serial primary key,
+  code VARCHAR(255),
+  typee VARCHAR(255),
+  mission VARCHAR(255),
+  emplacement VARCHAR(255),
+  lieu VARCHAR(255),
+  numaff VARCHAR(255),
+  servicee VARCHAR(255),
+  observation VARCHAR(255),
+  calendar VARCHAR(255),
+  client VARCHAR(255),
+  tel VARCHAR(255),
+  adversaire VARCHAR(255),
+  honoraire float,
+  net float,
+  client_id INT,
+  collab_id INT,
+  parent_id INT
+);
+
+CREATE TABLE tache(
+    tache_id SERIAL PRIMARY KEY,
+    dossier_id int,
+    tache VARCHAR(255),
+    datec VARCHAR(255),
+    dater VARCHAR(255),
+    resolu VARCHAR(255),
+    course VARCHAR(255),
+    lieu VARCHAR(255),
+    service VARCHAR(255),
+    dateaud VARCHAR(255),
+    dateech VARCHAR(255),
+    greffier VARCHAR(255),
+    personnech VARCHAR(255),
+    brouillon VARCHAR(255)
 );

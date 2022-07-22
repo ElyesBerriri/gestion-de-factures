@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 function Nav() {
   const [navLinks, setNavLinks] = useState([]);
   const [navLinks1, setNavLinks1] = useState([]);
+  const [navLinks2, setNavLinks2] = useState([]);
   const [params, setParams] = useState([]);
   const [timbreFiscale,setTimbreFiscale] = useState(0);
   const [tauxTVA,setTauxTVA] = useState(0);
@@ -19,18 +20,22 @@ function Nav() {
       {name:"Utilisateurs", path:"/utilisateurs"},
       {name:"Primes", path:"/primes"},
       {name:"Types de dossiers", path:"/type_dossiers"},
-
       {name:"RecetteFinance", path:"/RecetteFinance"},
       {name:"Timbre", path:"/Timbre"},
       {name:"Honoraire en extra", path:"/Hono"},
-      {name:"Greffier", path:"/Greffier"}
-      
+      {name:"Greffier", path:"/Greffier"},
+
     ];
     const navs1 = [
       { name: "Clients", path: "/clients" }
     ];
+    const navs2 = [
+      {name:"Emplacement Dossier", path:"/EmplacementDossier"},
+      {name:"Creation", path:"/Creation"}
+    ];
     setNavLinks(navs);
     setNavLinks1(navs1);
+    setNavLinks2(navs2);
     getParams();
   }, []);
 
@@ -67,20 +72,20 @@ function Nav() {
   return (
     <>
       <div className="d-flex justify-content-center">
-          <a class="navbar-brand" href="/">Accueil</a>
-          <div class="btn-group">
+          <a className="navbar-brand" href="/">Accueil</a>
+          <div className="btn-group">
             <button
               type="button"
-              class="btn btn-primary dropdown-toggle"
+              className="btn btn-primary dropdown-toggle"
               data-bs-toggle="dropdown"
               data-bs-display="static"
               aria-expanded="false"
             >
               Parametres
             </button>
-            <ul class="dropdown-menu dropdown-menu-end">
+            <ul className="dropdown-menu dropdown-menu-end">
               <li>
-                <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                <button type="button" className="dropdown-item" data-bs-toggle="modal"
                   data-bs-target="#params" onClick={()=>{
                     setTimbreFiscale(params[0].timbre);
                     setTauxTVA(params[0].tva);
@@ -95,7 +100,7 @@ function Nav() {
                 <li key={i}>
                   
                   <Link to={d.path}>
-                    <button class="dropdown-item" type="button">
+                    <button className="dropdown-item" type="button">
                       {d.name}
                     </button>
                   </Link> 
@@ -104,14 +109,14 @@ function Nav() {
               ))}
             </ul>
           </div>
-          <div class="modal fade" id="params" data-bs-backdrop="static">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Mise à jour des Paramétres</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" />
+          <div className="modal fade" id="params" data-bs-backdrop="static">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h4 className="modal-title">Mise à jour des Paramétres</h4>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" />
                 </div>
-                <div class="modal-body">
+                <div className="modal-body">
                   <div className="row">
                     <label className="col-form-label">
                       Timbre Fiscale
@@ -157,30 +162,52 @@ function Nav() {
                     </label>
                   </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
                     onClick={e => updateParams(e)} >Valider</button>
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                  <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
                   >Fermer</button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="btn-group">
+          <div className="btn-group">
             <button
               type="button"
-              class="btn btn-primary dropdown-toggle"
+              className="btn btn-primary dropdown-toggle"
               data-bs-toggle="dropdown"
               data-bs-display="static"
               aria-expanded="false"
             >
               Clients
             </button>
-            <ul class="dropdown-menu dropdown-menu-end">
+            <ul className="dropdown-menu dropdown-menu-end">
               {navLinks1.map((d, i) => (
                 <li key={i}>
                   <Link to={d.path}>
-                    <button class="dropdown-item" type="button">
+                    <button className="dropdown-item" type="button">
+                      {d.name}
+                    </button>
+                  </Link> 
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="btn-group">
+            <button
+              type="button"
+              className="btn btn-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-expanded="false"
+            >
+              Dossiers
+            </button>
+            <ul className="dropdown-menu dropdown-menu-end">
+              {navLinks2.map((d, i) => (
+                <li key={i}>
+                  <Link to={d.path}>
+                    <button className="dropdown-item" type="button">
                       {d.name}
                     </button>
                   </Link> 

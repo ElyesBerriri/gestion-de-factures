@@ -38,10 +38,10 @@ const ListClient = () => {
             className="search "
             placeholder="Recherche .."
             onChange={(e) => setQuery(e.target.value.toLowerCase())} />
-          <Link to={"/InputClient"}>
+          <Link to={"/InputClient"} >
             <button className="btn btn-success">Ajouter un client</button>
           </Link>
-          <table class="table table-hover mt-2 text-center">
+          <table rowEvent class="table table-hover mt-2 text-center">
             <thead  class="table-dark">
               <tr className="bg-primary">
                 <th scope="col">Id</th>

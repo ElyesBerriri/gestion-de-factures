@@ -112,16 +112,16 @@ app.get("/utilisateurs/list", async (req, res) => {
     console.error(err.message);
   }
 });
-
+*/
 app.get("/collaborateurs/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const allColab = await pool.query("SELECT * from collaborateurs where nom=$1",[id]);
-    res.status(200).json(allColab.rows);
+    const allColab = await pool.query("SELECT * from collaborateurs where collab_id = $1",[id]);
+    res.status(200).json(allColab.rows[0]);
   } catch (err) {
     console.error(err.message);
   }
-});*/
+});
 
 // get a utilisateur
 app.get("/utilisateurs/list/:id", async (req, res) => {
@@ -354,6 +354,26 @@ app.get("/clients/list", async (req, res) => {
   }
 });
 
+ 
+
+//For Mayssa
+app.get("/clients/list/creation", async (req, res) => {
+  try {
+    const { q } = req.query;
+    const keys = ["collaborateur","code_client"];
+    const allclients = await pool.query("SELECT * from clients");
+    const rows = allclients.rows;
+    const search = (data) => {
+      return data.filter((item) =>
+        keys.some((key) => item[key].toString().toLowerCase().includes(q))
+      );
+    };
+    q ? res.json(search(rows)) : res.json(rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 // get a client
 app.get("/clients/list/:id", async (req, res) => {
   try {
@@ -362,6 +382,15 @@ app.get("/clients/list/:id", async (req, res) => {
       id,
     ]);
     res.status(200).json(client.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+app.get("/clients/list2/", async (req, res) => {
+  try {
+    const { q } = req.query;
+    const numberclients = await pool.query(`SELECT code_client FROM clients WHERE code_client LIKE '%${q}' ORDER BY code_client DESC LIMIT 1`);
+    (numberclients.rows.length>0) ? res.status(200).json(numberclients.rows[0].code_client.substr(0,numberclients.rows[0].code_client.search("/"))) : res.status(200).json("-1");
   } catch (err) {
     console.error(err.message);
   }
@@ -840,6 +869,26 @@ app.get("/collaborateurs/list", async (req, res) => {
   }
 });
 
+app.get("/collaborateurs/list2", async (req, res) => {
+  try {
+    const { q } = req.query;
+    const keys = ["nom"];
+    const allColab = await pool.query("SELECT * from collaborateurs");
+    const rows = allColab.rows;
+
+    const search = (data) => {
+    return data.filter((item) =>
+      keys.some((key) => item[key].toString().toLowerCase().includes(q))
+    );
+  };
+
+  q ? res.json(search(rows)) : res.json(rows);
+
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 app.put("/services/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -920,6 +969,347 @@ app.put("/parametres/list/:id", async (req, res) => {
     console.error(err.message);
   }
 });
+
+
+
+app.post("/adversaire/list", async (req, res) => {
+  try {
+    const { dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a,brouillon} = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO adversaires (dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a,brouillon) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",
+    [dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a,brouillon]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/adversaire/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from adversaires");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.delete("/adversaire/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM adversaires WHERE adversaire_id = $1", [
+      id,
+    ]);
+    res.status(200).json("adversaire was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.delete("/adversaire/list/", async (req, res) => {
+  try {
+    await pool.query("DELETE FROM adversaires WHERE brouillon = $1", [
+      "oui",
+    ]);
+    res.status(200).json("adversaire was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/adversaire/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT nom FROM adversaires WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/adversaire/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM adversaires WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.put("/adversaire/list/", async (req, res) => {
+  try {
+    await pool.query(
+      `UPDATE adversaires SET brouillon=$1 WHERE brouillon = $2`,
+      ["non","oui"]
+    );
+
+    res.status(200).json("service was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+//demandeurs
+
+app.get("/demandeurs/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from demandeurs");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/demandeurs/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM demandeurs WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/demandeurs/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT nom FROM demandeurs WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/demandeurs/list/", async (req, res) => {
+  try {
+    await pool.query("DELETE FROM demandeurs WHERE brouillon = $1", [
+      "oui",
+    ]);
+    res.status(200).json("demandeurs was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/demandeurs/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM demandeurs WHERE demandeur_id = $1", [
+      id,
+    ]);
+    res.status(200).json("demandeur was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.post("/demandeurs/list", async (req, res) => {
+  try {
+    const { dossier_id,nom,CIN,adresse,adresse_d,tel,fax,brouillon} = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO demandeurs (dossier_id,nom,CIN,adresse,adresse_d,tel,fax,brouillon) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",
+    [dossier_id,nom,CIN,adresse,adresse_d,tel,fax,brouillon]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.put("/demandeurs/list/", async (req, res) => {
+  try {
+    await pool.query(
+      `UPDATE demandeurs SET brouillon=$1 WHERE brouillon = $2`,
+      ["non","oui"]
+    );
+
+    res.status(200).json("demandeur was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+//tache
+app.put("/tache/list/", async (req, res) => {
+  try {
+    await pool.query(
+      `UPDATE tache SET brouillon=$1 WHERE brouillon = $2`,
+      ["non","oui"]
+    );
+
+    res.status(200).json("tache was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.post("/tache/list", async (req, res) => {
+  try {
+    const { dossier_id,tache,datec,dater,resolu,course,lieu,service,dateaud,dateech,greffier,personnech,brouillon} = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO tache (dossier_id,tache,datec,dater,resolu,course,lieu,service,dateaud,dateech,greffier,personnech,brouillon) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) RETURNING *",
+    [dossier_id,tache,datec,dater,resolu,course,lieu,service,dateaud,dateech,greffier,personnech,brouillon]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/tache/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM tache WHERE tache_id = $1", [
+      id,
+    ]);
+    res.status(200).json("tache was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/tache/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from tache");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/tache/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM tache WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/tache/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT tache FROM tache WHERE tache_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/tache/list/", async (req, res) => {
+  try {
+    await pool.query("DELETE FROM tache WHERE brouillon = $1", [
+      "oui",
+    ]);
+    res.status(200).json("tache was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.post("/dossierss/list", async (req, res) => {
+  try {
+    const { code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r } = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO dossiers (code,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20) RETURNING *",
+    [`${code1}-${code2}`,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r ]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/dossierss/list", async (req, res) => {
+  try {
+    const { q } = req.query;
+    const keys = ["dossier_id","numaff","emplacement","client","tel","mission","adversaire"];
+    const allclients = await pool.query("SELECT * from dossiers");
+    const rows = allclients.rows;
+    const search = (data) => {
+      return data.filter((item) =>
+        keys.some((key) => item[key].toString().toLowerCase().includes(q))
+      );
+    };
+    q ? res.json(search(rows)) : res.json(rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/dossierss/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM dossiers WHERE dossier_id = $1", [
+      id,
+    ]);
+    res.status(200).json("dossier was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/dossierss/list/number", async (req, res) => {
+  try {
+    const numberclients = await pool.query("SELECT dossier_id FROM dossiers ORDER BY dossier_id DESC LIMIT 1");
+    res.status(200).json(numberclients.rows[0].dossier_id);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.get("/dossierss/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from dossiers");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.get("/dossierss/list/recherche/one/", async (req, res) => {
+  try {
+    const { q } = req.query;
+    const keys = ["dossier_id"];
+    const allclients = await pool.query("SELECT * from dossiers");
+    const rows = allclients.rows;
+    const search = (data) => {
+      return data.filter((item) =>
+        keys.some((key) => item[key].toString().toLowerCase().includes(q))
+      );
+    };
+    q ? res.json(search(rows)) : res.json(rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.get("/dossierss/list/recherche/", async (req, res) => {
+  try {
+    const { q,p } = req.query;
+    const keys = [p];
+    const allclients = await pool.query("SELECT * from dossiers");
+    const rows = allclients.rows;
+    const search = (data) => {
+      return data.filter((item) =>
+        keys.some((key) => item[key].toString().toLowerCase().includes(q))
+      );
+    };
+    q ? res.json(search(rows)) : res.json(rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend/build/index.html"));
