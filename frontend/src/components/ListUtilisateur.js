@@ -3,7 +3,7 @@ import EditUtilisateurs from "./EditUtilisateurs";
 
 const ListUtilisateur = () => {
   const [users, setUsers] = useState([]);
-  const [user,setUser] = useState({});
+  const [user,setUser] = useState({"login":"","pwd":"","domaine":""});
   const [row,setRow] = useState("");
 
   const deleteUser = async id => {
