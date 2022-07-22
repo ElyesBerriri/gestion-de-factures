@@ -3,8 +3,12 @@ import EditUtilisateurs from "./EditUtilisateurs";
 
 const ListUtilisateur = () => {
   const [users, setUsers] = useState([]);
+  const [user,setUser] = useState({});
+  const [row,setRow] = useState("");
 
   const deleteUser = async id => {
+    setRow("");
+    setUser({});
     try {
       await fetch(`/utilisateurs/list/${id}`, {
         method: "DELETE"
@@ -34,32 +38,34 @@ const ListUtilisateur = () => {
   return (
     <>
       {" "}
+      <EditUtilisateurs user={user} />
+                <button
+                    className="btn btn-danger"
+                    onClick={() => {(row!=="") ? deleteUser(user.utilisateur_id) : alert("Vous devez choisir un dossier");}}>
+                    Supprimer
+                </button>
       <table className="table table table-hover mt-5 text-center">
         <thead  className="table-dark">
           <tr>
             <th>Login</th>
             <th>PWD</th>
             <th>Domaine</th>
-            <th>Modifier</th>
-            <th>Supprimer</th>
           </tr>
         </thead>
         <tbody>
           {users.map(user => (
-            <tr key={user.utilisateur_id}>
+            <tr key={user.utilisateur_id} id={`u${user.utilisateur_id}`} onClick={()=>{
+              let e = document.getElementById(`u${user.utilisateur_id}`);
+              if(e.className !== "table-primary"){
+                  if(row!=="") document.getElementById(row).className = "";
+                  e.className = "table-primary";
+                  setRow(`u${user.utilisateur_id}`);
+                  setUser(user);
+              }
+          }}>
               <td>{user.login}</td>
               <td>{user.pwd}</td>
               <td>{user.domaine}</td>
-              <td>
-                <EditUtilisateurs user={user} />
-              </td>
-              <td>
-              <button
-                className="btn btn-danger"
-                onClick={() => deleteUser(user.utilisateur_id)}>
-                  Supprimer
-              </button>
-              </td>
             </tr>
           ))}
         </tbody>
