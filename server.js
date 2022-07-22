@@ -1051,7 +1051,170 @@ app.put("/adversaire/list/", async (req, res) => {
 });
 
 
+
 //Gestion de la table qui contient les détails des dossiers//////////
+
+//demandeurs
+
+app.get("/demandeurs/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from demandeurs");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/demandeurs/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM demandeurs WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/demandeurs/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT nom FROM demandeurs WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/demandeurs/list/", async (req, res) => {
+  try {
+    await pool.query("DELETE FROM demandeurs WHERE brouillon = $1", [
+      "oui",
+    ]);
+    res.status(200).json("demandeurs was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/demandeurs/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM demandeurs WHERE demandeur_id = $1", [
+      id,
+    ]);
+    res.status(200).json("demandeur was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.post("/demandeurs/list", async (req, res) => {
+  try {
+    const { dossier_id,nom,CIN,adresse,adresse_d,tel,fax,brouillon} = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO demandeurs (dossier_id,nom,CIN,adresse,adresse_d,tel,fax,brouillon) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",
+    [dossier_id,nom,CIN,adresse,adresse_d,tel,fax,brouillon]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.put("/demandeurs/list/", async (req, res) => {
+  try {
+    await pool.query(
+      `UPDATE demandeurs SET brouillon=$1 WHERE brouillon = $2`,
+      ["non","oui"]
+    );
+
+    res.status(200).json("demandeur was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+//tache
+app.put("/tache/list/", async (req, res) => {
+  try {
+    await pool.query(
+      `UPDATE tache SET brouillon=$1 WHERE brouillon = $2`,
+      ["non","oui"]
+    );
+
+    res.status(200).json("tache was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.post("/tache/list", async (req, res) => {
+  try {
+    const { dossier_id,tache,datec,dater,resolu,course,lieu,service,dateaud,dateech,greffier,personnech,brouillon} = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO tache (dossier_id,tache,datec,dater,resolu,course,lieu,service,dateaud,dateech,greffier,personnech,brouillon) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) RETURNING *",
+    [dossier_id,tache,datec,dater,resolu,course,lieu,service,dateaud,dateech,greffier,personnech,brouillon]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/tache/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM tache WHERE tache_id = $1", [
+      id,
+    ]);
+    res.status(200).json("tache was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/tache/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from tache");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/tache/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM tache WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/tache/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT tache FROM tache WHERE tache_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/tache/list/", async (req, res) => {
+  try {
+    await pool.query("DELETE FROM tache WHERE brouillon = $1", [
+      "oui",
+    ]);
+    res.status(200).json("tache was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 
 app.post("/dossierss/list", async (req, res) => {
   try {

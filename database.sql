@@ -59,3 +59,16 @@ CREATE TABLE servicess(
       adresse_a varchar(255),
       brouillon varchar(255)
       );
+
+      
+      CREATE TABLE demandeurs(
+      demandeur_id serial PRIMARY KEY,
+      dossier_id int,
+      nom varchar(255),
+      CIN varchar(255),
+      adresse varchar(255),
+      adresse_d varchar(255),
+      tel varchar(255),
+      fax varchar(255),
+      brouillon varchar(255)
+      );

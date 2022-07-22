@@ -5,6 +5,8 @@ const EmplacementDossier = () => {
     const [query, setQuery] = useState("");
     const [emplacement,setEmplacement] = useState("Tous");
     const [emplacements, setEmplacements] = useState([]);
+    const [row,setRow] = useState("");
+    const [doc,setDoc] = useState({});
 
     const getemp = async () => {
         try {
@@ -18,6 +20,8 @@ const EmplacementDossier = () => {
 
 
     const deleteDossier = async id => {
+        setRow("");
+        setDoc({});
         try {
             await fetch(`/dossierss/list/${id}`, {
                 method: "DELETE"
@@ -54,6 +58,24 @@ const EmplacementDossier = () => {
                     {emplacements.map(emp => (<option value={emp.libelle}>{emp.libelle}</option>))}
                 </select>
             </div>
+            <div class="mb-3">
+                <button
+                    className="btn btn-danger"
+                    onClick={() => {(row!=="") ? deleteDossier(doc.dossier_id) : alert("Tu dois choisir un dossier");}}>
+                    Supprimer
+                </button>
+                <button
+                    className="btn btn-warning"  >
+                    Transférer
+                </button>
+                <button
+                    className="btn btn-danger" >
+                    Libérer
+                </button>
+                <Link to="/PDF" state={{ from: doc }} >
+                <button className="btn btn-success" >Imprimer</button>
+                </Link>
+            </div>
             <input
                 className="search "
                 placeholder="Recherche .."
@@ -68,15 +90,19 @@ const EmplacementDossier = () => {
                         <th scope="col">tel</th>
                         <th scope="col">mission</th>
                         <th scope="col">adversaire</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {dossiers.map(dossier => {if(emplacement=="Tous" || emplacement==dossier.emplacement) return(
-                        <tr key={dossier.dossier_id}>
+                        <tr key={dossier.dossier_id} id={`doc${dossier.dossier_id}`} onClick={()=>{
+                            let e = document.getElementById(`doc${dossier.dossier_id}`);
+                            if(e.className !== "table-primary"){
+                                if(row!=="") document.getElementById(row).className = "";
+                                e.className = "table-primary";
+                                setRow(`doc${dossier.dossier_id}`);
+                                setDoc(dossier);
+                            }
+                        }}>
                             <td>{dossier.dossier_id}</td>
                             <td>{dossier.numaff}</td>
                             <td>{dossier.emplacement}</td>
@@ -84,30 +110,6 @@ const EmplacementDossier = () => {
                             <td>{dossier.tel}</td>
                             <td>{dossier.mission}</td>
                             <td>{dossier.adversaire}</td>
-                            <td>
-                                <button
-                                    className="btn btn-danger"
-                                    onClick={() => deleteDossier(dossier.dossier_id)}>
-                                    Supprimer
-                                </button>
-                            </td>
-                            <td>
-                                <button
-                                    className="btn btn-warning" >
-                                    Transférer
-                                </button>
-                            </td>
-                            <td>
-                                <button
-                                    className="btn btn-danger" >
-                                    Libérer
-                                </button>
-                            </td>
-                            <td>
-                                <Link to="/PDF" state={{ from: dossier }} >
-                                <button className="btn btn-success">Imprimer</button>
-                                </Link>
-                            </td>
                         </tr>
                     )})}
                 </tbody>
