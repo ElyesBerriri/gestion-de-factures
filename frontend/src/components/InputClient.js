@@ -72,9 +72,9 @@ const InputClient = () => {
     return (
     <div className="container mt-5">
         <form>
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label col-form-label-sm">Collaborateur</label>
-                <select class="form-select" aria-label="Default select example" 
+            <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-sm">Collaborateur</label>
+                <select className="form-select" aria-label="Default select example" 
                     onChange={e => setCollaborateur(e.target.options[e.target.selectedIndex].value)}>
                     <option value="--" selected>--</option>
                     {collab.map(collab => (<option value={collab.nom}>{collab.nom}</option>))}
@@ -82,20 +82,20 @@ const InputClient = () => {
             </div>
 
             <div className="input-group mb-3">
-                <label class="col-sm-2 col-form-label col-form-label-sm">Code Client</label>
+                <label className="col-sm-2 col-form-label col-form-label-sm">Code Client</label>
                 <input type="number" className="form-control form-control-sm" id="code1client" 
                     disabled value={code_client1}
                     onChange={e => {
                         setCode_client1(e.target.value);
                         setCode_client(e.target.value+"/"+code_client2);
                     }} />
-                <span class="input-group-text">/</span>
+                <span className="input-group-text">/</span>
                 <input type="text" className="form-control form-control-sm"
                     placeholder="code client" value={code_client2}
                     onChange={e => {
                         setCode_client2(e.target.value.trim());
                     }} />
-                <div class="form-check m-2">
+                <div className="form-check m-2">
                     <input className="form-check-input" type="checkbox" id="manuel"
                     onChange={() => {
                         if(document.getElementById("code1client").disabled)
@@ -103,26 +103,26 @@ const InputClient = () => {
                         else
                             document.getElementById("code1client").disabled = true;
                     }} />
-                    <label class="form-check-label" for="manuel">
+                    <label className="form-check-label" for="manuel">
                         Manuel
                     </label>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label col-form-label-sm">Raison</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm"
+            <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-sm">Raison</label>
+                <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-sm"
                     value={raison} 
                     onChange={e => setRaison(e.target.value)}/>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label col-form-label-sm">Situation Fiscale</label>
-                <div class="form-check">
-                    <label class="form-check-label" >
-                        <input class="form-check-input" type="radio" name="situationfiscale"
+            <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-sm">Situation Fiscale</label>
+                <div className="form-check">
+                    <label className="form-check-label" >
+                        <input className="form-check-input" type="radio" name="situationfiscale"
                         value="Non Assujetie"
                         onChange={e => {
                             if(e.target.checked)
@@ -131,9 +131,9 @@ const InputClient = () => {
                         Non Assujetie
                     </label>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="situationfiscale"
+                <div className="form-check">
+                    <label className="form-check-label">
+                        <input className="form-check-input" type="radio" name="situationfiscale"
                         value="Assujetie"
                         onChange={e => {
                             if(e.target.checked)
@@ -142,9 +142,9 @@ const InputClient = () => {
                         Assujetie
                     </label>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="situationfiscale"
+                <div className="form-check">
+                    <label className="form-check-label">
+                        <input className="form-check-input" type="radio" name="situationfiscale"
                         value="Exonoré"
                         onChange={e => {
                             if(e.target.checked)
@@ -155,11 +155,11 @@ const InputClient = () => {
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label col-form-label-sm">Type Client</label>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="typeclient"
+            <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-sm">Type Client</label>
+                <div className="form-check">
+                    <label className="form-check-label">
+                        <input className="form-check-input" type="radio" name="typeclient"
                         value="Personne Physique"
                         onChange={e => {
                             if(e.target.checked)
@@ -168,9 +168,9 @@ const InputClient = () => {
                         Personne Physique
                     </label>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="typeclient"
+                <div className="form-check">
+                    <label className="form-check-label">
+                        <input className="form-check-input" type="radio" name="typeclient"
                         value="Personne Morale"
                         onChange={e => {
                             if(e.target.checked)
@@ -181,106 +181,106 @@ const InputClient = () => {
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Matricule</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
+            <div className="row mb-3">
+                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Matricule</label>
+                <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="matricule"
                     value={matricule}
                     onChange={e => setMatricule(e.target.value)}/>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Ville</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
+            <div className="row mb-3">
+                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Ville</label>
+                <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="ville"
                     value={ville}
                     onChange={e => setVille(e.target.value)}/>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Rue</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
+            <div className="row mb-3">
+                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Rue</label>
+                <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="rue"
                     value={rue}
                     onChange={e => setRue(e.target.value)}/>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Numéro</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control form-control-sm" id="colFormLabelSm" 
+            <div className="row mb-3">
+                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Numéro</label>
+                <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="numéro"
                     value={num}
                     onChange={e => setNum(e.target.value)}/>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Code Postale</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control form-control-sm" id="colFormLabelSm" 
+            <div className="row mb-3">
+                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Code Postale</label>
+                <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="code postale"
                     value={code_postale}
                     onChange={e => setCode_postale(e.target.value)}/>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Adresse</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+            <div className="row mb-3">
+                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Adresse</label>
+                <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-sm" id="colFormLabelSm"
                     placeholder="adresse"
                     value={adresse}
                     onChange={e => setAdresse(e.target.value)}/>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Activité</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+            <div className="row mb-3">
+                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Activité</label>
+                <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-sm" id="colFormLabelSm"
                     placeholder="activité"
                     value={activite}
                     onChange={e => setActivite(e.target.value)}/>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Téléphone</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
+            <div className="row mb-3">
+                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Téléphone</label>
+                <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="téléphone"
                     value={tel}
                     onChange={e => setTel(e.target.value)}/>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Fax</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" 
+            <div className="row mb-3">
+                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Fax</label>
+                <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="fax"
                     value={fax}
                     onChange={e => setFax(e.target.value)}/>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
-                <div class="col-sm-10">
-                    <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
+            <div className="row mb-3">
+                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Email</label>
+                <div className="col-sm-10">
+                    <input type="email" className="form-control form-control-sm" id="colFormLabelSm"
                     placeholder="email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}/>
                 </div>
             </div>
-            <button onClick={onSubmitForm} type="submit" class="btn btn-primary">Ajouter</button>
+            <button onClick={onSubmitForm} type="submit" className="btn btn-primary">Ajouter</button>
         </form>
     </div>
     );

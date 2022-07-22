@@ -26,28 +26,28 @@ const EditTrib = ({trib}) => {
     return (
       <Fragment>
         
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+  <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
   data-bs-target={`#id${trib.trib_id}`}>
     Modifier
   </button>
   
    
-  <div class="modal"
+  <div className="modal"
   onClick={() => setlieux(trib.lieux)}
    id={`id${trib.trib_id}`}>
-    <div class="modal-dialog">
-      <div class="modal-content">
+    <div className="modal-dialog">
+      <div className="modal-content">
   
      
-        <div class="modal-header">
-          <h4 class="modal-title">Modification de tribunal</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"
+        <div className="modal-header">
+          <h4 className="modal-title">Modification de tribunal</h4>
+          <button type="button" className="btn-close" data-bs-dismiss="modal"
             onClick={() => setlieux(trib.lieux)}
           ></button>
         </div>
   
       
-        <div class="modal-body">
+        <div className="modal-body">
                 <input
                   type="text"
                   className="form-control"
@@ -57,11 +57,11 @@ const EditTrib = ({trib}) => {
               </div>
   
         
-        <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+        <div className="modal-footer">
+        <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
         onClick={e => updatelieux(e)}
         >Valider</button>
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+          <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
           onClick={() => setlieux(trib.lieux)}
           >Fermer</button>
         </div>

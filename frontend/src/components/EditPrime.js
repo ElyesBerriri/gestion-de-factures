@@ -28,7 +28,7 @@ const EditPrime = ({prime}) => {
 
   return (
     <>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+      <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
       data-bs-target={`#id${prime.id}`}
       onClick={() => {
         setLibelle(prime.libelle);
@@ -39,15 +39,15 @@ const EditPrime = ({prime}) => {
       }}>
         Modifier
       </button>
-      <div class="modal fade" id={`id${prime.id}`} data-bs-backdrop="static">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Modification d'une prime</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal">
+      <div className="modal fade" id={`id${prime.id}`} data-bs-backdrop="static">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">Modification d'une prime</h4>
+              <button type="button" className="btn-close" data-bs-dismiss="modal">
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <div className="row">
                 <label className="col-form-label">
                   Libellé
@@ -70,8 +70,8 @@ const EditPrime = ({prime}) => {
                     onChange={e => setMontant(e.target.value)} />
                 </label>
               </div>
-              <div class="form-check mt-3">
-                <label class="form-check-label">
+              <div className="form-check mt-3">
+                <label className="form-check-label">
                   <input className="form-check-input" type="checkbox"
                     checked = {dissociable}
                     onChange={e => {
@@ -81,8 +81,8 @@ const EditPrime = ({prime}) => {
                     Dissociable
                 </label>
               </div>
-              <div class="form-check">
-                <label class="form-check-label">
+              <div className="form-check">
+                <label className="form-check-label">
                   <input className="form-check-input" type="checkbox"
                     checked = {impot}
                     onChange={e => {
@@ -92,8 +92,8 @@ const EditPrime = ({prime}) => {
                   Impot
                 </label>
               </div>
-              <div class="form-check">
-                <label class="form-check-label">
+              <div className="form-check">
+                <label className="form-check-label">
                   <input className="form-check-input" type="checkbox"
                     checked = {mensuel}
                     onChange={e => {
@@ -104,10 +104,10 @@ const EditPrime = ({prime}) => {
                 </label>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
               onClick={e => updatePrime(e)}>Valider</button>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+              <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
               >Fermer</button>
             </div>
           </div>

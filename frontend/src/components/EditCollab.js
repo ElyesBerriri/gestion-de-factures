@@ -40,7 +40,7 @@ const EditCollab = ({collab}) => {
   return (
     <Fragment>
       
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+<button type="button" className="btn btn-primary" data-bs-toggle="modal" 
 data-bs-target={`#id${collab.collab_id}`}
 onClick={() => {setnom(collab.nom);
   setcin(collab.cin);
@@ -61,21 +61,21 @@ onClick={() => {setnom(collab.nom);
 </button>
 
  
-<div class="modal"
+<div className="modal"
 
  id={`id${collab.collab_id}`}>
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <div className="modal-dialog">
+    <div className="modal-content">
 
    
-      <div class="modal-header">
-        <h4 class="modal-title">Modification de collaborateur</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"
+      <div className="modal-header">
+        <h4 className="modal-title">Modification de collaborateur</h4>
+        <button type="button" className="btn-close" data-bs-dismiss="modal"
         ></button>
       </div>
 
     
-      <div class="modal-body">
+      <div className="modal-body">
               <div className="d-flex">
               <label>Nom:</label>
               <input
@@ -206,11 +206,11 @@ onClick={() => {setnom(collab.nom);
             </div>
 
       
-      <div class="modal-footer">
-      <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+      <div className="modal-footer">
+      <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
       onClick={e => updateCollab(e)}
       >Valider</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+        <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
         onClick={() => {setnom(collab.nom);
           setcin(collab.cin);
           setville(collab.ville);

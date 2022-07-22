@@ -41,8 +41,8 @@ const ListClient = () => {
           <Link to={"/InputClient"} >
             <button className="btn btn-success">Ajouter un client</button>
           </Link>
-          <table rowEvent class="table table-hover mt-2 text-center">
-            <thead  class="table-dark">
+          <table className="table table-hover mt-2 text-center">
+            <thead  className="table-dark">
               <tr className="bg-primary">
                 <th scope="col">Id</th>
                 <th scope="col">Collaborateur</th>

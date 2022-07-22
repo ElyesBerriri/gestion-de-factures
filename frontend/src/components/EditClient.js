@@ -37,7 +37,7 @@ const EditClient = ({client}) => {
         console.error(err.message);
       }
     } else {
-      alert("hhh");
+      alert("Tu dois entrer un code client");
     }
   };
 
@@ -45,7 +45,6 @@ const EditClient = ({client}) => {
     try {
       const response = await fetch("/collaborateurs/list");
       const jsonData = await response.json();
-      
       setCollab(jsonData);
     } catch (err) {
       console.error(err.message);
@@ -122,26 +121,29 @@ const EditClient = ({client}) => {
             <div className="modal-body">
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Collaborateur :</span>
-                    <select class="form-select" aria-label="Default select example"
+                    <span className="input-group-text">Collaborateur :</span>
+                    <select className="form-select" aria-label="Default select example"
                       onChange={e => setCollaborateur(e.target.options[e.target.selectedIndex].value)}>
                       {collab.map(collab => {
                         if (collab.nom===client.collaborateur)
-                          return (<option value={collab.nom} selected id={"collabSelector"+client.client_id} onLoad={() => setSelectTest(true)}>{collab.nom}</option> )
+                          return (<option value={collab.nom} defaultChecked 
+                            id={"collabSelector"+client.client_id} key={`cs${collab.collab_id}`}
+                            onLoad={() => setSelectTest(true)}>{collab.nom}</option> )
                         else
-                          return (<option value={collab.nom}>{collab.nom}</option>)
+                          return (<option value={collab.nom} key={`cs${collab.collab_id}`}>{collab.nom}</option>)
                       })}
-                      {(selectTest===false) ? <option value="--" selected id={"collabSelector"+client.client_id}>--</option> : <option value="--">--</option>}
+                      {(selectTest===false) ? <option value="--" defaultChecked 
+                      id={"collabSelector"+client.client_id} key={'cs0'}>--</option> : <option value="--">--</option>}
                     </select>
                   </div>
               </div>
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Code Client :</span>
+                    <span className="input-group-text">Code Client :</span>
                     <input type="text" className="form-control" disabled
                         value={code_client.substr(0,code_client.search("/"))} />
-                    <span class="input-group-text">/</span>
+                    <span className="input-group-text">/</span>
                     <input type="text" className="form-control"
                         placeholder="code client"
                         defaultValue={code_client.substr(code_client.search("/")+1)}
@@ -153,7 +155,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Raison :</span>
+                    <span className="input-group-text">Raison :</span>
                     <input type="text" className="form-control" 
                         placeholder="raison"
                         value={raison}
@@ -224,7 +226,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Matricule :</span>
+                    <span className="input-group-text">Matricule :</span>
                     <input type="text" className="form-control"
                         placeholder="matricule"
                         value={matricule}
@@ -234,7 +236,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Ville :</span>
+                    <span className="input-group-text">Ville :</span>
                     <input type="text" className="form-control" 
                         placeholder="ville"
                         value={ville}
@@ -244,7 +246,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Rue :</span>
+                    <span className="input-group-text">Rue :</span>
                     <input type="text" className="form-control"
                       placeholder="rue"
                       value={rue}
@@ -254,7 +256,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Numéro :</span>
+                    <span className="input-group-text">Numéro :</span>
                     <input type="number" className="form-control"
                       placeholder="numéro"
                       value={num}
@@ -264,7 +266,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Code Postale :</span>
+                    <span className="input-group-text">Code Postale :</span>
                     <input type="number" className="form-control"
                       placeholder="code postale"
                       value={code_postale}
@@ -274,7 +276,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Adresse :</span>
+                    <span className="input-group-text">Adresse :</span>
                     <input type="text" className="form-control"
                       placeholder="adresse"
                       value={adresse}
@@ -284,7 +286,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Activité :</span>
+                    <span className="input-group-text">Activité :</span>
                     <input type="text" className="form-control"
                         placeholder="activité"
                         value={activite}
@@ -294,7 +296,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Téléphone :</span>
+                    <span className="input-group-text">Téléphone :</span>
                     <input type="text" className="form-control"
                       placeholder="téléphone"
                       value={tel}
@@ -304,7 +306,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Fax :</span>
+                    <span className="input-group-text">Fax :</span>
                     <input type="text" className="form-control"
                       placeholder="fax"
                       value={fax}
@@ -314,7 +316,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span class="input-group-text">Email :</span>
+                    <span className="input-group-text">Email :</span>
                     <input type="email" className="form-control"
                       placeholder="email"
                       value={email}
