@@ -1,7 +1,7 @@
 import React, { useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
 import EditClient from "./EditClient";
-
+import "../style.css";
 const ListClient = () => {
     const [clients, setClients] = useState([]);
     const [query, setQuery] = useState("");
@@ -41,9 +41,10 @@ const ListClient = () => {
           <Link to={"/InputClient"} >
             <button className="btn btn-success">Ajouter un client</button>
           </Link>
-          <table className="table table-hover mt-2 text-center">
+          <div className="table-responsive m-3" style={{height:'70vh'}}>
+          <table className="table table-hover text-center table-striped">
             <thead  className="table-dark">
-              <tr className="bg-primary">
+              <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Collaborateur</th>
                 <th scope="col" className="text-nowrap">Code Client</th>
@@ -96,7 +97,8 @@ const ListClient = () => {
                 </tr>
               ))}
             </tbody>
-          </table> 
+          </table>
+          </div> 
       </>
     ) 
 };
