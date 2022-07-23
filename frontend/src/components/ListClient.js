@@ -1,7 +1,7 @@
 import React, { useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
 import EditClient from "./EditClient";
-import "../style.css";
+import "./style.css";
 const ListClient = () => {
     const [clients, setClients] = useState([]);
     const [query, setQuery] = useState("");
