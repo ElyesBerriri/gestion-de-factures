@@ -139,7 +139,7 @@ const EmplacementDossier = () => {
                 onChange={(e) => setQuery(e.target.value.toLowerCase())} />
             <div className="table-responsive m-3" style={{height:'50vh'}}>
             <table className="table table-hover text-center">
-                <thead className="table-secondary text-secondary">
+                <thead className="table-secondary text-secondary" style={{position: 'sticky',top: '0'}}>
                     <tr className="bg-primary">
                         <th scope="col">id</th>
                         <th scope="col">num_affaire</th>

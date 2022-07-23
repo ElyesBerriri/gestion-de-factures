@@ -1,7 +1,7 @@
 import React, { useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
 import EditClient from "./EditClient";
-import "./style.css";
+
 const ListClient = () => {
     const [clients, setClients] = useState([]);
     const [query, setQuery] = useState("");
@@ -43,7 +43,7 @@ const ListClient = () => {
           </Link>
           <div className="table-responsive m-3" style={{height:'70vh'}}>
           <table className="table table-hover text-center table-striped">
-            <thead  className="table-dark">
+            <thead  className="table-dark" style={{position: 'sticky',top: '0'}}>
               <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Collaborateur</th>
