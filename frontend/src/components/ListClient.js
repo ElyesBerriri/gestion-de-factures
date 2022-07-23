@@ -5,8 +5,28 @@ import EditClient from "./EditClient";
 const ListClient = () => {
     const [clients, setClients] = useState([]);
     const [query, setQuery] = useState("");
+    const [row,setRow] = useState("");
+    const [doc,setDoc] = useState({
+      "collaborateur":"",
+      "code_client":"",
+      "raison":"",
+      "situation_fiscale":"",
+      "type_client":"",
+      "matricule":"",
+      "ville":"",
+      "rue":"",
+      "num":0,
+      "code_postale":0,
+      "adresse":"",
+      "activite":"",
+      "tel":"",
+      "fax":"",
+      "email":""
+    });
 
     const deleteClient = async id => {
+      setRow("");
+      setDoc({});
       try {
         await fetch(`/clients/list/${id}`, {
           method: "DELETE"
@@ -41,9 +61,15 @@ const ListClient = () => {
           <Link to={"/InputClient"} >
             <button className="btn btn-success">Ajouter un client</button>
           </Link>
+          <EditClient client={doc} />
+          <button
+                    className="btn btn-danger"
+                    onClick={() => {(row!=="") ? deleteClient(doc.client_id): alert("Tu dois choisir un client");}}>
+                      Supprimer
+          </button>
           <div className="table-responsive m-3" style={{height:'70vh'}}>
-          <table className="table table-hover text-center table-striped">
-            <thead  className="table-dark" style={{position: 'sticky',top: '0'}}>
+          <table className="table table-hover text-center">
+            <thead  className="table-secondary text-secondary table-header" style={{position: 'sticky',top: '0'}}>
               <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Collaborateur</th>
@@ -60,40 +86,36 @@ const ListClient = () => {
                 <th scope="col">Activité</th>
                 <th scope="col">Téléphone</th>
                 <th scope="col">Fax</th>
-                <th scope="col">Email</th>
-                <th scope="col">Modifier</th>
-                <th scope="col">Supprimer</th>     
+                <th scope="col">Email</th>    
               </tr>
             </thead>
             <tbody>
               {clients.map(client => (
-                <tr key={client.client_id}>
-                  <td>{client.client_id}</td>
-                  <td>{client.collaborateur}</td>
-                  <td>{client.code_client}</td>
-                  <td>{client.raison}</td>
-                  <td>{client.situation_fiscale}</td>
-                  <td>{client.type_client}</td>
-                  <td>{client.matricule}</td>
-                  <td>{client.ville}</td>
-                  <td>{client.rue}</td>
-                  <td>{client.num}</td>
-                  <td>{client.code_postale}</td>
-                  <td>{client.adresse}</td>
-                  <td>{client.activite}</td>
-                  <td>{client.tel}</td>
-                  <td>{client.fax}</td>
-                  <td>{client.email}</td>
-                  <td>
-                    <EditClient client={client} />
-                  </td>
-                  <td>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => deleteClient(client.client_id)}>
-                      Supprimer
-                  </button>
-                  </td>
+                <tr key={client.client_id} id={`client${client.client_id}`} onClick={()=>{
+                  let e = document.getElementById(`client${client.client_id}`);
+                  if(e.className !== "table-primary"){
+                      if(row!=="") document.getElementById(row).className = "";
+                      e.className = "table-primary";
+                      setRow(`client${client.client_id}`);
+                      setDoc(client);
+                  }
+              }}>
+                  <td data-label="id">{client.client_id}</td>
+                  <td data-label="Collaborateur">{client.collaborateur}</td>
+                  <td data-label="Code Client">{client.code_client}</td>
+                  <td data-label="Raison">{client.raison}</td>
+                  <td data-label="Situation Fiscale">{client.situation_fiscale}</td>
+                  <td data-label="Type Client">{client.type_client}</td>
+                  <td data-label="Matricule">{client.matricule}</td>
+                  <td data-label="Ville">{client.ville}</td>
+                  <td data-label="Rue">{client.rue}</td>
+                  <td data-label="Num">{client.num}</td>
+                  <td data-label="Code Postale">{client.code_postale}</td>
+                  <td data-label="Adresse">{client.adresse}</td>
+                  <td data-label="Activité">{client.activite}</td>
+                  <td data-label="Téléphone">{client.tel}</td>
+                  <td data-label="Fax">{client.fax}</td>
+                  <td data-label="Email">{client.email}</td>
                 </tr>
               ))}
             </tbody>

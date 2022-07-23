@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
+
 const EmplacementDossier = () => {
     const [dossiers, setDossiers] = useState([]);
     const [query, setQuery] = useState("");
@@ -139,8 +140,8 @@ const EmplacementDossier = () => {
                 onChange={(e) => setQuery(e.target.value.toLowerCase())} />
             <div className="table-responsive m-3" style={{height:'50vh'}}>
             <table className="table table-hover text-center">
-                <thead className="table-secondary text-secondary" style={{position: 'sticky',top: '0'}}>
-                    <tr className="bg-primary">
+                <thead className="table-secondary text-secondary table-header" style={{position: 'sticky',top: '0'}}>
+                    <tr>
                         <th scope="col">id</th>
                         <th scope="col">num_affaire</th>
                         <th scope="col">emplacement</th>
@@ -161,13 +162,13 @@ const EmplacementDossier = () => {
                                 setDoc(dossier);
                             }
                         }}>
-                            <td>{dossier.dossier_id}</td>
-                            <td>{dossier.numaff}</td>
-                            <td>{dossier.emplacement}</td>
-                            <td>{dossier.client}</td>
-                            <td>{dossier.tel}</td>
-                            <td>{dossier.mission}</td>
-                            <td>{dossier.adversaire}</td>
+                            <td data-label="id">{dossier.dossier_id}</td>
+                            <td data-label="num_affaire">{dossier.numaff}</td>
+                            <td data-label="emplacement">{dossier.emplacement}</td>
+                            <td data-label="client">{dossier.client}</td>
+                            <td data-label="tel">{dossier.tel}</td>
+                            <td data-label="mission">{dossier.mission}</td>
+                            <td data-label="adversaire">{dossier.adversaire}</td>
                         </tr>
                     )})}
                 </tbody>
