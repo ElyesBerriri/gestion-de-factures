@@ -37,7 +37,7 @@ const ListServices = () => {
   return (
     <Fragment >
         
-        <h1 class="mt-5" >Liste des Administrations</h1>
+        <h1 className="mt-5" >Liste des Administrations</h1>
 
 
       {" "}

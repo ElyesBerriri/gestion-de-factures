@@ -36,7 +36,7 @@ const EditServices=({service})=>{
   return (
     <Fragment>
       
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+<button type="button" className="btn btn-primary" data-bs-toggle="modal" 
 data-bs-target={`#id${service.service_id}`}
 onClick={() => {
   if (lundi==="Course"){
@@ -80,21 +80,21 @@ onClick={() => {
 </button>
 
  
-<div class="modal"
+<div className="modal"
  id={`id${service.service_id}`}>
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <div className="modal-dialog">
+    <div className="modal-content">
 
    
-      <div class="modal-header">
-        <h4 class="modal-title">Modification d'Administration</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"
+      <div className="modal-header">
+        <h4 className="modal-title">Modification d'Administration</h4>
+        <button type="button" className="btn-close" data-bs-dismiss="modal"
            onClick={() => setnom(service.nom)}
         ></button>
       </div>
 
     
-      <div class="modal-body">
+      <div className="modal-body">
 
       <div className="d-flex">
               <label>Tribunal:</label>
@@ -174,11 +174,11 @@ onClick={() => {
             </div>
 
       
-      <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+      <div className="modal-footer">
+      <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
          onClick={() => setnom(service.nom)}
         >Fermer</button>
-      <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+      <button type="button" className="btn btn-success" data-bs-dismiss="modal"
       onClick={e => updatenom(e)}
       >Sauvegarder</button>
          

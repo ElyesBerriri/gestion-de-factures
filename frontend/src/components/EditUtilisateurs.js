@@ -26,7 +26,7 @@ const EditUtilisateurs = ({user}) => {
 
   return (
     <>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+      <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
       data-bs-target={`#id${user.utilisateur_id}`} 
       onClick={() => {
         setLogin(user.login);
@@ -35,14 +35,14 @@ const EditUtilisateurs = ({user}) => {
       }}>
         Modifier
       </button>
-      <div class="modal fade" id={`id${user.utilisateur_id}`} data-bs-backdrop="static">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Modification d'un utilisateur</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" />
+      <div className="modal fade" id={`id${user.utilisateur_id}`} data-bs-backdrop="static">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">Modification d'un utilisateur</h4>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" />
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <div className="row">
                 <label className="col-form-label">
                   Login
@@ -78,10 +78,10 @@ const EditUtilisateurs = ({user}) => {
               </div>
             </div>
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
               onClick={e => updateUser(e)}>Valider</button>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+              <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
               >Fermer</button>
             </div>
           </div>

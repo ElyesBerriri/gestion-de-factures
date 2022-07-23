@@ -47,8 +47,8 @@ const ListCollab = () => {
   
 
       {" "}
-      <table class="table table table-hover mt-5 text-center">
-        <thead  class="table-dark">
+      <table className="table table table-hover mt-5 text-center">
+        <thead  className="table-dark">
                 <tr className="bg-primary">
                     <th scope="col">ID</th>
                     <th scope="col">Nom</th>

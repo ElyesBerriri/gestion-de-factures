@@ -128,6 +128,16 @@ const Creation =()=>{
             console.error(err.message);
           }
 
+          try {
+            await fetch("/tache/list/", {
+              method: "Put",
+              headers: { "Content-Type": "application/json" },
+            });
+
+          } catch (err) {
+            console.error(err.message);
+          }
+
           window.location.reload();
 
         }

@@ -35,7 +35,7 @@ function Collab() {
 
     return (
       <>
-          <h1 class="mt-5" >Liste des Collaborateurs</h1>
+          <h1 className="mt-5" >Liste des Collaborateurs</h1>
           <ListCollab/>
       </>
     );
