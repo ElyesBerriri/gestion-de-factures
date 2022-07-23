@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import '../App.css';
+import 'bootstrap/dist/css/bootstrap.css'
+import {  Nav,Navbar, NavDropdown } from 'react-bootstrap'
+import logo512 from '../assets/logo512.png'
 
-function Nav() {
+
+function Navv() {
   const [navLinks, setNavLinks] = useState([]);
   const [navLinks1, setNavLinks1] = useState([]);
   const [navLinks2, setNavLinks2] = useState([]);
@@ -72,21 +77,20 @@ function Nav() {
 
   return (
     <>
-      <div className="d-flex justify-content-center">
-          <a className="navbar-brand" href="/">Accueil</a>
-          <div className="btn-group">
-            <button
-              type="button"
-              className="btn btn-primary dropdown-toggle"
-              data-bs-toggle="dropdown"
-              data-bs-display="static"
-              aria-expanded="false"
-            >
-              Parametres
-            </button>
-            <ul className="dropdown-menu dropdown-menu-end">
-              <li>
-                <button type="button" className="dropdown-item" data-bs-toggle="modal"
+
+
+
+<Navbar bg="dark"  variant="dark" fixed="top" expand="sm" collapseOnSelect>
+<Navbar.Brand>
+</Navbar.Brand>
+
+<Navbar.Toggle className="coloring" />
+        <Navbar.Collapse>
+<Nav>
+            <Nav.Link href="/">Accueil</Nav.Link>
+
+            <NavDropdown title="Parametres">
+            <button type="button" className="dropdown-item" data-bs-toggle="modal"
                   data-bs-target="#params" onClick={()=>{
                     setTimbreFiscale(params[0].timbre);
                     setTauxTVA(params[0].tva);
@@ -95,21 +99,28 @@ function Nav() {
                   }} >
                   Paramétres Globales
                 </button>
-                
-              </li>
-              {navLinks.map((d, i) => (
-                <li key={i}>
-                  
-                  <Link to={d.path}>
-                    <button className="dropdown-item" type="button">
-                      {d.name}
-                    </button>
-                  </Link> 
-                 
-                </li>
-              ))}
-            </ul>
-          </div>
+              <NavDropdown.Item href="/Empdossier">Emplacement Dossier</NavDropdown.Item>
+              <NavDropdown.Item href="/Tribetadmini">Tribunaux</NavDropdown.Item>
+              <NavDropdown.Item href="/Services">Administrations</NavDropdown.Item>
+              <NavDropdown.Item href="/Collab"> Collaborateurs</NavDropdown.Item>
+              <NavDropdown.Item href="/utilisateurs">Utilisateurs</NavDropdown.Item>
+              <NavDropdown.Item href="/primes">Primes</NavDropdown.Item>
+              <NavDropdown.Item href="/type_dossiers">Types des dossiers</NavDropdown.Item>
+              <NavDropdown.Item href="/RecetteFinance">Recette finance</NavDropdown.Item>
+              <NavDropdown.Item href="/Timbre">Timbre</NavDropdown.Item>
+              <NavDropdown.Item href="/Hono">Honoraire en extra</NavDropdown.Item>
+              <NavDropdown.Item href="/Greffier">Greffier</NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="/clients">Clients</Nav.Link>
+            <NavDropdown title="Dossiers">
+              <NavDropdown.Item href="/Rechercher">Rechercher</NavDropdown.Item>
+              <NavDropdown.Item href="/EmplacementDossier">Emplacement Dossier</NavDropdown.Item>
+              <NavDropdown.Item href="/Creation">Creation</NavDropdown.Item>
+            </NavDropdown>
+</Nav>
+</Navbar.Collapse>
+</Navbar>
+
           <div className="modal fade" id="params" data-bs-backdrop="static">
             <div className="modal-dialog">
               <div className="modal-content">
@@ -172,53 +183,9 @@ function Nav() {
               </div>
             </div>
           </div>
-          <div className="btn-group">
-            <button
-              type="button"
-              className="btn btn-primary dropdown-toggle"
-              data-bs-toggle="dropdown"
-              data-bs-display="static"
-              aria-expanded="false"
-            >
-              Clients
-            </button>
-            <ul className="dropdown-menu dropdown-menu-end">
-              {navLinks1.map((d, i) => (
-                <li key={i}>
-                  <Link to={d.path}>
-                    <button className="dropdown-item" type="button">
-                      {d.name}
-                    </button>
-                  </Link> 
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="btn-group">
-            <button
-              type="button"
-              className="btn btn-primary dropdown-toggle"
-              data-bs-toggle="dropdown"
-              data-bs-display="static"
-              aria-expanded="false"
-            >
-              Dossiers
-            </button>
-            <ul className="dropdown-menu dropdown-menu-end">
-              {navLinks2.map((d, i) => (
-                <li key={i}>
-                  <Link to={d.path}>
-                    <button className="dropdown-item" type="button">
-                      {d.name}
-                    </button>
-                  </Link> 
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+       
     </>
   );
 }
 
-export default Nav;
+export default Navv;

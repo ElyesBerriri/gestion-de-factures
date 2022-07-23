@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react";
 import ClientDemandeur from "../components/ClientDemandeur";
+import '../App.css';
 import DonnéesDossier from "../components/DonnéesDossier";
 import Taches from "../components/Taches";
 import AnchorLink from "react-anchor-link-smooth-scroll";
@@ -155,8 +156,8 @@ const Creation =()=>{
       }, []);
 
     return(
-      <>
-        
+      <div className="container">
+
 
         <div className="d-flex justify-content-center ">
           <AnchorLink href='#client'><button>Client et Demandeur</button></AnchorLink>
@@ -166,7 +167,7 @@ const Creation =()=>{
           <AnchorLink href='#sousdossier'><button>Sous Dossier</button></AnchorLink>
         </div>
 
-        <h1>dossier n°{dossier_id}</h1>
+        <h1 className="content">dossier n°{dossier_id}</h1>
 
         <div>
            <ClientDemandeur
@@ -202,7 +203,7 @@ const Creation =()=>{
         {console.log( calendar)}
          {console.log(client_id)}
         <button onClick={ (e)=>{onSubmitForm(e)}} type="submit" className="btn btn-success">Valider</button>
-      </>
+      </div>
     )
 
 };

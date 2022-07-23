@@ -1,5 +1,5 @@
 import './App.css';
-import Nav from './components/Nav';
+import Navv from './components/Nav';
 import React from "react";
 import {
   BrowserRouter,
@@ -31,7 +31,7 @@ function App() {
     return (
       <BrowserRouter>
         <div className='App'>
-        <Nav></Nav>
+        <Navv className="nav"></Navv>
           <div className='content'>
             <Routes>
               <Route path="/" element={<Home />} />
