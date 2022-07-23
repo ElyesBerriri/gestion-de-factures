@@ -107,9 +107,9 @@ const EmplacementDossier = () => {
     return (
         <>
             {" "}
-            <div className="row mb-3">
+            <div className="row m-3">
                 <label className="col-sm-2 col-form-label col-form-label-sm">Emplacement : </label>
-                <select className="form-select" aria-label="Default select example" 
+                <select className="form-select" aria-label="Default select example"
                     onChange={e => setEmplacement(e.target.options[e.target.selectedIndex].value)}>
                     <option value="Tous" defaultChecked key={0}>Tous</option>
                     {emplacements.map(emp => (<option value={emp.libelle} key={emp.dossier_id}>{emp.libelle}</option>))}
@@ -137,8 +137,9 @@ const EmplacementDossier = () => {
                 className="search "
                 placeholder="Recherche .."
                 onChange={(e) => setQuery(e.target.value.toLowerCase())} />
-            <table className="table table-hover mt-2 text-center">
-                <thead className="table-dark">
+            <div className="table-responsive m-3" style={{height:'50vh'}}>
+            <table className="table table-hover text-center">
+                <thead className="table-secondary text-secondary">
                     <tr className="bg-primary">
                         <th scope="col">id</th>
                         <th scope="col">num_affaire</th>
@@ -171,6 +172,7 @@ const EmplacementDossier = () => {
                     )})}
                 </tbody>
             </table>
+            </div>
         </>
     )
 };
