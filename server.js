@@ -1234,7 +1234,7 @@ app.put("/dossierss/list/:id", async (req, res) => {
     const { id } = req.params;
     const { emplacement } = req.body;
     await pool.query(
-      "UPDATE dossiers SET emplacement = $1 WHERE id = $2",
+      "UPDATE dossiers SET emplacement = $1 WHERE dossier_id = $2",
       [emplacement, id]
     );
 

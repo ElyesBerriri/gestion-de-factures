@@ -1,10 +1,25 @@
 import React, { Fragment,useState, useEffect } from "react";
 import {Link} from "react-router-dom";
 import ReclasserDossier from "./ReclasserDossier";
+import AjouterTache from "./AjouterTache";
 
 const Rechercher = () => {
+    const [taches, settaches] = useState([]);
     const [dossiers, setDossiers] = useState([]);
     const [query, setQuery] = useState("");
+
+
+    const gettache = async (id) => {
+        if (id!==0){
+        try {
+          const response = await fetch(`/tache/listtotal/${id}`);
+          const jsonData = await response.json();
+          settaches(jsonData);
+        } 
+        catch (err) {
+          console.error(err.message);
+        }}
+      };
 
 
     const deleteDossier = async id => {
@@ -30,7 +45,6 @@ const Rechercher = () => {
 
     useEffect(() => {
         getDossier();
-        getemp();
     }, [query]);
 
     return (
@@ -74,14 +88,13 @@ const Rechercher = () => {
                             <td>{dossier.adversaire}</td>
                             
                             <td>
-                                <button
-                                    className="btn btn-warning" >
-                                    Ajouter Tâche
-                                </button>
+                            <AjouterTache
+                            dossier={dossier}/>
+
                             </td>
 
                             <td>
-                                <ReclasserDossier dossier={dos} />
+                                <ReclasserDossier dossier={dossier} />
                             </td>
 
                             <td>

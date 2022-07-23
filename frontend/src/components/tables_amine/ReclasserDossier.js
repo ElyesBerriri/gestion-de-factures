@@ -1,8 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const ReclasserDossier = ({dossier}) => {
-  const [Emplacement, setEmplacement] = useState(dossier.emplacement);
+  const [emplacement,setEmplacement] = useState(dossier.emplacement);
   const [emplacements, setEmplacements] = useState([]);
+  const [selectTest, setSelectTest] = useState(false);
+  
+
+  const updateEmplacement = async e => {
+    
+      e.preventDefault();
+      try {
+        const body = { emplacement } ;
+        await fetch(
+          `/dossierss/list/${dossier.dossier_id}`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+          }
+        );
+        window.location.reload();
+      } catch (err) {
+        console.error(err.message);
+      }
+    
+  };
+
+  
+  
 
 
   const getemp = async () => {
@@ -15,55 +40,56 @@ const ReclasserDossier = ({dossier}) => {
     }
 };
 
-  const updateEmplacement = async e => {
-    e.preventDefault();
-    try {
-      const body = { Emplacement };
-       await fetch(
-        `/dossierss/list/${dossier.dossier_id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body)
-        }
-      );
 
-      window.location.reload();
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
+useEffect(() => {
+  getemp();
+}, []);
+
+
 
   return (
     <>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${dossier.dossier_id}`} onClick={() => setEmplacement(dossier.emplacement)}>
-        Reclasser Dossier
+      <button type="button" className="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target={`#id${dossier.dossier_id}`}
+        onClick={() => {
+          
+            setEmplacement(dossier.emplacement);
+        }}>
+          Reclasser Dossier
       </button>
-
-      <div class="modal fade" data-bs-backdrop="static" id={`id${dossier.dossier_id}`}>
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Reclassement du dossier</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" />
+      <div className="modal fade" id={`id${dossier.dossier_id}`} data-bs-backdrop="static">
+        <div className="modal-dialog modal-dialog-scrollable" >
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">Modification de l'emplacement du dossier</h4>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" />
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <div className="row">
-                <label className="col-form-label">Emplacement Dossier </label>
-                
-                <select class="form-select" aria-label="Default select example" 
-                    onChange={e => setEmplacement(e.target.options[e.target.selectedIndex].value)}>
-                    <option value={Emplacement} selected>{Emplacement}</option>
-                    {emplacements.map(emp => (<option value={emp.libelle}>{emp.libelle}</option>))}
-                </select>
+                  <div className="input-group mb-3">
+                    <span class="input-group-text">Nouveau Emplacement :</span>
+                    <select class="form-select" aria-label="Default select example"
+                      onChange={e => setEmplacement(e.target.options[e.target.selectedIndex].value)}>
+                      {emplacements.map(emplacements => {
+                        if (emplacements.libelle==dossier.emplacement)
+                          return (<option value={emplacements.libelle} selected id={"EmpSelector"+dossier.dossier_id} onLoad={() => setSelectTest(true)}>{emplacements.libelle}</option> )
+                        else
+                          return (<option value={emplacements.libelle}>{emplacements.libelle}</option>)
+                      })}
+                      {(selectTest===false) ? <option value="--" selected id={"EmpSelector"+dossier.dossier_id}>--</option> : <option value="--">--</option>}
+                    </select>
+                  </div>
               </div>
-            </div>
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-              onClick={e => updateEmplacement(e)}>Valider</button>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary" id="valider"
+              onClick={e => updateEmplacement(e)}>
+                Valider
+              </button>
+              <button type="button" className="btn btn-danger" data-bs-dismiss="modal">
+                Fermer
+              </button>
             </div>
           </div>
         </div>
@@ -71,5 +97,4 @@ const ReclasserDossier = ({dossier}) => {
     </>
   );
 };
-
 export default ReclasserDossier;

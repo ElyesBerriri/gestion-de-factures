@@ -30,6 +30,7 @@ function Nav() {
       { name: "Clients", path: "/clients" }
     ];
     const navs2 = [
+      {name:"Rechercher", path:"/Rechercher"},
       {name:"Emplacement Dossier", path:"/EmplacementDossier"},
       {name:"Creation", path:"/Creation"}
     ];
