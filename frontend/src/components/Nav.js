@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import {  Nav,Navbar, NavDropdown } from 'react-bootstrap'
-import logo512 from '../assets/logo512.png'
 
 
 function Navv() {
