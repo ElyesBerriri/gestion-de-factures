@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-const EditTrib = ({trib}) => {
+const EditTrib = ({trib,id}) => {
     const [lieux, setlieux] = useState(trib.lieux);
 
     const updatelieux = async e => {
@@ -8,7 +8,7 @@ const EditTrib = ({trib}) => {
       try {
         const body = {lieux};
          await fetch(
-          `/tribunaux/list/${trib.trib_id}`,
+          `/tribunaux/list/${id}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -27,7 +27,9 @@ const EditTrib = ({trib}) => {
       <Fragment>
         
   <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
-  data-bs-target={`#id${trib.trib_id}`}>
+  data-bs-target={`#id${trib.trib_id}`}
+  onClick={() => setlieux(trib.lieux)}
+>
     Modifier
   </button>
   

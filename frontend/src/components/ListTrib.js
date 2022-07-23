@@ -3,6 +3,8 @@ import EditTrib from "./EditTrib";
 
 const ListTrib = () => {
   const [trib, settrib] = useState([]);
+  const [tribb, settribb] = useState({});
+  const [id, setID] = useState("");
 
 
   const deletetrib = async id => {
@@ -40,31 +42,25 @@ const ListTrib = () => {
         <thead  className="table-dark">
           <tr>
             <th>Tribunaux</th>
-            <th>Modifier</th>
-            <th>Supprimer</th>
           </tr>
         </thead>
         <tbody>
           {trib.map(trib => (
 
-            <tr key={trib.trib_id}>
+            <tr key={trib.trib_id}  onClick={()=>{ setID(trib.trib_id); settribb(trib)}}>
              <td>{trib.lieux}</td>
-              <td>
-              <EditTrib trib={trib} />
-              </td>
-
-              <td>
-              <button
-                  className="btn btn-danger"
-                  onClick={() => deletetrib(trib.trib_id)}
-                >
-                  Supprimer
-                </button>
-              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <button
+                  className="btn btn-danger"
+                  onClick={() => deletetrib(id)}
+                >
+                  Supprimer
+                </button>
+                <EditTrib trib={trib} id={id}/>
+
     </Fragment>
   );
 };

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-const EditDossier = ({dossier}) => {
+const EditDossier = ({dossier,id}) => {
   const [libelle, setLibelle] = useState(dossier.libelle);
 
   const updateLibelle = async e => {
@@ -8,7 +8,7 @@ const EditDossier = ({dossier}) => {
     try {
       const body = { libelle };
        await fetch(
-        `/dossiers/list/${dossier.dossier_id}`,
+        `/dossiers/list/${id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

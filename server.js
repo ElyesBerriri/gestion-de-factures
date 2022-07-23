@@ -809,21 +809,21 @@ app.post("/services/list", async (req, res) => {
   try {
     const { tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi } = req.body;
     const services = await pool.query(
-    "INSERT INTO services (tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",[tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi]);
+    "INSERT INTO servicess (tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",[tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi]);
     res.status(200).json(services.rows[0]);
   } catch (err) {
     console.error(err.message);
   }
 });
 
-/*app.get("/services/list", async (req, res) => {
+app.get("/services/list", async (req, res) => {
   try {
-    const services = await pool.query("SELECT * from services");
+    const services = await pool.query("SELECT * from servicess");
     res.status(200).json(services.rows);
   } catch (err) {
     console.error(err.message);
   }
-});*/
+});
 
 app.get("/services/list", async (req, res) => {
   try{
@@ -831,7 +831,7 @@ app.get("/services/list", async (req, res) => {
 
   const keys = ["tribunal"];
   
-  const services = await pool.query("SELECT * from services");
+  const services = await pool.query("SELECT * from servicess");
   console.log(services);
   const rows = services.rows;
   

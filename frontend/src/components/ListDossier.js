@@ -4,6 +4,8 @@ import EditDossier from "./EditDossier";
 const ListDossier = () => {
   const [dossiers, setDossiers] = useState([]);
 const [id,setID]=useState("");
+const [dossier, setDossier] = useState({});
+
 
   const deletedossier = async id => {
     try {
@@ -40,16 +42,12 @@ const [id,setID]=useState("");
         <thead  className="table-dark">
           <tr>
             <th>Libellé</th>
-            <th>Modifier</th>
           </tr>
         </thead>
         <tbody>
           {dossiers.map(dossier => (
-            <tr key={dossier.dossier_id}>
-              <td onClick={()=> setID(dossier.dossier_id)}>{dossier.libelle}</td>
-              <td>
-                <EditDossier dossier={dossier} />
-              </td>
+            <tr key={dossier.dossier_id} onClick={()=>{ setID(dossier.dossier_id); setDossier(dossier)}}>
+              <td  >{dossier.libelle}</td>
               
             </tr>
           ))}
@@ -61,6 +59,8 @@ const [id,setID]=useState("");
                 >
                   Supprimer
                 </button>
+                <EditDossier dossier={dossier} id={id} />
+
     </Fragment>
   );
 };
