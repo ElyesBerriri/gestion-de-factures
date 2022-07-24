@@ -45,56 +45,31 @@ function Navv() {
 
   return (
     <>
-<Navbar bg="dark"  variant="dark" sticky="top" expand="sm" collapseOnSelect>
 
-<Navbar.Toggle className="coloring" />
-        <Navbar.Collapse className="navvv">
-
-
-<Nav >
-<Nav.Item>
-            <Nav.Link href="/">Accueil</Nav.Link>
-            </Nav.Item>
-
- <Nav.Item>
-            <NavDropdown title="Parametres">
-           
-              <NavDropdown.Item href="/Empdossier">Emplacement Dossier</NavDropdown.Item>
-              <NavDropdown.Item href="/Tribetadmini">Tribunaux</NavDropdown.Item>
-              <NavDropdown.Item href="/Services">Administrations</NavDropdown.Item>
-              <NavDropdown.Item href="/Collab"> Collaborateurs</NavDropdown.Item>
-              <NavDropdown.Item href="/utilisateurs">Utilisateurs</NavDropdown.Item>
-              <NavDropdown.Item href="/primes">Primes</NavDropdown.Item>
-              <NavDropdown.Item href="/type_dossiers">Types des dossiers</NavDropdown.Item>
-              <NavDropdown.Item href="/RecetteFinance">Recette finance</NavDropdown.Item>
-              <NavDropdown.Item href="/Timbre">Timbre</NavDropdown.Item>
-              <NavDropdown.Item href="/Hono">Honoraire en extra</NavDropdown.Item>
-              <NavDropdown.Item href="/Greffier">Greffier</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <button type="button" className="dropdown-item" data-bs-toggle="modal"
-                  data-bs-target="#params" onClick={()=>{
-                    setTimbreFiscale(params[0].timbre);
-                    setTauxTVA(params[0].tva);
-                    setPrixPhotocopie(params[0].photocopie);
-                    setMontantTransport(params[0].transport);
-                  }} >
-                  Paramétres Globales
-                </button>
-            </NavDropdown>
-            </Nav.Item>
-            <Nav.Item>
-            <Nav.Link href="/clients">Clients</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-            <NavDropdown title="Dossiers">
-              <NavDropdown.Item href="/Rechercher">Rechercher</NavDropdown.Item>
-              <NavDropdown.Item href="/EmplacementDossier">Emplacement Dossier</NavDropdown.Item>
-              <NavDropdown.Item href="/Creation">Creation</NavDropdown.Item>
-            </NavDropdown>
-            </Nav.Item>
-</Nav>
-</Navbar.Collapse>
-</Navbar>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar w/ text</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        Navbar text with an inline element
+      </span>
+    </div>
+  </div>
+</nav>
 
           <div className="modal fade" id="params" data-bs-backdrop="static">
             <div className="modal-dialog">
