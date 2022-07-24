@@ -1,9 +1,10 @@
 import React, { useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
 import EditClient from "./EditClient";
-import Search from "./Search";
 import Button from 'react-bootstrap/Button';
 import { GoPlus } from "react-icons/go";
+import Search from "./Search";
+
 
 
 const ListClient = () => {

@@ -30,6 +30,7 @@
     "pg": "^8.3.0",
     "react-alert": "^7.0.3",
     "react-anchor-link-smooth-scroll": "^1.0.12",
+    "react-bootstrap": "^2.4.0",
     "react-date-range": "^1.4.0",
     "react-router-hash-link": "^2.4.3",
     "react-sticky": "^6.0.3",
