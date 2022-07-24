@@ -39,7 +39,7 @@ code {
   border-radius: 5px;
   border: solid;
   background-color: rgb(0, 0, 0);
-  margin-top: 0rem;
+  padding:0.4rem;
 }
 
 .rechercheajout{
