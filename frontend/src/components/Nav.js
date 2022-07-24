@@ -45,7 +45,8 @@ function Navv() {
 
   return (
     <>
-<Navbar bg="primary"  variant="light" sticky="top" expand="sm" collapseOnSelect>
+  
+<Navbar variant="dark" sticky="top" expand="sm" collapseOnSelect>
 
 <Navbar.Toggle className="coloring" />
         <Navbar.Collapse className="navvv">
