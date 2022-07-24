@@ -2,6 +2,7 @@ import React, { useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
 import EditClient from "./EditClient";
 import Search from "./Search";
+import Button from 'react-bootstrap/Button';
 import { GoPlus } from "react-icons/go";
 
 
@@ -122,7 +123,7 @@ const ListClient = () => {
           </div> 
           <div className="modifsupp">
           <EditClient client={doc} />{' '}
-          <button variant="dark" onClick={() => {(row!=="") ? deleteClient(doc.client_id): alert("Tu dois choisir un client");}}>Supprimer</button>
+          <Button variant="dark" onClick={() => {(row!=="") ? deleteClient(doc.client_id): alert("Tu dois choisir un client");}}>Supprimer</Button>
           </div>
         
       </>
