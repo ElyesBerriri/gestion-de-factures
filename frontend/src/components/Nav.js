@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
  import {  Nav,Navbar, NavDropdown } from 'react-bootstrap'
 
 
@@ -46,7 +45,7 @@ function Navv() {
 
   return (
     <>
-<Navbar bg="dark"  variant="dark" sticky="top" expand="sm" collapseOnSelect>
+<Navbar bg="dark"  variant="info" sticky="top" expand="sm" collapseOnSelect>
 
 <Navbar.Toggle className="coloring" />
         <Navbar.Collapse className="navvv">
