@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
- import {  Nav,Navbar, NavDropdown } from 'react-bootstrap'
 
 
 function Navv() {
@@ -46,56 +45,6 @@ function Navv() {
   return (
     <>
 
-<Navbar className="navbar"  variant="dark" sticky="top" expand="sm" collapseOnSelect>
-
-<Navbar.Toggle className="coloring" />
-        <Navbar.Collapse className="navvv">
-
-
-<Nav >
-<Nav.Item>
-            <Nav.Link href="/">Accueil</Nav.Link>
-            </Nav.Item>
-
- <Nav.Item>
-            <NavDropdown title="Parametres">
-           
-              <NavDropdown.Item href="/Empdossier">Emplacement Dossier</NavDropdown.Item>
-              <NavDropdown.Item href="/Tribetadmini">Tribunaux</NavDropdown.Item>
-              <NavDropdown.Item href="/Services">Administrations</NavDropdown.Item>
-              <NavDropdown.Item href="/Collab"> Collaborateurs</NavDropdown.Item>
-              <NavDropdown.Item href="/utilisateurs">Utilisateurs</NavDropdown.Item>
-              <NavDropdown.Item href="/primes">Primes</NavDropdown.Item>
-              <NavDropdown.Item href="/type_dossiers">Types des dossiers</NavDropdown.Item>
-              <NavDropdown.Item href="/RecetteFinance">Recette finance</NavDropdown.Item>
-              <NavDropdown.Item href="/Timbre">Timbre</NavDropdown.Item>
-              <NavDropdown.Item href="/Hono">Honoraire en extra</NavDropdown.Item>
-              <NavDropdown.Item href="/Greffier">Greffier</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <button type="button" className="dropdown-item" data-bs-toggle="modal"
-                  data-bs-target="#params" onClick={()=>{
-                    setTimbreFiscale(params[0].timbre);
-                    setTauxTVA(params[0].tva);
-                    setPrixPhotocopie(params[0].photocopie);
-                    setMontantTransport(params[0].transport);
-                  }} >
-                  Paramétres Globales
-                </button>
-            </NavDropdown>
-            </Nav.Item>
-            <Nav.Item>
-            <Nav.Link href="/clients">Clients</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-            <NavDropdown title="Dossiers">
-              <NavDropdown.Item href="/Rechercher">Rechercher</NavDropdown.Item>
-              <NavDropdown.Item href="/EmplacementDossier">Emplacement Dossier</NavDropdown.Item>
-              <NavDropdown.Item href="/Creation">Creation</NavDropdown.Item>
-            </NavDropdown>
-            </Nav.Item>
-</Nav>
-</Navbar.Collapse>
-</Navbar>
 
           <div className="modal fade" id="params" data-bs-backdrop="static">
             <div className="modal-dialog">

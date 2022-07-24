@@ -70,7 +70,7 @@ const ListClient = () => {
           <div className="table-responsive m-3" style={{height:'50vh'}}>
           <table className="table table-hover text-center">
             <thead  className="table-secondary text-secondary table-header" style={{position: 'sticky',top: '0'}}>
-              <tr>
+              <tr >
                 <th scope="col">Id</th>
                 <th scope="col">Collaborateur</th>
                 <th scope="col" className="text-nowrap">Code Client</th>
