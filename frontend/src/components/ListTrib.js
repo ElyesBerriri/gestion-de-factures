@@ -59,7 +59,7 @@ const ListTrib = () => {
                 >
                   Supprimer
                 </button>
-                <EditTrib trib={trib} id={id}/>
+                <EditTrib trib={tribb} id={id}/>
 
     </Fragment>
   );

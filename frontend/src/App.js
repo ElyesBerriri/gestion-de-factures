@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Navv from './components/Nav';
 import React from "react";
 import {
@@ -31,7 +32,7 @@ function App() {
     return (
       <BrowserRouter>
         <div className='App'>
-        <Navv className="nav"></Navv>
+        <Navv ></Navv>
           <div className='content'>
             <Routes>
               <Route path="/" element={<Home />} />

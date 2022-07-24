@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import '../App.css';
  import {  Nav,Navbar, NavDropdown } from 'react-bootstrap'
 
 
 function Navv() {
-  const [navLinks, setNavLinks] = useState([]);
-  const [navLinks1, setNavLinks1] = useState([]);
-  const [navLinks2, setNavLinks2] = useState([]);
   const [params, setParams] = useState([]);
   const [timbreFiscale,setTimbreFiscale] = useState(0);
   const [tauxTVA,setTauxTVA] = useState(0);
@@ -15,31 +11,6 @@ function Navv() {
   const [montantTransport,setMontantTransport] = useState(0);
 
   useEffect(() => {
-    const navs = [
-      {name:"Emplacement Dossier", path:"/Empdossier"},
-      {name:"Tribunaux", path:"/Tribetadmini"},
-      {name:"Administrations", path:"/Services"},
-      {name:"Collaborateurs", path:"/Collab"},
-      {name:"Utilisateurs", path:"/utilisateurs"},
-      {name:"Primes", path:"/primes"},
-      {name:"Types de dossiers", path:"/type_dossiers"},
-      {name:"RecetteFinance", path:"/RecetteFinance"},
-      {name:"Timbre", path:"/Timbre"},
-      {name:"Honoraire en extra", path:"/Hono"},
-      {name:"Greffier", path:"/Greffier"},
-
-    ];
-    const navs1 = [
-      { name: "Clients", path: "/clients" }
-    ];
-    const navs2 = [
-      {name:"Rechercher", path:"/Rechercher"},
-      {name:"Emplacement Dossier", path:"/EmplacementDossier"},
-      {name:"Creation", path:"/Creation"}
-    ];
-    setNavLinks(navs);
-    setNavLinks1(navs1);
-    setNavLinks2(navs2);
     getParams();
   }, []);
 
@@ -75,28 +46,20 @@ function Navv() {
 
   return (
     <>
-
-
-
-<Navbar bg="dark"  variant="dark" fixed="top" expand="sm" collapseOnSelect>
-<Navbar.Brand>
-</Navbar.Brand>
+<Navbar bg="dark"  variant="dark" sticky="top" expand="sm" collapseOnSelect>
 
 <Navbar.Toggle className="coloring" />
-        <Navbar.Collapse>
-<Nav>
-            <Nav.Link href="/">Accueil</Nav.Link>
+        <Navbar.Collapse className="navvv">
 
+
+<Nav >
+<Nav.Item>
+            <Nav.Link href="/">Accueil</Nav.Link>
+            </Nav.Item>
+
+ <Nav.Item>
             <NavDropdown title="Parametres">
-            <button type="button" className="dropdown-item" data-bs-toggle="modal"
-                  data-bs-target="#params" onClick={()=>{
-                    setTimbreFiscale(params[0].timbre);
-                    setTauxTVA(params[0].tva);
-                    setPrixPhotocopie(params[0].photocopie);
-                    setMontantTransport(params[0].transport);
-                  }} >
-                  Paramétres Globales
-                </button>
+           
               <NavDropdown.Item href="/Empdossier">Emplacement Dossier</NavDropdown.Item>
               <NavDropdown.Item href="/Tribetadmini">Tribunaux</NavDropdown.Item>
               <NavDropdown.Item href="/Services">Administrations</NavDropdown.Item>
@@ -108,13 +71,28 @@ function Navv() {
               <NavDropdown.Item href="/Timbre">Timbre</NavDropdown.Item>
               <NavDropdown.Item href="/Hono">Honoraire en extra</NavDropdown.Item>
               <NavDropdown.Item href="/Greffier">Greffier</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <button type="button" className="dropdown-item" data-bs-toggle="modal"
+                  data-bs-target="#params" onClick={()=>{
+                    setTimbreFiscale(params[0].timbre);
+                    setTauxTVA(params[0].tva);
+                    setPrixPhotocopie(params[0].photocopie);
+                    setMontantTransport(params[0].transport);
+                  }} >
+                  Paramétres Globales
+                </button>
             </NavDropdown>
+            </Nav.Item>
+            <Nav.Item>
             <Nav.Link href="/clients">Clients</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
             <NavDropdown title="Dossiers">
               <NavDropdown.Item href="/Rechercher">Rechercher</NavDropdown.Item>
               <NavDropdown.Item href="/EmplacementDossier">Emplacement Dossier</NavDropdown.Item>
               <NavDropdown.Item href="/Creation">Creation</NavDropdown.Item>
             </NavDropdown>
+            </Nav.Item>
 </Nav>
 </Navbar.Collapse>
 </Navbar>

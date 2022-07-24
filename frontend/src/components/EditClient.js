@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Button from 'react-bootstrap/Button';
+
 
 const EditClient = ({client}) => {
   const [collaborateur,setCollaborateur] = useState(client.collaborateur);
@@ -78,7 +80,7 @@ const EditClient = ({client}) => {
 
   return (
     <>
-      <button type="button" className="btn btn-primary" data-bs-toggle="modal"
+    <Button variant="light" data-bs-toggle="modal"
         data-bs-target={`#id${client.client_id}`}
         onClick={() => {
           if(client.situation_fiscale==='Non Assujetie')
@@ -108,9 +110,8 @@ const EditClient = ({client}) => {
             setTel(client.tel);
             setFax(client.fax);
             setEmail(client.email);
-        }}>
-          Modifier
-      </button>
+        }}>Modifier</Button>
+    
       <div className="modal fade" id={`id${client.client_id}`} data-bs-backdrop="static">
         <div className="modal-dialog modal-dialog-scrollable" >
           <div className="modal-content">
@@ -325,13 +326,9 @@ const EditClient = ({client}) => {
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary" id="valider"
-              onClick={e => updateClient(e)}>
-                Valider
-              </button>
-              <button type="button" className="btn btn-danger" data-bs-dismiss="modal">
-                Fermer
-              </button>
+            <Button variant="light" id="valider" onClick={e => updateClient(e)}>Valider</Button>{' '}
+            <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>{' '}
+
             </div>
           </div>
         </div>

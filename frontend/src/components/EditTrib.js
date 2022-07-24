@@ -71,7 +71,9 @@ const EditTrib = ({trib,id}) => {
       </div>
     </div>
   </div>
-  
+  {console.log(lieux)}
+  {console.log(trib)}
+
       </Fragment>
     );
 

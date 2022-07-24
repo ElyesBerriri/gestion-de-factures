@@ -1,8 +1,13 @@
 import React, { useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
 import EditClient from "./EditClient";
+import Search from "./Search";
+import Button from 'react-bootstrap/Button';
+import { GoPlus } from "react-icons/go";
+
 
 const ListClient = () => {
+
     const [clients, setClients] = useState([]);
     const [query, setQuery] = useState("");
     const [row,setRow] = useState("");
@@ -53,21 +58,16 @@ const ListClient = () => {
 
     return(
       <>
-        {" "}
-          <input
-            className="search "
-            placeholder="Recherche .."
-            onChange={(e) => setQuery(e.target.value.toLowerCase())} />
-          <Link to={"/InputClient"} >
-            <button className="btn btn-success">Ajouter un client</button>
+      
+
+      <div className="rechercheajout">
+      <Link to={"/InputClient"} className="ajouterr" >
+      <button className="ajouter">  <GoPlus color="#00adb5" fontSize="1.5em"/></button>
           </Link>
-          <EditClient client={doc} />
-          <button
-                    className="btn btn-danger"
-                    onClick={() => {(row!=="") ? deleteClient(doc.client_id): alert("Tu dois choisir un client");}}>
-                      Supprimer
-          </button>
-          <div className="table-responsive m-3" style={{height:'70vh'}}>
+         {' '} <Search setQuery={(e) => setQuery(e)}/>
+
+          </div>
+          <div className="table-responsive m-3" style={{height:'50vh'}}>
           <table className="table table-hover text-center">
             <thead  className="table-secondary text-secondary table-header" style={{position: 'sticky',top: '0'}}>
               <tr>
@@ -121,6 +121,11 @@ const ListClient = () => {
             </tbody>
           </table>
           </div> 
+          <div className="modifsupp">
+          <EditClient client={doc} />{' '}
+          <Button variant="dark" onClick={() => {(row!=="") ? deleteClient(doc.client_id): alert("Tu dois choisir un client");}}>Supprimer</Button>
+          </div>
+        
       </>
     ) 
 };
