@@ -97,3 +97,14 @@ code {
   flex-direction: column;
 
 }
+
+.radio{
+  display: flex;
+  align-items: center;
+}
+
+.form-check-input{
+  margin-right: 0.3rem;
+  margin-left: 0.5rem;
+
+}

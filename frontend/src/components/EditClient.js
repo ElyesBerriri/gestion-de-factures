@@ -116,13 +116,13 @@ const EditClient = ({client}) => {
         <div className="modal-dialog modal-dialog-scrollable" >
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">Modification d'un client</h4>
+              <h4 className="modal-title ">Modification d'un client</h4>
               <button type="button" className="btn-close" data-bs-dismiss="modal" />
             </div>
             <div className="modal-body">
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Collaborateur :</span>
+                    <span  className="input-group-text text-secondary ">Collaborateur :</span>
                     <select className="form-select" aria-label="Default select example"
                       onChange={e => setCollaborateur(e.target.options[e.target.selectedIndex].value)}>
                       {collab.map(collab => {
@@ -141,7 +141,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Code Client :</span>
+                    <span className="input-group-text text-secondary">Code Client :</span>
                     <input type="text" className="form-control" disabled
                         value={code_client.substr(0,code_client.search("/"))} />
                     <span className="input-group-text">/</span>
@@ -156,7 +156,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Raison :</span>
+                    <span className="input-group-text text-secondary">Raison :</span>
                     <input type="text" className="form-control" 
                         placeholder="raison"
                         value={raison}
@@ -164,21 +164,19 @@ const EditClient = ({client}) => {
                   </div>
               </div>
 
-              <div className="row mb-3">
-                  <label className="col-form-label">Situation Fiscale</label>
-                  <div className="form-check">
-                      <label className="form-check-label" >
+              <div className="row">
+                  <div className="input-group mb-3">
+                    <span className="input-group-text text-secondary">Situation fiscale :</span>
+                    <div className="radio">
+                  
                           <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
                           id={`situation1fiscale${client.client_id}`} value="Non Assujetie"
                           onChange={e => {
                               if(e.target.checked)
                                   setSituation_fiscale(e.target.value)
                           }} />
-                          Non Assujetie
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
+                          {" "} Non Assujetie
+                   
                           <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
                           id={`situation2fiscale${client.client_id}`} value="Assujetie"
                           onChange={e => {
@@ -186,48 +184,45 @@ const EditClient = ({client}) => {
                                 setSituation_fiscale(e.target.value)
                           }} />
                           Assujetie
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
+                    
+                
                           <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
                           id={`situation3fiscale${client.client_id}`} value="Exonoré"
                           onChange={e => {
                             if(e.target.checked)
                               setSituation_fiscale(e.target.value)
                           }} />
-                          Exonoré
-                      </label>
-                  </div>
+                          Exonoré 
               </div>
+              </div>
+</div>
+              <div className="row">
+                  <div className="input-group mb-3">
+                    <span className="input-group-text text-secondary">Type client :</span>
+                    <div className="radio">
 
-              <div className="row mb-3">
-                  <label className="col-form-label">Type Client</label>
-                  <div className="form-check">
-                      <label className="form-check-label">
+              
                           <input className="form-check-input" type="radio" name={`typeclient${client.client_id}`}
                           id={`type1client${client.client_id}`}
                             onChange={e => {
                               setType_client((e.target.checked) ? 'Personne Physique' : 'Personne Morale');
                             }} />
                           Personne Physique
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
+                   
                           <input className="form-check-input" type="radio" name={`typeclient${client.client_id}`}
                           id={`type2client${client.client_id}`}
                           onChange={e => {
                             setType_client((e.target.checked) ? 'Personne Morale' : 'Personne Physique');
                           }} />
                           Personne Morale
-                      </label>
-                  </div>
+               
               </div>
+              </div>
+</div>
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Matricule :</span>
+                    <span className="input-group-text text-secondary">Matricule :</span>
                     <input type="text" className="form-control"
                         placeholder="matricule"
                         value={matricule}
@@ -237,7 +232,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Ville :</span>
+                    <span className="input-group-text text-secondary">Ville :</span>
                     <input type="text" className="form-control" 
                         placeholder="ville"
                         value={ville}
@@ -247,7 +242,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Rue :</span>
+                    <span className="input-group-text text-secondary">Rue :</span>
                     <input type="text" className="form-control"
                       placeholder="rue"
                       value={rue}
@@ -257,7 +252,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Numéro :</span>
+                    <span className="input-group-text text-secondary">Numéro :</span>
                     <input type="number" className="form-control"
                       placeholder="numéro"
                       value={num}
@@ -267,7 +262,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Code Postale :</span>
+                    <span className="input-group-text text-secondary">Code Postale :</span>
                     <input type="number" className="form-control"
                       placeholder="code postale"
                       value={code_postale}
@@ -277,7 +272,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Adresse :</span>
+                    <span className="input-group-text text-secondary">Adresse :</span>
                     <input type="text" className="form-control"
                       placeholder="adresse"
                       value={adresse}
@@ -287,7 +282,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Activité :</span>
+                    <span className="input-group-text text-secondary">Activité :</span>
                     <input type="text" className="form-control"
                         placeholder="activité"
                         value={activite}
@@ -297,7 +292,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Téléphone :</span>
+                    <span className="input-group-text text-secondary">Téléphone :</span>
                     <input type="text" className="form-control"
                       placeholder="téléphone"
                       value={tel}
@@ -307,7 +302,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Fax :</span>
+                    <span className="input-group-text text-secondary">Fax :</span>
                     <input type="text" className="form-control"
                       placeholder="fax"
                       value={fax}
@@ -317,7 +312,7 @@ const EditClient = ({client}) => {
 
               <div className="row">
                   <div className="input-group mb-3">
-                    <span className="input-group-text">Email :</span>
+                    <span className="input-group-text text-secondary">Email :</span>
                     <input type="email" className="form-control"
                       placeholder="email"
                       value={email}
