@@ -68,7 +68,7 @@ const ListClient = () => {
          {' '} <Search setQuery={(e) => setQuery(e)}/>
 
           </div>
-          <div className="table-responsive m-3" style={{height:'50vh'}}>
+          <div className="table-responsive m-3 myscrollbar" style={{height:'50vh'}}>
           <table className="table table-hover text-center">
             <thead  className="table-secondary text-secondary table-header" style={{position: 'sticky',top: '0'}}>
               <tr>
@@ -94,9 +94,9 @@ const ListClient = () => {
               {clients.map(client => (
                 <tr key={client.client_id} id={`client${client.client_id}`} onClick={()=>{
                   let e = document.getElementById(`client${client.client_id}`);
-                  if(e.className !== "table-primary"){
+                  if(e.className !== "table-secondary"){
                       if(row!=="") document.getElementById(row).className = "";
-                      e.className = "table-primary";
+                      e.className = "table-secondary";
                       setRow(`client${client.client_id}`);
                       setDoc(client);
                   }
