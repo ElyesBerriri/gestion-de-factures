@@ -120,7 +120,7 @@ const Creation =()=>{
       };
 
       const onSubmitForm = async (e) => {
-        //if(client!=="!"){
+        if(client!=="!"){
           adversaires.map((adv) => {adversaire+=" , "+adv.nom});
           adversaire=adversaire.substr(3);
           e.preventDefault();
@@ -167,10 +167,10 @@ const Creation =()=>{
 
           window.location.reload();
 
-        //}
-       //else{
-       //  alert("Veuillez choisir un client avant de valider");
-       // }
+        }
+       else{
+        alert("Veuillez choisir un client avant de valider");
+       }
       };
 
    
