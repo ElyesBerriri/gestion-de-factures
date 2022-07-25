@@ -1360,6 +1360,176 @@ app.get("/dossierss/list/recherche/", async (req, res) => {
 });
 
 
+//reglement
+
+/*app.post("/reglement/list", async (req, res) => {
+  try {
+    const { hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance } = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO reglement (hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *",
+    [ hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance ]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.put("/reglement/list/", async (req, res) => {
+  try {
+    const { id_reg } = req.params;
+    const { hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance } = req.body;
+    await pool.query(
+      `UPDATE reglement SET hono_avo=$1,net_payer=$2,montant=$3,typee=$4,bare=$5,num_operation=$6,banque=$7,porteur=$8,echeance=$9 WHERE id_reg=$10`,
+      [hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,id_reg]
+    );
+
+    res.status(200).json("reglement was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+
+
+
+// get all 
+app.get("/reglement/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from reglement");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+get one
+app.get("/reglement/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM reglement WHERE id_reg = $1", [id]);
+    res.status(200).json(one.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/reglement/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM reglement WHERE id_reg = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+// delete one
+app.delete("/reglement/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM reglement WHERE id_reg = $1", [id]);
+    res.status(200).json("delete is done");
+  } catch (err) {
+    console.error(err.message);
+  }
+});*/
+
+
+
+
+
+
+
+
+
+
+
+app.post("/reglement/list", async (req, res) => {
+  try {
+    const { dossier_id,hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,broui} = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO adversaires (dossier_id,hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,broui) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *",
+    [dossier_id,hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,broui]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.get("/reglement/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from reglement");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.delete("/reglement/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM reglement WHERE id_reg = $1", [
+      id,
+    ]);
+    res.status(200).json("reglement was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.delete("/reglement/list/", async (req, res) => {
+  try {
+    await pool.query("DELETE FROM reglement WHERE broui = $1", [
+      "oui",
+    ]);
+    res.status(200).json("reg was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+
+app.get("/reglement/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM reglement WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.put("/reglement/list/", async (req, res) => {
+  try {
+    await pool.query(
+      `UPDATE reglement SET broui=$1 WHERE broui = $2`,
+      ["non","oui"]
+    );
+
+    res.status(200).json("reglement was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend/build/index.html"));
 });
