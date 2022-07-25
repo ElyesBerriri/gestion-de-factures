@@ -12,7 +12,7 @@ code {
     monospace;
 }
 @media (max-width: 576px) {
-  .table-header {
+  .mytableheader {
     display: none;
   }
   tr {
@@ -32,8 +32,8 @@ code {
     text-align: right;
   }
 }
-/*style navbar*/
 
+/*style navbar*/
 .navvv{
   justify-content:center;
   /*border-radius: 5px;
@@ -49,10 +49,9 @@ code {
 .rechercheajout{
   display: flex;
   justify-content:flex-start;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 4vh;
+  margin-top: 1vh;
   margin-left: 2rem;
-
 }
 
 .ajouterr{
@@ -60,13 +59,12 @@ code {
 }
 
 .title{
-  margin-top: 2rem;
+  margin-top: 2vh;
   /*color: #00adb5;*/
-
 }
 
 .modifsupp{
-  margin-top: 2rem;
+  margin-top: 2vh;
 }
 
 .search{
@@ -107,6 +105,15 @@ code {
   margin-right: 0.3rem;
   margin-left: 0.5rem;
 
+}
+
+/* table */
+.mytable-56{
+  height:56vh;
+}
+.mytableheader{
+  position: sticky;
+  top: 0;
 }
 
 /* Scrollbar */
@@ -179,3 +186,4 @@ code {
 ::-webkit-scrollbar-button:horizontal:single-button:decrement:active {
   background-color: #6c757d;
 }
+
