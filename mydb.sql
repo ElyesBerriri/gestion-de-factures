@@ -169,3 +169,21 @@ CREATE TABLE tache(
     brouillon VARCHAR(255)
 );
 
+
+
+CREATE TABLE reglement(
+    id_reg int PRIMARY KEY,
+    dossier_id int,
+    hono_avo float,
+    net_payer float,
+    montant float,
+    typee VARCHAR(255),
+    bare VARCHAR(255),
+    num_operation VARCHAR(255),
+    banque VARCHAR(255),
+    porteur VARCHAR(255),
+    echeance VARCHAR(255),
+    broui varchar(255)
+);
+ALTER TABLE reglement
+ALTER COLUMN broui TYPE varchar(255);

@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from "react";
 import ClientDemandeur from "../components/ClientDemandeur";
 import DonnéesDossier from "../components/DonnéesDossier";
+import Reglement from "../components/tables_amine/Reglement";
 import Taches from "../components/Taches";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Sousdossier from "../components/sousdossier";
@@ -24,7 +25,16 @@ const Creation =()=>{
     const [code2,setCode2]= useState("*");
     const [observation,setObservation]= useState("*");
     const [calendar,setCalendar]= useState("*");
-    //const [adversaire,setadversaire]= useState("");
+    //Réglement
+    //const [typee, setTypee] = useState("");
+    const [bare, setBare] = useState("");
+    const [num_operation, setNumOp] = useState("");
+    const [banque, setBanque] = useState("");
+    const [porteur, setPorteur] = useState("");
+    const [echeance, setEcheance] = useState("");
+    
+    
+    
     const [client_id,setclient_id]= useState(0);
     const [collab_id,setcollab_id]= useState(0);
     const [client,setclient]= useState("!");
@@ -40,6 +50,9 @@ const Creation =()=>{
     //const [tache,settache]= useState("*");
 
     const [adversaires,setadversaires]= useState([]);
+    const [reglements,setreglements]= useState([]);
+
+
     var adversaire = "";
 
         //tache 
@@ -57,6 +70,20 @@ const Creation =()=>{
       const deleteadversaire = async id => {
         try {
           await fetch(`/adversaire/list/`, {
+            method: "DELETE",            
+            headers: { "Content-Type": "application/json" },
+
+          });
+    
+        } catch (err) {
+          console.error(err.message);
+        }
+      };
+
+
+      const deletereglement = async id => {
+        try {
+          await fetch(`/reglement/list/`, {
             method: "DELETE",            
             headers: { "Content-Type": "application/json" },
 
@@ -93,7 +120,7 @@ const Creation =()=>{
       };
 
       const onSubmitForm = async (e) => {
-        if(client!=="!"){
+        //if(client!=="!"){
           adversaires.map((adv) => {adversaire+=" , "+adv.nom});
           adversaire=adversaire.substr(3);
           e.preventDefault();
@@ -128,12 +155,22 @@ const Creation =()=>{
             console.error(err.message);
           }
 
+          try {
+            await fetch("/reglement/list/", {
+              method: "Put",
+              headers: { "Content-Type": "application/json" },
+            });
+
+          } catch (err) {
+            console.error(err.message);
+          }
+
           window.location.reload();
 
-        }
-        else{
-          alert("Veuillez choisir un client avant de valider");
-        }
+        //}
+       //else{
+       //  alert("Veuillez choisir un client avant de valider");
+       // }
       };
 
    
@@ -142,6 +179,7 @@ const Creation =()=>{
         deleteadversaire();
         deletedemandeur();
         deletetache();
+        deletereglement();
       }, []);
 
     return(
@@ -153,6 +191,7 @@ const Creation =()=>{
           <AnchorLink href='#donnees'><button>Données Dossier</button></AnchorLink>
           <AnchorLink href='#tache'><button>Tâche</button></AnchorLink>
           <AnchorLink href='#collaborateur'><button>Collaborateur</button></AnchorLink>
+          <AnchorLink href='#reglement'><button>Réglement</button></AnchorLink>
           <AnchorLink href='#sousdossier'><button>Sous Dossier</button></AnchorLink>
         </div>
 
@@ -186,6 +225,15 @@ const Creation =()=>{
             changemode_r={(mode_r)=>setmode_r(mode_r)} mode_r={mode_r}
             changepart_c={(part_c)=>setpart_c(part_c)} part_c={part_c}
             changetype_r={(type_r)=>settype_r(type_r)} type_r={type_r} />
+          
+          
+          <Reglement 
+            idd={dossier_id}
+            changereglements={(reglements)=>setreglements(reglements)}
+            />
+
+
+
           <Sousdossier />
 
         </div>
