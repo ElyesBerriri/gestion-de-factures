@@ -59,6 +59,7 @@ code {
 }
 
 .title{
+  font-size: 1.5rem;
   margin-top: 2vh;
   /*color: #00adb5;*/
 }
@@ -107,14 +108,61 @@ code {
 
 }
 
+
+/* my classes */
+.mylegend{
+  font-size: 1rem;
+  line-height: 2.2rem;
+  margin-right: 2vh;
+}
+
 /* table */
+.mytable-68{
+  height:68vh;
+}
+.mytable-60{
+  height:60vh;
+}
 .mytable-56{
   height:56vh;
+}
+.mytable-52{
+  height:52vh;
 }
 .mytableheader{
   position: sticky;
   top: 0;
 }
+.mycontainer{
+  margin-left: 3%;
+  display: flex;
+  justify-content:flex-start;
+  margin-bottom: 1vh;
+}
+.myselect {
+  display: inline;  
+  border: 0;
+  width: 20%;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-bottom: 2px solid black;
+  color: black;
+  transition: all .4s ease-in-out;
+  padding: 5px;
+}
+.myselect:hover { 
+    background-color:#e9ecef;
+  }
+  
+  .myselect option {
+    border: 0;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color:#e9ecef;
+  }
 
 /* Scrollbar */
 ::-webkit-scrollbar-track{

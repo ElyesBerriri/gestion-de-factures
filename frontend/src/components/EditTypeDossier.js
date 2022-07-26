@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
-const EditTypeDossier = ({type}) => {
+const EditTypeDossier = ({ type }) => {
   const [libelle, setLibelle] = useState(type.libelle);
 
   const updateLibelle = async e => {
     e.preventDefault();
     try {
       const body = { libelle };
-       await fetch(
+      await fetch(
         `/type_dossiers/list/${type.type_id}`,
         {
           method: "PUT",
@@ -24,10 +25,10 @@ const EditTypeDossier = ({type}) => {
 
   return (
     <>
-      <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${type.type_id}`} onClick={() => setLibelle(type.libelle)}>
+      <Button data-bs-toggle="modal" variant="light" className="mb-3 mx-3"
+        data-bs-target={`#id${type.type_id}`} onClick={() => setLibelle(type.libelle)}>
         Modifier
-      </button>
+      </Button>
 
       <div className="modal fade" data-bs-backdrop="static"
         id={`id${type.type_id}`}>
@@ -39,21 +40,18 @@ const EditTypeDossier = ({type}) => {
             </div>
             <div className="modal-body">
               <div className="row">
-                <label className="col-form-label">
-                  Libellé
-                  <input
-                    type="text"
-                    className="form-control"
+                <div className="input-group mb-3">
+                  <span className="input-group-text">Libellé :</span>
+                  <input type="text" className="form-control"
                     placeholder="libellé"
                     value={libelle}
                     onChange={e => setLibelle(e.target.value)} />
-                </label>
+                </div>
               </div>
             </div>
-
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-              onClick={e => updateLibelle(e)}>Valider</button>
+                onClick={e => updateLibelle(e)}>Valider</button>
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
               >Fermer</button>
             </div>

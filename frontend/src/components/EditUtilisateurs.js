@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
 const EditUtilisateurs = ({user}) => {
   const [login, setLogin] = useState(user.login);
@@ -26,7 +27,7 @@ const EditUtilisateurs = ({user}) => {
 
   return (
     <>
-      <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
+      <Button variant="light" className="mb-3 mx-3" data-bs-toggle="modal" 
       data-bs-target={`#id${user.utilisateur_id}`} 
       onClick={() => {
         setLogin(user.login);
@@ -34,7 +35,7 @@ const EditUtilisateurs = ({user}) => {
         setDomaine(user.domaine);
       }}>
         Modifier
-      </button>
+      </Button>
       <div className="modal fade" id={`id${user.utilisateur_id}`} data-bs-backdrop="static">
         <div className="modal-dialog">
           <div className="modal-content">
@@ -43,41 +44,34 @@ const EditUtilisateurs = ({user}) => {
               <button type="button" className="btn-close" data-bs-dismiss="modal" />
             </div>
             <div className="modal-body">
-              <div className="row">
-                <label className="col-form-label">
-                  Login
-                  <input
-                    type="text"
-                    className="form-control"
+            <div className="row">
+                <div className="input-group mb-3">
+                  <span className="input-group-text">Login :</span>
+                  <input type="text" className="form-control"
                     placeholder="login"
                     value={login}
                     onChange={e => setLogin(e.target.value)} />
-                </label>
+                </div>
               </div>
               <div className="row">
-                <label className="col-form-label">
-                  PWD
-                  <input
-                    type="text"
-                    className="form-control"
+                <div className="input-group mb-3">
+                  <span className="input-group-text">Pwd :</span>
+                  <input type="text" className="form-control"
                     placeholder="pwd"
                     value={pwd}
                     onChange={e => setPwd(e.target.value)} />
-                </label>
+                </div>
               </div>
               <div className="row">
-                <label className="col-form-label">
-                  Domaine
-                  <input
-                    type="text"
-                    className="form-control"
+                <div className="input-group mb-3">
+                  <span className="input-group-text">Domaine :</span>
+                  <input type="text" className="form-control"
                     placeholder="domaine"
                     value={domaine}
                     onChange={e => setDomaine(e.target.value)} />
-                </label>
+                </div>
               </div>
             </div>
-
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
               onClick={e => updateUser(e)}>Valider</button>

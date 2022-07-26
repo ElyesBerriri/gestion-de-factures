@@ -1,13 +1,12 @@
 import React from "react";
-import InputTypeDossier from "../components/InputTypeDossier";
 import ListTypeDossier from "../components/ListTypeDossier";
 
 function TypeDossier() {
   return (
-    <div className="container">
-      <InputTypeDossier />
+    <>
+      <h1 className="title">Liste des types de dossiers</h1>
       <ListTypeDossier />
-    </div>
+    </>
   );
 }
 

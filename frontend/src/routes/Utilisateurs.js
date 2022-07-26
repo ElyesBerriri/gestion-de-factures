@@ -1,13 +1,12 @@
 import React from "react";
-import InputUtilisateur from "../components/InputUtilisateur";
 import ListUtilisateur from "../components/ListUtilisateur";
 
 function Utilisateurs() {
   return (
-    <div className="container">
-      <InputUtilisateur />
+    <>
+      <h1 className="title">Liste des utilisateurs</h1>
       <ListUtilisateur />
-    </div>
+    </>
   );
 }
 
