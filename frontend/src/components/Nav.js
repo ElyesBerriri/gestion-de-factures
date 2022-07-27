@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Button } from "react-bootstrap";
 
 function Navv() {
   const [params, setParams] = useState([]);
@@ -136,15 +137,14 @@ function Navv() {
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-                onClick={e => updateParams(e)} >Valider</button>
-              <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-              >Fermer</button>
+              <Button variant="light" data-bs-dismiss="modal"
+                onClick={e => updateParams(e)} >Valider</Button>
+              <Button variant="dark" data-bs-dismiss="modal"
+              >Fermer</Button>
             </div>
           </div>
         </div>
       </div>
-
     </>
   );
 }

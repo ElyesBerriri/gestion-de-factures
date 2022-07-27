@@ -76,8 +76,8 @@ const InputClient = () => {
                 <label className="col-sm-2 col-form-label col-form-label-sm">Collaborateur</label>
                 <select className="form-select" aria-label="Default select example" 
                     onChange={e => setCollaborateur(e.target.options[e.target.selectedIndex].value)}>
-                    <option value="--" selected>--</option>
-                    {collab.map(collab => (<option value={collab.nom}>{collab.nom}</option>))}
+                    <option value="--" defaultValue key='co0'>--</option>
+                    {collab.map(collab => (<option value={collab.nom} key={`co${collab.collab_id}`}>{collab.nom}</option>))}
                 </select>
             </div>
 
@@ -103,7 +103,7 @@ const InputClient = () => {
                         else
                             document.getElementById("code1client").disabled = true;
                     }} />
-                    <label className="form-check-label" for="manuel">
+                    <label className="form-check-label" htmlFor="manuel">
                         Manuel
                     </label>
                 </div>
@@ -182,7 +182,7 @@ const InputClient = () => {
             </div>
 
             <div className="row mb-3">
-                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Matricule</label>
+                <label htmlFor="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Matricule</label>
                 <div className="col-sm-10">
                     <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="matricule"
@@ -192,7 +192,7 @@ const InputClient = () => {
             </div>
 
             <div className="row mb-3">
-                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Ville</label>
+                <label htmlFor="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Ville</label>
                 <div className="col-sm-10">
                     <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="ville"
@@ -202,7 +202,7 @@ const InputClient = () => {
             </div>
 
             <div className="row mb-3">
-                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Rue</label>
+                <label htmlFor="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Rue</label>
                 <div className="col-sm-10">
                     <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="rue"
@@ -212,7 +212,7 @@ const InputClient = () => {
             </div>
 
             <div className="row mb-3">
-                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Numéro</label>
+                <label htmlFor="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Numéro</label>
                 <div className="col-sm-10">
                     <input type="number" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="numéro"
@@ -222,7 +222,7 @@ const InputClient = () => {
             </div>
 
             <div className="row mb-3">
-                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Code Postale</label>
+                <label htmlFor="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Code Postale</label>
                 <div className="col-sm-10">
                     <input type="number" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="code postale"
@@ -232,7 +232,7 @@ const InputClient = () => {
             </div>
 
             <div className="row mb-3">
-                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Adresse</label>
+                <label htmlFor="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Adresse</label>
                 <div className="col-sm-10">
                     <input type="text" className="form-control form-control-sm" id="colFormLabelSm"
                     placeholder="adresse"
@@ -242,7 +242,7 @@ const InputClient = () => {
             </div>
 
             <div className="row mb-3">
-                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Activité</label>
+                <label htmlFor="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Activité</label>
                 <div className="col-sm-10">
                     <input type="text" className="form-control form-control-sm" id="colFormLabelSm"
                     placeholder="activité"
@@ -252,7 +252,7 @@ const InputClient = () => {
             </div>
 
             <div className="row mb-3">
-                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Téléphone</label>
+                <label htmlFor="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Téléphone</label>
                 <div className="col-sm-10">
                     <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="téléphone"
@@ -262,7 +262,7 @@ const InputClient = () => {
             </div>
 
             <div className="row mb-3">
-                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Fax</label>
+                <label htmlFor="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Fax</label>
                 <div className="col-sm-10">
                     <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
                     placeholder="fax"
@@ -272,7 +272,7 @@ const InputClient = () => {
             </div>
 
             <div className="row mb-3">
-                <label for="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Email</label>
+                <label htmlFor="colFormLabelSm" className="col-sm-2 col-form-label col-form-label-sm">Email</label>
                 <div className="col-sm-10">
                     <input type="email" className="form-control form-control-sm" id="colFormLabelSm"
                     placeholder="email"

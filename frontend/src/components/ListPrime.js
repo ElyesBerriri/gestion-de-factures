@@ -6,11 +6,25 @@ import { Button } from "react-bootstrap";
 const ListPrime = () => {
   const [primes, setPrimes] = useState([]);
   const [row, setRow] = useState("");
-  const [doc, setDoc] = useState({});
+  const [doc, setDoc] = useState({
+    "libelle": "",
+    "montant": "",
+    "dissociable": false,
+    "impot": false,
+    "mensuel": false
+  });
 
   const deletePrime = async id => {
     setRow("");
-    setDoc({});
+    setDoc({
+      "libelle": "",
+      "montant": "",
+      "dissociable": false,
+      "impot": false,
+      "mensuel": false
+    });
+    document.getElementById("lpbtne").className = "btn btn-light mx-3 mb-3 disabled";
+    document.getElementById("lpbtnd").className = "btn btn-dark mb-3 disabled";
     try {
       await fetch(`/primes/list/${id}`, {
         method: "DELETE"
@@ -25,7 +39,6 @@ const ListPrime = () => {
     try {
       const response = await fetch("/primes/list");
       const jsonData = await response.json();
-
       setPrimes(jsonData);
     } catch (err) {
       console.error(err.message);
@@ -38,7 +51,6 @@ const ListPrime = () => {
 
   return (
     <>
-      {" "}
       <div className="table-responsive m-3 mytable mytable-68">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
@@ -59,6 +71,8 @@ const ListPrime = () => {
                   e.className = "table-secondary";
                   setRow(`pr${prime.id}`);
                   setDoc(prime);
+                  document.getElementById("lpbtne").className = "btn btn-light mx-3 mb-3";
+                  document.getElementById("lpbtnd").className = "btn btn-dark mb-3";
                 }
               }}>
                 <td data-label="Libellé">{prime.libelle}</td>
@@ -74,7 +88,7 @@ const ListPrime = () => {
       <InputPrime />
       <EditPrime prime={doc} />
       <Button
-        variant="dark" className="mb-3"
+        variant="dark" id="lpbtnd" className="mb-3 disabled"
         onClick={() => deletePrime(doc.id)}>
         Supprimer
       </Button>

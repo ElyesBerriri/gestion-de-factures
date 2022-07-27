@@ -27,7 +27,7 @@ const EditUtilisateurs = ({user}) => {
 
   return (
     <>
-      <Button variant="light" className="mb-3 mx-3" data-bs-toggle="modal" 
+      <Button variant="light" id="lubtne" className="mb-3 mx-3 disabled" data-bs-toggle="modal" 
       data-bs-target={`#id${user.utilisateur_id}`} 
       onClick={() => {
         setLogin(user.login);
@@ -73,10 +73,10 @@ const EditUtilisateurs = ({user}) => {
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-              onClick={e => updateUser(e)}>Valider</button>
-              <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-              >Fermer</button>
+              <Button variant="light" data-bs-dismiss="modal"
+              onClick={e => updateUser(e)}>Valider</Button>
+              <Button variant="dark" data-bs-dismiss="modal"
+              >Fermer</Button>
             </div>
           </div>
         </div>

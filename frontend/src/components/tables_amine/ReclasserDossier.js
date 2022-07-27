@@ -40,7 +40,7 @@ const ReclasserDossier = ({ dossier }) => {
 
   return (
     <>
-      <Button variant="light" className="mx-3 mb-3" data-bs-toggle="modal"
+      <Button variant="light" id="rebtnr" className="mx-3 mb-3 disabled" data-bs-toggle="modal"
         data-bs-target={`#id${dossier.dossier_id}`}
         onClick={() => {
           setEmplacement(dossier.emplacement);
@@ -72,13 +72,13 @@ const ReclasserDossier = ({ dossier }) => {
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary" id="valider"
+              <Button variant="light" id="valider"
                 onClick={e => updateEmplacement(e)}>
                 Valider
-              </button>
-              <button type="button" className="btn btn-danger" data-bs-dismiss="modal">
+              </Button>
+              <Button variant="dark" data-bs-dismiss="modal">
                 Fermer
-              </button>
+              </Button>
             </div>
           </div>
         </div>

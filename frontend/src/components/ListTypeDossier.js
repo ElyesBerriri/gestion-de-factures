@@ -6,11 +6,13 @@ import { Button } from "react-bootstrap";
 const ListTypeDossier = () => {
   const [types, setTypes] = useState([]);
   const [row, setRow] = useState("");
-  const [doc, setDoc] = useState({});
+  const [doc, setDoc] = useState({"libelle":""});
 
   const deletetype = async id => {
     setRow("");
-    setDoc({});
+    setDoc({"libelle":""});
+    document.getElementById("ldbtne").className = "btn btn-light mx-3 mb-3 disabled";
+    document.getElementById("ldbtnd").className = "btn btn-dark mb-3 disabled";
     try {
       await fetch(`/type_dossiers/list/${id}`, {
         method: "DELETE"
@@ -39,7 +41,6 @@ const ListTypeDossier = () => {
 
   return (
     <>
-      {" "}
       <div className="table-responsive m-3 mytable mytable-68">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
@@ -56,6 +57,8 @@ const ListTypeDossier = () => {
                   e.className = "table-secondary";
                   setRow(`ty${type.type_id}`);
                   setDoc(type);
+                  document.getElementById("ldbtne").className = "btn btn-light mx-3 mb-3";
+                  document.getElementById("ldbtnd").className = "btn btn-dark mb-3";
                 }
               }}>
                 <td data-label="Libellé">{type.libelle}</td>
@@ -67,7 +70,7 @@ const ListTypeDossier = () => {
       <InputTypeDossier />
       <EditTypeDossier type={doc} />
       <Button
-        variant="dark" className="mb-3"
+        variant="dark" id="ldbtnd" className="mb-3 disabled"
         onClick={() => deletetype(doc.type_id)}>
         Supprimer
       </Button>

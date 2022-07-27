@@ -29,7 +29,7 @@ const EditPrime = ({ prime }) => {
 
   return (
     <>
-      <Button type="button" className="mb-3 mx-3" data-bs-toggle="modal"
+      <Button type="button" className="mb-3 mx-3 disabled" id="lpbtne" data-bs-toggle="modal"
         data-bs-target={`#primeid${prime.id}`} variant="light"
         onClick={() => {
           setLibelle(prime.libelle);
@@ -102,10 +102,10 @@ const EditPrime = ({ prime }) => {
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-                onClick={e => updatePrime(e)}>Valider</button>
-              <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-              >Fermer</button>
+              <Button variant="light" data-bs-dismiss="modal"
+                onClick={e => updatePrime(e)}>Valider</Button>
+              <Button variant="dark" data-bs-dismiss="modal"
+              >Fermer</Button>
             </div>
           </div>
         </div>

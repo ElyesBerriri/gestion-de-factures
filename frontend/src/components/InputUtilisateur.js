@@ -69,10 +69,10 @@ const InputUtilisateur = () => {
                 </div>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-                  onClick={onSubmitForm}>Valider</button>
-                <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-                >Fermer</button>
+                <Button variant="light" data-bs-dismiss="modal"
+                  onClick={onSubmitForm}>Valider</Button>
+                <Button variant="dark" data-bs-dismiss="modal"
+                >Fermer</Button>
               </div>
             </div>
           </div>

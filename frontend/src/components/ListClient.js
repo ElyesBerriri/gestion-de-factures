@@ -31,6 +31,8 @@ const ListClient = () => {
   const deleteClient = async id => {
     setRow("");
     setDoc({});
+    document.getElementById("clbtnm").className="btn btn-light mx-3 disabled";
+    document.getElementById("clbtnr").className="btn btn-dark disabled";
     try {
       await fetch(`/clients/list/${id}`, {
         method: "DELETE"
@@ -63,9 +65,8 @@ const ListClient = () => {
             <GoPlus color="#00adb5" fontSize="1.5em" />
           </button>
         </Link>
-        {' '}<Search setQuery={(e) => setQuery(e)} />
+        <Search setQuery={(e) => setQuery(e)} />
       </div>
-
       <div className="table-responsive m-3 mytable mytable-56">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
@@ -97,6 +98,8 @@ const ListClient = () => {
                   e.className = "table-secondary";
                   setRow(`client${client.client_id}`);
                   setDoc(client);
+                  document.getElementById("clbtnm").className="btn btn-light mx-3";
+                  document.getElementById("clbtnr").className="btn btn-dark";
                 }
               }}>
                 <td data-label="id">{client.client_id}</td>
@@ -121,8 +124,11 @@ const ListClient = () => {
         </table>
       </div>
       <div className="modifsupp">
-        <EditClient client={doc} />{' '}
-        <Button variant="dark" onClick={() => { (row !== "") ? deleteClient(doc.client_id) : alert("Tu dois choisir un client"); }}>Supprimer</Button>
+        <EditClient client={doc} />
+        <Button variant="dark" id="clbtnr" className="disabled"
+          onClick={() => deleteClient(doc.client_id)}>
+          Supprimer
+        </Button>
       </div>
     </>
   )

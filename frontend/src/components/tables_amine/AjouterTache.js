@@ -33,11 +33,11 @@ const AjouterTache = ({ dossier }) => {
 
   return (
     <>
-      <Button variant="dark" data-bs-toggle="modal" data-bs-target="#exampleModalll" className="mb-3">
+      <Button variant="dark" data-bs-toggle="modal" data-bs-target="#exampleModalll" id="rebtnat" className="mb-3 disabled">
         Ajouter tache
       </Button>
-      <div className="modal fade" id="exampleModalll" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog">
+      <div className="modal fade" id="exampleModalll" data-bs-backdrop="static">
+        <div className="modal-dialog modal-dialog-scrollable">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">Nouvelle tache :</h5>
@@ -182,9 +182,8 @@ const AjouterTache = ({ dossier }) => {
               </div>
             </div>
             <div className="modal-footer">
-              <button
-                type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-              <button onClick={onSubmitForm} type="submit" data-bs-dismiss="modal" className="btn btn-success">Sauvegarder</button>
+              <Button onClick={onSubmitForm} type="submit" data-bs-dismiss="modal" variant="light">Sauvegarder</Button>
+              <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
             </div>
           </div>
         </div>

@@ -39,7 +39,7 @@ const EditClient = ({client}) => {
         console.error(err.message);
       }
     } else {
-      alert("Tu dois entrer un code client");
+      alert("Veuillez entrer un code client");
     }
   };
 
@@ -80,8 +80,8 @@ const EditClient = ({client}) => {
 
   return (
     <>
-    <Button variant="light" data-bs-toggle="modal"
-        data-bs-target={`#id${client.client_id}`}
+    <Button variant="light" data-bs-toggle="modal" id="clbtnm" 
+        data-bs-target={`#id${client.client_id}`} className="mx-3 disabled"
         onClick={() => {
           if(client.situation_fiscale==='Non Assujetie')
             document.getElementById(`situation1fiscale${client.client_id}`).checked = true;
@@ -89,10 +89,19 @@ const EditClient = ({client}) => {
             document.getElementById(`situation2fiscale${client.client_id}`).checked = true;
           else if(client.situation_fiscale==='Exonoré')
             document.getElementById(`situation3fiscale${client.client_id}`).checked = true;
+          else {
+            document.getElementById(`situation1fiscale${client.client_id}`).checked = false;
+            document.getElementById(`situation2fiscale${client.client_id}`).checked = false;
+            document.getElementById(`situation3fiscale${client.client_id}`).checked = false;
+          }
           if(client.type_client==='Personne Physique')
             document.getElementById(`type1client${client.client_id}`).checked = true;
           else if(client.type_client==='Personne Morale')
             document.getElementById(`type2client${client.client_id}`).checked = true;
+          else{
+            document.getElementById(`type1client${client.client_id}`).checked = false;
+            document.getElementById(`type2client${client.client_id}`).checked = false;
+          }
           
             setCollaborateur(client.collaborateur);
             document.getElementById("collabSelector"+client.client_id).selected = true;
@@ -175,7 +184,7 @@ const EditClient = ({client}) => {
                               if(e.target.checked)
                                   setSituation_fiscale(e.target.value)
                           }} />
-                          {" "} Non Assujetie
+                           Non Assujetie
                    
                           <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
                           id={`situation2fiscale${client.client_id}`} value="Assujetie"

@@ -38,7 +38,6 @@ const EmplacementDossier = () => {
 
     return (
         <>
-            {" "}
             <h1 className='title'>Mettre à jours Emplacement Dossier</h1>
             <div className="mycontainer">
                 <label className="mylegend">Emplacement : </label>
@@ -75,6 +74,9 @@ const EmplacementDossier = () => {
                                         e.className = "table-secondary";
                                         setRow(`doc${dossier.dossier_id}`);
                                         setDoc(dossier);
+                                        document.getElementById("edbtnt").className = "btn btn-dark";
+                                        document.getElementById("edbtnl").className = "btn btn-light mx-3";
+                                        document.getElementById("edbtni").className = "btn btn-dark";
                                     }
                                 }}>
                                     <td data-label="Id">{dossier.dossier_id}</td>
@@ -91,14 +93,14 @@ const EmplacementDossier = () => {
                 </table>
             </div>
             <div className="mb-3">
-                <Button variant="dark">
+                <Button variant="dark" id="edbtnt" className="disabled">
                     Transférer
                 </Button>
-                <Button variant="light" className="mx-3">
+                <Button variant="light" id="edbtnl" className="mx-3 disabled">
                     Libérer
                 </Button>
                 <Link to="/PDF" state={{ from: doc }}>
-                    <Button variant="dark">Imprimer</Button>
+                    <Button variant="dark" id="edbtni" className="disabled">Imprimer</Button>
                 </Link>
             </div>
         </>

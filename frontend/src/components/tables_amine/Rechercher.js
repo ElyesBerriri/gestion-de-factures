@@ -28,6 +28,11 @@ const Rechercher = () => {
     const deleteDossier = async id => {
         setRow("");
         setDoc({});
+        document.getElementById("rebtnat").className = "btn btn-dark mb-3 disabled";
+        document.getElementById("rebtnr").className = "btn btn-light mx-3 mb-3 disabled";
+        document.getElementById("rebtna").className = "btn btn-dark mb-3 disabled";
+        document.getElementById("rebtnd").className = "btn btn-light mx-3 mb-3 disabled";
+        document.getElementById("rebtni").className = "btn btn-dark mb-3 disabled";
         // delete taches
         let taches = [];
         try {
@@ -112,7 +117,6 @@ const Rechercher = () => {
     return (
         <>
             <h1 className="title">Rechercher</h1>
-            {" "}
             <div className="mycontainer">
                 <label className="mylegend">Mots Clés : </label>
                 <Search setQuery={(e) => setQuery(e)} />
@@ -139,6 +143,11 @@ const Rechercher = () => {
                                     e.className = "table-secondary";
                                     setRow(`kdoc${dossier.dossier_id}`);
                                     setDoc(dossier);
+                                    document.getElementById("rebtnat").className = "btn btn-dark mb-3";
+                                    document.getElementById("rebtnr").className = "btn btn-light mx-3 mb-3";
+                                    document.getElementById("rebtna").className = "btn btn-dark mb-3";
+                                    document.getElementById("rebtnd").className = "btn btn-light mx-3 mb-3";
+                                    document.getElementById("rebtni").className = "btn btn-dark mb-3";
                                 }
                             }}>
                                 <td data-label="Id">{dossier.dossier_id}</td>
@@ -153,20 +162,19 @@ const Rechercher = () => {
                     </tbody>
                 </table>
             </div>
-            <AjouterTache
-                dossier={doc} />
+            <AjouterTache dossier={doc} />
             <ReclasserDossier dossier={doc} />
             <Button
-                variant="dark" className="mb-3">
+                variant="dark" id="rebtna" className="mb-3 disabled">
                 Archiver Dossier
             </Button>
             <Button
-                variant="light" className="mx-3 mb-3"
-                onClick={() => { (row !== "") ? deleteDossier(doc.dossier_id) : alert("Veuillez choisir un dossier"); }}>
+                variant="light" id="rebtnd" className="mx-3 mb-3 disabled"
+                onClick={() => {deleteDossier(doc.dossier_id)}}>
                 Supprimer Dossier
             </Button>
             <Link to="/PDF" state={{ from: doc }} >
-                <Button variant="dark" className="mb-3">Imprimer</Button>
+                <Button variant="dark" id="rebtni" className="mb-3 disabled">Imprimer</Button>
             </Link>
         </>
     )
