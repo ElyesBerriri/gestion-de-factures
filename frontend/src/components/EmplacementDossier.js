@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Search from "./Search";
 import Button from "react-bootstrap/esm/Button";
+import { Document, Page, View, Text, PDFDownloadLink } from '@react-pdf/renderer';
 
 const EmplacementDossier = () => {
     const [dossiers, setDossiers] = useState([]);
@@ -35,6 +36,18 @@ const EmplacementDossier = () => {
         getDossier();
         getemp();
     }, [query]);
+
+    const Template = () => {
+        return (
+          <Document>
+            <Page size='A4'>
+            <View>
+        <Text>Section #1</Text>
+            </View>
+            </Page>
+          </Document>
+        )
+      }
 
     return (
         <>
@@ -99,6 +112,12 @@ const EmplacementDossier = () => {
                 <Button variant="light" id="edbtnl" className="mx-3 disabled">
                     Libérer
                 </Button>
+                <PDFDownloadLink
+        document={<Template />}
+        fileName='somename.pdf'
+      >
+        {({ loading }) => (loading ? 'Loading document...' : 'Download now!')}
+      </PDFDownloadLink>
                 <Link to="/PDF" state={{ from: doc }}>
                     <Button variant="dark" id="edbtni" className="disabled">Imprimer</Button>
                 </Link>
