@@ -123,10 +123,14 @@ const EditClient = ({ client }) => {
       <div className="modal fade" id={`id${client.client_id}`} data-bs-backdrop="static">
         <div className="modal-dialog modal-dialog-scrollable" >
           <div className="modal-content">
+
+
             <div className="modal-header">
               <h4 className="modal-title ">Modification d'un client</h4>
               <button type="button" className="btn-close" data-bs-dismiss="modal" />
             </div>
+
+            
             <div className="modal-body">
               <div className="row">
                 <div className="input-group mb-3">

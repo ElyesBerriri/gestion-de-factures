@@ -1,12 +1,20 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditServices from "../components/EditServices";
 import InputService from "../components/InputService";
+import Button from 'react-bootstrap/Button';
+import Search from "../components/Search";
 
 const ListServices = () => {
   const [service, setservice] = useState([]);
   const [query, setQuery] = useState("");
+  const [row, setRow] = useState("");
+  const [servicee, setservicee] = useState({});
+  const [id,setID]=useState("");
 
   const deleteservice = async id => {
+    setRow("");
+      document.getElementById("clbtnm").className="btn btn-light mx-3 disabled";
+      document.getElementById("clbtnr").className="btn btn-dark disabled";
     try {
       await fetch(`/services/list/${id}`, {
         method: "DELETE"
@@ -37,34 +45,42 @@ const ListServices = () => {
   return (
     <Fragment >
         
-        <h1 className="mt-5" >Liste des Administrations</h1>
+        <h1  className='title' >Liste des Administrations</h1>
 
+        <div className="rechercheajout">
+          <InputService   />
+          <Search setQuery={(e) => setQuery(e.target.value.toLowerCase())} />
+      </div>
+ 
 
-      {" "}
-         <input
-          className="search"
-          placeholder="Recherche .."
-          onChange={(e) => setQuery(e.target.value.toLowerCase())}
-        />
-
-      <table className="table table table-hover mt-5 text-center">
-        <thead  className="table-dark">
+      
+      <div className="table-responsive m-3 mytable mytable-56">
+        <table className="table table-hover text-center">
+          <thead className="table-secondary text-secondary mytableheader">
           <tr>
-            <th>Tribunal</th>
-            <th>Nom</th>
-            <th>Lundi</th>
-            <th>Mardi</th>
-            <th>Mercredi</th>
-            <th>Jeudi</th>
-            <th>Vendredi</th>
-            <th>Samedi</th>
-            <th>Modifier</th>
-            <th>Supprimer</th>
+            <th scope="col"> Tribunal</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Lundi</th>
+            <th scope="col"> Mardi</th>
+            <th scope="col">Mercredi</th>
+            <th scope="col">Jeudi</th>
+            <th scope="col">Vendredi</th>
+            <th scope="col">Samedi</th>
           </tr>
         </thead>
+
         <tbody>
           {service.map(service => (
-            <tr key={service.service_id}>
+            <tr key={service.service_id} id={`collab${service.service_id}`} onClick={()=>{ setID(service.service_id); 
+              setservicee(service);
+              let e = document.getElementById(`collab${service.service_id}`);
+                  if (e.className !== "table-secondary") {
+                    if (row !== "") document.getElementById(row).className = "";
+                    e.className = "table-secondary";
+                    setRow(`collab${service.service_id}`);
+                    document.getElementById("clbtnr").className="btn btn-dark";
+                    document.getElementById("clbtnm").className="btn btn-light mx-3";
+                   }}}>
               <td >{service.tribunal}</td>
               <td>{service.nom}</td>
               <td style={
@@ -108,21 +124,20 @@ const ListServices = () => {
                 :
                 {'backgroundColor': '#89CFF0'}
             }>{service.samedi}</td>
-              <td>
-                <EditServices service={service} />
-              </td>
-              <td>
-              <button
-                  className="btn btn-danger"
-                  onClick={() => deleteservice(service.service_id)}
-                >
-                  Supprimer
-                </button>
-              </td>
+             
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
+
+      <div className="modifsupp">
+        <EditServices service={servicee}  />
+      <Button variant="dark" id="clbtnr" className="disabled" onClick={() => deleteservice(id)}>
+      Supprimer
+        </Button>
+        </div>
+
             <div className="container">
             <h5 style={{'backgroundColor': '#ffa500'
     }}>Jours des Courses</h5>
@@ -130,8 +145,7 @@ const ListServices = () => {
     }}>Jours d'Audience</h5>
             </div>
             
-            <InputService   />
-    </Fragment>
+     </Fragment>
   );
 };
 

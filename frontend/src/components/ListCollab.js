@@ -1,13 +1,21 @@
 import React, { Fragment, useState ,useEffect} from "react";
  import EditCollab from "./EditCollab";
  import InputCollab from "./InputCollab";
- 
+ import Button from 'react-bootstrap/Button';
+ import Search from "./Search";
+
 const ListCollab = () => {
     const [collab, setCollab] = useState([]);
     const [query, setQuery] = useState("");
+    const [row, setRow] = useState("");
+    const [collabb, setCollabb] = useState({});
+    const [id,setID]=useState("");
 
 
     const deletecollab = async id => {
+      setRow("");
+      document.getElementById("clbtnm").className="btn btn-light mx-3 disabled";
+      document.getElementById("clbtnr").className="btn btn-dark disabled";
       try {
         await fetch(`/collaborateurs/list/${id}`, {
           method: "DELETE"
@@ -40,15 +48,15 @@ const ListCollab = () => {
 
     return(
         <Fragment>
-           <input
-          className="search"
-          placeholder="Recherche .."
-          onChange={(e) => setQuery(e.target.value.toLowerCase())} />
-  
+         <div className="rechercheajout">
+         <InputCollab/>
+         <Search setQuery={(e) => setQuery(e)} />
+      </div>
 
-      {" "}
-      <table className="table table table-hover mt-5 text-center">
-        <thead  className="table-dark">
+     
+      <div className="table-responsive m-3 mytable mytable-56">
+        <table className="table table-hover text-center">
+          <thead className="table-secondary text-secondary mytableheader">
                 <tr className="bg-primary">
                     <th scope="col">ID</th>
                     <th scope="col">Nom</th>
@@ -65,14 +73,21 @@ const ListCollab = () => {
                     <th scope="col">Methode_de_paiement </th>
                     <th scope="col">Montant</th>
                     <th scope="col">Nombre_Dossier</th>
-                    <th scope="col">Modifier</th>
-                    <th scope="col">Supprimer</th>
             </tr>
             </thead>
             <tbody>
 
             {collab.map(collab => (
-                  <tr key={collab.collab_id}>
+                  <tr key={collab.collab_id} id={`collab${collab.collab_id}`} onClick={()=>{ setID(collab.collab_id); 
+                    setCollabb(collab);
+                    let e = document.getElementById(`collab${collab.collab_id}`);
+                        if (e.className !== "table-secondary") {
+                          if (row !== "") document.getElementById(row).className = "";
+                          e.className = "table-secondary";
+                          setRow(`collab${collab.collab_id}`);
+                          document.getElementById("clbtnr").className="btn btn-dark";
+                          document.getElementById("clbtnm").className="btn btn-light mx-3";
+                         }}}>
       
                     <td>{collab.collab_id}</td>
                     <td>{collab.nom}</td>
@@ -89,25 +104,20 @@ const ListCollab = () => {
                     <td>{collab.methodepaiment}</td>
                     <td>{collab.montant}</td>
                     <td>{collab.nombre_dossier}</td>
-      
-                    <td>
-                      <EditCollab collab={collab} />
-                    </td>
-      
-                    <td>
-                    <button
-                        className="btn btn-danger"
-                        onClick={() => deletecollab(collab.collab_id)}
-                      >
-                        Supprimer
-                      </button>
-                    </td>
                   </tr>
                 ))}
         </tbody>
         </table>
-         <InputCollab/>
-      
+        </div>
+
+        <div className="modifsupp">
+        <EditCollab collab={collabb}  />
+      <Button variant="dark" id="clbtnr" className="disabled" onClick={() => deletecollab(id)}>
+      Supprimer
+        </Button>
+        </div>
+
+       
     </Fragment>
     )
     

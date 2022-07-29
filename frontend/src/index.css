@@ -54,7 +54,7 @@ code {
 .rechercheajout {
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 4vh;
+  margin-bottom: 3vh;
   margin-top: 1vh;
   margin-left: 2rem;
 }
@@ -63,14 +63,16 @@ code {
   margin-right: 0.5rem;
 }
 
+
 .title {
-  font-size: 1.5rem;
-  margin-top: 2vh;
+  font-size: 2.5rem;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
   /*color: #00adb5;*/
 }
 
 .modifsupp {
-  margin-top: 2vh;
+  margin-top: 3vh;
 }
 
 .search {
@@ -94,12 +96,10 @@ code {
   padding: 5px;
   background: #222831;
   transition: all 0.5s;
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
 }
 
 .radio {
@@ -134,8 +134,8 @@ code {
   height: 56vh;
 }
 
-.mytable-52 {
-  height: 52vh;
+.mytable-50 {
+  height: 50vh;
 }
 
 .mytableheader {
@@ -144,10 +144,21 @@ code {
 }
 
 .mycontainer {
-  margin-left: 3%;
+  margin-left: 2rem;
   display: flex;
   justify-content: flex-start;
   margin-bottom: 1vh;
+}
+
+.empmotcle{
+  margin-bottom: 3vh;
+}
+
+.motclerecherche{
+  margin-left: 3%;
+  display: flex;
+  margin-bottom: 3vh;
+  justify-content: flex-start;
 }
 
 .myselect {
@@ -298,3 +309,20 @@ code {
 ::-webkit-scrollbar-button:horizontal:single-button:decrement:active {
   background-color: #6c757d;
 }
+
+
+/*emplacement dossier*/
+
+.ajoutdossier{
+  margin-left: 22%;
+  margin-bottom: 3vh;
+}
+
+
+.mytable-56dossier{
+  height: 56vh;
+  width: 60%;
+  margin-left:20%; 
+  margin-right:20%;
+}
+ 

@@ -67,6 +67,8 @@ const ListClient = () => {
         </Link>
         <Search setQuery={(e) => setQuery(e)} />
       </div>
+
+      
       <div className="table-responsive m-3 mytable mytable-56">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">

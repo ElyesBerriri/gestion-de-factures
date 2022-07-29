@@ -38,7 +38,8 @@ const EmplacementDossier = () => {
 
     return (
         <>
-            <h1 className='title'>Mettre à jours Emplacement Dossier</h1>
+            <h1 className='title'>Mettre à jour Emplacement Dossier</h1>
+            <div className="empmotcle">
             <div className="mycontainer">
                 <label className="mylegend">Emplacement : </label>
                 <select className="myselect"
@@ -51,7 +52,8 @@ const EmplacementDossier = () => {
                 <label className="mylegend">Mots Clés : </label>
                 <Search setQuery={(e) => setQuery(e)} />
             </div>
-            <div className="table-responsive m-3 mytable mytable-52">
+            </div>
+            <div className="table-responsive m-3 mytable mytable-50">
                 <table className="table table-hover text-center">
                     <thead className="table-secondary text-secondary mytableheader">
                         <tr>
@@ -92,7 +94,7 @@ const EmplacementDossier = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="mb-3">
+            <div className=" modifsupp mb-3">
                 <Button variant="dark" id="edbtnt" className="disabled">
                     Transférer
                 </Button>

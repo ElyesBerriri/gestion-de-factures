@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import Button from 'react-bootstrap/Button';
 
 const EditTrib = ({trib,id}) => {
     const [lieux, setlieux] = useState(trib.lieux);
@@ -25,15 +26,13 @@ const EditTrib = ({trib,id}) => {
   
     return (
       <Fragment>
-        
-  <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
-  data-bs-target={`#id${trib.trib_id}`}
-  onClick={() => setlieux(trib.lieux)}
->
-    Modifier
-  </button>
   
-   
+  <Button variant="light" data-bs-toggle="modal" id="clbtnm" className="mx-3 disabled"
+data-bs-target={`#id${trib.trib_id}`}
+onClick={() => setlieux(trib.lieux)}
+>Modifier</Button>
+
+
   <div className="modal"
   onClick={() => setlieux(trib.lieux)}
    id={`id${trib.trib_id}`}>

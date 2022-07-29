@@ -892,10 +892,10 @@ app.get("/collaborateurs/list2", async (req, res) => {
 app.put("/services/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { nom,lundi,mardi,mercredi,jeudi,vendredi,samedi} = req.body;
+    const {tribunal, nom,lundi,mardi,mercredi,jeudi,vendredi,samedi} = req.body;
     await pool.query(
-      "UPDATE services SET nom=$1,lundi=$2,mardi=$3,mercredi=$4,jeudi=$5,vendredi=$6,samedi=$7  WHERE service_id = $8",
-      [nom,lundi,mardi,mercredi,jeudi,vendredi,samedi, id]
+      "UPDATE servicess SET  nom=$1,lundi=$2,mardi=$3,mercredi=$4,jeudi=$5,vendredi=$6,samedi=$7,tribunal=$9  WHERE service_id = $8",
+      [ nom,lundi,mardi,mercredi,jeudi,vendredi,samedi, id,tribunal]
     );
 
     res.status(200).json("service was updated");
@@ -908,7 +908,7 @@ app.put("/services/list/:id", async (req, res) => {
 app.delete("/services/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    await pool.query("DELETE FROM services WHERE service_id = $1", [
+    await pool.query("DELETE FROM servicess WHERE service_id = $1", [
       id,
     ]);
     res.status(200).json("services was deleted");

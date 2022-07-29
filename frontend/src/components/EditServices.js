@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import Button from 'react-bootstrap/Button';
 
 
 const EditServices=({service})=>{
@@ -15,7 +16,7 @@ const EditServices=({service})=>{
     const updatenom = async e => {
       e.preventDefault();
       try {
-        const body = {nom,lundi,mardi,mercredi,jeudi,vendredi,samedi };
+        const body = {tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi };
          await fetch(
           `/services/list/${service.service_id}`,
           {
@@ -36,9 +37,11 @@ const EditServices=({service})=>{
   return (
     <Fragment>
       
-<button type="button" className="btn btn-primary" data-bs-toggle="modal" 
-data-bs-target={`#id${service.service_id}`}
+      <Button variant="light" data-bs-toggle="modal" id="clbtnm"
+        data-bs-target={`#id${service.service_id}`} className="mx-3 disabled"
 onClick={() => {
+   {settribunal(service.tribunal);
+setnom(service.nom);
   if (lundi==="Course"){
     document.getElementById(`Courselun${service.service_id}`).checked = true;
   }
@@ -75,15 +78,15 @@ onClick={() => {
   else if(samedi==="Audience"){
     document.getElementById(`Audiencesam${service.service_id}`).checked = true;
   }
-}}>
+}}}>
   Modifier
-</button>
+  </Button>
 
  
-<div className="modal"
- id={`id${service.service_id}`}>
-  <div className="modal-dialog">
-    <div className="modal-content">
+  <div className="modal fade" id={`id${service.service_id}`} data-bs-backdrop="static">
+        <div className="modal-dialog modal-dialog-scrollable" >
+          <div className="modal-content">
+
 
    
       <div className="modal-header">
@@ -95,24 +98,33 @@ onClick={() => {
 
     
       <div className="modal-body">
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text text-secondary ">Tribunal :</span>
 
-      <div className="d-flex">
-              <label>Tribunal:</label>
-      <input
+       <input
                 type="text"
                 className="form-control"
                  value={tribunal}
                 onChange={e => settribunal(e.target.value)}
-              /> </div>
+              />
+            </div>
+      </div>
+       
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text text-secondary ">Administration :</span>
 
-      <div className="d-flex">
-              <label>Administration:</label>
-<input
+       <input
                 type="text"
                 className="form-control"
                  value={nom}
                 onChange={e => setnom(e.target.value)}
-              /> </div>
+              />
+            </div>
+      </div>
+       
+  
 
               <table className="table table table-hover mt-5 text-center">
         <thead  className="table-dark">
@@ -173,16 +185,13 @@ onClick={() => {
       </table>
             </div>
 
-      
-      <div className="modal-footer">
-      <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
-         onClick={() => setnom(service.nom)}
-        >Fermer</button>
-      <button type="button" className="btn btn-success" data-bs-dismiss="modal"
+            <div className="modal-footer">
+      <Button variant="light" id="valider" 
       onClick={e => updatenom(e)}
-      >Sauvegarder</button>
-         
+      >Valider</Button>
+      <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
       </div>
+      
 
     </div>
   </div>

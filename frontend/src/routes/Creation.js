@@ -1,12 +1,11 @@
 import React, {useState,useEffect} from "react";
 import ClientDemandeur from "../components/ClientDemandeur";
 import DonnéesDossier from "../components/DonnéesDossier";
-import Reglement from "../components/tables_amine/Reglement";
 import Taches from "../components/Taches";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Sousdossier from "../components/sousdossier";
 import Collaborateur from "../components/Collaborateur";
-import e from "cors";
+import Reglement from "../components/tables_amine/Reglement";
 
 const Creation =()=>{
 

@@ -121,7 +121,7 @@ const Rechercher = () => {
                 <label className="mylegend">Mots Clés : </label>
                 <Search setQuery={(e) => setQuery(e)} />
             </div>
-            <div className="table-responsive m-3 mytable mytable-60">
+            <div className="table-responsive m-3 mytable mytable-56">
                 <table className="table table-hover text-center">
                     <thead className="table-secondary text-secondary mytableheader">
                         <tr className="bg-primary">
@@ -162,6 +162,7 @@ const Rechercher = () => {
                     </tbody>
                 </table>
             </div>
+            <div className=" modifsupp "> 
             <AjouterTache dossier={doc} />
             <ReclasserDossier dossier={doc} />
             <Button
@@ -176,6 +177,7 @@ const Rechercher = () => {
             <Link to="/PDF" state={{ from: doc }} >
                 <Button variant="dark" id="rebtni" className="mb-3 disabled">Imprimer</Button>
             </Link>
+            </div>
         </>
     )
 };

@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import Button from 'react-bootstrap/Button';
 
 const EditDossier = ({dossier,id}) => {
   const [libelle, setLibelle] = useState(dossier.libelle);
@@ -25,30 +26,27 @@ const EditDossier = ({dossier,id}) => {
 
   return (
     <Fragment>
-      
-<button type="button" className="btn btn-primary" data-bs-toggle="modal" 
+       <Button variant="light" data-bs-toggle="modal" id="clbtnm" className="mx-3 disabled"
 data-bs-target={`#id${dossier.dossier_id}`}
 onClick={() => setLibelle(dossier.libelle)}
->
-  Modifier
-</button>
-
+>Modifier</Button>
  
-<div className="modal"
- id={`id${dossier.dossier_id}`}>
-  <div className="modal-dialog">
-    <div className="modal-content">
+<div className="modal fade" id={`id${dossier.dossier_id}`} data-bs-backdrop="static">
+  <div className="modal-dialog modal-dialog-scrollable" >
+          <div className="modal-content">
 
    
       <div className="modal-header">
         <h4 className="modal-title">Modification de dossier</h4>
-        <button type="button" className="btn-close" data-bs-dismiss="modal"
-          onClick={() => setLibelle(dossier.libelle)}
-        ></button>
+        <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
     
       <div className="modal-body">
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text text-secondary ">Libellé :</span>
+
               <input
                 type="text"
                 className="form-control"
@@ -56,15 +54,15 @@ onClick={() => setLibelle(dossier.libelle)}
                 onChange={e => setLibelle(e.target.value)}
               />
             </div>
+      </div>
+      </div>
 
       
       <div className="modal-footer">
-      <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
+      <Button variant="light" id="valider" 
       onClick={e => updateLibelle(e)}
-      >Valider</button>
-        <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-        onClick={() => setLibelle(dossier.libelle)}
-        >Fermer</button>
+      >Valider</Button>
+      <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
       </div>
 
     </div>
