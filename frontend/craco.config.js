@@ -5,7 +5,7 @@ module.exports = {
     configure: {
       resolve: {
         fallback: {
-          process: require.resolve("process/browser.js"),
+          process: require.resolve("process/browser"),
           zlib: require.resolve("browserify-zlib"),
           stream: require.resolve("stream-browserify"),
           util: require.resolve("util"),
@@ -16,7 +16,7 @@ module.exports = {
       plugins: [
         new webpack.ProvidePlugin({
           Buffer: ["buffer", "Buffer"],
-          process: "process/browser.js",
+          process: "process/browser",
         }),
       ],
     },

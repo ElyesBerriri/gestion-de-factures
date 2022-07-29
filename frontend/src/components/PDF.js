@@ -1,51 +1,33 @@
 import React from "react";
-import { Document, Page, View, Text } from "@react-pdf/renderer";
-import styles from '../styles'
+import Pdf from "react-to-pdf";
+import { useLocation } from 'react-router-dom'
+const ref = React.createRef();
 
-const PDF = ({ doc }) => {
-  if (doc.dossier_id !== undefined) {
-    return (
-      <>
-        <Document>
-          <Page size='A4' style={styles.page}>
-            <View style={styles.container}>
-              <View style={styles.viewt}>
-                <Text style={styles.ht}>Dossier numéro : </Text><Text style={styles.pt}>{doc.dossier_id}</Text>
-              </View>
-              <View style={styles.view}>
-                <Text style={styles.h}>Numéro d'affaire : </Text><Text style={styles.p}>{doc.numaff}</Text>
-              </View>
-              <View style={styles.view}>
-                <Text style={styles.h}>Emplacement : </Text><Text style={styles.p}>{doc.emplacement}</Text>
-              </View>
-              <View style={styles.view}>
-                <Text style={styles.h}>Client : </Text><Text style={styles.p}>{doc.client}</Text>
-              </View>
-              <View style={styles.view}>
-                <Text style={styles.h}>Téléphone : </Text><Text style={styles.p}>{doc.tel}</Text>
-              </View>
-              <View style={styles.view}>
-                <Text style={styles.h}>Mission : </Text><Text style={styles.p}>{doc.mission}</Text>
-              </View>
-              <View style={styles.view}>
-                <Text style={styles.h}>Adversaires : </Text><Text style={styles.p}>{doc.adversaire}</Text>
-              </View>
-            </View>
-          </Page>
-        </Document>
-      </>
-    );
-  } else {
-    return (
-      <Document>
-        <Page size='A4' style={styles.page}>
-          <View>
-            <Text style={styles.h}>Vous n'avez pas choisi un dossier</Text>
-          </View>
-        </Page>
-      </Document>
-    )
-  }
+function PDF() {
+    const location = useLocation()
+    const { from } = location.state;
+    if(from.dossier_id!==undefined){
+      let docName = `Dossier_${from.dossier_id}`;
+      return (
+        <>
+          <Pdf targetRef={ref} filename={docName}>
+            {({ toPdf }) => <button onClick={toPdf} className="mt-5">Télécharger le PDF</button>}
+          </Pdf>
+          <div style={{display:"flex",justifyContent: "center", minWidth:'21cm'}}>
+            <div className="border border-2 m-3 " style={{width: '21cm', height: '29.7cm'}} >
+              <div ref={ref} className="text-start p-5">
+                <p>Dossier numéro : {from.dossier_id}</p>
+                <p>Emplacement : {from.emplacement}</p>
+                <p>Client : {from.client}</p>
+                <p>Adversaires : {from.adversaire}</p>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+    } else {
+      return(<p className="text-danger mt-3">Vous n'avez pas choisi un dossier</p>)
+    }
 }
 
 export default PDF;
