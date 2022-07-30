@@ -2,24 +2,26 @@ import React, { Fragment, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+const EditServices= ({service}) => { 
 
-const EditServices=({service})=>{
-    
-    const [tribunal, settribunal] = useState(service.tribunal);
-    const [nom, setnom] = useState(service.nom);
-    const [lundi, setlundi] = useState(service.lundi);
-    const [mardi, setmardi] = useState(service.mardi);
-    const [mercredi, setmercredi] = useState(service.mercredi);
-    const [jeudi, setjeudi] = useState(service.jeudi);
-    const [vendredi, setvendredi] = useState(service.vendredi);
-    const [samedi, setsamedi] = useState(service.samedi);
-    const [show, setShow] = useState(false);
+  const [tribunal, settribunal] = useState(service.tribunal);
+  const [nom, setnom] = useState(service.nom);
+  const [lundi, setlundi] = useState(service.lundi);
+  const [mardi, setmardi] = useState(service.mardi);
+  const [mercredi, setmercredi] = useState(service.mercredi);
+  const [jeudi, setjeudi] = useState(service.jeudi);
+  const [vendredi, setvendredi] = useState(service.vendredi);
+  const [samedi, setsamedi] = useState(service.samedi);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
     const updatenom = async e => {
       e.preventDefault();
+      {console.log(lundi)}
+
       try {
         const body = {tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi };
          await fetch(
@@ -41,11 +43,12 @@ const EditServices=({service})=>{
 
   return (
     <Fragment>
+      {console.log(lundi)}
 
      <Button variant="light" id="clbtnm" className="mx-3 disabled" onClick={()=>{handleShow();
  setnom(service.nom);
  settribunal(service.tribunal);
-  if (service.lundi==="Course"){
+  if (lundi==="Course"){
     document.getElementById(`Courselun${service.service_id}`).checked = true;
   }
   else if(lundi==="Audience"){
@@ -124,9 +127,10 @@ const EditServices=({service})=>{
       </div>
        
   
+      <div className="table-responsive m-3 mytable mytable-41">
+        <table className="table table-hover text-center">
+          <thead className="table-secondary text-secondary mytableheader">
 
-              <table className="table table table-hover mt-5 text-center">
-        <thead  className="table-dark">
           <tr>
             <th>Jour</th>
             <th>Course</th>
@@ -182,6 +186,7 @@ const EditServices=({service})=>{
           
         </tbody>
       </table>
+      </div>
       </Modal.Body>
 
               

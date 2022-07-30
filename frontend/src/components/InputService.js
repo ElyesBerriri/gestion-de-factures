@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from "react";
-
+import Button from 'react-bootstrap/Button';
+import { GoPlus } from "react-icons/go";
+import Modal from 'react-bootstrap/Modal';
 
 const InputService=()=>{
 
@@ -11,6 +13,10 @@ const InputService=()=>{
     const [jeudi, setjeudi] = useState("..");
     const [vendredi, setvendredi] = useState("..");
     const [samedi, setsamedi] = useState("..");
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
@@ -32,22 +38,17 @@ const InputService=()=>{
 
   return (
     <Fragment>
-      
-      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Ajouter
-</button>
 
+      <button className="ajouter ajouterr" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+      </button>
  
-<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Nouvelle administration</h5>
-        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Ajouter une administration</Modal.Title>
+        </Modal.Header>
 
+        <Modal.Body> 
 
-      <div className="modal-body">
       <div className="d-flex">
               <label>Tribunal:</label>
       <input

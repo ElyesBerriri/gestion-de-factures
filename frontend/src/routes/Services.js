@@ -71,13 +71,13 @@ const ListServices = () => {
 
         <tbody>
           {service.map(service => (
-            <tr key={service.service_id} id={`collab${service.service_id}`} onClick={()=>{ setID(service.service_id); 
+            <tr key={service.service_id} id={`service${service.service_id}`} onClick={()=>{setID(service.service_id); 
               setservicee(service);
-              let e = document.getElementById(`collab${service.service_id}`);
+              let e = document.getElementById(`service${service.service_id}`);
                   if (e.className !== "table-secondary") {
                     if (row !== "") document.getElementById(row).className = "";
                     e.className = "table-secondary";
-                    setRow(`collab${service.service_id}`);
+                    setRow(`service${service.service_id}`);
                     document.getElementById("clbtnr").className="btn btn-dark";
                     document.getElementById("clbtnm").className="btn btn-light mx-3";
                    }}}>
