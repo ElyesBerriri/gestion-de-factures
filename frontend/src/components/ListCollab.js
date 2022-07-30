@@ -60,19 +60,19 @@ const ListCollab = () => {
                 <tr className="bg-primary">
                     <th scope="col">ID</th>
                     <th scope="col">Nom</th>
-                    <th scope="col">Cin</th>
+                    <th scope="col">CIN</th>
                     <th scope="col">Ville</th>
                     <th scope="col">Rue</th>
                     <th scope="col">Numéro</th>
-                    <th scope="col">Code_postale</th>
+                    <th scope="col">Code postale</th>
                     <th scope="col">Activité</th>
                     <th scope="col">Téléphone</th>
                     <th scope="col">Fax</th>
                     <th scope="col">Email</th>
                     <th scope="col">Matricule</th>
-                    <th scope="col">Methode_de_paiement </th>
+                    <th scope="col">Methode de paiement </th>
                     <th scope="col">Montant</th>
-                    <th scope="col">Nombre_Dossier</th>
+                    <th scope="col">Nombre Dossier</th>
             </tr>
             </thead>
             <tbody>

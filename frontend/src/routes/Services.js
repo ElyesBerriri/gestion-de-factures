@@ -54,7 +54,7 @@ const ListServices = () => {
  
 
       
-      <div className="table-responsive m-3 mytable mytable-56">
+      <div className="table-responsive mytable-56service">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
           <tr>
@@ -83,47 +83,52 @@ const ListServices = () => {
                    }}}>
               <td >{service.tribunal}</td>
               <td>{service.nom}</td>
-              <td style={
+
+              <td className="back" style={
                 service.lundi=="Course"?
-                {'backgroundColor': '#ffa500'}
-                :
-                {'backgroundColor': '#89CFF0'}
+                {'backgroundColor': '#868e96'} :
+                service.lundi=="Audience"?
+                {'backgroundColor': '#02c3cc'}:{'backgroundColor': '	#FFFFFF'}
             }>{service.lundi}</td>
               <td
               style={
                 service.mardi=="Course"?
-                {'backgroundColor': '#ffa500'}
+                {'backgroundColor': '#868e96'}
                 :
-                {'backgroundColor': '#89CFF0'}
+                service.mardi=="Audience"?
+                {'backgroundColor': '#02c3cc'}:{'backgroundColor': '	#FFFFFF'}
             }>{service.mardi}</td>
               <td
               style={
                 service.mercredi=="Course"?
-                {'backgroundColor': '#ffa500'}
+                {'backgroundColor': "#868e96"}
                 :
-                {'backgroundColor': '#89CFF0'}
+                service.mercredi=="Audience"?
+                {'backgroundColor': '#02c3cc'}:{'backgroundColor': '	#FFFFFF'}
             }>{service.mercredi}</td>
               <td
               style={
                 service.jeudi=="Course"?
-                {'backgroundColor': '#ffa500'}
+                {'backgroundColor': '#868e96'}
                 :
-                {'backgroundColor': '#89CFF0'}
+                service.jeudi=="Audience"?
+                {'backgroundColor': '#02c3cc'}:{'backgroundColor': '	#FFFFFF'}
             }>{service.jeudi}</td>
               <td
-              style={
-                service.vendredi=="Course"?
-                {'backgroundColor': '#ffa500'}
-                :
-                {'backgroundColor': '#89CFF0'}
-            }>{service.vendredi}</td>
+           style={
+            service.vendredi=="Course"?
+            {'backgroundColor': '#868e96'}
+            :
+                service.vendredi=="Audience"?
+                {'backgroundColor': '#02c3cc'}:{'backgroundColor': '	#FFFFFF'}}
+            >{service.vendredi}</td>
               <td
               style={
                 service.samedi=="Course"?
-                {'backgroundColor': '#ffa500'}
+                {'backgroundColor': '#868e96'}
                 :
-                {'backgroundColor': '#89CFF0'}
-            }>{service.samedi}</td>
+                service.samedi=="Audience"?
+                {'backgroundColor': '#02c3cc'}:{'backgroundColor': '	#FFFFFF'}}>{service.samedi}</td>
              
             </tr>
           ))}
@@ -138,11 +143,11 @@ const ListServices = () => {
         </Button>
         </div>
 
-            <div className="container">
-            <h5 style={{'backgroundColor': '#ffa500'
-    }}>Jours des Courses</h5>
-    <h5 style={{'backgroundColor': '#89CFF0'
-    }}>Jours d'Audience</h5>
+            <div className="courseaudience">
+            <h5 className="course" style={{'backgroundColor': '#868e96'
+    }}>Jour de Course</h5>
+    <h5 className="audience" style={{'backgroundColor': '#02c3cc'
+    }}>Jour d'Audience</h5>
             </div>
             
      </Fragment>

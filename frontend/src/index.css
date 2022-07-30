@@ -56,7 +56,7 @@ code {
   justify-content: flex-start;
   margin-bottom: 3vh;
   margin-top: 1vh;
-  margin-left: 2rem;
+  margin-left: 2%;
 }
 
 .ajouterr {
@@ -314,7 +314,7 @@ code {
 /*emplacement dossier*/
 
 .ajoutdossier{
-  margin-left: 22%;
+  margin-left: 0.5vh;
   margin-bottom: 3vh;
 }
 
@@ -328,4 +328,38 @@ code {
 
 .mytable-41 {
   height: 41vh;
+}
+
+.back{
+  background-color: #ced4da;
+}
+
+.mytable-56service{
+  height: 56vh;
+  width: 70%;
+  margin-left:15%; 
+  margin-right:15%;
+}
+
+.courseaudience {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 3vh;
+  margin-top: 1vh;
+  margin-left: 2%;
+}
+
+.course{
+  margin-right: 1vh;
+  border-radius: 5px;
+  font-size: 90%;
+  padding-top:0.25% ;
+}
+
+.audience{
+  margin-right: 3vh;
+  border-radius: 5px;
+  font-size: 90%;
+  padding-top:0.25% ;
+
 }
