@@ -57,7 +57,7 @@ const InputCollab = () => {
 
         <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Nom :</span>
+      <span className="input-group-text  ">Nom :</span>
 
       <input type="text" 
           className="form-control"
@@ -68,7 +68,7 @@ const InputCollab = () => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">CIN :</span>
+      <span className="input-group-text ">CIN :</span>
 
       <input type="number"  
           className="form-control"
@@ -79,7 +79,7 @@ const InputCollab = () => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Ville :</span>
+      <span className="input-group-text ">Ville :</span>
 
       <input type="text"  
           className="form-control"
@@ -90,7 +90,7 @@ const InputCollab = () => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Rue :</span>
+      <span className="input-group-text  ">Rue :</span>
 
       <input type="text" className="form-control " 
          value={rue}
@@ -101,7 +101,7 @@ const InputCollab = () => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Numéro :</span>
+      <span className="input-group-text ">Numéro :</span>
       <input type="number" className="form-control "  
          value={num}
         onChange={e => setnum(e.target.value)}/>
@@ -110,7 +110,7 @@ const InputCollab = () => {
      
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Code postale :</span>
+      <span className="input-group-text ">Code postale :</span>
       <input type="number" className="form-control "  
          value={codepostale}
         onChange={e => setcodepostale(e.target.value)}/>
@@ -119,7 +119,7 @@ const InputCollab = () => {
      
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Activité :</span>
+      <span className="input-group-text  ">Activité :</span>
       <input type="text" className="form-control "  
           value={activite}
         onChange={e => setactivite(e.target.value)}/>
@@ -128,7 +128,7 @@ const InputCollab = () => {
      
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Téléphone :</span>
+      <span className="input-group-text ">Téléphone :</span>
       <input type="number" className="form-control "  
          value={tel}
         onChange={e => settel(e.target.value)}/>
@@ -137,7 +137,7 @@ const InputCollab = () => {
    
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Fax :</span>
+      <span className="input-group-text ">Fax :</span>
       <input type="number" className="form-control "  
          value={fax}
         onChange={e => setfax(e.target.value)}/>
@@ -146,7 +146,7 @@ const InputCollab = () => {
     
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Email :</span>
+      <span className="input-group-text ">Email :</span>
       <input type="text" className="form-control "  
           value={email}
         onChange={e => setemail(e.target.value)}/>
@@ -155,7 +155,7 @@ const InputCollab = () => {
     
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Matricule :</span>
+      <span className="input-group-text">Matricule :</span>
       <input type="number" className="form-control " 
          value={matricule}
         onChange={e => setmatricule(e.target.value)}/>
@@ -164,7 +164,7 @@ const InputCollab = () => {
      
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Methode de paiement :</span>
+      <span className="input-group-text ">Methode de paiement :</span>
       <input type="text" className="form-control "   
          value={methodepaiment}
         onChange={e => setmethodepaiment(e.target.value)}/>
@@ -174,7 +174,7 @@ const InputCollab = () => {
     
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Montant :</span>
+      <span className="input-group-text ">Montant :</span>
       <input type="number" className="form-control " id="colFormLabelSm"
           value={montant}
         onChange={e => setmontant(e.target.value)}/>
@@ -184,7 +184,7 @@ const InputCollab = () => {
    
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Nombre Dossier :</span>
+      <span className="input-group-text">Nombre Dossier :</span>
       <input type="number" className="form-control  "  
          value={nombre_dossier}
         onChange={e => setnombre_dossier(e.target.value)}/>

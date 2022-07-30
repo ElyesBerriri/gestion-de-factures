@@ -45,7 +45,7 @@ onClick={() => setLibelle(dossier.libelle)}
       <div className="modal-body">
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Libellé :</span>
+      <span className="input-group-text ">Libellé :</span>
 
               <input
                 type="text"
