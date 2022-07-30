@@ -353,13 +353,14 @@ code {
   margin-right: 1vh;
   border-radius: 5px;
   font-size: 90%;
-  padding-top:0.25% ;
+  padding: 0.7%;  
+
 }
 
 .audience{
   margin-right: 3vh;
   border-radius: 5px;
   font-size: 90%;
-  padding-top:0.25% ;
+ padding: 0.7%;  
 
 }
