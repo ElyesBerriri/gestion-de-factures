@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 
 const EditServices=({service})=>{
@@ -12,6 +13,10 @@ const EditServices=({service})=>{
     const [jeudi, setjeudi] = useState(service.jeudi);
     const [vendredi, setvendredi] = useState(service.vendredi);
     const [samedi, setsamedi] = useState(service.samedi);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const updatenom = async e => {
       e.preventDefault();
@@ -36,13 +41,11 @@ const EditServices=({service})=>{
 
   return (
     <Fragment>
-      
-      <Button variant="light" data-bs-toggle="modal" id="clbtnm"
-        data-bs-target={`#id${service.service_id}`} className="mx-3 disabled"
-onClick={() => {
-   {settribunal(service.tribunal);
-setnom(service.nom);
-  if (lundi==="Course"){
+
+     <Button variant="light" id="clbtnm" className="mx-3 disabled" onClick={()=>{handleShow();
+ setnom(service.nom);
+ settribunal(service.tribunal);
+  if (service.lundi==="Course"){
     document.getElementById(`Courselun${service.service_id}`).checked = true;
   }
   else if(lundi==="Audience"){
@@ -78,26 +81,22 @@ setnom(service.nom);
   else if(samedi==="Audience"){
     document.getElementById(`Audiencesam${service.service_id}`).checked = true;
   }
-}}}>
+}}>
   Modifier
   </Button>
+  
+  <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
 
- 
-  <div className="modal fade" id={`id${service.service_id}`} data-bs-backdrop="static">
-        <div className="modal-dialog modal-dialog-scrollable" >
-          <div className="modal-content">
-
-
-   
-      <div className="modal-header">
-        <h4 className="modal-title">Modification d'Administration</h4>
-        <button type="button" className="btn-close" data-bs-dismiss="modal"
-           onClick={() => setnom(service.nom)}
-        ></button>
-      </div>
-
+<Modal.Header closeButton>
+          <Modal.Title>Modification d'une administration </Modal.Title>
+        </Modal.Header>
     
-      <div className="modal-body">
+        <Modal.Body>
       <div className="row">
       <div className="input-group mb-3">
       <span className="input-group-text text-secondary ">Tribunal :</span>
@@ -183,21 +182,20 @@ setnom(service.nom);
           
         </tbody>
       </table>
-            </div>
+      </Modal.Body>
 
-            <div className="modal-footer">
+              
+        <Modal.Footer>
       <Button variant="light" id="valider" 
       onClick={e => updatenom(e)}
       >Valider</Button>
       <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
-      </div>
+      </Modal.Footer>
       
+ 
+</Modal>
 
-    </div>
-  </div>
-</div>
-
-    </Fragment>
+     </Fragment>
     );
     
 };

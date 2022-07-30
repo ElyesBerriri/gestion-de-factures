@@ -71,6 +71,8 @@ const EditCollab = ({collab}) => {
         <Modal.Header closeButton>
           <Modal.Title>Modification du collaborateur</Modal.Title>
         </Modal.Header>
+
+
         <Modal.Body>
         <div className="row">
       <div className="input-group mb-3">
@@ -254,6 +256,7 @@ const EditCollab = ({collab}) => {
       </div>
       
         </Modal.Body>
+        
         <Modal.Footer>
         <Button variant="light" id="valider" 
       onClick={e => updateCollab(e)}
