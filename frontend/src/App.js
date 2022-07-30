@@ -27,10 +27,29 @@ import Hono from './routes/Hono';
 import Creation from './routes/Creation';
 import PDF from './components/PDF';
 
+
+
+import styled from "styled-components";
+import { AccountBox } from "./components/accountBox/index";
+
+const AppContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+
+
 function App() {
 
     return (
-      <BrowserRouter>
+      <AppContainer>
+        <AccountBox />
+        </AppContainer>
+      /*<BrowserRouter>
         <div className='App'>
         <Navv ></Navv>
           <div className='content'>
@@ -59,6 +78,7 @@ function App() {
           </div>
         </div>
       </BrowserRouter>
+      </AppContainer>*/
     );
 }
 
