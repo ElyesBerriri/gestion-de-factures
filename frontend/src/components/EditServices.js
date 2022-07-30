@@ -88,13 +88,13 @@ const EditServices = ({ service }) => {
         <div className="modal-dialog modal-dialog-scrollable" >
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title ">Modification d'un client</h4>
+              <h4 className="modal-title ">Modification d'une administration</h4>
               <button type="button" className="btn-close" data-bs-dismiss="modal" />
             </div>
             <div className="modal-body">
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary ">Tribunal :</span>
+                  <span className="input-group-text">Tribunal :</span>
                   <input
                     type="text"
                     className="form-control"
@@ -106,7 +106,7 @@ const EditServices = ({ service }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary ">Administration :</span>
+                  <span className="input-group-text">Administration :</span>
                   <input
                     type="text"
                     className="form-control"

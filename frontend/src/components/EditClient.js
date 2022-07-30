@@ -134,7 +134,7 @@ const EditClient = ({ client }) => {
             <div className="modal-body">
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary ">Collaborateur :</span>
+                  <span className="input-group-text ">Collaborateur :</span>
                   <select className="form-select" aria-label="Default select example"
                     onChange={e => setCollaborateur(e.target.options[e.target.selectedIndex].value)}>
                     {collab.map(collab => {
@@ -153,7 +153,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Code Client :</span>
+                  <span className="input-group-text ">Code Client :</span>
                   <input type="text" className="form-control" disabled
                     value={code_client.substr(0, code_client.search("/"))} />
                   <span className="input-group-text">/</span>
@@ -168,7 +168,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Raison :</span>
+                  <span className="input-group-text">Raison :</span>
                   <input type="text" className="form-control"
                     placeholder="raison"
                     value={raison}
@@ -178,7 +178,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Situation fiscale :</span>
+                  <span className="input-group-text">Situation fiscale :</span>
                   <div className="mytext">
                     <input className="myradio ms-3 me-1" type="radio" name={`situationfiscale${client.client_id}`}
                       id={`situation1fiscale${client.client_id}`} value="Non Assujetie"
@@ -207,7 +207,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Type client :</span>
+                  <span className="input-group-text ">Type client :</span>
                   <div className="mytext">
                     <input className="myradio ms-3 me-1" type="radio" name={`typeclient${client.client_id}`}
                       id={`type1client${client.client_id}`}
@@ -227,7 +227,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Matricule :</span>
+                  <span className="input-group-text ">Matricule :</span>
                   <input type="text" className="form-control"
                     placeholder="matricule"
                     value={matricule}
@@ -237,7 +237,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Ville :</span>
+                  <span className="input-group-text">Ville :</span>
                   <input type="text" className="form-control"
                     placeholder="ville"
                     value={ville}
@@ -247,7 +247,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Rue :</span>
+                  <span className="input-group-text ">Rue :</span>
                   <input type="text" className="form-control"
                     placeholder="rue"
                     value={rue}
@@ -257,7 +257,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Numéro :</span>
+                  <span className="input-group-text">Numéro :</span>
                   <input type="number" className="form-control"
                     placeholder="numéro"
                     value={num}
@@ -267,7 +267,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Code Postale :</span>
+                  <span className="input-group-text ">Code Postale :</span>
                   <input type="number" className="form-control"
                     placeholder="code postale"
                     value={code_postale}
@@ -277,7 +277,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Adresse :</span>
+                  <span className="input-group-text">Adresse :</span>
                   <input type="text" className="form-control"
                     placeholder="adresse"
                     value={adresse}
@@ -287,7 +287,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Activité :</span>
+                  <span className="input-group-text ">Activité :</span>
                   <input type="text" className="form-control"
                     placeholder="activité"
                     value={activite}
@@ -297,7 +297,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Téléphone :</span>
+                  <span className="input-group-text ">Téléphone :</span>
                   <input type="text" className="form-control"
                     placeholder="téléphone"
                     value={tel}
@@ -307,7 +307,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Fax :</span>
+                  <span className="input-group-text">Fax :</span>
                   <input type="text" className="form-control"
                     placeholder="fax"
                     value={fax}
@@ -317,7 +317,7 @@ const EditClient = ({ client }) => {
 
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text text-secondary">Email :</span>
+                  <span className="input-group-text ">Email :</span>
                   <input type="email" className="form-control"
                     placeholder="email"
                     value={email}
