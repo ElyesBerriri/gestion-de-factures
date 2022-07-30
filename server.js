@@ -810,7 +810,7 @@ app.post("/services/list", async (req, res) => {
   try {
     const { tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi } = req.body;
     const services = await pool.query(
-    "INSERT INTO services (tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",[tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi]);
+    "INSERT INTO servicess (tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",[tribunal,nom,lundi,mardi,mercredi,jeudi,vendredi,samedi]);
     res.status(200).json(services.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -832,7 +832,7 @@ app.get("/services/list", async (req, res) => {
 
   const keys = ["tribunal"];
   
-  const services = await pool.query("SELECT * from services");
+  const services = await pool.query("SELECT * from servicess");
   console.log(services);
   const rows = services.rows;
   
@@ -895,7 +895,7 @@ app.put("/services/list/:id", async (req, res) => {
     const { id } = req.params;
     const { nom,lundi,mardi,mercredi,jeudi,vendredi,samedi} = req.body;
     await pool.query(
-      "UPDATE services SET nom=$1,lundi=$2,mardi=$3,mercredi=$4,jeudi=$5,vendredi=$6,samedi=$7  WHERE service_id = $8",
+      "UPDATE servicess SET nom=$1,lundi=$2,mardi=$3,mercredi=$4,jeudi=$5,vendredi=$6,samedi=$7  WHERE service_id = $8",
       [nom,lundi,mardi,mercredi,jeudi,vendredi,samedi, id]
     );
 
@@ -909,7 +909,7 @@ app.put("/services/list/:id", async (req, res) => {
 app.delete("/services/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    await pool.query("DELETE FROM services WHERE service_id = $1", [
+    await pool.query("DELETE FROM servicess WHERE service_id = $1", [
       id,
     ]);
     res.status(200).json("services was deleted");
