@@ -42,7 +42,7 @@ const InputTrib = () => {
       <Modal.Body> 
     <div className="row">
     <div className="input-group mb-3">
-    <span className="input-group-text text-secondary ">Tribunal :</span>
+    <span className="input-group-text ">Tribunal :</span>
 
             <input
         type="text"

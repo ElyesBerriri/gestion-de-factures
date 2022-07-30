@@ -51,7 +51,7 @@ const InputService=()=>{
 
         <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Tribunal :</span>
+      <span className="input-group-text">Tribunal :</span>
 
       <input
                 type="text"
@@ -63,7 +63,7 @@ const InputService=()=>{
        
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Administration :</span>
+      <span className="input-group-text ">Administration :</span>
       <input
                 type="text"
                 className="form-control"

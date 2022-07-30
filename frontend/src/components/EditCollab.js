@@ -76,7 +76,7 @@ const EditCollab = ({collab}) => {
         <Modal.Body>
         <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Nom :</span>
+      <span className="input-group-text ">Nom :</span>
 
               <input
                 type="text"
@@ -89,7 +89,7 @@ const EditCollab = ({collab}) => {
      
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">CIN :</span>
+      <span className="input-group-text ">CIN :</span>
 
       <input
                 type="number"
@@ -102,7 +102,7 @@ const EditCollab = ({collab}) => {
     
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Ville :</span>
+      <span className="input-group-text ">Ville :</span>
 
       <input
                 type="text"
@@ -115,7 +115,7 @@ const EditCollab = ({collab}) => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Rue :</span>
+      <span className="input-group-text  ">Rue :</span>
 
       <input
                 type="text"
@@ -129,7 +129,7 @@ const EditCollab = ({collab}) => {
  
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Num :</span>
+      <span className="input-group-text ">Num :</span>
 
       <input
                 type="number"
@@ -142,7 +142,7 @@ const EditCollab = ({collab}) => {
  
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Code Postale :</span>
+      <span className="input-group-text ">Code Postale :</span>
 
       <input
                 type="number"
@@ -155,7 +155,7 @@ const EditCollab = ({collab}) => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Activité :</span>
+      <span className="input-group-text  ">Activité :</span>
 
       <input
                 type="text"
@@ -169,7 +169,7 @@ const EditCollab = ({collab}) => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Téléphone :</span>
+      <span className="input-group-text ">Téléphone :</span>
 
       <input
                 type="number"
@@ -182,7 +182,7 @@ const EditCollab = ({collab}) => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Fax :</span>
+      <span className="input-group-text">Fax :</span>
 
       <input
                 type="number"
@@ -195,7 +195,7 @@ const EditCollab = ({collab}) => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Email :</span>
+      <span className="input-group-text ">Email :</span>
       <input
                 type="text"
                 className="form-control"
@@ -207,7 +207,7 @@ const EditCollab = ({collab}) => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Matricule :</span>
+      <span className="input-group-text  ">Matricule :</span>
       <input
                 type="number"
                 className="form-control"
@@ -220,7 +220,7 @@ const EditCollab = ({collab}) => {
  
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Methode de paiement :</span>
+      <span className="input-group-text ">Methode de paiement :</span>
       <input
                 type="text"
                 className="form-control"
@@ -233,7 +233,7 @@ const EditCollab = ({collab}) => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Montant :</span>
+      <span className="input-group-text ">Montant :</span>
       <input
                 type="number"
                 className="form-control"
@@ -245,7 +245,7 @@ const EditCollab = ({collab}) => {
 
       <div className="row">
       <div className="input-group mb-3">
-      <span className="input-group-text text-secondary ">Nombre dossier :</span>
+      <span className="input-group-text  ">Nombre dossier :</span>
       <input 
                 type="number"
                 className="form-control"
