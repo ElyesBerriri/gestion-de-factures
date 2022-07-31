@@ -1,11 +1,13 @@
 import React, { Fragment, useState } from "react";
 import InputDemandeur from "./InputDemandeur";
+import Button from 'react-bootstrap/Button';
 
 const TabDeman =(props)=>{
 
     const [demandeurs, setDemandeur] = useState([]);
     const [IDDemand, setIDDemand] = useState("*");
     const [nom, setnom] = useState("");
+    const [row, setRow] = useState("");
 
     const getdemandeur = async (id) => {
       if (id!==0){
@@ -20,7 +22,9 @@ const TabDeman =(props)=>{
     };
 
     const deletedemandeur = async id => {
-      try {
+      setRow("");
+      document.getElementById("clbtnr").className="btn btn-dark disabled";
+       try {
  
         await fetch(`/demandeurs/list/${id}`, {
           method: "DELETE"
@@ -40,21 +44,35 @@ const TabDeman =(props)=>{
 
 return (
     <Fragment>
-       {" "}
-      <table className="table table table-hover mt-5 text-center">
-        <thead  className="table-dark">
+            <h1 className='titlee' >Liste des Demandeurs</h1>
+            <InputDemandeur /*demandeur={props.demandeur}  
+        changedemandeur={props.changedemandeur}*/ dossier_id={props.dossier_id} changedem={(e)=>getdemandeur(e)}/>
+
+       <div className="table-responsive mytable-56dossier ">
+        <table className="table table-hover text-center">
+          <thead className="table-secondary text-secondary mytableheader">
           <tr>
-            <th>Nom et Prénom</th>
-            <th>CIN</th>
-            <th>Adresse</th>
-            <th>Adresse Designée</th>
-            <th>Tel</th>
-            <th>Fax</th>
+            <th scope="col">Nom et Prénom</th>
+            <th scope="col">CIN</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Adresse Designée</th>
+            <th scope="col">Tel</th>
+            <th scope="col">Fax</th>
           </tr>
         </thead>
+
         <tbody>
           {demandeurs.map(demandeur => (
-            <tr key={demandeur.demandeur_id} onClick={()=> setIDDemand(demandeur.demandeur_id)}>
+            <tr key={demandeur.demandeur_id} id={`demandeur${demandeur.demandeur_id}`} onClick={()=>{ setIDDemand(demandeur.demandeur_id); 
+              
+              let e = document.getElementById(`demandeur${demandeur.demandeur_id}`);
+                  if (e.className !== "table-secondary") {
+                    if (row !== "") document.getElementById(row).className = "";
+                    e.className = "table-secondary";
+                    setRow(`demandeur${demandeur.demandeur_id}`);
+                    document.getElementById("clbtnr").className="btn btn-dark";
+                    }}}
+                  >
               <td>{demandeur.nom}</td>  
               <td>{demandeur.CIN}</td>     
               <td>{demandeur.adresse}</td>     
@@ -65,17 +83,15 @@ return (
           ))}
         </tbody>
       </table>
-      <div>
-        <button
-            className="btn btn-danger"
-            onClick={() => deletedemandeur(IDDemand)}>
-            
-                    Supprimer demandeur
-        </button>
-            <InputDemandeur /*demandeur={props.demandeur}  
-        changedemandeur={props.changedemandeur}*/ dossier_id={props.dossier_id} changedem={(e)=>getdemandeur(e)}/>
+      </div>
 
-                </div>
+      <div className="modifsupp">
+     
+      <Button variant="dark" id="clbtnr" className="disabled"  onClick={() => deletedemandeur(IDDemand)}>
+      Supprimer
+        </Button>
+ </div>
+      
     </Fragment>
 )
      

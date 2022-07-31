@@ -31,8 +31,8 @@ const InputDossier = () => {
     <Fragment>
       <h1 className="title">Emplacement des dossiers</h1>
        
-<div className="ajoutdossier">
-      <button className="ajouter" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+<div >
+      <button className="ajouter ajoutdossier" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
       </button>
 </div>
 
