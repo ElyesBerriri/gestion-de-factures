@@ -42,8 +42,10 @@ const ClientDemandeur =(props)=>{
       }, [query]);    
  
     return(
-        <section id="client">
-        <div className="container mt-5">
+        
+        <section className=" client" id="client">
+            <div className="section1" >
+        <div className=" container mt-5">
         <label className="col-sm-2 col-form-label col-form-label-sm">Code</label>
             <input
             className="search "
@@ -150,12 +152,15 @@ const ClientDemandeur =(props)=>{
                   </div>
               </div>
       </div>
-
-
-<TabDeman
+</div>
+      <TabDeman
 demandeur={props.demandeur} dossier_id={props.idd}             
 changedemandeur={props.changedemandeur} />
+
+
     </section>
+
+
     )
 
 };

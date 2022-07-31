@@ -19,7 +19,6 @@ const InputDemandeur = (props) => {
   const handleShow = () => setShow(true);
 
   const onSubmitForm =async (e) => {
-    console.log(dossier_id);
       try {
         const body = {dossier_id,nom,CIN,adresse,adresse_d,tel,fax,brouillon} ;
         await fetch("/demandeurs/list", {
@@ -48,7 +47,7 @@ const InputDemandeur = (props) => {
   return (
     <Fragment>
       <div className="rechercheajout">
-     <button className="ajouter ajouterrdeman" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+     <button className="ajouter ajouterr" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
       </button>
 </div>
 

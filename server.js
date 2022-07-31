@@ -1451,7 +1451,7 @@ app.post("/reglement/list", async (req, res) => {
   try {
     const { dossier_id,hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,broui} = req.body;
     const donnees = await pool.query(
-    "INSERT INTO adversaires (dossier_id,hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,broui) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *",
+    "INSERT INTO reglement (dossier_id,hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,broui) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *",
     [dossier_id,hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,broui]);
     res.status(200).json(donnees.rows[0]);
   } catch (err) {

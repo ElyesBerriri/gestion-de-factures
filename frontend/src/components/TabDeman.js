@@ -43,12 +43,12 @@ const TabDeman =(props)=>{
  
 
 return (
-    <Fragment>
+    <Fragment className="section2">
             <h1 className='titlee' >Liste des Demandeurs</h1>
             <InputDemandeur /*demandeur={props.demandeur}  
         changedemandeur={props.changedemandeur}*/ dossier_id={props.dossier_id} changedem={(e)=>getdemandeur(e)}/>
 
-       <div className="table-responsive mytable-56dossier ">
+       <div className="table-responsive m-3 mytable  mytable-56 ">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
           <tr>

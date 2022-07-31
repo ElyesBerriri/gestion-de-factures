@@ -376,3 +376,31 @@ code {
 .ajouterrdeman {
   margin-left: 20%;
 }
+
+.navbarcreation{
+  position: sticky;
+  top: 56px;
+  z-index: 1000;
+}
+
+.client{
+  height: 200vh;
+}
+
+.section1{
+  height: 100vh;
+  padding-top: 11vh;
+  margin-top: -11vh;
+
+}
+
+.section2{
+  
+  height: 100vh;
+
+}
+
+.navbarcreation1:hover{
+  position:relative;
+  width: 13vh;
+}

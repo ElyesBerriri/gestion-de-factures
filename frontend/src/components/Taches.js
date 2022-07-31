@@ -41,7 +41,7 @@ const Tache =(props)=>{
 
 
 return (
-    <section id='tache'>
+    <section className='section1' id='tache'>
       <h1 className='titlee' >Liste des Tâches</h1>
       <InputTache
             changetach={(e)=>gettache(e)}
@@ -51,17 +51,17 @@ return (
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
           <tr>
-            <th scope="col">Tache</th>
-            <th scope="col">Data_Critique</th>
-            <th scope="col">Date_Rappel</th>
+            <th scope="col">Tâche</th>
+            <th scope="col">Data Critique</th>
+            <th scope="col">Date Rappel</th>
             <th scope="col">Résolu</th>
-            <th scope="col">Personne_chargé</th>
+            <th scope="col">Personne chargé</th>
             <th scope="col">Greffier</th>
             <th scope="col">Course</th>
             <th scope="col">Lieu</th>
             <th scope="col">Service</th>
-            <th scope="col">Date_d'audience</th>
-            <th scope="col">Date_d'echeance</th>
+            <th scope="col">Date d'audience</th>
+            <th scope="col">Date d'écheance</th>
           </tr>
         </thead>
 

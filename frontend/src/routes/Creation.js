@@ -33,7 +33,6 @@ const Creation =()=>{
     const [echeance, setEcheance] = useState("");
     
     
-    
     const [client_id,setclient_id]= useState(0);
     const [collab_id,setcollab_id]= useState(0);
     const [client,setclient]= useState("!");
@@ -185,16 +184,15 @@ const Creation =()=>{
       <>
         
 
-        <div className="d-flex justify-content-center ">
-          <AnchorLink href='#client'><button>Client et Demandeur</button></AnchorLink>
-          <AnchorLink href='#donnees'><button>Données Dossier</button></AnchorLink>
-          <AnchorLink href='#tache'><button>Tâche</button></AnchorLink>
-          <AnchorLink href='#collaborateur'><button>Collaborateur</button></AnchorLink>
-          <AnchorLink href='#reglement'><button>Réglement</button></AnchorLink>
-          <AnchorLink href='#sousdossier'><button>Sous Dossier</button></AnchorLink>
+        <div className="navbarcreation ">
+          <AnchorLink className="navbarcreation1" href='#client'><button>Client et Demandeur</button></AnchorLink>
+          <AnchorLink className="navbarcreation1" href='#donnees'><button>Données Dossier</button></AnchorLink>
+          <AnchorLink className="navbarcreation1" href='#tache'><button>Tâche</button></AnchorLink>
+          <AnchorLink className="navbarcreation1" href='#collaborateur'><button>Collaborateur</button></AnchorLink>
+          <AnchorLink className="navbarcreation1" href='#reglement'><button>Réglement</button></AnchorLink>
+          <AnchorLink className="navbarcreation1" href='#sousdossier'><button>Sous Dossier</button></AnchorLink>
         </div>
 
-        <h1>dossier n°{dossier_id}</h1>
 
         <div>
            <ClientDemandeur

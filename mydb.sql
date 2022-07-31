@@ -161,7 +161,7 @@ CREATE TABLE tache(
 
 
 CREATE TABLE reglement(
-    id_reg int PRIMARY KEY,
+    id_reg SERIAL PRIMARY KEY,
     dossier_id int,
     hono_avo float,
     net_payer float,

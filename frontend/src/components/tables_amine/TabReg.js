@@ -1,20 +1,21 @@
 import React, { Fragment, useState,useEffect } from "react";
 import InputReg from "./InputReg";
+import Button from 'react-bootstrap/Button';
 
 const TabReg =(props)=>{
 
     const [reglement, setReglement] = useState([]);
-    const [reg, setReg] = useState("");
-    const [montant, setMontant] = useState("");
-    const [typee, setTypee] = useState("");
-    const [bare, setBare] = useState("");
-    const [num_operation, setNumOp] = useState("");
-    const [banque, setBanque] = useState("");
-    const [porteur, setPorteur] = useState("");
+    const [reg, setReg] = useState("--");
+    const [montant, setMontant] = useState("--");
+    const [typee, setTypee] = useState("--");
+    const [bare, setBare] = useState("--");
+    const [num_operation, setNumOp] = useState("--");
+    const [banque, setBanque] = useState("--");
+    const [porteur, setPorteur] = useState("--");
     const [dossier_id, setidd] = useState(10);
-    const [echeance, setEcheance] = useState("");
-    const [idreg, setIdReg] = useState("")
-    ;
+    const [echeance, setEcheance] = useState("--");
+    const [idreg, setIdReg] = useState("--");
+    const [row, setRow] = useState("");
 
     const getreglement = async (id,a) => {
       if (id!==0){
@@ -31,6 +32,8 @@ const TabReg =(props)=>{
     };
 
     const deletereglement= async id => {
+      setRow("");
+      document.getElementById("clbtnrrrr").className="btn btn-dark disabled";
       try {
  
         await fetch(`/reglement/list/${id}`, {
@@ -47,24 +50,39 @@ const TabReg =(props)=>{
 
 return (
     <Fragment>
-       {" "}
-      <table className="table table table-hover mt-5 text-center">
-        <thead  className="table-dark">
+            <h1 className='titlee' >Liste des Réglements</h1>
+
+
+            <InputReg changereg={(e,a)=>getreglement(e,a)}
+         dossier_id={props.dossier_id} />
+
+            <div className="table-responsive m-3 mytable  mytable-56 ">
+        <table className="table table-hover text-center">
+          <thead className="table-secondary text-secondary mytableheader">
           <tr>
-            <th>Honoraire de l'avocat</th>
-            <th>Net à payer</th>
-            <th>Montant</th>
-            <th>Type</th>
-            <th>Baré</th>
-            <th>Numéro opération</th>
-            <th>Banque</th>
-            <th>Porteur</th>
-            <th>Echéance</th>
+            <th scope="col">Honoraire de l'avocat</th>
+            <th scope="col">Net à payer</th>
+            <th scope="col">Montant</th>
+            <th scope="col">Type</th>
+            <th scope="col">Baré</th>
+            <th scope="col">Numéro opération</th>
+            <th scope="col">Banque</th>
+            <th scope="col">Porteur</th>
+            <th scope="col">Echéance</th>
           </tr>
         </thead>
         <tbody>
           {reglement.map(reglement => (
-            <tr key={reglement.id_reg} onClick={()=> {setIdReg(reglement.id_reg)}}>
+            <tr key={reglement.id_reg} id={`reglement${reglement.id_reg}`} onClick={()=> {setIdReg(reglement.id_reg);
+
+              let e = document.getElementById(`reglement${reglement.id_reg}`);
+              if (e.className !== "table-secondary") {
+                if (row !== "") document.getElementById(row).className = "";
+                e.className = "table-secondary";
+                setRow(`reglement${reglement.id_reg}`);
+                document.getElementById("clbtnrrrr").className="btn btn-dark";
+
+                 }}}>
               <td>{reglement.hono_avo}</td>
               <td>{reglement.net_payer}</td>
               <td>{reglement.montant}</td>
@@ -78,18 +96,14 @@ return (
            ))}
         </tbody>
       </table>
-      <div>
-        <button
-            className="btn btn-danger"
-            onClick={() => deletereglement(idreg)}>
-                    Supprimer réglement 
-        </button>
+</div>
 
-
-        <InputReg changereg={(e,a)=>getreglement(e,a)}
-         dossier_id={props.dossier_id} />
-
-    </div>
+      <div className="modifsupp">
+     <Button variant="dark" id="clbtnrrrr" className="disabled"  onClick={() => deletereglement(idreg)}>
+     Supprimer
+       </Button>
+</div>
+    
     </Fragment>
 )
      
