@@ -50,14 +50,14 @@ const InputDemandeur = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>Nouveau Demandeur</Modal.Title>
         </Modal.Header>
+
         <Modal.Body> 
 
         <div className="row">
       <div className="input-group mb-3">
       <span className="input-group-text ">Nom et Prénom :</span>
         <input type="text" className="form-control "  
-        placeholder="Nom et Prénom"
-        value={nom}
+         value={nom}
         onChange={e => setNom(e.target.value)}/>
     </div>
     </div>

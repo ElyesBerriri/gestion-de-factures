@@ -1,5 +1,6 @@
 import React, { Fragment, useState,useEffect } from "react";
  import InputAdversaire from "./InputAdversaire";
+ import Button from 'react-bootstrap/Button';
 
 const TabAdvers =(props)=>{
 
@@ -12,6 +13,7 @@ const TabAdvers =(props)=>{
     const [avocat, setavocat] = useState("");
     const [adresse_a, setadresse_a] = useState("");
     const [idadversaire, setIDadversaire] = useState("");
+    const [row, setRow] = useState("");
 
     const getadversaire = async (id,a) => {
       if (id!==0){
@@ -28,6 +30,8 @@ const TabAdvers =(props)=>{
     };
 
     const deleteadversaire = async id => {
+      setRow("");
+      document.getElementById("clbtnr").className="btn btn-dark disabled";
       try {
  
         await fetch(`/adversaire/list/${id}`, {
@@ -49,22 +53,36 @@ const TabAdvers =(props)=>{
 
 return (
     <Fragment>
-       {" "}
-      <table className="table table table-hover mt-5 text-center">
-        <thead  className="table-dark">
+            <h1 className='titlee' >Liste des Adversaires</h1>
+            <InputAdversaire changeadv={(e,a)=>getadversaire(e,a)}
+         dossier_id={props.dossier_id} />
+
+      <div className="table-responsive mytable-56dossier ">
+        <table className="table table-hover text-center">
+          <thead className="table-secondary text-secondary mytableheader">
           <tr>
-            <th>ID dossier</th>
-            <th>Nom et Prénom</th>
-            <th>Registre</th>
-            <th>Adresse</th>
-            <th>Adresse designée</th>
-            <th>Avocat</th>
-            <th>Adresse Avocat</th>
+            <th scope="col">ID dossier</th>
+            <th scope="col">Nom et Prénom</th>
+            <th scope="col">Registre</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Adresse designée</th>
+            <th scope="col">Avocat</th>
+            <th scope="col">Adresse Avocat</th>
           </tr>
         </thead>
         <tbody>
           {adversaire.map(adversaire => (
-            <tr key={adversaire.adversaire_id} onClick={()=> {setIDadversaire(adversaire.adversaire_id);setnom(adversaire.nom)}}>
+            <tr key={adversaire.adversaire_id} id={`adversaire${adversaire.adversaire_id}`} onClick={()=> {setIDadversaire(adversaire.adversaire_id);
+              setnom(adversaire.nom);
+              let e = document.getElementById(`adversaire${adversaire.adversaire_id}`);
+              if (e.className !== "table-secondary") {
+                if (row !== "") document.getElementById(row).className = "";
+                e.className = "table-secondary";
+                setRow(`adversaire${adversaire.adversaire_id}`);
+                document.getElementById("clbtnr").className="btn btn-dark";
+                console.log("hii ");
+
+                }}}>
               <td>{adversaire.dossier_id}</td>
               <td>{adversaire.nom}</td>
               <td>{adversaire.registre}</td>
@@ -76,18 +94,17 @@ return (
            ))}
         </tbody>
       </table>
-      <div>
-        <button
-            className="btn btn-danger"
-            onClick={() => deleteadversaire(idadversaire)}>
-                    Supprimer adversaire  
-        </button>
+      </div>
 
+  
+        <div className="modifsupp">
+     
+     <Button variant="dark" id="clbtnr" className="disabled"  onClick={() => deleteadversaire(idadversaire)}>
+     Supprimer
+       </Button>
+</div>
 
-        <InputAdversaire changeadv={(e,a)=>getadversaire(e,a)}
-         dossier_id={props.dossier_id} />
-
-                </div>
+                
     </Fragment>
 )
      

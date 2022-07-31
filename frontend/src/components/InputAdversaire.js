@@ -1,4 +1,7 @@
 import React, { Fragment,useState,useEffect }  from "react";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { GoPlus } from "react-icons/go";
 
 
 const InputAdversaire = (props) => {
@@ -10,6 +13,10 @@ const InputAdversaire = (props) => {
   const [adresse_a, setAdresseav] = useState("--");
   const [dossier_id, setidd] = useState(10);
   const [brouillon, setbrouillon] = useState("oui");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
  
@@ -36,98 +43,90 @@ const InputAdversaire = (props) => {
   return (
     <Fragment>
       
-    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Ajouter adversaire 
-  </button>
+      <div className="rechercheajout">
+     <button className="ajouter ajouterrdeman" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+      </button>
+</div>
+
   
    
-  <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">Nouveau adversaire :</h5>
-          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+<Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Nouveau Adversaire</Modal.Title>
+        </Modal.Header>
+        
   
-  
-        <div className="modal-body">
-        <div className="container ">
-    <form  >
+        
+        <Modal.Body> 
 
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">Nom et Prénom : </label>
-    <div className="col-sm-10">
-        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Nom et Prénom"
-        value={nom}
+        <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Nom et Prénom :</span>
+        <input type="text" className="form-control "  
+         value={nom}
         onChange={e => setNom(e.target.value)}/>
     </div>
     </div>
-
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">Registre :</label>
-    <div className="col-sm-10">
-        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Registre"
-        value={registre}
-        onChange={e => setRegistre(e.target.value)}/>
+        
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Registre :</span>
+        <input type="text" className="form-control "  
+         value={registre}
+         onChange={e => setRegistre(e.target.value)}/>
     </div>
     </div>
-
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">Adresse :</label>
-    <div className="col-sm-10">
-        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Adresse"
+        
+    <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Adresse :</span>
+        <input type="text" className="form-control "  
         value={adresse}
         onChange={e => setAdresse(e.target.value)}/>
     </div>
     </div>
 
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">Adresse Designée</label>
-    <div className="col-sm-10">
-        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Adresse Designée"
+    <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Adresse Designée :</span>
+        <input type="text" className="form-control "  
         value={adresse_d}
         onChange={e => setAdressed(e.target.value)}/>
     </div>
     </div>
 
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">Avocat</label>
-    <div className="col-sm-10">
-        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Avocat"
+    <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Avocat :</span>
+        <input type="text" className="form-control "  
         value={avocat}
         onChange={e => setAvocat(e.target.value)}/>
     </div>
     </div>
 
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">Adresse avocat</label>
-    <div className="col-sm-10">
-        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Rue"
+    <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Adresse avocat :</span>
+        <input type="text" className="form-control "  
         value={adresse_a}
         onChange={e => setAdresseav(e.target.value)}/>
     </div>
     </div>
-
-    </form>
-    </div>
-
-        </div>
-        <div className="modal-footer">
-          <button 
-            type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-             <button 
-            type="button" className="btn btn-success" onClick={onSubmitForm} data-bs-dismiss="modal">Ajouter</button>
-         </div>
-      </div>
-    </div>
-  </div>
-
+    </Modal.Body>
+ 
+  
+    <Modal.Footer>
+           
+           <Button variant="light" id="valider" onClick={()=>{handleClose();onSubmitForm()}}>
+             Valider
+           </Button>
+           <Button variant="dark" onClick={handleClose}>
+             Fermer
+           </Button>
+         </Modal.Footer>
+       </Modal>
+  
+ 
 
   </Fragment>
   );
