@@ -74,15 +74,15 @@ return (
           {adversaire.map(adversaire => (
             <tr key={adversaire.adversaire_id} id={`adversaire${adversaire.adversaire_id}`} onClick={()=> {setIDadversaire(adversaire.adversaire_id);
               setnom(adversaire.nom);
+
               let e = document.getElementById(`adversaire${adversaire.adversaire_id}`);
               if (e.className !== "table-secondary") {
                 if (row !== "") document.getElementById(row).className = "";
                 e.className = "table-secondary";
                 setRow(`adversaire${adversaire.adversaire_id}`);
                 document.getElementById("clbtnr").className="btn btn-dark";
-                console.log("hii ");
 
-                }}}>
+                 }}}>
               <td>{adversaire.dossier_id}</td>
               <td>{adversaire.nom}</td>
               <td>{adversaire.registre}</td>
@@ -98,7 +98,6 @@ return (
 
   
         <div className="modifsupp">
-     
      <Button variant="dark" id="clbtnr" className="disabled"  onClick={() => deleteadversaire(idadversaire)}>
      Supprimer
        </Button>

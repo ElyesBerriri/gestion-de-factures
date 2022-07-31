@@ -70,7 +70,7 @@ return (
                     if (row !== "") document.getElementById(row).className = "";
                     e.className = "table-secondary";
                     setRow(`demandeur${demandeur.demandeur_id}`);
-                    document.getElementById("clbtnr").className="btn btn-dark";
+                    document.getElementById("clbtnrr").className="btn btn-dark";
                     }}}
                   >
               <td>{demandeur.nom}</td>  
@@ -86,8 +86,7 @@ return (
       </div>
 
       <div className="modifsupp">
-     
-      <Button variant="dark" id="clbtnr" className="disabled"  onClick={() => deletedemandeur(IDDemand)}>
+      <Button variant="dark" id="clbtnrr" className="disabled"  onClick={() => deletedemandeur(IDDemand)}>
       Supprimer
         </Button>
  </div>
