@@ -28,6 +28,12 @@ const InputDemandeur = (props) => {
           body: JSON.stringify(body)
         });
         //props.changedemandeur(props.demandeur+" , "+nom);
+        setFax("--");
+        setAdresse("--");
+        setNom("--");
+        setCin("--");
+        setAdresseD("--");
+        setTel("--")
         props.changedem(props.dossier_id);
      } catch (err) {
       console.error(err.message);

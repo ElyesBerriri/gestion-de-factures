@@ -23,7 +23,7 @@ const TabDeman =(props)=>{
 
     const deletedemandeur = async id => {
       setRow("");
-      document.getElementById("clbtnr").className="btn btn-dark disabled";
+      document.getElementById("clbtnrr").className="btn btn-dark disabled";
        try {
  
         await fetch(`/demandeurs/list/${id}`, {

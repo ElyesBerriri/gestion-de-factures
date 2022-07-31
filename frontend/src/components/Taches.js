@@ -1,11 +1,13 @@
 import React, { Fragment, useState } from "react";
 import InputTache from "./InputTache";
+import Button from 'react-bootstrap/Button';
 
 const Tache =(props)=>{
 
     const [taches, settaches] = useState([]);
     const [tache, settache] = useState("*");
     const [tache_id, setIDtache] = useState(4);
+    const [row, setRow] = useState("");
 
 
     const gettache = async (id) => {
@@ -22,6 +24,8 @@ const Tache =(props)=>{
 
 
     const deletetache = async id => {
+      setRow("");
+      document.getElementById("clbtnrrr").className="btn btn-dark disabled";
       try {
  
         await fetch(`/tache/list/${id}`, {
@@ -38,26 +42,40 @@ const Tache =(props)=>{
 
 return (
     <section id='tache'>
-       {" "}
-      <table className="table table table-hover mt-5 text-center">
-        <thead  className="table-dark">
+      <h1 className='titlee' >Liste des Tâches</h1>
+      <InputTache
+            changetach={(e)=>gettache(e)}
+            dossier_id={props.idd}/>
+
+      <div className="table-responsive mytable-56 ">
+        <table className="table table-hover text-center">
+          <thead className="table-secondary text-secondary mytableheader">
           <tr>
-            <th>Tache</th>
-            <th>Data_Critique</th>
-            <th>Date_Rappel</th>
-            <th>Résolu</th>
-            <th>Personne_chargé</th>
-            <th>Greffier</th>
-            <th>Course</th>
-            <th>Lieu</th>
-            <th>Service</th>
-            <th>Date_d'audience</th>
-            <th>Date_d'echeance</th>
+            <th scope="col">Tache</th>
+            <th scope="col">Data_Critique</th>
+            <th scope="col">Date_Rappel</th>
+            <th scope="col">Résolu</th>
+            <th scope="col">Personne_chargé</th>
+            <th scope="col">Greffier</th>
+            <th scope="col">Course</th>
+            <th scope="col">Lieu</th>
+            <th scope="col">Service</th>
+            <th scope="col">Date_d'audience</th>
+            <th scope="col">Date_d'echeance</th>
           </tr>
         </thead>
+
         <tbody>
           {taches.map(tache => (
-            <tr key={tache.tache_id} onClick={()=> setIDtache(tache.tache_id)}>
+            <tr key={tache.tache_id} id={`tache${tache.tache_id}`} onClick={()=> {setIDtache(tache.tache_id);
+              let e = document.getElementById(`tache${tache.tache_id}`);
+              if (e.className !== "table-secondary") {
+                if (row !== "") document.getElementById(row).className = "";
+                e.className = "table-secondary";
+                setRow(`tache${tache.tache_id}`);
+                document.getElementById("clbtnrrr").className="btn btn-dark";
+
+                 }}}>
               <td>{tache.tache}</td>
               <td>{tache.datec}</td>
               <td>{tache.dater}</td>
@@ -74,17 +92,17 @@ return (
           ))}
         </tbody>
       </table>
-      <div>
-        <button
-            className="btn btn-danger"
-            onClick={() => deletetache(tache_id)}>
-                    Supprimer tache
-        </button>
-            <InputTache
-            changetach={(e)=>gettache(e)}
-            dossier_id={props.idd}/>
+      </div>
 
-                </div>
+      <div className="modifsupp">
+     <Button variant="dark" id="clbtnrrr" className="disabled"  onClick={() => deletetache(tache_id)}>
+     Supprimer
+       </Button>
+</div>
+
+      
+            
+             
     </section>
 )
      

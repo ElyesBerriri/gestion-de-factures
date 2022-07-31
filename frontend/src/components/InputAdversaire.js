@@ -21,16 +21,22 @@ const InputAdversaire = (props) => {
 
  
   const onSubmitForm =async (e) => {
-    console.log(dossier_id);
-      try {
+       try {
         const body = {dossier_id,nom,registre,adresse,adresse_d,avocat,adresse_a,brouillon} ;
         await fetch("/adversaire/list", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         });
+
+        setNom("--");
+        setRegistre("--");
+        setAdresse("--");
+        setAdresseav("--");
+        setAvocat("--");
+        setAdressed("--");
         props.changeadv(props.dossier_id);
-        console.log("advv");
+      
      } catch (err) {
       console.error(err.message);
     }
