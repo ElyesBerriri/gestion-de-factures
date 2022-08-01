@@ -40,7 +40,7 @@ const Collaborateur =(props)=>{
       }, [query]);    
  
     return(
-        <section className='section1' id="collaborateur">
+        <section className='client' id="collaborateur">
         <div className="container mt-5">
         <label className="col-sm-2 col-form-label col-form-label-sm">Nom et Prenom</label>
             <input

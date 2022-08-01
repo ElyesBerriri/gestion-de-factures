@@ -6,7 +6,7 @@ const Sousdossier =(props)=>{
  
       
     return(
-        <section className='section1' id="sousdossier">
+        <section className='client' id="sousdossier">
         <div className="container mt-5">
             
           <ChercherDossier changerdossier={(e)=>setDossier(e)} dossier={dossier} />
