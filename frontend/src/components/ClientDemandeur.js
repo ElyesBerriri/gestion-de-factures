@@ -47,26 +47,25 @@ const ClientDemandeur =(props)=>{
         <section className=" client" id="client">
 
             <div className="section1" >
-            <div className="rechercheajout">
-
+ 
+            <div className="rechercheajoutcreation">
             <Search setQuery={(e) => setQuery(e)} />
-            </div>
 
-        
-
-            <select name="select_box" className="form-select" id="select_box"  value={props.client_id} onChange={(e)=>{specificClient(e.target.value)}}>
-                <option ></option>
-                {clients.map(client => (
+            <div className="mycontainercreation">
+                <select className="myselectcreation"
+                   value={props.client_id} onChange={(e)=>{specificClient(e.target.value)}}>
+                    <option></option>
+                    {clients.map(client => (
                         <option key={client.client_id}  value={client.client_id}>{client.raison} {client.code_client}</option>
                 ))}
-            </select>
+                </select>
+            </div>
+            </div>
 
-            <div className="split mt-5">
-
-            <div class="left">
-
-            <div className="row">
-                  <div className="input-group mb-3">
+            
+<div className="formclient"> 
+        
+                  <div className="input-group mb-4 ">
                     <span className="input-group-text">Raison :</span>
                     <input type="text" className="form-control" 
                     disabled={true}
@@ -74,10 +73,9 @@ const ClientDemandeur =(props)=>{
                         defaultValue={client.raison}
                          />
                   </div>
-              </div>
+              
             
-              <div className="row">
-                  <div className="matricule mb-3">
+                   <div className="input-group  mb-4">
                     <span className="input-group-text">Matricule/CIN :</span>
                     <input type="text" className="form-control" 
                     disabled={true}
@@ -85,40 +83,33 @@ const ClientDemandeur =(props)=>{
                         defaultValue={client.matricule}
                          />
                   </div>
-              </div>
-
-              <div className="row">
-                  <div className="input-group mb-3">
+ 
+                   <div className="input-group  mb-4">
                     <span className="input-group-text">Téléphone :</span>
                     <input type="text" className="form-control" 
                         disabled={true}
                         placeholder={client.tel}
                         defaultValue={client.tel}
                          />
-                  </div>
-              </div>
+               </div>
 
-              </div>
+       
+          
 
-              <div class="right">
-
-              <div className="row">
-                  <div className="input-group mb-3">
+                   <div className="input-group  mb-4">
                     <span className="input-group-text">Activité :</span>
                     <input type="text" className="form-control" 
                         placeholder={client.activite}
                         disabled={true}
                         defaultValue={client.activite}
                          />
-                  </div>
-              </div>
+               </div>
               
 
               
-    <div className="row mb-3 matricule">
-                <div className="matricule mb-3   ">
+                 <div className="input-group   mb-4">
                 <span className="input-group-text">Situation Fiscale :</span>
-                <div className="mytext matricule">
+                <div className="mytext    ">
                        
                         <input scope="col" className="myradio ms-1 me-1" type="radio" name={`situationfiscale${client.client_id}`}
                           id={`situation1fiscale${client.client_id}`} value="Non Assujetie" checked={client.situation_fiscale=="Non Assujetie"}
@@ -136,14 +127,12 @@ const ClientDemandeur =(props)=>{
                           Exonoré
                        </div>
                 </div>
-              </div>
-
+ 
 
                 
-    <div className="row matricule">
-                <div className="matricule mb-3">
+                 <div className="input-group   mb-4">
                 <span className="input-group-text">Type Client :</span>
-                <div className="mytext matricule">
+                <div className="mytext ">
 
                 <input className="myradio ms-3 me-1" type="radio" name={`typeclient${client.client_id}`}
                           id={`type1client${client.client_id}`} checked={client.type_client=="Personne Physique"}
@@ -156,11 +145,11 @@ const ClientDemandeur =(props)=>{
                           Personne Morale
                        </div>
                 </div>
-              </div>
+              
   
                </div>
-      </div>
-</div>
+               </div>
+
       <TabDeman
 demandeur={props.demandeur} dossier_id={props.idd}             
 changedemandeur={props.changedemandeur} />
