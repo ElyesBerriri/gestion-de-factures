@@ -49,7 +49,7 @@ const ClientDemandeur =(props)=>{
             <div className="section1" >
             <div className="rechercheajout">
 
-            <Search setQuery={(e) => setQuery(e.target.value.toLowerCase())} />
+            <Search setQuery={(e) => setQuery(e)} />
             </div>
 
         
