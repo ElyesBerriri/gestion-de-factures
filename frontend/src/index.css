@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  text-decoration: none;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,6 +9,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+*{
+  text-decoration: none;
+
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -41,15 +47,26 @@ code {
 /*style navbar*/
 .navvv {
   justify-content: center;
-  /*border-radius: 5px;
-  border: solid;
-  background-color: rgb(0, 0, 0);
-  padding:0.4rem;*/
+  z-index: 1000;
+ 
 }
 
 .navbar {
   background-color: #222831;
+  z-index: 2;
 }
+
+.navbarcreation{
+  position: sticky;
+  top: 56px;
+  z-index:1;
+  text-align: center;
+  }
+
+.para{
+  z-index: 2;
+ }
+ 
 
 .rechercheajout {
   display: flex;
@@ -79,12 +96,24 @@ code {
   padding-left: 10rem;
 }
 
-/*.modifier{
-  background-color:#00adb5 ;
-  border-radius: 5px;
-  border-color: #00adb5;
-  height: 2.3rem;
-}*/
+.scroll {
+position: fixed; 
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  border: 4px solid #393e46;
+  padding: 5px;
+  background: #222831;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  right:3vh ;
+  bottom: 3vh;
+  z-index: 10;
+  
+}
 
 .ajouter {
   position: relative;
@@ -221,6 +250,7 @@ code {
   font-size: 0.8rem;
   padding-top: 1.5vh;
 }
+ 
 
 
 /* Scrollbar */
@@ -377,30 +407,54 @@ code {
   margin-left: 20%;
 }
 
-.navbarcreation{
-  position: sticky;
-  top: 56px;
-  z-index: 1000;
-}
+ 
 
 .client{
   height: 200vh;
 }
 
 .section1{
+   
   height: 100vh;
   padding-top: 11vh;
   margin-top: -11vh;
-
 }
+
+.split{
+  display: flex;
+justify-content: space-evenly
+; }
+
+
+  .left {
+  width:70vh;
+  margin: 5vh;
+ }
+
+ .matricule{
+  display: flex;
+max-height: 38px
+; }
+
+  .right {
+  width: 70vh;
+  margin: 5vh;
+
+ } 
+
+  
 
 .section2{
-  
   height: 100vh;
+}
+ 
+ 
 
+.mission-header{
+  text-align: center;
+  padding: 2rem 1rem 2rem 1rem;
+  font-size: 2.5rem;
+  color: white;
 }
 
-.navbarcreation1:hover{
-  position:relative;
-  width: 13vh;
-}
+ 

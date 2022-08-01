@@ -53,8 +53,8 @@ function Navv() {
               <Nav.Link href="/">Accueil</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <NavDropdown title="Paramétres">
-                <NavDropdown.Item href="/Empdossier">Emplacement Dossier</NavDropdown.Item>
+              <NavDropdown className="para" title="Paramétres">
+                <NavDropdown.Item  href="/Empdossier">Emplacement Dossier</NavDropdown.Item>
                 <NavDropdown.Item href="/Tribetadmini">Tribunaux</NavDropdown.Item>
                 <NavDropdown.Item href="/Services">Administrations</NavDropdown.Item>
                 <NavDropdown.Item href="/Collab"> Collaborateurs</NavDropdown.Item>

@@ -2,10 +2,12 @@ import React, {useState,useEffect} from "react";
 import ClientDemandeur from "../components/ClientDemandeur";
 import DonnéesDossier from "../components/DonnéesDossier";
 import Taches from "../components/Taches";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import Sousdossier from "../components/sousdossier";
 import Collaborateur from "../components/Collaborateur";
 import Reglement from "../components/tables_amine/Reglement";
+import { Nav, Navbar } from 'react-bootstrap';
+import ScrollButton from '../components/ScrollButton';
+
 
 const Creation =()=>{
 
@@ -50,7 +52,7 @@ const Creation =()=>{
     const [adversaires,setadversaires]= useState([]);
     const [reglements,setreglements]= useState([]);
 
-
+ 
     var adversaire = "";
 
         //tache 
@@ -183,16 +185,33 @@ const Creation =()=>{
     return(
       <>
         
-
-        <div className="navbarcreation ">
-          <AnchorLink className="navbarcreation1" href='#client'><button>Client et Demandeur</button></AnchorLink>
-          <AnchorLink className="navbarcreation1" href='#donnees'><button>Données Dossier</button></AnchorLink>
-          <AnchorLink className="navbarcreation1" href='#tache'><button>Tâche</button></AnchorLink>
-          <AnchorLink className="navbarcreation1" href='#collaborateur'><button>Collaborateur</button></AnchorLink>
-          <AnchorLink className="navbarcreation1" href='#reglement'><button>Réglement</button></AnchorLink>
-          <AnchorLink className="navbarcreation1" href='#sousdossier'><button>Sous Dossier</button></AnchorLink>
-        </div>
-
+        <Navbar className="navbar navbar1" variant="dark" sticky="top" expand="sm" collapseOnSelect>
+        <Navbar.Toggle className="coloring" />
+        <Navbar.Collapse className="navvv">
+          <Nav>
+            <Nav.Item>
+              <Nav.Link href='#client'>Client et Demandeur</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href='#donnees'>Données Dossier</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href='#tache'> Tâche </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href='#collaborateur'> Collaborateur</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link  href='#reglement'> Réglement</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href='#sousdossier'> Sous Dossier</Nav.Link>
+            </Nav.Item>
+               
+      
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
 
         <div>
            <ClientDemandeur
@@ -237,6 +256,8 @@ const Creation =()=>{
         {console.log( calendar)}
          {console.log(client_id)}
         <button onClick={ (e)=>{onSubmitForm(e)}} type="submit" className="btn btn-success">Valider</button>
+
+      <ScrollButton />
       </>
     )
 

@@ -1,5 +1,6 @@
 import React, { Fragment, useState,useEffect } from "react";
 import TabDeman from "./TabDeman";
+import Search from "./Search";
 
 const ClientDemandeur =(props)=>{
     const [clients, setClients] = useState([]);
@@ -44,15 +45,14 @@ const ClientDemandeur =(props)=>{
     return(
         
         <section className=" client" id="client">
+
             <div className="section1" >
-        <div className=" container mt-5">
-        <label className="col-sm-2 col-form-label col-form-label-sm">Code</label>
-            <input
-            className="search "
-            placeholder="Recherche .."
-            value={query}
-            onChange={(e) => setQuery(e.target.value.toLowerCase())}
-            />
+            <div className="rechercheajout">
+
+            <Search setQuery={(e) => setQuery(e.target.value.toLowerCase())} />
+            </div>
+
+        
 
             <select name="select_box" className="form-select" id="select_box"  value={props.client_id} onChange={(e)=>{specificClient(e.target.value)}}>
                 <option ></option>
@@ -60,6 +60,10 @@ const ClientDemandeur =(props)=>{
                         <option key={client.client_id}  value={client.client_id}>{client.raison} {client.code_client}</option>
                 ))}
             </select>
+
+            <div className="split mt-5">
+
+            <div class="left">
 
             <div className="row">
                   <div className="input-group mb-3">
@@ -73,7 +77,7 @@ const ClientDemandeur =(props)=>{
               </div>
             
               <div className="row">
-                  <div className="input-group mb-3">
+                  <div className="matricule mb-3">
                     <span className="input-group-text">Matricule/CIN :</span>
                     <input type="text" className="form-control" 
                     disabled={true}
@@ -93,6 +97,11 @@ const ClientDemandeur =(props)=>{
                          />
                   </div>
               </div>
+
+              </div>
+
+              <div class="right">
+
               <div className="row">
                   <div className="input-group mb-3">
                     <span className="input-group-text">Activité :</span>
@@ -104,53 +113,52 @@ const ClientDemandeur =(props)=>{
                   </div>
               </div>
               
-              <div className="row mb-3">
-                  <label className="col-form-label">Situation Fiscale</label>
-                  <div className="form-check">
-                      <label className="form-check-label" >
-                          <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
+
+              
+    <div className="row mb-3 matricule">
+                <div className="matricule mb-3   ">
+                <span className="input-group-text">Situation Fiscale :</span>
+                <div className="mytext matricule">
+                       
+                        <input scope="col" className="myradio ms-1 me-1" type="radio" name={`situationfiscale${client.client_id}`}
                           id={`situation1fiscale${client.client_id}`} value="Non Assujetie" checked={client.situation_fiscale=="Non Assujetie"}
                            />
                           Non Assujetie
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
+
+                          <input className="myradio ms-1 me-1" type="radio" name={`situationfiscale${client.client_id}`}
                           id={`situation2fiscale${client.client_id}`} value="Assujetie" checked={client.situation_fiscale=="Assujetie"}
                            />
                           Assujetie
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name={`situationfiscale${client.client_id}`}
+
+                          <input className="myradio ms-1 me-1" type="radio" name={`situationfiscale${client.client_id}`}
                           id={`situation3fiscale${client.client_id}`} value="Exonoré" checked={client.situation_fiscale=="Exonoré"}
                            />
                           Exonoré
-                      </label>
-                  </div>
+                       </div>
+                </div>
               </div>
 
-              <div className="row mb-3">
-                  <label className="col-form-label">Type Client</label>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name={`typeclient${client.client_id}`}
+
+                
+    <div className="row matricule">
+                <div className="matricule mb-3">
+                <span className="input-group-text">Type Client :</span>
+                <div className="mytext matricule">
+
+                <input className="myradio ms-3 me-1" type="radio" name={`typeclient${client.client_id}`}
                           id={`type1client${client.client_id}`} checked={client.type_client=="Personne Physique"}
                              />
                           Personne Physique
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name={`typeclient${client.client_id}`}
+                 
+                        <input className="myradio ms-3 me-1" type="radio" name={`typeclient${client.client_id}`}
                           id={`type2client${client.client_id}`} checked={client.type_client=="Personne Morale"}
                            />
                           Personne Morale
-                      </label>
-                  </div>
+                       </div>
+                </div>
               </div>
+  
+               </div>
       </div>
 </div>
       <TabDeman
