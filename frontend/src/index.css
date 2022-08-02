@@ -106,8 +106,7 @@ code {
 .formclient{
  
    
-padding-left: 40vh;
-padding-right: 40vh;
+max-width: 80vh;
 
  
  }
@@ -116,6 +115,9 @@ padding-right: 40vh;
   min-height: 100vh;
   max-width: 100vh;
   padding-top: 7vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
  
 .ajouterr {
