@@ -107,8 +107,8 @@ code {
   flex-direction: column;
     width: 80vh;
     max-height: 100vh;
-   margin-left: auto;
-   margin-right: auto;
+margin-left: 10vh;
+margin-right: 10vh;
    margin-top:  7vh;
  
  }
