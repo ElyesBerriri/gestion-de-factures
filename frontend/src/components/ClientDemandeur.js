@@ -44,10 +44,9 @@ const ClientDemandeur =(props)=>{
  
     return(
         
-        <section className=" client" id="client">
+        <section className="container client" id="client">
 
-            <div className="section1" >
- 
+            
             <div className="rechercheajoutcreation">
             <Search setQuery={(e) => setQuery(e)} />
 
@@ -63,7 +62,7 @@ const ClientDemandeur =(props)=>{
             </div>
 
             
-<div className="formclient"> 
+  
         
                   <div className="input-group mb-4 ">
                     <span className="input-group-text">Raison :</span>
@@ -144,10 +143,9 @@ const ClientDemandeur =(props)=>{
                            />
                           Personne Morale
                        </div>
-                </div>
-              
+           
   
-               </div>
+               
                </div>
 
       <TabDeman

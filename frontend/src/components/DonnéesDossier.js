@@ -25,7 +25,6 @@ const DonnéesDossier =(props)=>{
         <section className="client" id="donnees">
                       <div className="section1" >
 
-        <div className="container mt-5">
 
         <div className="row">
                   <div className="input-group mb-3">
@@ -131,7 +130,7 @@ const DonnéesDossier =(props)=>{
               </div>
               </div>
  
-      </div>
+  
 </div>
     <TabAdvers dossier_id={props.idd}             
     changeadversaires={props.changeadversaires} />
