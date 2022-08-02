@@ -71,15 +71,22 @@ code {
   justify-content: flex-start;
   margin-bottom: 3vh;
   margin-top: 1vh;
-  margin-left: 3.4vh;
+  margin-left: 3.8vh;
 }
 
 .rechercheajoutcreation{
   display: flex;
   justify-content: flex-start;
   margin-top: 6vh;
-  margin-left:  3.4vh;
+  margin-left:  2.5vh;
   margin-bottom: 3vh;
+}
+.rechercheajoutdossier{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1vh;
+  margin-left:  2.5vh;
+  margin-bottom: 1vh;
 }
 
 .myselectcreation {
@@ -104,12 +111,11 @@ code {
 }
 
 .formclient{
- 
-   
 max-width: 80vh;
-
- 
  }
+ .formdonnees{
+  margin-top: 6vh;
+   }
 
  .client{
   min-height: 100vh;

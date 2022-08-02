@@ -25,7 +25,7 @@ const DonnéesDossier =(props)=>{
         <section className="container client" id="donnees">
                      
 
-
+                     <div className=" formdonnees formclient">
         <div className="row">
                   <div className="input-group mb-3">
                     <span className="input-group-text">Type de dossier :</span>
@@ -129,7 +129,7 @@ const DonnéesDossier =(props)=>{
                <CalendarComp changecalendar={props.changecalendar} calendar={props.calendar}/>
               </div>
               </div>
- 
+              </div>
   
 
     <TabAdvers dossier_id={props.idd}             

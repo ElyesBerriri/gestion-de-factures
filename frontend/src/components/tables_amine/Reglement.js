@@ -5,7 +5,7 @@ const Reglement =(props)=>{
    
     return(
 
-        <section className='client' id="reglement">
+        <section className='container client' id="reglement">
 
     <TabReg dossier_id={props.idd}             
     changereglements={props.changereglements} />

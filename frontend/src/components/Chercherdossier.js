@@ -1,10 +1,15 @@
 import React, { Fragment, useState,useEffect } from "react";
+import Button from 'react-bootstrap/Button';
+import { GoPlus } from "react-icons/go";
+import Search from "./Search";
+ 
 
 const ChercherDossier = (props) => {
     const [query, setQuery] = useState("");
     const [queryy, setQueryy] = useState("");
     const [dossiers, setDossiers] = useState([]);
     const [dossier_id, setDossier_id] = useState(0);
+    const [row, setRow] = useState("");
 
 
   const getDossiers = async (query,queryy) => {
@@ -47,10 +52,13 @@ const ChercherDossier = (props) => {
   return (
 
     <Fragment>
-        
-        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModall">
-  Chercher un dossier
+        <div className="rechercheajout">
+   
+      <button type="button" className="ajouter ajouterr" data-bs-toggle="modal" data-bs-target="#exampleModall">
+      <GoPlus color="#00adb5" fontSize="1.5em" />
 </button>
+</div>
+
 
 <div className="modal fade" id="exampleModall" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
@@ -62,84 +70,77 @@ const ChercherDossier = (props) => {
 
 
       <div className="modal-body">
+   
+      <div className="rechercheajoutdossier">
+            <Search setQuery={(e) => setQuery(e)} /></div>
+     
+        
  
-      <div className="container mt-5">
-        <label className="col-sm-2 col-form-label col-form-label-sm">Code</label>
-            <input
-            className="search "
-            placeholder="Recherche .."
-            value={query}
-            onChange={(e) => setQuery(e.target.value.toLowerCase())}
-            />
+            <div className="input-group mb-4">
+                <span className="input-group-text">Filter :</span>
+                <div className="mytext ">
 
-<div className="row mb-3">
-                  <label className="col-form-label">Filter :</label>
-                  <div className="form-check">
-                      <label className="form-check-label" >
-                          <input className="form-check-input" type="radio" name="filtrer"
+                <input className="myradio ms-3 me-1" type="radio"name="filtrer"
                            value="code" 
                            onChange={e => {
                             if(e.target.checked) setQueryy(e.target.value);
                            }} />
                           Code dossier
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name="filtrer"
+                 
+                        <input className="myradio ms-3 me-1" type="radio" name="filtrer"
                            value="client" 
                            onChange={e => {
                             if(e.target.checked) setQueryy(e.target.value);
                            }} />
                           Nom client
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name="filtrer"
+
+                          <input className="myradio ms-3 me-1" type="radio" name="filtrer"
                           value="mission" 
                           onChange={e => {
                             if(e.target.checked) setQueryy(e.target.value);
                           }} />
                           Mission
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name="filtrer"
+
+                          <input className="myradio ms-3 me-1" type="radio" name="filtrer"
                           value="adversaire" 
                           onChange={e => {
                             if(e.target.checked) setQueryy(e.target.value);
                           }} />
                           Adversaire
-                      </label>
-                  </div>
-                  <div className="form-check">
-                      <label className="form-check-label">
-                          <input className="form-check-input" type="radio" name="filtrer"
+
+                          <input className="myradio ms-3 me-1" type="radio" name="filtrer"
                           value="numaff" 
                           onChange={e => {
                             if(e.target.checked) setQueryy(e.target.value);
                           }} />
                             Numéro affaire
-                          </label>
-                  </div>
-              </div>
+                       </div>
+           
+    
+                       </div>    
 
-              {" "}
-      <table className="table table table-hover mt-5 text-center">
-        <thead  className="table-dark">
+
+              <div className="table-responsive mytable-50 ">
+        <table className="table table-hover text-center">
+          <thead className="table-secondary text-secondary mytableheader">
           <tr>
-            <th>Code dossier</th>
-            <th>Nom client</th>
-            <th>Mission</th>
-            <th>Adversaire</th>
-            <th>Numéro affaire</th>
+            <th scope="col">Code dossier</th>
+            <th scope="col">Nom client</th>
+            <th scope="col">Mission</th>
+            <th scope="col">Adversaire</th>
+            <th scope="col">Numéro affaire</th>
           </tr>
         </thead>
         <tbody>
           {dossiers.map(dossier => (
-            <tr key={dossier.dossier_id} onClick={()=> setDossier_id(dossier.dossier_id)}>
+            <tr key={dossier.dossier_id}  id={`dossier${dossier.dossier_id}`} onClick={()=> {setDossier_id(dossier.dossier_id);
+              let e = document.getElementById(`dossier${dossier.dossier_id}`);
+              if (e.className !== "table-secondary") {
+                if (row !== "") document.getElementById(row).className = "";
+                e.className = "table-secondary";
+                setRow(`dossier${dossier.dossier_id}`);
+          
+                 }}}  >
               <td>{dossier.code}</td>
               <td>{dossier.client}</td>
               <td>{dossier.mission}</td>
@@ -149,12 +150,16 @@ const ChercherDossier = (props) => {
           ))}
         </tbody>
       </table>
-      </div>
+      
       </div>
  
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={()=>specificDossier(dossier_id)}>Choisir</button>
+      <Button variant="light" data-bs-dismiss="modal" id="valider"  
+      onClick={()=>specificDossier(dossier_id)}>Valider</Button>
+      <Button variant="dark" data-bs-dismiss="modal" >Fermer</Button>
+       
+      </div>
+
       </div>
     </div>
   </div>

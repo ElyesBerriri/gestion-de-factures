@@ -41,7 +41,7 @@ const Tache =(props)=>{
 
 
 return (
-    <section className='client' id='tache'>
+    <section className='container client' id='tache'>
       <h1 className='titlee' >Liste des Tâches</h1>
       <InputTache
             changetach={(e)=>gettache(e)}
