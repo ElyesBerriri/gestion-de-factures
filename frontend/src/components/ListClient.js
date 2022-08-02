@@ -70,7 +70,7 @@ const ListClient = () => {
       </div>
 
       
-      <div className="table-responsive m-3 mytable mytable-56">
+      <div className="table-responsive m-3 mytable mytable-60">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
             <tr>

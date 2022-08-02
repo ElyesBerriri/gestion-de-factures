@@ -22,7 +22,7 @@ const DonnéesDossier =(props)=>{
      
     return(
 
-        <section className="client" id="donnees">
+        <section className="container client" id="donnees">
                      
 
 
