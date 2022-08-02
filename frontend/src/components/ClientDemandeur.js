@@ -45,7 +45,7 @@ const ClientDemandeur =(props)=>{
     return(
         
         <section className="container client" id="client">
-
+<h1 className='titlee' >Données Client</h1>
             
             <div className="rechercheajoutcreation">
             <Search setQuery={(e) => setQuery(e)} />
