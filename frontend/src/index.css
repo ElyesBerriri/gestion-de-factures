@@ -115,6 +115,7 @@ margin-right: 10vh;
 
  .client{
   min-height: 100vh;
+  max-width: 100vh;
   padding-top: 7vh;
 }
  
