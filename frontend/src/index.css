@@ -112,7 +112,16 @@ code {
 
 .formclient{
 max-width: 80vh;
- }
+margin-left: auto;
+margin-right: auto;
+}
+
+@media(max-width:450px){
+  .formclient{
+    max-width: 80vh;
+    }
+}
+ 
  .formdonnees{
   margin-top: 6vh;
    }
@@ -123,7 +132,7 @@ max-width: 80vh;
   padding-top: 7vh;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+ 
 }
  
 .ajouterr {

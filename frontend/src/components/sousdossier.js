@@ -7,10 +7,12 @@ const Sousdossier =(props)=>{
       
     return(
         <section className='container client' id="sousdossier">
-        <div className="container mt-5">
+       
         <div className="rechercheajoutcreation">
           <ChercherDossier changerdossier={(e)=>setDossier(e)} dossier={dossier} />
 </div>
+
+<div className="formclient">
               <div className="row">
                   <div className="input-group mb-3">
                     <span className="input-group-text"> Code dossier :</span>
@@ -64,7 +66,7 @@ const Sousdossier =(props)=>{
                   </div>
               </div>
               </div>
-              {console.log(dossier.mission)}
+               
      </section>
     )
 };

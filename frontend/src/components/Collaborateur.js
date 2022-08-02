@@ -59,71 +59,70 @@ const Collaborateur =(props)=>{
             </div>
             </div>
 
-            <div className="formclient">
+            <div className="formclient ">
 
-            <div className="row">
+           
                 <div className="input-group mb-3">
                     <span className="input-group-text">Nom et Prénom : </span>
                     <input type="text" className="form-control" 
                     disabled placeholder={collab.nom} defaultValue={collab.nom} />
                 </div>
-            </div>
+          
             
-              <div className="row">
-                  <div className="input-group mb-3">
+           
+                  <div className="input-group mb-4">
                     <span className="input-group-text">CIN :</span>
                     <input type="text" className="form-control" 
                     disabled placeholder={collab.cin} defaultValue={collab.cin} />
                   </div>
-             </div>
+              
 
-             <div className="row">
-                  <div className="input-group mb-3">
+              
+                  <div className="input-group mb-4">
                     <span className="input-group-text">Ville :</span>
                     <input type="text" className="form-control" 
                     disabled placeholder={collab.ville} defaultValue={collab.ville} />
                   </div>
-             </div>
+            
 
-             <div className="row">
-                  <div className="input-group mb-3">
+              
+                  <div className="input-group mb-4">
                     <span className="input-group-text">Rue :</span>
                     <input type="text" className="form-control" 
                     disabled placeholder={collab.rue} defaultValue={collab.rue} />
                   </div>
-             </div>
-
-             <div className="row">
+            
+ 
                   <div className="input-group mb-4">
                     <span className="input-group-text">Numéro :</span>
                     <input type="text" className="form-control" 
                     disabled placeholder={collab.num} defaultValue={collab.num} />
                   </div>
-             </div>
+             
 
-             <div className="row">
+             
                   <div className="input-group mb-4">
                     <span className="input-group-text">Code Postale :</span>
                     <input type="text" className="form-control" 
                     disabled placeholder={collab.codepostale} defaultValue={collab.codepostale} />
                   </div>
-             </div>
+            
 
-             <div className="row">
+             
                   <div className="input-group mb-4">
                     <span className="input-group-text">Activité Contribuale :</span>
                     <input type="text" className="form-control" 
                         disabled placeholder={collab.activite} defaultValue={collab.activite} />
                   </div>
-              </div>
+               
               
-              <div className="row">
+               
                   <div className="input-group mb-4">
                     <span className="input-group-text">Tel :</span>
                     <input type="text" className="form-control" 
                         disabled placeholder={collab.tel} defaultValue={collab.tel} />
                   </div>
-              </div>
+             
 
 
               <div className="input-group   mb-4">
@@ -149,7 +148,7 @@ const Collaborateur =(props)=>{
                </div>
              
 
-              <div className="row">
+            
                   <div className="input-group mb-4">
                     <span className="input-group-text">Part Collaborateur :</span>
                     <input type="number" className="form-control"
@@ -161,8 +160,7 @@ const Collaborateur =(props)=>{
                           props.changepart_c(0);
                       }} />
                   </div>
-              </div>
-
+               
               <div className="input-group   mb-4">
                 <span className="input-group-text">Type Réglement :</span>
                 <div className="mytext ">
