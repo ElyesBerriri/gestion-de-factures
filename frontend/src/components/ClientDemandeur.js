@@ -61,9 +61,7 @@ const ClientDemandeur =(props)=>{
             </div>
             </div>
 
-            
-  
-        
+            <div className="formclient">
                   <div className="input-group mb-4 ">
                     <span className="input-group-text">Raison :</span>
                     <input type="text" className="form-control" 
@@ -145,7 +143,7 @@ const ClientDemandeur =(props)=>{
                        </div>
            
   
-               
+               </div>
                </div>
 
       <TabDeman

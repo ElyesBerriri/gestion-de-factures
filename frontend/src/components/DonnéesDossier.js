@@ -23,7 +23,7 @@ const DonnéesDossier =(props)=>{
     return(
 
         <section className="client" id="donnees">
-                      <div className="section1" >
+                     
 
 
         <div className="row">
@@ -131,7 +131,7 @@ const DonnéesDossier =(props)=>{
               </div>
  
   
-</div>
+
     <TabAdvers dossier_id={props.idd}             
     changeadversaires={props.changeadversaires} />
     </section>
