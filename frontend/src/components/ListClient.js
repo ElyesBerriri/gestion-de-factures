@@ -59,6 +59,7 @@ const ListClient = () => {
 
   return (
     <>
+    <div className="container"> 
       <div className="rechercheajout">
         <Link to={"/InputClient"} className="ajouterr" >
           <button className="ajouter">
@@ -131,6 +132,7 @@ const ListClient = () => {
           onClick={() => deleteClient(doc.client_id)}>
           Supprimer
         </Button>
+      </div>
       </div>
     </>
   )
