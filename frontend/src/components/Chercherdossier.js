@@ -72,63 +72,34 @@ const ChercherDossier = (props) => {
       <div className="modal-body">
    
       <div className="rechercheajoutdossier">
-            <Search setQuery={(e) => setQuery(e)} /></div>
+            <Search setQuery={(e) => setQuery(e)} /> 
      
         
- 
-            <div className="input-group mb-4">
-                <span className="input-group-text">Filter :</span>
-                <div className="mytext ">
-
-                <input className="myradio ms-3 me-1" type="radio"name="filtrer"
-                           value="code" 
-                           onChange={e => {
-                            if(e.target.checked) setQueryy(e.target.value);
-                           }} />
-                          Code dossier
-                 
-                        <input className="myradio ms-3 me-1" type="radio" name="filtrer"
-                           value="client" 
-                           onChange={e => {
-                            if(e.target.checked) setQueryy(e.target.value);
-                           }} />
-                          Nom client
-
-                          <input className="myradio ms-3 me-1" type="radio" name="filtrer"
-                          value="mission" 
-                          onChange={e => {
-                            if(e.target.checked) setQueryy(e.target.value);
-                          }} />
-                          Mission
-
-                          <input className="myradio ms-3 me-1" type="radio" name="filtrer"
-                          value="adversaire" 
-                          onChange={e => {
-                            if(e.target.checked) setQueryy(e.target.value);
-                          }} />
-                          Adversaire
-
-                          <input className="myradio ms-3 me-1" type="radio" name="filtrer"
-                          value="numaff" 
-                          onChange={e => {
-                            if(e.target.checked) setQueryy(e.target.value);
-                          }} />
-                            Numéro affaire
-                       </div>
-           
+            <div className="mycontainercreation">
+                <select className="myselectcreation"
+                    onChange={e =>{setQueryy(e.target.value);}  
+                     } >
+                    <option  >Filter</option>
+                    <option value="code">code</option> 
+                    <option value="client">client</option>
+                     <option value="mission">mission</option> 
+                     <option value="adversaire" >adversaire</option>
+                      <option value="numaff" >numaff</option>
+                </select>
+            </div>
+            </div>
+            </div>
     
-                       </div>    
-
 
               <div className="table-responsive mytable-50 ">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
           <tr>
-            <th scope="col">Code dossier</th>
-            <th scope="col">Nom client</th>
+            <th scope="col">Code_dossier</th>
+            <th scope="col">Nom_client</th>
             <th scope="col">Mission</th>
             <th scope="col">Adversaire</th>
-            <th scope="col">Numéro affaire</th>
+            <th scope="col">Numéro_affaire</th>
           </tr>
         </thead>
         <tbody>
@@ -163,7 +134,7 @@ const ChercherDossier = (props) => {
       </div>
     </div>
   </div>
-</div>
+
     </Fragment>
   );
 };

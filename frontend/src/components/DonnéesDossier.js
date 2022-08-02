@@ -24,7 +24,7 @@ const DonnéesDossier =(props)=>{
 
         <section className="container client" id="donnees">
                      
-
+                     <h1 className='titlee' >Données Dossier</h1>
                      <div className=" formdonnees formclient">
         <div className="row">
                   <div className="input-group mb-3">

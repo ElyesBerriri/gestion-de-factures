@@ -43,7 +43,7 @@ const Collaborateur =(props)=>{
     return(
         <section className='container client' id="collaborateur">
          
-        
+         <h1 className='titlee' >Collaborateur</h1>
  
             <div className="rechercheajoutcreation">
             <Search setQuery={(e) => setQuery(e)} />
