@@ -118,7 +118,7 @@ const Collaborateur =(props)=>{
               
                
                   <div className="input-group mb-4">
-                    <span className="input-group-text">Tel :</span>
+                    <span className="input-group-text">Téléphone :</span>
                     <input type="text" className="form-control" 
                         disabled placeholder={collab.tel} defaultValue={collab.tel} />
                   </div>

@@ -89,6 +89,13 @@ code {
   margin-bottom: 1vh;
 }
 
+.rechercheajoutsousdossier{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
 .myselectcreation {
   display: inline;
   border: 0;
@@ -121,19 +128,30 @@ margin-right: auto;
     max-width: 80vh;
     }
 }
- 
- .formdonnees{
-  margin-top: 6vh;
-   }
 
- .client{
+.client{
   min-height: 100vh;
   max-width: 100vh;
   padding-top: 7vh;
   display: flex;
   flex-direction: column;
- 
 }
+
+@media(max-height:650px){
+  .client{
+    min-height: 100vh;
+    max-width: 100vh;
+    padding-top: 65%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+ 
+ .formdonnees{
+  margin-top: 6vh;
+   }
+
+  
  
 .ajouterr {
   margin-right: 0.5rem;

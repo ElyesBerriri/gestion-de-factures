@@ -71,11 +71,12 @@ const ChercherDossier = (props) => {
 
       <div className="modal-body">
    
-      <div className="rechercheajoutdossier">
+      <div className="rechercheajoutsousdossier">
             <Search setQuery={(e) => setQuery(e)} /> 
      
         
             <div className="mycontainercreation">
+              
                 <select className="myselectcreation"
                     onChange={e =>{setQueryy(e.target.value);}  
                      } >
@@ -91,7 +92,7 @@ const ChercherDossier = (props) => {
             </div>
     
 
-              <div className="table-responsive mytable-50 ">
+              <div className="table-responsive m-3 mytable-50 ">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
           <tr>
