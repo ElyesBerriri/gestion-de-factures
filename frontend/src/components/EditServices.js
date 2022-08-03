@@ -86,9 +86,7 @@ const EditServices = ({ service }) => {
 
       <div className="modal fade" id={`serr${service.service_id}`} data-bs-backdrop="static">
         <div className="modal-dialog modal-dialog-scrollable" >
-          
           <div className="modal-content">
-
             <div className="modal-header">
               <h4 className="modal-title ">Modification d'une administration</h4>
               <button type="button" className="btn-close" data-bs-dismiss="modal" />
