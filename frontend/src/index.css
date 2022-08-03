@@ -179,7 +179,12 @@ position: fixed;
   right:3vh ;
  top: 3vh;
   z-index: 10;
-  
+}
+
+.valider{
+  position: fixed;
+  bottom: 11vh;
+  right:3vh ;
 }
 
 .ajouter {

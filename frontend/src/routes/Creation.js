@@ -7,8 +7,7 @@ import Collaborateur from "../components/Collaborateur";
 import Reglement from "../components/tables_amine/Reglement";
 import { Nav, Navbar } from 'react-bootstrap';
 import ScrollButton from '../components/ScrollButton';
-import Navv from '../components/Nav';
-
+import Button from 'react-bootstrap/Button';
 
 const Creation =()=>{
 
@@ -248,15 +247,12 @@ const Creation =()=>{
             idd={dossier_id}
             changereglements={(reglements)=>setreglements(reglements)}
             />
-
-
-
           <Sousdossier />
 
         </div>
-        {console.log( calendar)}
-         {console.log(client_id)}
-        <button onClick={ (e)=>{onSubmitForm(e)}} type="submit" className="btn btn-success">Valider</button>
+        <Button variant="dark" data-bs-dismiss="modal" className="valider" id="valider"  
+      onClick={ (e)=>{onSubmitForm(e)}}>Valider</Button>
+        
 
       <ScrollButton />
       </>
