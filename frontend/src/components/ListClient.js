@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import EditClient from "./EditClient";
 import Button from 'react-bootstrap/Button';
-import { GoPlus } from "react-icons/go";
 import Search from "./Search";
+import InputClient from "./InputClient";
 
 const ListClient = () => {
 
@@ -60,11 +59,7 @@ const ListClient = () => {
   return (
     <>
       <div className="rechercheajout">
-        <Link to={"/InputClient"} className="ajouterr" >
-          <button className="ajouter">
-            <GoPlus color="#00adb5" fontSize="1.5em" />
-          </button>
-        </Link>
+        <InputClient />
         <Search setQuery={(e) => setQuery(e)} />
       </div>
 

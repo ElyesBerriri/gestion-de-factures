@@ -48,7 +48,7 @@ const TabReg = (props) => {
 
   return (
     <>
-      <h1 className='titlee' >Liste des Réglements</h1>
+      <h1 className='titlee'>Liste des Réglements</h1>
       <InputReg changereg={(e, a) => getreglement(e, a)}
         dossier_id={props.dossier_id} />
 
@@ -56,12 +56,12 @@ const TabReg = (props) => {
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
             <tr>
-              <th scope="col">Honoraire de l'avocat</th>
-              <th scope="col">Net à payer</th>
+              <th scope="col" className="text-nowrap">Honoraire de l'avocat</th>
+              <th scope="col" className="text-nowrap">Net à payer</th>
               <th scope="col">Montant</th>
               <th scope="col">Type</th>
               <th scope="col">Baré</th>
-              <th scope="col">Numéro opération</th>
+              <th scope="col" className="text-nowrap">Numéro opération</th>
               <th scope="col">Banque</th>
               <th scope="col">Porteur</th>
               <th scope="col">Echéance</th>
