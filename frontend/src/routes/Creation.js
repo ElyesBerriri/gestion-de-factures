@@ -7,6 +7,7 @@ import Collaborateur from "../components/Collaborateur";
 import Reglement from "../components/tables_amine/Reglement";
 import { Nav, Navbar } from 'react-bootstrap';
 import ScrollButton from '../components/ScrollButton';
+import Navv from '../components/Nav';
 
 
 const Creation =()=>{
@@ -184,11 +185,11 @@ const Creation =()=>{
 
     return(
       <>
-        
-        <Navbar className="navbar navbar1" variant="dark" sticky="top" expand="sm" collapseOnSelect>
+       
+        <Navbar  variant="dark" fixed='bottom'  expand="sm" collapseOnSelect>
         <Navbar.Toggle className="coloring" />
         <Navbar.Collapse className="navvv">
-          <Nav>
+          <Nav stacked>
             <Nav.Item>
               <Nav.Link href='#client'>Client et Demandeur</Nav.Link>
             </Nav.Item>

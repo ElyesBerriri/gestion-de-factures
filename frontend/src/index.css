@@ -53,18 +53,8 @@ code {
 
 .navbar {
   background-color: #222831;
-  z-index: 2;
 }
 
-.navbarcreation{
-  position: sticky;
-  top: 56px;
-  z-index:1;
-  text-align: center;
-  }
-
- 
- 
 
 .rechercheajout {
   display: flex;
@@ -132,7 +122,7 @@ margin-right: auto;
 .client{
   min-height: 100vh;
   max-width: 100vh;
-  padding-top: 7vh;
+ 
   display: flex;
   flex-direction: column;
 }
@@ -141,7 +131,7 @@ margin-right: auto;
   .client{
     min-height: 100vh;
     max-width: 100vh;
-    padding-top: 65%;
+  
     display: flex;
     flex-direction: column;
   }
@@ -187,7 +177,7 @@ position: fixed;
   align-items: center;
   flex-direction: column;
   right:3vh ;
-  bottom: 3vh;
+ top: 3vh;
   z-index: 10;
   
 }
