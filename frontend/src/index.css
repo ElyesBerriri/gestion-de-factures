@@ -19,7 +19,14 @@ code {
     monospace;
 }
 
-@media (max-width: 576px) {
+@media (min-width: 22cm) {
+  .pdf{
+    display:flex;
+    justify-content:center;
+  }
+}
+
+@media (max-width: 21.9cm) {
   .mytableheader {
     display: none;
   }
@@ -43,6 +50,11 @@ code {
     content: attr(data-label);
     flex-basis: 33vw;
     text-align: left;
+  }
+
+  .pdf{
+    display: block;
+    overflow-x:scroll;
   }
 }
 
@@ -341,8 +353,6 @@ code {
   font-size: 0.8rem;
   padding-top: 1.5vh;
 }
-
-
 
 /* Scrollbar */
 ::-webkit-scrollbar-track {

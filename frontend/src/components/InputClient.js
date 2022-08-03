@@ -93,7 +93,7 @@ const InputClient = () => {
                   document.getElementById(`type1client0`).checked = false;
                   document.getElementById(`type2client0`).checked = false;
                 }
-      
+                document.getElementById("manuel").checked = false;
                 setCollaborateur("--");
                 document.getElementById("collabSelector0").selected = true;
                 setCode_client("0/");

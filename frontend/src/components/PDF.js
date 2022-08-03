@@ -13,13 +13,16 @@ function PDF() {
           <Pdf targetRef={ref} filename={docName}>
             {({ toPdf }) => <button onClick={toPdf} className="mt-5">Télécharger le PDF</button>}
           </Pdf>
-          <div style={{display:"flex",justifyContent: "center", minWidth:'21cm'}}>
-            <div className="border border-2 m-3 " style={{width: '21cm', height: '29.7cm'}} >
+          <div className="pdf">
+            <div className="border border-2 m-3" style={{width: '21cm', height: '29.7cm'}} >
               <div ref={ref} className="text-start p-5">
-                <p>Dossier numéro : {from.dossier_id}</p>
-                <p>Emplacement : {from.emplacement}</p>
-                <p>Client : {from.client}</p>
-                <p>Adversaires : {from.adversaire}</p>
+                <h2 style={{textAlign:'center',paddingBottom:'1cm'}}>Dossier numéro : &nbsp;{from.dossier_id}</h2>
+                <p style={{fontWeight:'500'}}><span style={{fontWeight:'700',fontSize:'1.2rem'}}>Numéro d'affaire : </span>&nbsp;{from.numaff}</p>
+                <p style={{fontWeight:'500'}}><span style={{fontWeight:'700',fontSize:'1.2rem'}}>Emplacement : </span>&nbsp;{from.emplacement}</p>
+                <p style={{fontWeight:'500'}}><span style={{fontWeight:'700',fontSize:'1.2rem'}}>Client : </span>&nbsp;{from.client}</p>
+                <p style={{fontWeight:'500'}}><span style={{fontWeight:'700',fontSize:'1.2rem'}}>Téléphone : </span>&nbsp;{from.tel}</p>
+                <p style={{fontWeight:'500'}}><span style={{fontWeight:'700',fontSize:'1.2rem'}}>Mission : </span>&nbsp;{from.mission}</p>
+                <p style={{fontWeight:'500'}}><span style={{fontWeight:'700',fontSize:'1.2rem'}}>Adversaires : </span>&nbsp;{from.adversaire}</p>
               </div>
             </div>
           </div>
