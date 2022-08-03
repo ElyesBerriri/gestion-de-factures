@@ -48,7 +48,7 @@ return (
             <InputDemandeur /*demandeur={props.demandeur}  
         changedemandeur={props.changedemandeur}*/ dossier_id={props.dossier_id} changedem={(e)=>getdemandeur(e)}/>
 
-       <div className="table-responsive m-3 mytable  mytable-56 ">
+       <div className="table-responsive m-3 mytable  mytable-56creation ">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
           <tr>
@@ -74,7 +74,7 @@ return (
                     }}}
                   >
               <td>{demandeur.nom}</td>  
-              <td>{demandeur.CIN}</td>     
+              <td>{demandeur.cin}</td>     
               <td>{demandeur.adresse}</td>     
               <td>{demandeur.adresse_d}</td>     
               <td>{demandeur.tel}</td>     

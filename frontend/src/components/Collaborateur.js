@@ -51,7 +51,7 @@ const Collaborateur =(props)=>{
             <div className="mycontainercreation">
                 <select className="myselectcreation"
                    value={props.collab_id} onChange={(e)=>{specificCollab(e.target.value)}}>
-                    <option value='0' selected></option>
+                    <option value='0' selected>Collaborateur</option>
                     {collabs.map(collab => (
                     <option key={collab.collab_id}  value={collab.collab_id}>{collab.nom}</option>
                 ))}

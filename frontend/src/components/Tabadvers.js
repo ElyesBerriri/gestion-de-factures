@@ -57,7 +57,7 @@ return (
             <InputAdversaire changeadv={(e,a)=>getadversaire(e,a)}
          dossier_id={props.dossier_id} />
 
-      <div className="table-responsive m-3 mytable  mytable-56 ">
+      <div className="table-responsive m-3 mytable  mytable-56creation ">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
           <tr>

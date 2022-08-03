@@ -44,7 +44,7 @@ const ClientDemandeur =(props)=>{
  
     return(
         
-        <section className="container client" id="client">
+        <section className="container client2" id="client">
 <h1 className='titlee' >Données Client</h1>
             
             <div className="rechercheajoutcreation">
@@ -53,7 +53,7 @@ const ClientDemandeur =(props)=>{
             <div className="mycontainercreation">
                 <select className="myselectcreation"
                    value={props.client_id} onChange={(e)=>{specificClient(e.target.value)}}>
-                    <option></option>
+                    <option>Client</option>
                     {clients.map(client => (
                         <option key={client.client_id}  value={client.client_id}>{client.raison} {client.code_client}</option>
                 ))}

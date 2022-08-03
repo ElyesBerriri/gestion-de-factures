@@ -127,6 +127,13 @@ margin-right: auto;
   flex-direction: column;
 }
 
+.client2{
+  min-height: 180vh;
+  max-width: 100vh;
+ 
+  display: flex;
+  flex-direction: column;
+}
 @media(max-height:650px){
   .client{
     min-height: 100vh;
@@ -233,6 +240,10 @@ position: fixed;
 
 .mytable-56 {
   height: 56vh;
+}
+
+.mytable-56creation {
+  max-height: 56vh;
 }
 
 .mytable-50 {
