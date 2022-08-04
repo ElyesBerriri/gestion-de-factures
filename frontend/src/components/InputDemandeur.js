@@ -2,7 +2,7 @@ import React, { Fragment,useState,useEffect }  from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { GoPlus } from "react-icons/go";
-
+ 
 
 const InputDemandeur = (props) => {
   const [nom, setNom] = useState("--");
@@ -26,6 +26,7 @@ const InputDemandeur = (props) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body)
         });
+     
         //props.changedemandeur(props.demandeur+" , "+nom);
         setFax("--");
         setAdresse("--");
@@ -34,6 +35,7 @@ const InputDemandeur = (props) => {
         setAdresseD("--");
         setTel("--")
         props.changedem(props.dossier_id);
+         
      } catch (err) {
       console.error(err.message);
     }

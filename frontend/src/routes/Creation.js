@@ -8,6 +8,7 @@ import Reglement from "../components/tables_amine/Reglement";
 import { Nav, Navbar } from 'react-bootstrap';
 import ScrollButton from '../components/ScrollButton';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 const Creation =()=>{
 
@@ -160,19 +161,17 @@ const Creation =()=>{
               method: "Put",
               headers: { "Content-Type": "application/json" },
             });
-
           } catch (err) {
             console.error(err.message);
           }
-
           window.location.reload();
-
         }
+
        else{
         alert("Veuillez choisir un client avant de valider");
        }
-      };
 
+      };
    
       useEffect(() => {
         getdossierid();
@@ -184,7 +183,7 @@ const Creation =()=>{
 
     return(
       <>
-       
+      
         <Navbar  variant="dark" fixed='bottom'  expand="sm" collapseOnSelect>
         <Navbar.Toggle className="coloring" />
         <Navbar.Collapse className="navvv">
