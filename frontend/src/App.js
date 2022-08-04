@@ -27,41 +27,37 @@ import Hono from './routes/Hono';
 import Creation from './routes/Creation';
 import PDF from './components/PDF';
 
- 
-  
 function App() {
-
-    return (
-      <BrowserRouter>
-        <div className='App'>
+  return (
+    <BrowserRouter>
+      <div className='App'>
         <Navv ></Navv>
-          <div className='content'>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="Clients" element={<Clients />} />
-              <Route path="TribetAdmini" element={<Tribetadmini />} />
-              <Route path="type_dossiers" element={<TypeDossier />} />
-              <Route path="Empdossier" element={<Empdossier />} />
-              <Route path="Collab" element={<Collab />} />
-              <Route path="Inputcollab" element={<InputCollab />} />
-              <Route path="Utilisateurs" element={<Utilisateurs />} />
-              <Route path="Primes" element={<Primes />} />
-              <Route path="Services" element={<ListServices />} />
-              <Route path="InputClient" element={<InputClient />} />
-              <Route path="Rechercher" element={<Rechercher />} />
-              <Route path="EmplacementDossier" element={<EmplacementDossier />} />
-              <Route path="RecetteFinance" element={<RecetteFinance />} />
-              <Route path="Timbre" element={<Timbre />} />
-              <Route path="Hono" element={<Hono />} />
-              <Route path="Greffier" element={<Greffier />} />
-              <Route path="Creation" element={<Creation />} />
-              <Route path="PDF" element={<PDF />} />
-
-            </Routes>
-          </div>
+        <div className='content'>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="Clients" element={<Clients />} />
+            <Route path="TribetAdmini" element={<Tribetadmini />} />
+            <Route path="type_dossiers" element={<TypeDossier />} />
+            <Route path="Empdossier" element={<Empdossier />} />
+            <Route path="Collab" element={<Collab />} />
+            <Route path="Inputcollab" element={<InputCollab />} />
+            <Route path="Utilisateurs" element={<Utilisateurs />} />
+            <Route path="Primes" element={<Primes />} />
+            <Route path="Services" element={<ListServices />} />
+            <Route path="InputClient" element={<InputClient />} />
+            <Route path="Rechercher" element={<Rechercher />} />
+            <Route path="EmplacementDossier" element={<EmplacementDossier />} />
+            <Route path="RecetteFinance" element={<RecetteFinance />} />
+            <Route path="Timbre" element={<Timbre />} />
+            <Route path="Hono" element={<Hono />} />
+            <Route path="Greffier" element={<Greffier />} />
+            <Route path="Creation" element={<Creation />} />
+            <Route path="PDF" element={<PDF />} />
+          </Routes>
         </div>
-      </BrowserRouter>
-    );
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;

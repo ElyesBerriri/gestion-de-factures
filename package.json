@@ -1,7 +1,7 @@
 {
   "name": "gestion-de-factures",
   "version": "1.0.0",
-  "description": "",
+  "description": "Site web de gestion pour cabinets d'avocats",
   "main": "server.js",
   "engines": {
     "node": "16.13.2",
