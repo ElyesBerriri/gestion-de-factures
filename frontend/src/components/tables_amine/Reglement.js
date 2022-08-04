@@ -1,17 +1,14 @@
-import React, { Fragment, useState,useEffect } from "react";
+import React from "react";
 import TabReg from "./TabReg";
 
-const Reglement =(props)=>{
-   
-    return(
+const Reglement = (props) => {
 
+    return (
         <section className='container client' id="reglement">
-
-    <TabReg dossier_id={props.idd}             
-    changereglements={props.changereglements} />
-    </section>
+            <TabReg dossier_id={props.idd}
+                changereglements={props.changereglements} />
+        </section>
     )
-
 };
 
 export default Reglement;

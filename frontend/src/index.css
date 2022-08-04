@@ -9,38 +9,52 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-*{
+* {
   text-decoration: none;
 
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-@media (max-width: 576px) {
+@media (min-width: 22cm) {
+  .pdf{
+    display:flex;
+    justify-content:center;
+  }
+}
+
+@media (max-width: 21.9cm) {
   .mytableheader {
     display: none;
   }
 
   tr {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 4vh;
+    border-bottom: 2px solid black;
   }
 
   th,
   td {
     flex-basis: 100%;
     display: flex;
-    padding: 10px 0;
+    padding: 1vh 0;
   }
 
   tr :before {
     color: #6C7A89;
-    padding-right: 10px;
+    padding-right: 2vw;
     content: attr(data-label);
-    flex-basis: 50%;
-    text-align: right;
+    flex-basis: 33vw;
+    text-align: left;
+  }
+
+  .pdf{
+    display: block;
+    overflow-x:scroll;
   }
 }
 
@@ -48,7 +62,7 @@ code {
 .navvv {
   justify-content: center;
   z-index: 1000;
- 
+
 }
 
 .navbar {
@@ -64,22 +78,23 @@ code {
   margin-left: 3.8vh;
 }
 
-.rechercheajoutcreation{
+.rechercheajoutcreation {
   display: flex;
   justify-content: flex-start;
   margin-top: 6vh;
-  margin-left:  2.5vh;
+  margin-left: 2.5vh;
   margin-bottom: 3vh;
 }
-.rechercheajoutdossier{
+
+.rechercheajoutdossier {
   display: flex;
   justify-content: flex-start;
   margin-top: 1vh;
-  margin-left:  2.5vh;
+  margin-left: 2.5vh;
   margin-bottom: 1vh;
 }
 
-.rechercheajoutsousdossier{
+.rechercheajoutsousdossier {
   display: flex;
   justify-content: flex-start;
   margin-top: 1vh;
@@ -107,53 +122,54 @@ code {
   width: 30vh;
 }
 
-.formclient{
-max-width: 80vh;
-margin-left: auto;
-margin-right: auto;
+.formclient {
+  max-width: 80vh;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media(max-width:450px){
-  .formclient{
+@media(max-width:450px) {
+  .formclient {
     max-width: 80vh;
-    }
+  }
 }
 
-.client{
+.client {
   min-height: 100vh;
   max-width: 100vh;
- 
+
   display: flex;
   flex-direction: column;
 }
 
-.client2{
+.client2 {
   min-height: 180vh;
   max-width: 100vh;
- 
+
   display: flex;
   flex-direction: column;
 }
-@media(max-height:650px){
-  .client{
+
+@media(max-height:650px) {
+  .client {
     min-height: 100vh;
     max-width: 100vh;
-  
+
     display: flex;
     flex-direction: column;
   }
 }
- 
- .formdonnees{
-  margin-top: 6vh;
-   }
 
-  
- 
+.formdonnees {
+  margin-top: 6vh;
+}
+
+
+
 .ajouterr {
   margin-right: 0.5rem;
 }
- 
+
 
 .title {
   font-size: 2rem;
@@ -171,7 +187,7 @@ margin-right: auto;
 }
 
 .scroll {
-position: fixed; 
+  position: fixed;
   width: 40px;
   height: 40px;
   box-sizing: border-box;
@@ -183,15 +199,15 @@ position: fixed;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  right:3vh ;
- top: 3vh;
+  right: 3vh;
+  top: 3vh;
   z-index: 10;
 }
 
-.valider{
+.valider {
   position: fixed;
   bottom: 11vh;
-  right:3vh ;
+  right: 3vh;
 }
 
 .ajouter {
@@ -231,7 +247,7 @@ position: fixed;
 
 /* table */
 .mytable-68 {
-  height: 68vh;
+  max-height: 65vh;
 }
 
 .mytable-60 {
@@ -239,15 +255,19 @@ position: fixed;
 }
 
 .mytable-56 {
-  height: 56vh;
+  max-height: 56vh;
 }
 
 .mytable-56creation {
   max-height: 56vh;
 }
 
-.mytable-50 {
-  height: 50vh;
+.mytable-55 {
+  max-height: 55vh;
+}
+
+.mytable-48 {
+  max-height: 48vh;
 }
 
 .mytableheader {
@@ -262,11 +282,11 @@ position: fixed;
   margin-bottom: 1vh;
 }
 
-.empmotcle{
+.empmotcle {
   margin-bottom: 3vh;
 }
 
-.motclerecherche{
+.motclerecherche {
   margin-left: 3%;
   display: flex;
   margin-bottom: 3vh;
@@ -329,12 +349,10 @@ position: fixed;
   background-color: grey;
 }
 
-.mytext{
+.mytext {
   font-size: 0.8rem;
   padding-top: 1.5vh;
 }
- 
-
 
 /* Scrollbar */
 ::-webkit-scrollbar-track {
@@ -426,32 +444,32 @@ position: fixed;
 
 /*emplacement dossier*/
 
-.ajoutdossier{
+.ajoutdossier {
   margin-left: 22%;
   margin-bottom: 3vh;
 }
 
 
-.mytable-56dossier{
+.mytable-56dossier {
   height: 56vh;
   width: 60%;
-  margin-left:20%; 
-  margin-right:20%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .mytable-41 {
   height: 41vh;
 }
 
-.back{
+.back {
   background-color: #ced4da;
 }
 
-.mytable-56service{
+.mytable-56service {
   height: 56vh;
   width: 70%;
-  margin-left:15%; 
-  margin-right:15%;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 .courseaudience {
@@ -462,19 +480,19 @@ position: fixed;
   margin-left: 2%;
 }
 
-.course{
+.course {
   margin-right: 1vh;
   border-radius: 5px;
   font-size: 90%;
-  padding: 0.7%;  
+  padding: 0.7%;
 
 }
 
-.audience{
+.audience {
   margin-right: 3vh;
   border-radius: 5px;
   font-size: 90%;
- padding: 0.7%;  
+  padding: 0.7%;
 
 }
 
@@ -492,14 +510,12 @@ position: fixed;
   margin-left: 20%;
 }
 
- 
- 
 
-.mission-header{
+
+
+.mission-header {
   text-align: center;
   padding: 2rem 1rem 2rem 1rem;
   font-size: 2.5rem;
   color: white;
 }
-
- 

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import EditClient from "./EditClient";
 import Button from 'react-bootstrap/Button';
-import { GoPlus } from "react-icons/go";
 import Search from "./Search";
+import InputClient from "./InputClient";
 
 const ListClient = () => {
 
@@ -31,8 +30,8 @@ const ListClient = () => {
   const deleteClient = async id => {
     setRow("");
     setDoc({});
-    document.getElementById("clbtnm").className="btn btn-light mx-3 disabled";
-    document.getElementById("clbtnr").className="btn btn-dark disabled";
+    document.getElementById("clbtnm").className = "btn btn-light mx-3 disabled";
+    document.getElementById("clbtnr").className = "btn btn-dark disabled";
     try {
       await fetch(`/clients/list/${id}`, {
         method: "DELETE"
@@ -59,18 +58,12 @@ const ListClient = () => {
 
   return (
     <>
-    <div className="container"> 
       <div className="rechercheajout">
-        <Link to={"/InputClient"} className="ajouterr" >
-          <button className="ajouter">
-            <GoPlus color="#00adb5" fontSize="1.5em" />
-          </button>
-        </Link>
+        <InputClient />
         <Search setQuery={(e) => setQuery(e)} />
       </div>
 
-      
-      <div className="table-responsive m-3 mytable mytable-60">
+      <div className="table-responsive m-3 mytable mytable-56">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
             <tr>
@@ -101,8 +94,8 @@ const ListClient = () => {
                   e.className = "table-secondary";
                   setRow(`client${client.client_id}`);
                   setDoc(client);
-                  document.getElementById("clbtnm").className="btn btn-light mx-3";
-                  document.getElementById("clbtnr").className="btn btn-dark";
+                  document.getElementById("clbtnm").className = "btn btn-light mx-3";
+                  document.getElementById("clbtnr").className = "btn btn-dark";
                 }
               }}>
                 <td data-label="id">{client.client_id}</td>
@@ -132,7 +125,6 @@ const ListClient = () => {
           onClick={() => deleteClient(doc.client_id)}>
           Supprimer
         </Button>
-      </div>
       </div>
     </>
   )

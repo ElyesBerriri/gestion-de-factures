@@ -121,7 +121,7 @@ const Rechercher = () => {
                 <label className="mylegend">Mots Clés : </label>
                 <Search setQuery={(e) => setQuery(e)} />
             </div>
-            <div className="table-responsive m-3 mytable mytable-56">
+            <div className="table-responsive m-3 mytable mytable-55">
                 <table className="table table-hover text-center">
                     <thead className="table-secondary text-secondary mytableheader">
                         <tr className="bg-primary">
