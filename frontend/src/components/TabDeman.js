@@ -21,6 +21,25 @@ const TabDeman = (props) => {
       }
     }
   };
+  const deletedemandeur = async id => {
+    setRow("");
+    document.getElementById("clbtnrr").className="btn btn-dark disabled";
+     try {
+
+      await fetch(`/demandeurs/list/${id}`, {
+        method: "DELETE"
+      });
+
+      setDemandeur(demandeurs.filter(demandeur => demandeur.demandeur_id !== id));
+     /* {        console.log(nom);
+
+        const rep=props.demandeur.replace(`${nom}`,"");
+      props.changedemandeur(rep);}
+      console.log(props.demandeur);*/
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
 return (
     <Fragment >

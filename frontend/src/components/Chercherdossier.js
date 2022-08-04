@@ -57,16 +57,7 @@ const ChercherDossier = (props) => {
 </button>
 </div>
 
-<div className="modal fade" id="exampleModall" data-bs-backdrop="static">
-        <div className="modal-dialog modal-dialog-scrollable" >
-          <div className="modal-content">
 
-
-
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">  Chercher un dossier</h5>
- 
-      </div>
 
       <div className="modal fade" id="exampleModall" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-scrollable">
@@ -133,7 +124,8 @@ const ChercherDossier = (props) => {
           </div>
         </div>
       </div>
-    </>
+  
+      </Fragment>
   );
 };
 
