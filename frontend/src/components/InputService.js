@@ -42,7 +42,7 @@ const InputService=()=>{
       <button className="ajouter ajouterr" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
       </button>
  
-      <Modal show={show} onHide={handleClose}>
+      <Modal scrollable show={show} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Ajouter une administration</Modal.Title>
         </Modal.Header>

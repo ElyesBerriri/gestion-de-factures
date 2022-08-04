@@ -3,6 +3,7 @@ import CalendarComp from "./CalendarComp";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { GoPlus } from "react-icons/go";
+import ModalDialog from 'react-bootstrap/ModalDialog'
 
 const InputTache = (props) => {
     const [tache, settache] = useState("--");
@@ -58,12 +59,12 @@ const InputTache = (props) => {
 </div>
 
    
-<Modal show={show} onHide={handleClose} animation={false}>
+<Modal scrollable show={show} onHide={handleClose}  backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Nouvelle tâche</Modal.Title>
         </Modal.Header>
   
-        <Modal.Body> 
+        <Modal.Body  > 
 
         <div className="row">
       <div className="input-group mb-3">

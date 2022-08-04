@@ -93,7 +93,7 @@ const EditServices = ({ service }) => {
               <h4 className="modal-title ">Modification d'une administration</h4>
               <button type="button" className="btn-close" data-bs-dismiss="modal" />
             </div>
-            <div className="modal-body">
+            <div className="modal-body" >
               <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Tribunal :</span>

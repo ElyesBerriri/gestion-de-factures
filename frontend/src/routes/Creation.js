@@ -188,7 +188,7 @@ const Creation =()=>{
         <Navbar  variant="dark" fixed='bottom'  expand="sm" collapseOnSelect>
         <Navbar.Toggle className="coloring" />
         <Navbar.Collapse className="navvv">
-          <Nav stacked>
+          <Nav>
             <Nav.Item>
               <Nav.Link href='#client'>Client et Demandeur</Nav.Link>
             </Nav.Item>

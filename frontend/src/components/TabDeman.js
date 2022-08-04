@@ -43,7 +43,7 @@ const TabDeman =(props)=>{
  
 
 return (
-    <Fragment className="section2">
+    <Fragment >
             <h1 className='titlee' >Liste des Demandeurs</h1>
             <InputDemandeur /*demandeur={props.demandeur}  
         changedemandeur={props.changedemandeur}*/ dossier_id={props.dossier_id} changedem={(e)=>getdemandeur(e)}/>

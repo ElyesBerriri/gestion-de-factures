@@ -52,7 +52,7 @@ const TabAdvers =(props)=>{
 
 
 return (
-    <Fragment className="section2">
+    <Fragment >
             <h1 className='titlee' >Liste des Adversaires</h1>
             <InputAdversaire changeadv={(e,a)=>getadversaire(e,a)}
          dossier_id={props.dossier_id} />

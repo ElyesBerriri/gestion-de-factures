@@ -56,7 +56,7 @@ const InputAdversaire = (props) => {
 
   
    
-<Modal show={show} onHide={handleClose} animation={false}>
+<Modal scrollable show={show} onHide={handleClose}   backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Nouveau Adversaire</Modal.Title>
         </Modal.Header>

@@ -52,7 +52,7 @@ const ClientDemandeur =(props)=>{
 
             <div className="mycontainercreation">
                 <select className="myselectcreation"
-                   value={props.client_id} onChange={(e)=>{specificClient(e.target.value)}}>
+                   value={props.client_id} onChange={(e)=>specificClient(e.target.value)}>
                     <option>Client</option>
                     {clients.map(client => (
                         <option key={client.client_id}  value={client.client_id}>{client.raison} {client.code_client}</option>
@@ -64,10 +64,10 @@ const ClientDemandeur =(props)=>{
             <div className="formclient">
                   <div className="input-group mb-4 ">
                     <span className="input-group-text">Raison :</span>
-                    <input type="text" className="form-control" 
+                    <input type="text" id="raison" className="form-control" 
                     disabled={true}
                         placeholder={client.raison}
-                        defaultValue={client.raison}
+                        value={client.raison}
                          />
                   </div>
               
