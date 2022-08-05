@@ -374,6 +374,7 @@ app.get("/clients/list/creation", async (req, res) => {
   }
 });
 
+
 // get a client
 app.get("/clients/list/:id", async (req, res) => {
   try {
@@ -1305,8 +1306,6 @@ app.delete("/dossierss/list/:id", async (req, res) => {
 });
 
  
-
-
 app.get("/dossierss/list/number", async (req, res) => {
   try {
     const numberclients = await pool.query("SELECT dossier_id FROM dossiers ORDER BY dossier_id DESC LIMIT 1");
