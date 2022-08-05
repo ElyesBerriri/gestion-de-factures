@@ -1,19 +1,41 @@
-const express = require("express");
+//const express = require ("express");
+import express from "express";
 const app = express();
-const cors = require("cors");
-const pool = require("./db");
-const path = require("path");
+//const cors = require("cors");
+import cors from "cors";
+import pool from "./db.js";
+//const pool = require("./db");
+//const path = require("path");
+import path from "path";
 const PORT = process.env.PORT || 5000;
-const bodyParser = require("body-parser");//transforme les données en format .json
+//const bodyParser = require("body-parser");//transforme les données en format .json
+import bodyParser from "body-parser";
+
+//const dotenv = require("dotenv");
+//const cookieParser = require("cookie-parser");
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+
+//const db = require("./config/Database");
+//const router = require("./routes/index");
+import db from "./config/Database.js";
+import router from "./routes/index.js";
+dotenv.config();
+
 
 
 // process.env.NODE_ENV => production or undefined
 // middleware
 
-app.use(cors());
-app.use(express.json()); 
-app.use(bodyParser.json());
- 
+//app.use(cors());
+//app.use(express.json()); 
+//app.use(bodyParser.json());
+app.use(cors({ credentials:true, origin:'http://localhost:3000' }));
+app.use(cookieParser());
+app.use(express.json());
+app.use(router); 
+
+
 if (process.env.NODE_ENV === "production") {
   // service static content
   // npm run build
