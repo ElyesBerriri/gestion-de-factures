@@ -1,16 +1,42 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import EditGreffier from "./EditGreffier";
+import InputGreffier from "./InputGreffier";
+import { Button } from "react-bootstrap";
 
 const ListGreffier = () => {
   const [gref, setgref] = useState([]);
-
+  const [user, setUser] = useState({
+    "nom":"",
+    "prenom":"",
+    "date_nais":"",
+    "adresse":"",
+    "etat_civile":"",
+    "nombre_e":"",
+    "type_payement":"",
+    "base":"",
+    "cin":"",
+    "tel":"",
+    "categorie":"",
+    "echelon":"",
+    "crss":"",
+    "contrat":"",
+    "sexe":"",
+    "date_emb":"",
+    "actif":"",
+    "unk1":"",
+    "unk2":""
+  });
+  const [row, setRow] = useState("");
 
   const deletegreffier = async id => {
+    setRow("");
+    setUser({});
+    document.getElementById("grefe").className = "btn btn-light mx-3 mb-3 disabled";
+    document.getElementById("grefd").className = "btn btn-dark mb-3 disabled";
     try {
       await fetch(`/greffier/list/${id}`, {
         method: "DELETE"
       });
-
       setgref(gref.filter(gr => gr.gref_id !== id));
     } catch (err) {
       console.error(err.message);
@@ -21,7 +47,6 @@ const ListGreffier = () => {
     try {
       const response = await fetch("/greffier/list");
       const jsonData = await response.json();
-      
       setgref(jsonData);
     } catch (err) {
       console.error(err.message);
@@ -32,74 +57,78 @@ const ListGreffier = () => {
     getgreffier();
   }, []);
 
-
   return (
-    <Fragment>
-      {" "}
-      <table className="table table table-hover mt-5 text-center">
-        <thead  className="table-dark">
-          <tr>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Date de naissance</th>
-            <th>Adresse</th>
-            <th>Etat civile</th>
-            <th>Nombre_e</th>
-            <th>Type de payement</th>
-            <th>Base</th>
-            <th>Cin</th>
-            <th>Téléphone</th>
-            <th>Categorie</th>
-            <th>Echelon</th>
-            <th>Crss</th>
-            <th>Contrat</th>
-            <th>Sexe</th>
-            <th>Date_emb</th>
-            <th>Actif</th>
-            <th>Unk1</th>
-            <th>Unk2</th>
-             
-          </tr>
-        </thead>
-        <tbody>
-          {gref.map(gr => (
-            <tr key={gr.gref_id}>
-
-            <td>{gr.nom}</td>
-            <td>{gr.prenom}</td>
-            <td>{gr.date_nais}</td>
-            <td>{gr.adresse}</td>
-            <td>{gr.etat_civile}</td>
-            <td>{gr.nombre_e}</td>
-            <td>{gr.type_payement}</td>
-            <td>{gr.base}</td>
-            <td>{gr.cin}</td>
-            <td>{gr.Tel}</td>
-            <td>{gr.categorie}</td>
-            <td>{gr.echelon}</td>
-            <td>{gr.crss}</td>
-            <td>{gr.contrat}</td>
-            <td>{gr.sexe}</td>
-            <td>{gr.date_emb}</td>
-            <td>{gr.actif}</td>
-            <td>{gr.unk1}</td>
-            <td>{gr.unk2}</td>
-              <td>
-                <EditGreffier gref={gr} />
-              </td>
-              <td>
-              <button
-                  className="btn btn-danger"
-                  onClick={() => deletegreffier(gr.gref_id)}
-                >
-                  Supprimer
-                </button>
-              </td>
+    <>
+      <InputGreffier />
+      <div className="table-responsive m-3 mytable mytable-68">
+        <table className="table table-hover text-center">
+          <thead className="table-secondary text-secondary mytableheader">
+            <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th className="text-nowrap">Date de naissance</th>
+              <th>Adresse</th>
+              <th className="text-nowrap">Etat civil</th>
+              <th className="text-nowrap">Nombre_e</th>
+              <th className="text-nowrap">Type de paiement</th>
+              <th>Base</th>
+              <th>Cin</th>
+              <th>Téléphone</th>
+              <th>Catégorie</th>
+              <th>Echelon</th>
+              <th>Crss</th>
+              <th>Contrat</th>
+              <th>Sexe</th>
+              <th className="text-nowrap">Date_emb</th>
+              <th>Actif</th>
+              <th className="text-nowrap">Unk1</th>
+              <th className="text-nowrap">Unk2</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </Fragment>
+          </thead>
+          <tbody>
+            {gref.map(gr => (
+              <tr key={`gr${gr.gref_id}`} id={`gr${gr.gref_id}`} onClick={() => {
+                let e = document.getElementById(`gr${gr.gref_id}`);
+                if (e.className !== "table-secondary") {
+                  if (row !== "") document.getElementById(row).className = "";
+                  e.className = "table-secondary";
+                  setRow(`gr${gr.gref_id}`);
+                  setUser(gr);
+                  document.getElementById("grefe").className = "btn btn-light mx-3 mb-3";
+                  document.getElementById("grefd").className = "btn btn-dark mb-3";
+                }
+              }}>
+                <td data-label="Nom">{gr.nom}</td>
+                <td data-label="Prénom">{gr.prenom}</td>
+                <td data-label="Date de naissance">{gr.date_nais}</td>
+                <td data-label="Adresse">{gr.adresse}</td>
+                <td data-label="Etat civil">{gr.etat_civile}</td>
+                <td data-label="Nombre_e">{gr.nombre_e}</td>
+                <td data-label="Type de paiement">{gr.type_payement}</td>
+                <td data-label="Base">{gr.base}</td>
+                <td data-label="Cin">{gr.cin}</td>
+                <td data-label="Téléphone">{gr.tel}</td>
+                <td data-label="Catégorie">{gr.categorie}</td>
+                <td data-label="Echelon">{gr.echelon}</td>
+                <td data-label="Crss">{gr.crss}</td>
+                <td data-label="Contrat">{gr.contrat}</td>
+                <td data-label="Sexe">{gr.sexe}</td>
+                <td data-label="Date_emb">{gr.date_emb}</td>
+                <td data-label="Actif">{gr.actif}</td>
+                <td data-label="Unk1">{gr.unk1}</td>
+                <td data-label="Unk2">{gr.unk2}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <EditGreffier gref={user} />
+      <Button
+        className="mb-3 disabled" variant="dark" id="grefd"
+        onClick={() => deletegreffier(user.gref_id)}>
+        Supprimer
+      </Button>
+    </>
   );
 };
 

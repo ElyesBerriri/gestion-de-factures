@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
 const EditGreffier = ({gref}) => {
-    console.log(gref);
     const [nom, setNom] = useState(gref.nom);
     const [prenom, setPrenom] = useState(gref.prenom);
     const [date_nais, setDate_nais] = useState(gref.date_nais);
@@ -43,10 +43,30 @@ const EditGreffier = ({gref}) => {
 
   return (
     <>
-      <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${gref.gref_id}`}>
+      <Button variant="light" id="grefe" className="mb-3 mx-3 disabled" data-bs-toggle="modal" 
+      data-bs-target={`#id${gref.gref_id}`} onClick={() => {
+        setNom(gref.nom);
+        setPrenom(gref.prenom);
+        setDate_nais(gref.date_nais);
+        setAdresse(gref.adresse);
+        setEtat_civile(gref.etat_civile);
+        setNombre_e(gref.nombre_e);
+        setType_payement(gref.type_payement);
+        setBase(gref.base);
+        setCin(gref.cin);
+        setTel(gref.tel);
+        setCategorie(gref.categorie);
+        setEchelon(gref.echelon);
+        setCrss(gref.crss);
+        setContrat(gref.contrat);
+        setSexe(gref.sexe);
+        setDate_emb(gref.date_emb);
+        setActif(gref.actif);
+        setUnk1(gref.unk1);
+        setUnk2(gref.unk2);
+      }}>
         Modifier
-      </button>
+      </Button>
       <div className="modal" id={`id${gref.gref_id}`}>
         <div className="modal-dialog">
           <div className="modal-content">
