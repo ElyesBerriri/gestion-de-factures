@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 import ListRecetteFinance from "../components/tables_amine/ListRecetteFinance";
 
 function RecetteFinance() {
   return (
-    <Fragment>
+    <>
       <ListRecetteFinance/>
-    </Fragment>
+    </>
   );
 }
 

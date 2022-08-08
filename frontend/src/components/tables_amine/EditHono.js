@@ -1,17 +1,16 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
-const EditHono = ({hono}) => {
-  console.log(hono);
+const EditHono = ({ hono }) => {
   const [montant, setMontant] = useState(hono.montant);
   const [lib_arab, setLib_arab] = useState(hono.lib_arab);
   const [lib_fr, setLib_fr] = useState(hono.lib_fr);
 
-
   const updateHono = async e => {
     e.preventDefault();
     try {
-      const body = { lib_arab,lib_fr, montant};
-       await fetch(
+      const body = { lib_arab, lib_fr, montant };
+      await fetch(
         `/honoraires/list/${hono.gr_id}`,
         {
           method: "PUT",
@@ -19,7 +18,6 @@ const EditHono = ({hono}) => {
           body: JSON.stringify(body)
         }
       );
-
       window.location.reload();
     } catch (err) {
       console.error(err.message);
@@ -28,10 +26,14 @@ const EditHono = ({hono}) => {
 
   return (
     <>
-      <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${hono.gr_id}`}>
+      <Button variant="light" id="honoe" className="mb-3 mx-3 disabled" data-bs-toggle="modal"
+        data-bs-target={`#id${hono.gr_id}`} onClick={() => {
+          setLib_arab(hono.lib_arab);
+          setLib_fr(hono.lib_fr)
+          setMontant(hono.montant);
+        }}>
         Modifier
-      </button>
+      </Button>
       <div className="modal" id={`id${hono.gr_id}`}>
         <div className="modal-dialog">
           <div className="modal-content">
@@ -52,7 +54,7 @@ const EditHono = ({hono}) => {
                 placeholder="libelle en arabe"
                 value={lib_arab}
                 onChange={e => setLib_arab(e.target.value)} />
-                <input
+              <input
                 type="text"
                 className="form-control"
                 placeholder="libelle en français"
@@ -68,13 +70,13 @@ const EditHono = ({hono}) => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-              onClick={e => updateHono(e)}>Valider</button>
+                onClick={e => updateHono(e)}>Valider</button>
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-              onClick={() => {
-                setLib_arab(hono.lib_arab);
-                setLib_fr(hono.lib_fr);
-                setMontant(hono.montant);
-              }}>Fermer</button>
+                onClick={() => {
+                  setLib_arab(hono.lib_arab);
+                  setLib_fr(hono.lib_fr);
+                  setMontant(hono.montant);
+                }}>Fermer</button>
             </div>
           </div>
         </div>
