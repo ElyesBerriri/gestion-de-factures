@@ -25,15 +25,15 @@ const InputUtilisateur = () => {
 
   return (
     <>
-      <div className="mx-5">
-        <button data-bs-toggle="modal" data-bs-target="#utid0" className="ajouter" 
+      
+        <button data-bs-toggle="modal" data-bs-target="#utid0" className="ajouter ajoutdossier" 
         onClick={() => {
           setLogin("");
           setPwd("");
           setDomaine("");
         }} ><GoPlus color="#00adb5" fontSize="1.5em" />
         </button>
-      </div>
+     
       <div className="modal fade" id="utid0" data-bs-backdrop="static">
         <div className="modal-dialog">
           <div className="modal-content">

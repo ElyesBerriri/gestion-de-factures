@@ -67,7 +67,7 @@ const EditGreffier = ({gref}) => {
       }}>
         Modifier
       </Button>
-      <div className="modal" id={`id${gref.gref_id}`}>
+      <div className="modal" id={`id${gref.gref_id}`} data-bs-backdrop="static">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -97,176 +97,213 @@ const EditGreffier = ({gref}) => {
               </button>
             </div>
             <div className="modal-body">
-            <input
-        type="text"
-        className="form-control"
-        placeholder="Nom"
-        value={nom}
-        onChange={e => setNom(e.target.value)}
-      />
-
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Prenom"
-        value={prenom}
-        onChange={e => setPrenom(e.target.value)}
-      />
-
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Date de naissance"
-        value={date_nais}
-        onChange={e => setDate_nais(e.target.value)}
-      />
-
-    <input
-        type="text"
-        className="form-control"
-        placeholder="Adresse"
-        value={adresse}
-        onChange={e => setAdresse(e.target.value)}
-      />
-
-<input
-        type="text"
-        className="form-control"
-        placeholder="Etat civile"
-        value={etat_civile}
-        onChange={e => setEtat_civile(e.target.value)}
-      />
-
-      <input
-        type="number"
-        className="form-control"
-        placeholder="Nombre_e"
-        value={nombre_e}
-        onChange={e => setNombre_e(e.target.value)} />
-
-<input
-        type="text"
-        className="form-control"
-        placeholder="Type de payement"
-        value={type_payement}
-        onChange={e => setType_payement(e.target.value)}
-      />
-
-<input
-        type="number"
-        className="form-control"
-        placeholder="Base"
-        value={base}
-        onChange={e => setBase(e.target.value)} />
-    <input
-        type="number"
-        className="form-control"
-        placeholder="CIN"
-        value={cin}
-        onChange={e => setCin(e.target.value)} />
-
-<input 
-        type="number" 
-        className="form-control" 
-        placeholder="Téléphone" 
-        value={tel}
-        onChange={e => setTel(e.target.value)}/>
-
-<input
-        type="number"
-        className="form-control"
-        placeholder="Categorie"
-        value={categorie}
-        onChange={e => setCategorie(e.target.value)} />
-
-<input
-        type="number"
-        className="form-control"
-        placeholder="Echelon"
-        value={echelon}
-        onChange={e => setEchelon(e.target.value)} />
-
-<input
-        type="number"
-        className="form-control"
-        placeholder="Crss"
-        value={crss}
-        onChange={e => setCrss(e.target.value)} />
-
-<input
-        type="text"
-        className="form-control"
-        placeholder="Contrat"
-        value={contrat}
-        onChange={e => setContrat(e.target.value)}
-      />
-
-<input
-        type="text"
-        className="form-control"
-        placeholder="Sexe"
-        value={sexe}
-        onChange={e => setSexe(e.target.value)}/>
-
-<input
-        type="text"
-        className="form-control"
-        placeholder="Date d'emb."
-        value={date_emb}
-        onChange={e => setDate_emb(e.target.value)}
-      />
-
-<input
-        type="text"
-        className="form-control"
-        placeholder="Actif"
-        value={actif}
-        onChange={e => setActif(e.target.value)}
-      />
-
-<input
-        type="text"
-        className="form-control"
-        placeholder="Unk1"
-        value={unk1}
-        onChange={e => setUnk1(e.target.value)}
-      />
-
-<input
-        type="text"
-        className="form-control"
-        placeholder="Unk2"
-        value={unk2}
-        onChange={e => setUnk2(e.target.value)}
-      />
-
+            <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Nom :</span>
+              <input type="text"
+                className="form-control"
+                value={nom}
+                onChange={e => setNom(e.target.value)} />
             </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-              onClick={e => updateGreffier(e)}>Valider</button>
-              <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-              onClick={() => {
-                    setNom(gref.nom);
-                    setPrenom(gref.prenom);
-                    setDate_nais(gref.date_nais);
-                    setAdresse(gref.adresse);
-                    setEtat_civile(gref.etat_civile);
-                    setNombre_e(gref.nombre_e);
-                    setType_payement(gref.type_payement);
-                    setBase(gref.base);
-                    setCin(gref.cin);
-                    setTel(gref.tel);
-                    setCategorie(gref.categorie);
-                    setEchelon(gref.echelon);
-                    setCrss(gref.crss);
-                    setContrat(gref.contrat);
-                    setSexe(gref.sexe);
-                    setDate_emb(gref.date_emb);
-                    setActif(gref.actif);
-                    setUnk1(gref.unk1);
-                    setUnk2(gref.unk2);
-              }}>Fermer</button>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Prénom :</span>
+              <input type="text"
+                className="form-control"
+                value={prenom}
+                onChange={e => setPrenom(e.target.value)} />
             </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Data de naissance :</span>
+              <input type="text"
+                className="form-control"
+                value={date_nais}
+                onChange={e => setDate_nais(e.target.value)} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Adresse :</span>
+              <input type="text"
+                className="form-control"
+                value={adresse}
+                onChange={e => setAdresse(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Etat civil :</span>
+              <input type="text"
+                className="form-control"
+                value={etat_civile}
+                onChange={e => setEtat_civile(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Nombre_e :</span>
+              <input type="number"
+                className="form-control"
+                value={nombre_e}
+                onChange={e => setNombre_e(e.target.value)} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Type de paiement :</span>
+              <input type="text"
+                className="form-control"
+                value={type_payement}
+                onChange={e => setType_payement(e.target.value)}
+              />
+            </div>
+          </div>
+
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Base :</span>
+              <input type="number"
+                className="form-control"
+                value={base}
+                onChange={e => setBase(e.target.value)} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">CIN :</span>
+              <input type="number"
+                className="form-control"
+                value={cin}
+                onChange={e => setCin(e.target.value)} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Téléphone :</span>
+              <input type="number"
+                className="form-control"
+                value={tel}
+                onChange={e => setTel(e.target.value)} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Catégorie :</span>
+              <input type="number"
+                className="form-control"
+                value={categorie}
+                onChange={e => setCategorie(e.target.value)} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Echelon :</span>
+              <input type="number"
+                className="form-control"
+                value={echelon}
+                onChange={e => setEchelon(e.target.value)} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Crss :</span>
+              <input type="number"
+                className="form-control"
+                value={crss}
+                onChange={e => setCrss(e.target.value)} />
+            </div>
+          </div>
+
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Contrat :</span>
+              <input type="text"
+                className="form-control"
+                value={contrat}
+                onChange={e => setContrat(e.target.value)} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Sexe :</span>
+              <input type="text"
+                className="form-control"
+                value={sexe}
+                onChange={e => setSexe(e.target.value)} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Date_emb :</span>
+              <input type="text"
+                className="form-control"
+                value={date_emb}
+                onChange={e => setDate_emb(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">Actif :</span>
+              <input type="text"
+                className="form-control"
+                value={actif}
+                onChange={e => setActif(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">unk1 :</span>
+              <input type="text"
+                className="form-control"
+                value={unk1}
+                onChange={e => setUnk1(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text  ">unk2 :</span>
+              <input type="text"
+                className="form-control"
+                value={unk2}
+                onChange={e => setUnk2(e.target.value)}
+              />
+            </div>
+          </div>
+          </div>
+
+          <div className="modal-footer">
+      <Button variant="light" id="valider" 
+     onClick={e => updateGreffier(e)}
+      >Valider</Button>
+      <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
+      </div>
+            
           </div>
         </div>
       </div>

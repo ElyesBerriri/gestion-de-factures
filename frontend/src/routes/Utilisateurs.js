@@ -4,7 +4,7 @@ import ListUtilisateur from "../components/ListUtilisateur";
 function Utilisateurs() {
   return (
     <>
-      <h1 className="title">Liste des utilisateurs</h1>
+      <h1 className="titlee">Liste des utilisateurs</h1>
       <ListUtilisateur />
     </>
   );

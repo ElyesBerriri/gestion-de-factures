@@ -72,7 +72,7 @@ const InputClient = () => {
 
     return (
         <>
-            <button className="ajouter" data-bs-toggle="modal" data-bs-target="#id0"
+            <button className="ajouter ajouterr" data-bs-toggle="modal" data-bs-target="#id0"
             onClick={() => {
                 if (situation_fiscale === 'Non Assujetie')
                   document.getElementById(`situation1fiscale0`).checked = false;

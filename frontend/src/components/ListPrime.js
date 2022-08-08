@@ -52,7 +52,7 @@ const ListPrime = () => {
   return (
     <>
       <InputPrime />
-      <div className="table-responsive m-3 mytable mytable-68">
+      <div className="table-responsive   mytable-56prime">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
             <tr>

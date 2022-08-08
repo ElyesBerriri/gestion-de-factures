@@ -4,7 +4,7 @@ import ListTypeDossier from "../components/ListTypeDossier";
 function TypeDossier() {
   return (
     <>
-      <h1 className="title">Liste des types de dossiers</h1>
+      <h1 className="titlee">Liste des types de dossiers</h1>
       <ListTypeDossier />
     </>
   );

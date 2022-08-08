@@ -28,7 +28,7 @@ const InputPrime = () => {
   return (
     <>
       <div className="mx-5">
-        <button data-bs-toggle="modal" data-bs-target="#primeid0" className="ajouter"
+        <button data-bs-toggle="modal" data-bs-target="#primeid0" className="ajouter ajoutprime"
           onClick={() => {
             setLibelle("");
             setMontant("");

@@ -46,9 +46,10 @@ const InputGreffier = () => {
   return (
     <Fragment>
       <h1 className="title">Greffiers</h1>
+      <div className="rechercheajout"> 
       <button className="ajouter ajouterr" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
       </button>
-
+      </div>
       <Modal scrollable show={show} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Ajouter un greffier</Modal.Title>

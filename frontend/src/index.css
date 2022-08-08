@@ -264,6 +264,13 @@ code {
   margin-right: auto;
 }
 
+.mytable-56prime {
+  max-height: 56vh;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mytable-60 {
   height: 60vh;
 }
@@ -463,9 +470,13 @@ code {
   margin-bottom: 3vh;
 }
 
+.ajoutprime {
+  margin-left: 9%;
+  margin-bottom: 3vh;
+}
 
 .mytable-56dossier {
-  height: 56vh;
+  max-height: 56vh;
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
