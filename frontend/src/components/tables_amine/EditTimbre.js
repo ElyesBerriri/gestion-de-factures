@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
-const EditTimbre = ({timbre}) => {
+const EditTimbre = ({ timbre }) => {
   console.log(timbre);
   const [libelle, setLibelle] = useState(timbre.libelle);
   const [montant, setMontant] = useState(timbre.montant);
@@ -8,8 +9,8 @@ const EditTimbre = ({timbre}) => {
   const updateTimbre = async e => {
     e.preventDefault();
     try {
-      const body = { libelle, montant};
-       await fetch(
+      const body = { libelle, montant };
+      await fetch(
         `/timbres/list/${timbre.tim_id}`,
         {
           method: "PUT",
@@ -26,10 +27,13 @@ const EditTimbre = ({timbre}) => {
 
   return (
     <>
-      <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${timbre.tim_id}`}>
+      <Button variant="light" id="tme" className="mb-3 mx-3 disabled" data-bs-toggle="modal"
+        data-bs-target={`#id${timbre.tim_id}`} onClick={() => {
+          setLibelle(timbre.libelle);
+          setMontant(timbre.montant);
+        }}>
         Modifier
-      </button>
+      </Button>
       <div className="modal" id={`id${timbre.tim_id}`}>
         <div className="modal-dialog">
           <div className="modal-content">
@@ -49,7 +53,7 @@ const EditTimbre = ({timbre}) => {
                 placeholder="libelle"
                 value={libelle}
                 onChange={e => setLibelle(e.target.value)} />
-                
+
               <input
                 type="number"
                 className="form-control"
@@ -59,12 +63,12 @@ const EditTimbre = ({timbre}) => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-              onClick={e => updateTimbre(e)}>Valider</button>
+                onClick={e => updateTimbre(e)}>Valider</button>
               <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-              onClick={() => {
-                setLibelle(timbre.libelle);
-                setMontant(timbre.montant);
-              }}>Fermer</button>
+                onClick={() => {
+                  setLibelle(timbre.libelle);
+                  setMontant(timbre.montant);
+                }}>Fermer</button>
             </div>
           </div>
         </div>
