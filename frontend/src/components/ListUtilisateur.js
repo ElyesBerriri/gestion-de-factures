@@ -17,7 +17,6 @@ const ListUtilisateur = () => {
       await fetch(`/utilisateurs/list/${id}`, {
         method: "DELETE"
       });
-
       setUsers(users.filter(user => user.utilisateur_id !== id));
     } catch (err) {
       console.error(err.message);

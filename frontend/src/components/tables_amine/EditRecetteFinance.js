@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
 const EditRecetteFinance = ({recette}) => {
-  console.log(recette);
   const [libelle, setLibelle] = useState(recette.libelle);
   const [montant, setMontant] = useState(recette.montant);
 
@@ -17,7 +17,6 @@ const EditRecetteFinance = ({recette}) => {
           body: JSON.stringify(body)
         }
       );
-
       window.location.reload();
     } catch (err) {
       console.error(err.message);
@@ -26,10 +25,13 @@ const EditRecetteFinance = ({recette}) => {
 
   return (
     <>
-      <button type="button" className="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${recette.rf_id}`}>
+      <Button variant="light" id="recfe" className="mb-3 mx-3 disabled" data-bs-toggle="modal" 
+      data-bs-target={`#id${recette.rf_id}`} onClick={() => {
+        setLibelle(recette.libelle);
+        setMontant(recette.montant);
+      }}>
         Modifier
-      </button>
+      </Button>
       <div className="modal" id={`id${recette.rf_id}`}>
         <div className="modal-dialog">
           <div className="modal-content">

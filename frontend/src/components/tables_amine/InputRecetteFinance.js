@@ -22,7 +22,7 @@ const InputRecetteFinance = () => {
 
   return (
     <Fragment>
-      <h1 className="text-center mt-5">Recettes de finance</h1>
+      <h1 className="title">Recettes de finance</h1>
       <form className="d-flex mt-5" onSubmit={onSubmitForm}>
         <input
           type="text"
