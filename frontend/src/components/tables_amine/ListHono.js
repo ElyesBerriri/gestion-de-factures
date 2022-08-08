@@ -43,12 +43,12 @@ const ListHono = () => {
   return (
     <Fragment>
       <InputHono />
-      <div className="table-responsive m-3 mytable mytable-68">
+      <div className="table-responsive  mytable-56recette">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
             <tr>
-              <th className="text-nowrap">Libellé en arabe</th>
-              <th className="text-nowrap">Libellé en français</th>
+              <th className="text-nowrap">Libellé Arabe</th>
+              <th className="text-nowrap">Libellé Français</th>
               <th>Montant</th>
             </tr>
           </thead>

@@ -40,11 +40,11 @@ const ListRecetteFinance = () => {
   return (
     <>
       <InputRecetteFinance />
-      <div className="table-responsive m-3 mytable mytable-68">
+      <div className="table-responsive   mytable-56recette">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
             <tr>
-              <th>Libelle</th>
+              <th>Libellé</th>
               <th>Montant</th>
             </tr>
           </thead>

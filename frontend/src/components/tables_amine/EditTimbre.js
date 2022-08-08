@@ -34,10 +34,12 @@ const EditTimbre = ({ timbre }) => {
         }}>
         Modifier
       </Button>
-      <div className="modal" id={`id${timbre.tim_id}`}>
+
+      <div className="modal" id={`id${timbre.tim_id}`} data-bs-backdrop="static">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
+
               <h4 className="modal-title">Modification d'un timbre</h4>
               <button type="button" className="btn-close" data-bs-dismiss="modal"
                 onClick={() => {
@@ -46,30 +48,42 @@ const EditTimbre = ({ timbre }) => {
                 }}>
               </button>
             </div>
+
             <div className="modal-body">
+              
+            <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Libellé :</span>
+
               <input
                 type="text"
                 className="form-control"
-                placeholder="libelle"
                 value={libelle}
                 onChange={e => setLibelle(e.target.value)} />
+            </div>
+      </div>
+               
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Montant :</span>
 
               <input
                 type="number"
                 className="form-control"
-                placeholder="montant"
                 value={montant}
                 onChange={e => setMontant(e.target.value)} />
+      </div>
+               
             </div>
+
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-                onClick={e => updateTimbre(e)}>Valider</button>
-              <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-                onClick={() => {
-                  setLibelle(timbre.libelle);
-                  setMontant(timbre.montant);
-                }}>Fermer</button>
-            </div>
+      <Button variant="light" id="valider" 
+    onClick={e => updateTimbre(e)}
+      >Valider</Button>
+      <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
+      </div>
+
+          </div>  
           </div>
         </div>
       </div>

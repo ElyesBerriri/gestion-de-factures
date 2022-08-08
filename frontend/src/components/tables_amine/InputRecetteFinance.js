@@ -1,8 +1,15 @@
 import React, { Fragment, useState } from "react";
+import Button from 'react-bootstrap/Button';
+import { GoPlus } from "react-icons/go";
+import Modal from 'react-bootstrap/Modal';
 
 const InputRecetteFinance = () => {
   const [libelle, setLibelle] = useState("");
   const [montant, setMontant] = useState("");
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -22,23 +29,50 @@ const InputRecetteFinance = () => {
 
   return (
     <Fragment>
-      <h1 className="title">Recettes de finance</h1>
-      <form className="d-flex mt-5" onSubmit={onSubmitForm}>
-        <input
-          type="text"
-          className="form-control"
-          value={libelle}
-          onChange={e => setLibelle(e.target.value)}
-        />
+      <h1 className="titlee">Recettes de finance</h1>
+     
+      <button className="ajouter ajoutdossier" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+      </button>
+       
+      
+      <Modal scrollable show={show} onHide={handleClose} backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Ajouter un collaborateur</Modal.Title>
+        </Modal.Header>
+  
+  
+        <Modal.Body> 
 
-        <input
-          type="number"
-          className="form-control"
-          value={montant}
-          onChange={e => setMontant(e.target.value)}
-        />
-        <button className="btn btn-success">Ajouter</button>
-      </form>
+        <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text">Libellé :</span>
+      <input type="text" 
+          className="form-control  "  
+          value={libelle}
+          onChange={e => setLibelle(e.target.value)}/>
+      </div>
+      </div>
+       
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text">Montant :</span>
+      <input type="number" className="form-control  "  
+           value={montant}
+           onChange={e => setMontant(e.target.value)}/>
+      </div>
+      </div>
+      
+      </Modal.Body>
+      
+      
+      <Modal.Footer>
+           <Button variant="light" id="valider"  
+        onClick={onSubmitForm}>Valider</Button>
+        <Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Fermer</Button>
+          </Modal.Footer>
+         
+       
+          </Modal>
     </Fragment>
   );
 };

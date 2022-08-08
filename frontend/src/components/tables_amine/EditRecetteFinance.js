@@ -32,9 +32,12 @@ const EditRecetteFinance = ({recette}) => {
       }}>
         Modifier
       </Button>
-      <div className="modal" id={`id${recette.rf_id}`}>
-        <div className="modal-dialog">
+
+      <div className="modal fade"  id={`id${recette.rf_id}`} data-bs-backdrop="static">
+  <div className="modal-dialog modal-dialog-scrollable" >
           <div className="modal-content">
+
+   
             <div className="modal-header">
               <h4 className="modal-title">Modification d'une recette</h4>
               <button type="button" className="btn-close" data-bs-dismiss="modal"
@@ -45,29 +48,42 @@ const EditRecetteFinance = ({recette}) => {
               </button>
             </div>
             <div className="modal-body">
+
+            <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Libellé :</span>
+
               <input
                 type="text"
                 className="form-control"
-                placeholder="libelle"
                 value={libelle}
                 onChange={e => setLibelle(e.target.value)} />
-                
+            </div>
+      </div>
+
+              
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Montant :</span>
+
               <input
                 type="number"
                 className="form-control"
-                placeholder="montant"
                 value={montant}
                 onChange={e => setMontant(e.target.value)} />
             </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-              onClick={e => updateRecette(e)}>Valider</button>
-              <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-              onClick={() => {
-                setLibelle(recette.libelle);
-                setMontant(recette.montant);
-              }}>Fermer</button>
+      </div>
+               
             </div>
+
+            <div className="modal-footer">
+      <Button variant="light" id="valider" 
+       onClick={e => updateRecette(e)}
+      >Valider</Button>
+      <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
+      </div>
+
+          
           </div>
         </div>
       </div>

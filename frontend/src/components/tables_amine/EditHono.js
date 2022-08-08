@@ -34,7 +34,7 @@ const EditHono = ({ hono }) => {
         }}>
         Modifier
       </Button>
-      <div className="modal" id={`id${hono.gr_id}`}>
+      <div className="modal" id={`id${hono.gr_id}`}  data-bs-backdrop="static">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -47,37 +47,56 @@ const EditHono = ({ hono }) => {
                 }}>
               </button>
             </div>
+
+
             <div className="modal-body">
+
+            <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Libellé Arabe :</span>
+
               <input
                 type="text"
                 className="form-control"
-                placeholder="libelle en arabe"
                 value={lib_arab}
-                onChange={e => setLib_arab(e.target.value)} />
+                onChange={e => setLib_arab(e.target.value)}
+              />
+            </div>
+      </div>
+               
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Libellé Français :</span>
+
               <input
                 type="text"
                 className="form-control"
-                placeholder="libelle en français"
                 value={lib_fr}
                 onChange={e => setLib_fr(e.target.value)} />
+            </div>
+      </div>
+              
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Montant :</span>
+
               <input
                 type="number"
                 className="form-control"
-                placeholder="montant"
                 value={montant}
                 onChange={e => setMontant(e.target.value)} />
+            </div>
+      </div>
+               
+            </div>
 
-            </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-                onClick={e => updateHono(e)}>Valider</button>
-              <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-                onClick={() => {
-                  setLib_arab(hono.lib_arab);
-                  setLib_fr(hono.lib_fr);
-                  setMontant(hono.montant);
-                }}>Fermer</button>
-            </div>
+      <Button variant="light" id="valider" 
+       onClick={e => updateHono(e)}
+      >Valider</Button>
+      <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
+      </div>
+            
           </div>
         </div>
       </div>

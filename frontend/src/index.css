@@ -257,8 +257,11 @@ code {
 }
 
 /* table */
-.mytable-68 {
-  max-height: 65vh;
+.mytable-56recette {
+  max-height: 56vh;
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mytable-60 {
@@ -467,6 +470,7 @@ code {
   margin-left: 20%;
   margin-right: 20%;
 }
+ 
 
 .mytable-41 {
   height: 41vh;
