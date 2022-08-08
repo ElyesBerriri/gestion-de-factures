@@ -41,6 +41,7 @@ const ListUtilisateur = () => {
 
   return (
     <>
+      <InputUtilisateur />
       <div className="table-responsive m-3 mytable mytable-68">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
@@ -71,7 +72,6 @@ const ListUtilisateur = () => {
           </tbody>
         </table>
       </div>
-      <InputUtilisateur />
       <EditUtilisateurs user={user} />
       <Button
         className="mb-3 disabled" variant="dark" id="lubtnd"

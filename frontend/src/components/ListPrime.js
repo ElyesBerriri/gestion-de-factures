@@ -51,6 +51,7 @@ const ListPrime = () => {
 
   return (
     <>
+      <InputPrime />
       <div className="table-responsive m-3 mytable mytable-68">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
@@ -85,7 +86,6 @@ const ListPrime = () => {
           </tbody>
         </table>
       </div>
-      <InputPrime />
       <EditPrime prime={doc} />
       <Button
         variant="dark" id="lpbtnd" className="mb-3 disabled"

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import { GoPlus } from "react-icons/go";
 
 const InputPrime = () => {
   const [libelle, setLibelle] = useState("");
@@ -26,16 +27,17 @@ const InputPrime = () => {
 
   return (
     <>
-      <Button className="mb-3" data-bs-toggle="modal" variant="dark"
-        data-bs-target="#primeid0" onClick={() => {
-          setLibelle("");
-          setMontant("");
-          setDissociable(false);
-          setImpot(false);
-          setMensuel(false);
-        }}>
-        Ajouter
-      </Button>
+      <div className="mx-5">
+        <button data-bs-toggle="modal" data-bs-target="#primeid0" className="ajouter"
+          onClick={() => {
+            setLibelle("");
+            setMontant("");
+            setDissociable(false);
+            setImpot(false);
+            setMensuel(false);
+          }} ><GoPlus color="#00adb5" fontSize="1.5em" />
+        </button>
+      </div>
       <div className="modal fade" id="primeid0" data-bs-backdrop="static">
         <div className="modal-dialog">
           <div className="modal-content">
@@ -45,7 +47,7 @@ const InputPrime = () => {
               </button>
             </div>
             <div className="modal-body">
-            <div className="row">
+              <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Libellé :</span>
                   <input type="text" className="form-control"
@@ -66,18 +68,18 @@ const InputPrime = () => {
               <div className="form-check mt-3">
                 <label className="form-check-label">
                   <input className="form-check-input" type="checkbox"
-                    checked = {dissociable}
+                    checked={dissociable}
                     onChange={e => {
                       setDissociable(e.target.checked);
                       e.target.checked = dissociable;
                     }} />
-                    Dissociable
+                  Dissociable
                 </label>
               </div>
               <div className="form-check">
                 <label className="form-check-label">
                   <input className="form-check-input" type="checkbox"
-                    checked = {impot}
+                    checked={impot}
                     onChange={e => {
                       setImpot(e.target.checked);
                       e.target.checked = impot;
@@ -88,11 +90,11 @@ const InputPrime = () => {
               <div className="form-check">
                 <label className="form-check-label">
                   <input className="form-check-input" type="checkbox"
-                    checked = {mensuel} onChange={e => {
+                    checked={mensuel} onChange={e => {
                       setMensuel(e.target.checked);
                       e.target.checked = mensuel;
                     }} />
-                    Mensuel
+                  Mensuel
                 </label>
               </div>
             </div>

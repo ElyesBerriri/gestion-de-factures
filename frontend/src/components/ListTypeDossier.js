@@ -41,6 +41,7 @@ const ListTypeDossier = () => {
 
   return (
     <>
+      <InputTypeDossier />
       <div className="table-responsive m-3 mytable mytable-68">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
@@ -67,7 +68,6 @@ const ListTypeDossier = () => {
           </tbody>
         </table>
       </div>
-      <InputTypeDossier />
       <EditTypeDossier type={doc} />
       <Button
         variant="dark" id="ldbtnd" className="mb-3 disabled"

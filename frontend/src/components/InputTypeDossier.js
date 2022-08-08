@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import { GoPlus } from "react-icons/go";
 
 const InputTypeDossier = () => {
   const [libelle, setLibelle] = useState("");
@@ -22,13 +23,14 @@ const InputTypeDossier = () => {
 
   return (
     <>
-      <Button className="mb-3" data-bs-toggle="modal" variant="dark"
-        data-bs-target="#primeid0" onClick={() => {
-          setLibelle("");
-        }}>
-        Ajouter
-      </Button>
-      <div className="modal fade" id="primeid0" data-bs-backdrop="static">
+      <div className="mx-5">
+        <button data-bs-toggle="modal" data-bs-target="#typdid0" className="ajouter"
+          onClick={() => {
+            setLibelle("");
+          }} ><GoPlus color="#00adb5" fontSize="1.5em" />
+        </button>
+      </div>
+      <div className="modal fade" id="typdid0" data-bs-backdrop="static">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import { GoPlus } from "react-icons/go";
 
 const InputUtilisateur = () => {
   const [login, setLogin] = useState("");
@@ -24,14 +25,15 @@ const InputUtilisateur = () => {
 
   return (
     <>
-      <Button className="mb-3" data-bs-toggle="modal" variant="dark"
-        data-bs-target="#utid0" onClick={() => {
+      <div className="mx-5">
+        <button data-bs-toggle="modal" data-bs-target="#utid0" className="ajouter" 
+        onClick={() => {
           setLogin("");
           setPwd("");
           setDomaine("");
-        }}>
-        Ajouter
-      </Button>
+        }} ><GoPlus color="#00adb5" fontSize="1.5em" />
+        </button>
+      </div>
       <div className="modal fade" id="utid0" data-bs-backdrop="static">
         <div className="modal-dialog">
           <div className="modal-content">
@@ -41,7 +43,7 @@ const InputUtilisateur = () => {
               </button>
             </div>
             <div className="modal-body">
-            <div className="row">
+              <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Login :</span>
                   <input type="text" className="form-control"
