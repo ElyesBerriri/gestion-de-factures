@@ -94,15 +94,15 @@ const ListServices = () => {
                   document.getElementById("clbtnm").className = "btn btn-light mx-3";
                 }
               }}>
-                <td >{service.tribunal}</td>
-                <td>{service.nom}</td>
-                <td className="back" style={
+                <td data-label="Tribunal">{service.tribunal}</td>
+                <td data-label="Nom">{service.nom}</td>
+                <td data-label="Lundi" className="back" style={
                   service.lundi == "Course" ?
                     { 'backgroundColor': '#868e96' } :
                     service.lundi == "Audience" ?
                       { 'backgroundColor': '#02c3cc' } : { 'backgroundColor': '	#FFFFFF' }
                 }>{service.lundi}</td>
-                <td
+                <td data-label="Mardi"
                   style={
                     service.mardi == "Course" ?
                       { 'backgroundColor': '#868e96' }
@@ -110,7 +110,7 @@ const ListServices = () => {
                       service.mardi == "Audience" ?
                         { 'backgroundColor': '#02c3cc' } : { 'backgroundColor': '	#FFFFFF' }
                   }>{service.mardi}</td>
-                <td
+                <td data-label="Mercredi"
                   style={
                     service.mercredi == "Course" ?
                       { 'backgroundColor': "#868e96" }
@@ -118,7 +118,7 @@ const ListServices = () => {
                       service.mercredi == "Audience" ?
                         { 'backgroundColor': '#02c3cc' } : { 'backgroundColor': '	#FFFFFF' }
                   }>{service.mercredi}</td>
-                <td
+                <td data-label="Jeudi"
                   style={
                     service.jeudi == "Course" ?
                       { 'backgroundColor': '#868e96' }
@@ -126,7 +126,7 @@ const ListServices = () => {
                       service.jeudi == "Audience" ?
                         { 'backgroundColor': '#02c3cc' } : { 'backgroundColor': '	#FFFFFF' }
                   }>{service.jeudi}</td>
-                <td
+                <td data-label="Vendredi"
                   style={
                     service.vendredi == "Course" ?
                       { 'backgroundColor': '#868e96' }
@@ -134,7 +134,7 @@ const ListServices = () => {
                       service.vendredi == "Audience" ?
                         { 'backgroundColor': '#02c3cc' } : { 'backgroundColor': '	#FFFFFF' }}
                 >{service.vendredi}</td>
-                <td
+                <td data-label="Samedi"
                   style={
                     service.samedi == "Course" ?
                       { 'backgroundColor': '#868e96' }
