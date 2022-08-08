@@ -23,7 +23,7 @@ const InputHono = () => {
 
   return (
     <Fragment>
-      <h1 className="text-center mt-5">Honoraires en extra</h1>
+      <h1 className="title">Honoraires en extra</h1>
       <form className="d-flex mt-5"  >
         <input
           type="text"
