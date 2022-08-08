@@ -96,51 +96,24 @@ const ListServices = () => {
               }}>
                 <td data-label="Tribunal">{service.tribunal}</td>
                 <td data-label="Nom">{service.nom}</td>
-                <td data-label="Lundi" className="back" style={
-                  service.lundi == "Course" ?
-                    { 'backgroundColor': '#868e96' } :
-                    service.lundi == "Audience" ?
-                      { 'backgroundColor': '#02c3cc' } : { 'backgroundColor': '	#FFFFFF' }
-                }>{service.lundi}</td>
-                <td data-label="Mardi"
-                  style={
-                    service.mardi == "Course" ?
-                      { 'backgroundColor': '#868e96' }
-                      :
-                      service.mardi == "Audience" ?
-                        { 'backgroundColor': '#02c3cc' } : { 'backgroundColor': '	#FFFFFF' }
-                  }>{service.mardi}</td>
-                <td data-label="Mercredi"
-                  style={
-                    service.mercredi == "Course" ?
-                      { 'backgroundColor': "#868e96" }
-                      :
-                      service.mercredi == "Audience" ?
-                        { 'backgroundColor': '#02c3cc' } : { 'backgroundColor': '	#FFFFFF' }
-                  }>{service.mercredi}</td>
-                <td data-label="Jeudi"
-                  style={
-                    service.jeudi == "Course" ?
-                      { 'backgroundColor': '#868e96' }
-                      :
-                      service.jeudi == "Audience" ?
-                        { 'backgroundColor': '#02c3cc' } : { 'backgroundColor': '	#FFFFFF' }
-                  }>{service.jeudi}</td>
-                <td data-label="Vendredi"
-                  style={
-                    service.vendredi == "Course" ?
-                      { 'backgroundColor': '#868e96' }
-                      :
-                      service.vendredi == "Audience" ?
-                        { 'backgroundColor': '#02c3cc' } : { 'backgroundColor': '	#FFFFFF' }}
-                >{service.vendredi}</td>
-                <td data-label="Samedi"
-                  style={
-                    service.samedi == "Course" ?
-                      { 'backgroundColor': '#868e96' }
-                      :
-                      service.samedi == "Audience" ?
-                        { 'backgroundColor': '#02c3cc' } : { 'backgroundColor': '	#FFFFFF' }}>{service.samedi}</td>
+                <td data-label="Lundi" className="back">
+                  <p className={(service.lundi == 'Course') ? "t1" :
+                  service.lundi == 'Audience' ? "t2": "t3"}>{service.lundi}</p></td>
+                <td data-label="Mardi">
+                  <p className={(service.mardi == 'Course') ? "t1" :
+                  service.mardi == 'Audience' ? "t2": "t3"}>{service.mardi}</p></td>
+                <td data-label="Mercredi">
+                  <p className={(service.mercredi == 'Course') ? "t1" :
+                  service.mercredi == 'Audience' ? "t2": "t3"}>{service.mercredi}</p></td>
+                <td data-label="Jeudi">
+                  <p className={(service.jeudi == 'Course') ? "t1" :
+                  service.jeudi == 'Audience' ? "t2": "t3"}>{service.jeudi}</p></td>
+                <td data-label="Vendredi">
+                  <p className={(service.vendredi == 'Course') ? "t1" :
+                  service.vendredi == 'Audience' ? "t2": "t3"}>{service.vendredi}</p></td>
+                <td data-label="Samedi">
+                  <p className={(service.samedi == 'Course') ? "t1" :
+                  service.samedi == 'Audience' ? "t2": "t3"}>{service.samedi}</p></td>
               </tr>
             ))}
           </tbody>
