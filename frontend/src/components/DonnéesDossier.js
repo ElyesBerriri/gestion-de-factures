@@ -22,9 +22,10 @@ const DonnéesDossier =(props)=>{
      
     return(
 
-        <section id="donnees">
-        <div className="container mt-5">
-
+        <section className="container client2" id="donnees">
+                     
+                     <h1 className='titlee' >Données Dossier</h1>
+                     <div className=" formdonnees formclient">
         <div className="row">
                   <div className="input-group mb-3">
                     <span className="input-group-text">Type de dossier :</span>
@@ -128,10 +129,11 @@ const DonnéesDossier =(props)=>{
                <CalendarComp changecalendar={props.changecalendar} calendar={props.calendar}/>
               </div>
               </div>
- 
-      </div>
+              </div>
+  
 
-    <TabAdvers adversaire={props.adversaire} dossier_id={props.idd}/>
+    <TabAdvers dossier_id={props.idd}             
+    changeadversaires={props.changeadversaires} />
     </section>
     )
 

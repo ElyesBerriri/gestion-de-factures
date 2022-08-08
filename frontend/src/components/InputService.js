@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from "react";
-
+import Button from 'react-bootstrap/Button';
+import { GoPlus } from "react-icons/go";
+import Modal from 'react-bootstrap/Modal';
 
 const InputService=()=>{
 
@@ -11,6 +13,10 @@ const InputService=()=>{
     const [jeudi, setjeudi] = useState("..");
     const [vendredi, setvendredi] = useState("..");
     const [samedi, setsamedi] = useState("..");
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
@@ -32,42 +38,45 @@ const InputService=()=>{
 
   return (
     <Fragment>
-      
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Ajouter
-</button>
 
+      <button className="ajouter ajouterr" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+      </button>
  
-<div class="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nouvelle administration</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      <Modal scrollable show={show} onHide={handleClose} backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Ajouter une administration</Modal.Title>
+        </Modal.Header>
 
+        <Modal.Body> 
 
-      <div class="modal-body">
-      <div className="d-flex">
-              <label>Tribunal:</label>
+        <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text">Tribunal :</span>
+
       <input
                 type="text"
                 className="form-control"
                  value={tribunal}
                 onChange={e => settribunal(e.target.value)}
               /> </div>
-
-<div className="d-flex">
-              <label>Administration:</label>
-<input
+      </div>
+       
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Administration :</span>
+      <input
                 type="text"
                 className="form-control"
                  value={nom}
                 onChange={e => setnom(e.target.value)}
               /> </div>
+      </div>
+ 
 
-              <table className="table table table-hover mt-5 text-center">
-        <thead  className="table-dark">
+      <div className="table-responsive m-3 mytable mytable-41">
+        <table className="table table-hover text-center">
+          <thead className="table-secondary text-secondary mytableheader">
+
           <tr>
             <th>Jour</th>
             <th>Course</th>
@@ -123,14 +132,18 @@ const InputService=()=>{
         </tbody>
       </table>
       </div>
-      <div class="modal-footer">
-        <button 
-      type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button onClick={onSubmitForm} type="submit" class="btn btn-success">Sauvegarder</button>
-      </div>
-    </div>
-  </div>
-</div>
+      </Modal.Body>
+
+    <Modal.Footer>
+         <Button variant="light" id="valider"  
+      onClick={onSubmitForm}>Valider</Button>
+      <Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Fermer</Button>
+        </Modal.Footer>
+       
+     
+        </Modal>
+   
+ 
     </Fragment>
     );
     

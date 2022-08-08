@@ -1,13 +1,12 @@
 import React from "react";
-import InputPrime from "../components/InputPrime";
 import ListPrime from "../components/ListPrime";
 
 function Primes() {
   return (
-    <div className="container">
-      <InputPrime />
+    <>
+      <h1 className="title">Liste des primes</h1>
       <ListPrime />
-    </div>
+    </>
   );
 }
 

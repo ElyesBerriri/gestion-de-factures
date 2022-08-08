@@ -1,115 +1,136 @@
-import React, { Fragment,useState }  from "react";
+import React, { Fragment,useState,useEffect }  from "react";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { GoPlus } from "react-icons/go";
+ 
 
-
-const InputDemandeur = () => {
-const [nom, setNom] = useState("--");
-  const [cin, setCin] = useState("--");
+const InputDemandeur = (props) => {
+  const [nom, setNom] = useState("--");
+  const [CIN, setCin] = useState("--");
   const [adresse, setAdresse] = useState("--");
-  const [adresseD, setAdresseD] = useState("--");
+  const [adresse_d, setAdresseD] = useState("--");
   const [tel, setTel] = useState("--");
   const [fax, setFax] = useState("--");
+  const [dossier_id, setidd] = useState(10);
+  const [brouillon, setbrouillon] = useState("oui");
+  const [show, setShow] = useState(false);
 
-    const onSubmitForm = () => {
-            return(
-                    console.log("submit")
-                )
-        }
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const onSubmitForm =async (e) => {
+      try {
+        const body = {dossier_id,nom,CIN,adresse,adresse_d,tel,fax,brouillon} ;
+        await fetch("/demandeurs/list", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+     
+        //props.changedemandeur(props.demandeur+" , "+nom);
+        setFax("--");
+        setAdresse("--");
+        setNom("--");
+        setCin("--");
+        setAdresseD("--");
+        setTel("--")
+        props.changedem(props.dossier_id);
+         
+     } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    setidd(props.dossier_id);
+  }, [props.dossier_id]);
+      
       
   return (
     <Fragment>
-      
-    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalllll">
-    Ajouter Demandeur
-  </button>
-  
-   
-  <div className="modal fade" id="exampleModalllll" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">Nouveau Demandeur</h5>
-          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-  
-  
-        <div className="modal-body">
-        <div className="container ">
-    <form  >
+      <div className="rechercheajout">
+     <button className="ajouter ajouterr" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+      </button>
+</div>
 
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">Nom et Prénom </label>
-    <div className="col-sm-10">
-        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Nom et Prénom"
-        value={nom}
+      <Modal scrollable show={show} onHide={handleClose}  backdrop="static" >
+        <Modal.Header closeButton>
+          <Modal.Title>Nouveau Demandeur</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body> 
+
+        <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Nom et Prénom :</span>
+        <input type="text" className="form-control "  
+         value={nom}
         onChange={e => setNom(e.target.value)}/>
     </div>
     </div>
 
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">CIN</label>
-    <div className="col-sm-10">
-        <input type="number" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Cin"
-        value={cin}
+    <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">CIN :</span>
+        <input type="text" className="form-control "  
+         value={CIN}
         onChange={e => setCin(e.target.value)}/>
     </div>
     </div>
 
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">Adresse</label>
-    <div className="col-sm-10">
-        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Ville"
-        value={adresse}
-        onChange={e => setAdresse(e.target.value)}/>
+  
+    <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Adresse :</span>
+        <input type="text" className="form-control "  
+         value={adresse}
+         onChange={e => setAdresse(e.target.value)}/>
     </div>
     </div>
 
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">Adresse Designée</label>
-    <div className="col-sm-10">
-        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Rue"
-        value={adresseD}
+    <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Adresse Designée :</span>
+        <input type="text" className="form-control "  
+        value={adresse_d}
         onChange={e => setAdresseD(e.target.value)}/>
     </div>
     </div>
-
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">Téléphone</label>
-    <div className="col-sm-10">
-        <input type="number" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Numéro"
-        value={tel}
-        onChange={e => setTel(e.target.value)}/>
+     
+    <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Téléphone :</span>
+        <input type="text" className="form-control "  
+         value={tel}
+         onChange={e => setTel(e.target.value)}/>
     </div>
     </div>
-
-    <div className="row mb-3">
-    <label  className="col-sm-2 col-form-label col-form-label-sm">Fax</label>
-    <div className="col-sm-10">
-        <input type="number" className="form-control form-control-sm" id="colFormLabelSm" 
-        placeholder="Code Postale"
-        value={fax}
-        onChange={e => setFax(e.target.value)}/>
-    </div>
-    </div>
-
     
-
-    </form>
+    <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Fax :</span>
+        <input type="text" className="form-control "  
+         value={fax}
+         onChange={e => setFax(e.target.value)}/>
     </div>
-
-        </div>
-        <div className="modal-footer">
-          <button 
-        type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-          <button onClick={onSubmitForm} type="submit" className="btn btn-success">Ajouter</button>
-        </div>
-      </div>
     </div>
-  </div>
+     
+
+
+    </Modal.Body>
+
+
+        <Modal.Footer>
+           
+          <Button variant="light" id="valider" onClick={()=>{handleClose();onSubmitForm()}}>
+            Valider
+          </Button>
+          <Button variant="dark" onClick={handleClose}>
+            Fermer
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
   </Fragment>
   );
 };

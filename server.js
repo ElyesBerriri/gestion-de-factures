@@ -374,6 +374,7 @@ app.get("/clients/list/creation", async (req, res) => {
   }
 });
 
+
 // get a client
 app.get("/clients/list/:id", async (req, res) => {
   try {
@@ -751,8 +752,7 @@ app.get("/greffier/list/:id", async (req, res) => {
 app.post("/greffier/list", async (req, res) => {
   try {
     const { nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2  } = req.body;
-    const newone = await pool.query(
-    "INSERT INTO greffier (nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2 ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING *",[nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2 ]);
+    const newone = await pool.query("INSERT INTO greffier (nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2 ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19) RETURNING *",[nom ,prenom ,date_nais ,adresse ,etat_civile ,nombre_e ,type_payement ,base ,cin ,tel,categorie ,echelon ,crss ,contrat ,sexe ,date_emb ,actif ,unk1 ,unk2 ]);
     res.status(200).json(newone.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -817,14 +817,14 @@ app.post("/services/list", async (req, res) => {
   }
 });
 
-/*app.get("/services/list", async (req, res) => {
+app.get("/services/list", async (req, res) => {
   try {
-    const services = await pool.query("SELECT * from services");
+    const services = await pool.query("SELECT * from servicess");
     res.status(200).json(services.rows);
   } catch (err) {
     console.error(err.message);
   }
-});*/
+});
 
 app.get("/services/list", async (req, res) => {
   try{
@@ -893,10 +893,10 @@ app.get("/collaborateurs/list2", async (req, res) => {
 app.put("/services/list/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { nom,lundi,mardi,mercredi,jeudi,vendredi,samedi} = req.body;
+    const {tribunal, nom,lundi,mardi,mercredi,jeudi,vendredi,samedi} = req.body;
     await pool.query(
-      "UPDATE servicess SET nom=$1,lundi=$2,mardi=$3,mercredi=$4,jeudi=$5,vendredi=$6,samedi=$7  WHERE service_id = $8",
-      [nom,lundi,mardi,mercredi,jeudi,vendredi,samedi, id]
+      "UPDATE servicess SET  nom=$1,lundi=$2,mardi=$3,mercredi=$4,jeudi=$5,vendredi=$6,samedi=$7,tribunal=$9  WHERE service_id = $8",
+      [ nom,lundi,mardi,mercredi,jeudi,vendredi,samedi, id,tribunal]
     );
 
     res.status(200).json("service was updated");
@@ -1037,6 +1037,16 @@ app.get("/adversaire/listtotal/:id", async (req, res) => {
   }
 });
 
+app.get("/adversaire/listid/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT adversaire_id FROM adversaires WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 
 app.put("/adversaire/list/", async (req, res) => {
   try {
@@ -1053,6 +1063,190 @@ app.put("/adversaire/list/", async (req, res) => {
 
 
 
+//Gestion de la table qui contient les détails des dossiers//////////
+
+//demandeurs
+
+app.get("/demandeurs/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from demandeurs");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/demandeurs/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM demandeurs WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/demandeurs/listid/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT demandeur_id FROM demandeurs WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/demandeurs/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT nom FROM demandeurs WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/demandeurs/list/", async (req, res) => {
+  try {
+    await pool.query("DELETE FROM demandeurs WHERE brouillon = $1", [
+      "oui",
+    ]);
+    res.status(200).json("demandeurs was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/demandeurs/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM demandeurs WHERE demandeur_id = $1", [
+      id,
+    ]);
+    res.status(200).json("demandeur was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.post("/demandeurs/list", async (req, res) => {
+  try {
+    const { dossier_id,nom,CIN,adresse,adresse_d,tel,fax,brouillon} = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO demandeurs (dossier_id,nom,CIN,adresse,adresse_d,tel,fax,brouillon) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",
+    [dossier_id,nom,CIN,adresse,adresse_d,tel,fax,brouillon]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.put("/demandeurs/list/", async (req, res) => {
+  try {
+    await pool.query(
+      `UPDATE demandeurs SET brouillon=$1 WHERE brouillon = $2`,
+      ["non","oui"]
+    );
+
+    res.status(200).json("demandeur was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+//tache
+app.put("/tache/list/", async (req, res) => {
+  try {
+    await pool.query(
+      `UPDATE tache SET brouillon=$1 WHERE brouillon = $2`,
+      ["non","oui"]
+    );
+
+    res.status(200).json("tache was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.post("/tache/list", async (req, res) => {
+  try {
+    const { dossier_id,tache,datec,dater,resolu,course,lieu,service,dateaud,dateech,greffier,personnech,brouillon} = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO tache (dossier_id,tache,datec,dater,resolu,course,lieu,service,dateaud,dateech,greffier,personnech,brouillon) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) RETURNING *",
+    [dossier_id,tache,datec,dater,resolu,course,lieu,service,dateaud,dateech,greffier,personnech,brouillon]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/tache/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM tache WHERE tache_id = $1", [
+      id,
+    ]);
+    res.status(200).json("tache was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/tache/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from tache");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/tache/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM tache WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/tache/listid/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT tache_id FROM tache WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/tache/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT tache FROM tache WHERE tache_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.delete("/tache/list/", async (req, res) => {
+  try {
+    await pool.query("DELETE FROM tache WHERE brouillon = $1", [
+      "oui",
+    ]);
+    res.status(200).json("tache was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
 app.post("/dossierss/list", async (req, res) => {
   try {
     const { code1,code2,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r } = req.body;
@@ -1060,6 +1254,22 @@ app.post("/dossierss/list", async (req, res) => {
     "INSERT INTO dossiers (code,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20) RETURNING *",
     [`${code1}-${code2}`,typee,mission,emplacement,lieu,numaff,servicee,observation,calendar,client,tel,adversaire,honoraire,net,client_id,collab_id,parent_id,mode_r,part_c,type_r ]);
     res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.put("/dossierss/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { emplacement } = req.body;
+    await pool.query(
+      "UPDATE dossiers SET emplacement = $1 WHERE dossier_id = $2",
+      [emplacement, id]
+    );
+
+    res.status(200).json("dossier reclassé avec succés");
   } catch (err) {
     console.error(err.message);
   }
@@ -1095,6 +1305,7 @@ app.delete("/dossierss/list/:id", async (req, res) => {
   }
 });
 
+ 
 app.get("/dossierss/list/number", async (req, res) => {
   try {
     const numberclients = await pool.query("SELECT dossier_id FROM dossiers ORDER BY dossier_id DESC LIMIT 1");
@@ -1149,6 +1360,176 @@ app.get("/dossierss/list/recherche/", async (req, res) => {
     console.error(err.message);
   }
 });
+
+
+//reglement
+
+/*app.post("/reglement/list", async (req, res) => {
+  try {
+    const { hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance } = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO reglement (hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *",
+    [ hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance ]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.put("/reglement/list/", async (req, res) => {
+  try {
+    const { id_reg } = req.params;
+    const { hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance } = req.body;
+    await pool.query(
+      `UPDATE reglement SET hono_avo=$1,net_payer=$2,montant=$3,typee=$4,bare=$5,num_operation=$6,banque=$7,porteur=$8,echeance=$9 WHERE id_reg=$10`,
+      [hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,id_reg]
+    );
+
+    res.status(200).json("reglement was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+
+
+
+// get all 
+app.get("/reglement/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from reglement");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+get one
+app.get("/reglement/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM reglement WHERE id_reg = $1", [id]);
+    res.status(200).json(one.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.get("/reglement/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM reglement WHERE id_reg = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+// delete one
+app.delete("/reglement/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM reglement WHERE id_reg = $1", [id]);
+    res.status(200).json("delete is done");
+  } catch (err) {
+    console.error(err.message);
+  }
+});*/
+
+
+
+
+
+
+
+
+
+
+
+app.post("/reglement/list", async (req, res) => {
+  try {
+    const { dossier_id,hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,broui} = req.body;
+    const donnees = await pool.query(
+    "INSERT INTO reglement (dossier_id,hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,broui) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *",
+    [dossier_id,hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,broui]);
+    res.status(200).json(donnees.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+app.get("/reglement/list", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from reglement");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.delete("/reglement/list/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM reglement WHERE id_reg = $1", [
+      id,
+    ]);
+    res.status(200).json("reglement was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.delete("/reglement/list/", async (req, res) => {
+  try {
+    await pool.query("DELETE FROM reglement WHERE broui = $1", [
+      "oui",
+    ]);
+    res.status(200).json("reg was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+
+app.get("/reglement/listtotal/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const one = await pool.query("SELECT * FROM reglement WHERE dossier_id = $1", [id]);
+    res.status(200).json(one.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.put("/reglement/list/", async (req, res) => {
+  try {
+    await pool.query(
+      `UPDATE reglement SET broui=$1 WHERE broui = $2`,
+      ["non","oui"]
+    );
+
+    res.status(200).json("reglement was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.get("*", (req, res) => {

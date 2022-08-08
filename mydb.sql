@@ -117,6 +117,7 @@ unk2 varchar(10)
 
 
 
+
 CREATE TABLE dossiers(
   dossier_id serial primary key,
   code VARCHAR(255),
@@ -137,3 +138,41 @@ CREATE TABLE dossiers(
   collab_id INT,
   parent_id INT
 );
+
+
+
+CREATE TABLE tache(
+    tache_id SERIAL PRIMARY KEY,
+    dossier_id int,
+    tache VARCHAR(255),
+    datec VARCHAR(255),
+    dater VARCHAR(255),
+    resolu VARCHAR(255),
+    course VARCHAR(255),
+    lieu VARCHAR(255),
+    service VARCHAR(255),
+    dateaud VARCHAR(255),
+    dateech VARCHAR(255),
+    greffier VARCHAR(255),
+    personnech VARCHAR(255),
+    brouillon VARCHAR(255)
+);
+
+
+
+CREATE TABLE reglement(
+    id_reg SERIAL PRIMARY KEY,
+    dossier_id int,
+    hono_avo float,
+    net_payer float,
+    montant float,
+    typee VARCHAR(255),
+    bare VARCHAR(255),
+    num_operation VARCHAR(255),
+    banque VARCHAR(255),
+    porteur VARCHAR(255),
+    echeance VARCHAR(255),
+    broui varchar(255)
+);
+ALTER TABLE reglement
+ALTER COLUMN broui TYPE varchar(255);

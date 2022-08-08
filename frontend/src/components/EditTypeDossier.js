@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import Button from "react-bootstrap/esm/Button";
 
-const EditTypeDossier = ({type}) => {
+const EditTypeDossier = ({ type }) => {
   const [libelle, setLibelle] = useState(type.libelle);
 
   const updateLibelle = async e => {
     e.preventDefault();
     try {
       const body = { libelle };
-       await fetch(
+      await fetch(
         `/type_dossiers/list/${type.type_id}`,
         {
           method: "PUT",
@@ -24,38 +25,35 @@ const EditTypeDossier = ({type}) => {
 
   return (
     <>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${type.type_id}`} onClick={() => setLibelle(type.libelle)}>
+      <Button data-bs-toggle="modal" variant="light" id="ldbtne" className="mb-3 mx-3 disabled"
+        data-bs-target={`#id${type.type_id}`} onClick={() => setLibelle(type.libelle)}>
         Modifier
-      </button>
+      </Button>
 
-      <div class="modal fade" data-bs-backdrop="static"
+      <div className="modal fade" data-bs-backdrop="static"
         id={`id${type.type_id}`}>
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Modification du type de dossier</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" />
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">Modification du type de dossier</h4>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" />
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <div className="row">
-                <label className="col-form-label">
-                  Libellé
-                  <input
-                    type="text"
-                    className="form-control"
+                <div className="input-group mb-3">
+                  <span className="input-group-text">Libellé :</span>
+                  <input type="text" className="form-control"
                     placeholder="libellé"
                     value={libelle}
                     onChange={e => setLibelle(e.target.value)} />
-                </label>
+                </div>
               </div>
             </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-              onClick={e => updateLibelle(e)}>Valider</button>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-              >Fermer</button>
+            <div className="modal-footer">
+              <Button variant="light" data-bs-dismiss="modal"
+                onClick={e => updateLibelle(e)}>Valider</Button>
+              <Button variant="dark" data-bs-dismiss="modal"
+              >Fermer</Button>
             </div>
           </div>
         </div>

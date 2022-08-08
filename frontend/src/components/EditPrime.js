@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
-const EditPrime = ({prime}) => {
+const EditPrime = ({ prime }) => {
   const [libelle, setLibelle] = useState(prime.libelle);
   const [montant, setMontant] = useState(prime.montant);
   const [dissociable, setDissociable] = useState(prime.dissociable);
@@ -11,7 +12,7 @@ const EditPrime = ({prime}) => {
     e.preventDefault();
     try {
       const body = { libelle, montant, dissociable, impot, mensuel };
-       await fetch(
+      await fetch(
         `/primes/list/${prime.id}`,
         {
           method: "PUT",
@@ -28,63 +29,59 @@ const EditPrime = ({prime}) => {
 
   return (
     <>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-      data-bs-target={`#id${prime.id}`}
-      onClick={() => {
-        setLibelle(prime.libelle);
-        setMontant(prime.montant);
-        setDissociable(prime.dissociable);
-        setImpot(prime.impot);
-        setMensuel(prime.mensuel);
-      }}>
+      <Button type="button" className="mb-3 mx-3 disabled" id="lpbtne" data-bs-toggle="modal"
+        data-bs-target={`#primeid${prime.id}`} variant="light"
+        onClick={() => {
+          setLibelle(prime.libelle);
+          setMontant(prime.montant);
+          setDissociable(prime.dissociable);
+          setImpot(prime.impot);
+          setMensuel(prime.mensuel);
+        }}>
         Modifier
-      </button>
-      <div class="modal fade" id={`id${prime.id}`} data-bs-backdrop="static">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Modification d'une prime</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal">
+      </Button>
+      <div className="modal fade" id={`primeid${prime.id}`} data-bs-backdrop="static">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">Modification d'une prime</h4>
+              <button type="button" className="btn-close" data-bs-dismiss="modal">
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <div className="row">
-                <label className="col-form-label">
-                  Libellé
-                  <input
-                    type="text"
-                    className="form-control"
+                <div className="input-group mb-3">
+                  <span className="input-group-text">Libellé :</span>
+                  <input type="text" className="form-control"
                     placeholder="libellé"
                     value={libelle}
                     onChange={e => setLibelle(e.target.value)} />
-                </label>
+                </div>
               </div>
               <div className="row">
-                <label className="col-form-label">
-                  Montant
-                  <input
-                    type="number"
-                    className="form-control"
+                <div className="input-group">
+                  <span className="input-group-text">Montant :</span>
+                  <input type="number" className="form-control"
                     placeholder="montant"
                     value={montant}
                     onChange={e => setMontant(e.target.value)} />
-                </label>
+                </div>
               </div>
-              <div class="form-check mt-3">
-                <label class="form-check-label">
+              <div className="form-check mt-3">
+                <label className="form-check-label">
                   <input className="form-check-input" type="checkbox"
-                    checked = {dissociable}
+                    checked={dissociable}
                     onChange={e => {
                       setDissociable(e.target.checked);
                       e.target.checked = dissociable;
                     }} />
-                    Dissociable
+                  Dissociable
                 </label>
               </div>
-              <div class="form-check">
-                <label class="form-check-label">
+              <div className="form-check">
+                <label className="form-check-label">
                   <input className="form-check-input" type="checkbox"
-                    checked = {impot}
+                    checked={impot}
                     onChange={e => {
                       setImpot(e.target.checked);
                       e.target.checked = impot;
@@ -92,23 +89,23 @@ const EditPrime = ({prime}) => {
                   Impot
                 </label>
               </div>
-              <div class="form-check">
-                <label class="form-check-label">
+              <div className="form-check">
+                <label className="form-check-label">
                   <input className="form-check-input" type="checkbox"
-                    checked = {mensuel}
+                    checked={mensuel}
                     onChange={e => {
                       setMensuel(e.target.checked);
                       e.target.checked = mensuel;
                     }} />
-                    Mensuel
+                  Mensuel
                 </label>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-              onClick={e => updatePrime(e)}>Valider</button>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-              >Fermer</button>
+            <div className="modal-footer">
+              <Button variant="light" data-bs-dismiss="modal"
+                onClick={e => updatePrime(e)}>Valider</Button>
+              <Button variant="dark" data-bs-dismiss="modal"
+              >Fermer</Button>
             </div>
           </div>
         </div>

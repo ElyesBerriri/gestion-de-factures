@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from "react";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const EditCollab = ({collab}) => {
     const [nom,setnom] = useState(collab.nom);
@@ -15,7 +17,11 @@ const EditCollab = ({collab}) => {
     const [methodepaiment,setmethodepaiment]  = useState(collab.methodepaiment);
     const [montant,setmontant]  = useState(collab.montant);
     const [nombre_dossier,setnombre_dossier]  = useState(collab.nombre_dossier);
+    const [show, setShow] = useState(false);
 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
 
   const updateCollab = async e => {
     e.preventDefault();
@@ -39,10 +45,7 @@ const EditCollab = ({collab}) => {
 
   return (
     <Fragment>
-      
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-data-bs-target={`#id${collab.collab_id}`}
-onClick={() => {setnom(collab.nom);
+       <Button variant="light" id="clbtnm" className="mx-3 disabled" onClick={()=>{handleShow();setnom(collab.nom);
   setcin(collab.cin);
   setville(collab.ville);
   setrue(collab.rue);
@@ -55,185 +58,221 @@ onClick={() => {setnom(collab.nom);
   setmatricule(collab.matricule);
   setmethodepaiment(collab.methodepaiment);
   setmontant(collab.montant);
-  setnombre_dossier(collab.nombre_dossier);}}
-  >
-  Modifier
-</button>
+  setnombre_dossier(collab.nombre_dossier)}}>
+        Modifier
+      </Button>
 
- 
-<div class="modal"
+      <Modal
+      scrollable
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Modification du collaborateur</Modal.Title>
+        </Modal.Header>
 
- id={`id${collab.collab_id}`}>
-  <div class="modal-dialog">
-    <div class="modal-content">
 
-   
-      <div class="modal-header">
-        <h4 class="modal-title">Modification de collaborateur</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"
-        ></button>
-      </div>
+        <Modal.Body>
+        <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Nom :</span>
 
-    
-      <div class="modal-body">
-              <div className="d-flex">
-              <label>Nom:</label>
               <input
                 type="text"
                 className="form-control"
                 value={nom}
                 onChange={e => setnom(e.target.value)}
               />
-              </div>
+      </div>
+      </div>
+     
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">CIN :</span>
 
-              <div className="d-flex">
-              <label>Cin:</label>
-                <input
+      <input
                 type="number"
                 className="form-control"
                 value={cin }
                 onChange={e => setcin(e.target.value)} 
-              /></div>
+              />
+      </div>
+      </div>
+    
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Ville :</span>
 
-              <div className="d-flex">
-              <label>Ville:</label>
-               <input
+      <input
                 type="text"
                 className="form-control"
                 value={ville}
                 onChange={e => setville(e.target.value)}
-              /></div>
+              />
+      </div>
+      </div>
 
-<div className="d-flex">
-              <label>Rue:</label>
-               <input
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Rue :</span>
+
+      <input
                 type="text"
                 className="form-control"
                 value={rue}
                 onChange={e => setrue(e.target.value)}
-              />    </div>
+              />
+      </div>
+      </div>
 
-<div className="d-flex">
-              <label>Num:</label>
-               <input
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Num :</span>
+
+      <input
                 type="number"
                 className="form-control"
                 value={num}
                 onChange={e => setnum(e.target.value)}
-              /></div>
+              />
+      </div>
+      </div>
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Code Postale :</span>
 
-<div className="d-flex">
-              <label>Code Postale:</label>
-               <input
+      <input
                 type="number"
                 className="form-control"
                 value={codepostale}
                 onChange={e => setcodepostale(e.target.value)}
-              /></div>
+              />
+      </div>
+      </div>
 
-<div className="d-flex">
-              <label>Activité:</label>
-               <input
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Activité :</span>
+
+      <input
                 type="text"
                 className="form-control"
                 value={activite}
                 onChange={e => setactivite(e.target.value)}
-              /></div>
+              />
+      </div>
+      </div>
 
-<div className="d-flex">
-              <label>Téléphone:</label>
-               <input
+
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Téléphone :</span>
+
+      <input
                 type="number"
                 className="form-control"
                 value={tel}
                 onChange={e => settel(e.target.value)}
-              />  </div>
+              />
+      </div>
+      </div>
 
-               <div className="d-flex">
-              <label>Fax:</label>  
-               <input
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text">Fax :</span>
+
+      <input
                 type="number"
                 className="form-control"
                 value={fax}
                 onChange={e => setfax(e.target.value)}
-              /></div>
+              />
+      </div>
+      </div>
 
-<div className="d-flex">
-              <label>Email:</label>
-               <input
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Email :</span>
+      <input
                 type="text"
                 className="form-control"
                 value={email}
                 onChange={e => setemail(e.target.value)}
-              /></div>
+              />
+      </div>
+      </div>
 
-<div className="d-flex">
-              <label>Matricule:</label>
-               <input
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Matricule :</span>
+      <input
                 type="number"
                 className="form-control"
                 value={matricule}
                 onChange={e => setmatricule(e.target.value)}
-              /></div>
+              />
+      </div>
+      </div>
 
-<div className="d-flex">
-              <label>Methode de paiement:</label>
-               <input
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Methode de paiement :</span>
+      <input
                 type="text"
                 className="form-control"
                 value={methodepaiment}
                 onChange={e => setmethodepaiment(e.target.value)}
-              /></div>
+              />
+      </div>
+      </div>
 
-<div className="d-flex">
-              <label>Montant:</label>
-               <input
+
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text ">Montant :</span>
+      <input
                 type="number"
                 className="form-control"
                 value={montant}
                 onChange={e => setmontant(e.target.value)}
-              /></div>
+              />
+      </div>
+      </div>
 
-<div className="d-flex ">
-              <label >Nomnre_dossier:</label>
-               <input 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Nombre dossier :</span>
+      <input 
                 type="number"
                 className="form-control"
                 value={nombre_dossier}
                 onChange={e => setnombre_dossier(e.target.value)}
-              /></div>
-
-            </div>
-
-      
-      <div class="modal-footer">
-      <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-      onClick={e => updateCollab(e)}
-      >Valider</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-        onClick={() => {setnom(collab.nom);
-          setcin(collab.cin);
-          setville(collab.ville);
-          setrue(collab.rue);
-          setnum(collab.num);
-          setcodepostale(collab.codepostale);
-          setactivite(collab.activite);
-          settel(collab.tel);
-          setfax(collab.fax);
-          setemail(collab.email);
-          setmatricule(collab.matricule);
-          setmethodepaiment(collab.methodepaiment);
-          setmontant(collab.montant);
-          setnombre_dossier(collab.nombre_dossier);}}
-        >Fermer</button>
+              />
       </div>
+      </div>
+      
+        </Modal.Body>
+        
+        <Modal.Footer>
+        <Button variant="light" id="valider" 
+      onClick={e => updateCollab(e)}
+      >Valider</Button>
+      <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
+        </Modal.Footer>
+      </Modal>
 
-    </div>
-  </div>
-</div>
-
-    </Fragment>
-  );
+ 
+       
+ 
+ 
+{console.log(collab)}
+ </Fragment>
+);
 };
 
 export default EditCollab;

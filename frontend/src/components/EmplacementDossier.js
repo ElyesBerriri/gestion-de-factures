@@ -1,28 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Search from "./Search";
+import Button from "react-bootstrap/esm/Button";
 
 const EmplacementDossier = () => {
     const [dossiers, setDossiers] = useState([]);
     const [query, setQuery] = useState("");
-    const [emplacement,setEmplacement] = useState("Tous");
+    const [emplacement, setEmplacement] = useState("Tous");
     const [emplacements, setEmplacements] = useState([]);
+    const [row, setRow] = useState("");
+    const [doc, setDoc] = useState({});
 
     const getemp = async () => {
         try {
-        const response = await fetch(`/dossiers/list`);
-        const jsonData = await response.json();
-        setEmplacements(jsonData);
-        } catch (err) {
-        console.error(err.message);
-        }
-    };
-
-
-    const deleteDossier = async id => {
-        try {
-            await fetch(`/dossierss/list/${id}`, {
-                method: "DELETE"
-            });
-            setDossiers(dossiers.filter(dossier => dossier.dossier_id !== id));
+            const response = await fetch(`/dossiers/list`);
+            const jsonData = await response.json();
+            setEmplacements(jsonData);
         } catch (err) {
             console.error(err.message);
         }
@@ -45,74 +38,73 @@ const EmplacementDossier = () => {
 
     return (
         <>
-            {" "}
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label col-form-label-sm">Emplacement : </label>
-                <select class="form-select" aria-label="Default select example" 
+            <h1 className='title'>Mettre à jour Emplacement Dossier</h1>
+            <div className="empmotcle">
+            <div className="mycontainer">
+                <label className="mylegend">Emplacement : </label>
+                <select className="myselect"
                     onChange={e => setEmplacement(e.target.options[e.target.selectedIndex].value)}>
-                    <option value="Tous" selected>Tous</option>
-                    {emplacements.map(emp => (<option value={emp.libelle}>{emp.libelle}</option>))}
+                    <option value="Tous" defaultChecked key={0}>Tous</option>
+                    {emplacements.map(emp => (<option value={emp.libelle} key={emp.dossier_id}>{emp.libelle}</option>))}
                 </select>
             </div>
-            <input
-                className="search "
-                placeholder="Recherche .."
-                onChange={(e) => setQuery(e.target.value.toLowerCase())} />
-            <table class="table table-hover mt-2 text-center">
-                <thead class="table-dark">
-                    <tr className="bg-primary">
-                        <th scope="col">id</th>
-                        <th scope="col">num_affaire</th>
-                        <th scope="col">emplacement</th>
-                        <th scope="col">client</th>
-                        <th scope="col">tel</th>
-                        <th scope="col">mission</th>
-                        <th scope="col">adversaire</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {dossiers.map(dossier => {if(emplacement=="Tous" || emplacement==dossier.emplacement) return(
-                        <tr key={dossier.dossier_id}>
-                            <td>{dossier.dossier_id}</td>
-                            <td>{dossier.numaff}</td>
-                            <td>{dossier.emplacement}</td>
-                            <td>{dossier.client}</td>
-                            <td>{dossier.tel}</td>
-                            <td>{dossier.mission}</td>
-                            <td>{dossier.adversaire}</td>
-                            <td>
-                                <button
-                                    className="btn btn-danger"
-                                    onClick={() => deleteDossier(dossier.dossier_id)}>
-                                    Supprimer
-                                </button>
-                            </td>
-                            <td>
-                                <button
-                                    className="btn btn-warning" >
-                                    Transférer
-                                </button>
-                            </td>
-                            <td>
-                                <button
-                                    className="btn btn-danger" >
-                                    Libérer
-                                </button>
-                            </td>
-                            <td>
-                                <button
-                                    className="btn btn-success" >
-                                    Imprimer
-                                </button>
-                            </td>
+            <div className="mycontainer">
+                <label className="mylegend">Mots Clés : </label>
+                <Search setQuery={(e) => setQuery(e)} />
+            </div>
+            </div>
+            <div className="table-responsive m-3 mytable mytable-48">
+                <table className="table table-hover text-center">
+                    <thead className="table-secondary text-secondary mytableheader">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Numéro affaire</th>
+                            <th scope="col">Emplacement</th>
+                            <th scope="col">Client</th>
+                            <th scope="col">Téléphone</th>
+                            <th scope="col">Mission</th>
+                            <th scope="col">Adversaire</th>
                         </tr>
-                    )})}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {dossiers.map(dossier => {
+                            if (emplacement == "Tous" || emplacement == dossier.emplacement) return (
+                                <tr key={dossier.dossier_id} id={`doc${dossier.dossier_id}`} onClick={() => {
+                                    let e = document.getElementById(`doc${dossier.dossier_id}`);
+                                    if (e.className !== "table-secondary") {
+                                        if (row !== "") document.getElementById(row).className = "";
+                                        e.className = "table-secondary";
+                                        setRow(`doc${dossier.dossier_id}`);
+                                        setDoc(dossier);
+                                        document.getElementById("edbtnt").className = "btn btn-dark";
+                                        document.getElementById("edbtnl").className = "btn btn-light mx-3";
+                                        document.getElementById("edbtni").className = "btn btn-dark";
+                                    }
+                                }}>
+                                    <td data-label="Id">{dossier.dossier_id}</td>
+                                    <td data-label="Numéro affaire">{dossier.numaff}</td>
+                                    <td data-label="Emplacement">{dossier.emplacement}</td>
+                                    <td data-label="Client">{dossier.client}</td>
+                                    <td data-label="Téléphone">{dossier.tel}</td>
+                                    <td data-label="Mission">{dossier.mission}</td>
+                                    <td data-label="Adversaire">{dossier.adversaire}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
+            <div className=" modifsupp mb-3">
+                <Button variant="dark" id="edbtnt" className="disabled">
+                    Transférer
+                </Button>
+                <Button variant="light" id="edbtnl" className="mx-3 disabled">
+                    Libérer
+                </Button>
+                <Link to="/PDF" state={{ from: doc }}>
+                    <Button variant="dark" id="edbtni" className="disabled">Imprimer</Button>
+                </Link>
+            </div>
         </>
     )
 };
