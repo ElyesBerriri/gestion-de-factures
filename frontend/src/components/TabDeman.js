@@ -21,30 +21,31 @@ const TabDeman = (props) => {
       }
     }
   };
-
   const deletedemandeur = async id => {
     setRow("");
-    document.getElementById("clbtnrr").className = "btn btn-dark disabled";
-    try {
+    document.getElementById("clbtnrr").className="btn btn-dark disabled";
+     try {
+
       await fetch(`/demandeurs/list/${id}`, {
         method: "DELETE"
       });
-      setDemandeur(demandeurs.filter(demandeur => demandeur.demandeur_id !== id));
-      /* {        console.log(nom);
 
-         const rep=props.demandeur.replace(`${nom}`,"");
-       props.changedemandeur(rep);}
-       console.log(props.demandeur);*/
+      setDemandeur(demandeurs.filter(demandeur => demandeur.demandeur_id !== id));
+     /* {        console.log(nom);
+
+        const rep=props.demandeur.replace(`${nom}`,"");
+      props.changedemandeur(rep);}
+      console.log(props.demandeur);*/
     } catch (err) {
       console.error(err.message);
     }
   };
 
-  return (
-    <Fragment className="section2">
-      <h1 className='titlee' >Liste des Demandeurs</h1>
-      <InputDemandeur /*demandeur={props.demandeur}  
-        changedemandeur={props.changedemandeur}*/ dossier_id={props.dossier_id} changedem={(e) => getdemandeur(e)} />
+return (
+    <Fragment >
+            <h1 className='titlee' >Liste des Demandeurs</h1>
+            <InputDemandeur /*demandeur={props.demandeur}  
+        changedemandeur={props.changedemandeur}*/ dossier_id={props.dossier_id} changedem={(e)=>getdemandeur(e)}/>
 
       <div className="table-responsive m-3 mytable  mytable-56creation ">
         <table className="table table-hover text-center">

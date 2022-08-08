@@ -63,10 +63,11 @@ const EditCollab = ({collab}) => {
       </Button>
 
       <Modal
+      scrollable
         show={show}
         onHide={handleClose}
         backdrop="static"
-        keyboard={false}
+        
       >
         <Modal.Header closeButton>
           <Modal.Title>Modification du collaborateur</Modal.Title>

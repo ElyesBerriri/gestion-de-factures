@@ -47,12 +47,17 @@ const ChercherDossier = (props) => {
   }, [query, queryy]);
 
   return (
-    <>
-      <div className="rechercheajout">
-        <button type="button" className="ajouter ajouterr" data-bs-toggle="modal" data-bs-target="#exampleModall">
-          <GoPlus color="#00adb5" fontSize="1.5em" />
-        </button>
-      </div>
+ 
+
+    <Fragment>
+        <div className="rechercheajout">
+   
+      <button type="button" className="ajouter ajouterr" data-bs-toggle="modal" data-bs-target="#exampleModall">
+      <GoPlus color="#00adb5" fontSize="1.5em" />
+</button>
+</div>
+
+
 
       <div className="modal fade" id="exampleModall" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-scrollable">
@@ -119,7 +124,8 @@ const ChercherDossier = (props) => {
           </div>
         </div>
       </div>
-    </>
+  
+      </Fragment>
   );
 };
 

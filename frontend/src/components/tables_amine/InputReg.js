@@ -59,7 +59,7 @@ const InputReg = (props) => {
 </div>
 
   
-<Modal show={show} onHide={handleClose} animation={false}>
+<Modal show={show} onHide={handleClose} animation={false}   backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Nouveau Réglement</Modal.Title>
         </Modal.Header>

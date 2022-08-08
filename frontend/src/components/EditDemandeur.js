@@ -35,7 +35,7 @@ onClick={() => setLibelle(dossier.libelle)}
 
  
 <div className="modal"
- id={`id${dossier.dossier_id}`}>
+ id={`id${dossier.dossier_id}`} >
   <div className="modal-dialog">
     <div className="modal-content">
 

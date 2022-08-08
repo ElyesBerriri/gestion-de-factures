@@ -34,7 +34,7 @@ const InputTrib = () => {
     <button className="ajouter" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
     </button>
 </div>
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} backdrop="static">
       <Modal.Header closeButton>
         <Modal.Title>Ajouter un tribunal</Modal.Title>
       </Modal.Header>

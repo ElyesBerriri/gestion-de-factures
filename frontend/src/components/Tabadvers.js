@@ -48,11 +48,13 @@ const TabAdvers = (props) => {
     }
   };
 
-  return (
-    <Fragment className="section2">
-      <h1 className='titlee' >Liste des Adversaires</h1>
-      <InputAdversaire changeadv={(e, a) => getadversaire(e, a)}
-        dossier_id={props.dossier_id} />
+
+return (
+    <Fragment >
+            <h1 className='titlee' >Liste des Adversaires</h1>
+            <InputAdversaire changeadv={(e,a)=>getadversaire(e,a)}
+         dossier_id={props.dossier_id} />
+
 
       <div className="table-responsive m-3 mytable  mytable-56creation ">
         <table className="table table-hover text-center">
