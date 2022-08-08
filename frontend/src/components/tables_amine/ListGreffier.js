@@ -58,8 +58,7 @@ const ListGreffier = () => {
             <th>Actif</th>
             <th>Unk1</th>
             <th>Unk2</th>
-            <th>Modifier</th>
-            <th>Supprimer</th>
+             
           </tr>
         </thead>
         <tbody>

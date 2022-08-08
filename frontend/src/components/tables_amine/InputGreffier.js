@@ -1,4 +1,7 @@
 import React, { Fragment, useState } from "react";
+import Button from 'react-bootstrap/Button';
+import { GoPlus } from "react-icons/go";
+import Modal from 'react-bootstrap/Modal';
 
 const InputGreffier = () => {
     const [nom, setNom] = useState("");
@@ -20,6 +23,10 @@ const InputGreffier = () => {
     const [actif, setActif] = useState("");
     const [unk1, setUnk1] = useState("");
     const [unk2, setUnk2] = useState("");
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -40,154 +47,251 @@ const InputGreffier = () => {
   return (
     <Fragment>
       <h1 className="text-center mt-5">Greffiers</h1>
-      <form className="d-flex mt-5">
+
+      <button className="ajouter ajouterr" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+      </button>
+
+      <Modal scrollable show={show} onHide={handleClose} backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Ajouter un greffier</Modal.Title>
+        </Modal.Header>
+  
+        <Modal.Body> 
         
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Nom"
-        value={nom}
-        onChange={e => setNom(e.target.value)}
-      />
+        
+        <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Nom :</span>
 
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Prenom"
-        value={prenom}
-        onChange={e => setPrenom(e.target.value)}
-      />
+      <input type="text" 
+          className="form-control"
+          value={nom}
+        onChange={e => setNom(e.target.value)}/> 
+      </div>
+      </div>
 
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Date de naissance"
-        value={date_nais}
-        onChange={e => setDate_nais(e.target.value)}
-      />
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Prénom :</span>
 
-    <input
-        type="text"
-        className="form-control"
-        placeholder="Adresse"
-        value={adresse}
+      <input type="text" 
+          className="form-control"
+          value={prenom}
+          onChange={e => setPrenom(e.target.value)}/> 
+      </div>
+      </div>
+       
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Data de naissance :</span>
+
+      <input type="text" 
+          className="form-control"
+          value={date_nais}
+        onChange={e => setDate_nais(e.target.value)}/> 
+      </div>
+      </div>
+      
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Adresse :</span>
+
+      <input type="text" 
+          className="form-control"
+          value={adresse}
         onChange={e => setAdresse(e.target.value)}
       />
+      </div>
+      </div>
+     
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Etat civil :</span>
 
-<input
-        type="text"
-        className="form-control"
-        placeholder="Etat civile"
-        value={etat_civile}
+      <input type="text" 
+          className="form-control"
+          value={etat_civile}
         onChange={e => setEtat_civile(e.target.value)}
       />
+      </div>
+      </div>
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Nombre_e :</span>
 
-      <input
-        type="number"
-        className="form-control"
-        placeholder="Nombre_e"
-        value={nombre_e}
+      <input type="number" 
+          className="form-control"
+          value={nombre_e}
         onChange={e => setNombre_e(e.target.value)} />
+      </div>
+      </div>
+      
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Type de paiement :</span>
 
-<input
-        type="text"
-        className="form-control"
-        placeholder="Type de payement"
-        value={type_payement}
-        onChange={e => setType_payement(e.target.value)}
-      />
+      <input type="text" 
+          className="form-control"
+          value={type_payement}
+          onChange={e => setType_payement(e.target.value)}
+        />
+      </div>
+      </div>
 
-<input
-        type="number"
-        className="form-control"
-        placeholder="Base"
-        value={base}
+
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Base :</span>
+
+      <input type="number" 
+          className="form-control"
+          value={base}
         onChange={e => setBase(e.target.value)} />
-    <input
-        type="number"
-        className="form-control"
-        placeholder="CIN"
-        value={cin}
+      </div>
+      </div>
+
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">CIN :</span>
+
+      <input type="number" 
+          className="form-control"
+          value={cin}
         onChange={e => setCin(e.target.value)} />
 
-<input 
-        type="number" 
-        className="form-control" 
-        placeholder="Téléphone" 
-        value={tel}
+      </div>
+      </div>
+
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Téléphone :</span>
+
+      <input type="number" 
+          className="form-control"
+         value={tel}
         onChange={e => setTel(e.target.value)}/>
+      </div>
+      </div>
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Catégorie :</span>
 
-<input
-        type="number"
-        className="form-control"
-        placeholder="Categorie"
-        value={categorie}
-        onChange={e => setCategorie(e.target.value)} />
+      <input type="number" 
+          className="form-control"
+          value={categorie}
+          onChange={e => setCategorie(e.target.value)} />
+      </div>
+      </div>
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Echelon :</span>
 
-<input
-        type="number"
-        className="form-control"
-        placeholder="Echelon"
-        value={echelon}
-        onChange={e => setEchelon(e.target.value)} />
+      <input type="number" 
+          className="form-control"
+          value={echelon}
+          onChange={e => setEchelon(e.target.value)} />
+  
+      </div>
+      </div>
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Crss :</span>
 
-<input
-        type="number"
-        className="form-control"
-        placeholder="Crss"
-        value={crss}
-        onChange={e => setCrss(e.target.value)} />
+      <input type="number" 
+          className="form-control"
+          value={crss}
+          onChange={e => setCrss(e.target.value)} />
+  
+      </div>
+      </div>
+ 
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Contrat :</span>
 
-<input
-        type="text"
-        className="form-control"
-        placeholder="Contrat"
-        value={contrat}
-        onChange={e => setContrat(e.target.value)}
-      />
+      <input type="text" 
+          className="form-control"
+          value={contrat}
+        onChange={e => setContrat(e.target.value)}/>
+  
+      </div>
+      </div>
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Sexe :</span>
 
-<input
-        type="text"
-        className="form-control"
-        placeholder="Sexe"
-        value={sexe}
-        onChange={e => setSexe(e.target.value)}/>
+      <input type="text" 
+          className="form-control"
+          value={sexe}
+          onChange={e => setSexe(e.target.value)}/>
+  
+      </div>
+      </div>
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Date_emb :</span>
 
-<input
-        type="text"
-        className="form-control"
-        placeholder="Date d'emb."
-        value={date_emb}
-        onChange={e => setDate_emb(e.target.value)}
-      />
+      <input type="text" 
+          className="form-control"
+          value={date_emb}
+          onChange={e => setDate_emb(e.target.value)}
+        />
+      </div>
+      </div>
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">Actif :</span>
 
-<input
-        type="text"
-        className="form-control"
-        placeholder="Actif"
-        value={actif}
-        onChange={e => setActif(e.target.value)}
-      />
+      <input type="text" 
+          className="form-control"
+          value={actif}
+          onChange={e => setActif(e.target.value)}
+        />
+      </div>
+      </div>
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">unk1 :</span>
 
-<input
-        type="text"
-        className="form-control"
-        placeholder="Unk1"
-        value={unk1}
-        onChange={e => setUnk1(e.target.value)}
-      />
+      <input type="text" 
+          className="form-control"
+          value={unk1}
+          onChange={e => setUnk1(e.target.value)}
+        />
+      </div>
+      </div>
+ 
+      <div className="row">
+      <div className="input-group mb-3">
+      <span className="input-group-text  ">unk2 :</span>
 
-<input
-        type="text"
-        className="form-control"
-        placeholder="Unk2"
-        value={unk2}
-        onChange={e => setUnk2(e.target.value)}
-      />
+      <input type="text" 
+          className="form-control"
+          value={unk2}
+          onChange={e => setUnk2(e.target.value)}
+        />
+      </div>
+      </div>
+ 
+   </Modal.Body>
 
-
-        <button className="btn btn-success" onClick={onSubmitForm}>Ajouter</button>
-      </form>
+   <Modal.Footer>
+         <Button variant="light" id="valider"  
+      onClick={onSubmitForm}>Valider</Button>
+      <Button variant="dark" data-bs-dismiss="modal"  onClick={handleClose}>Fermer</Button>
+        </Modal.Footer>
+       
+     
+        </Modal>
     </Fragment>
   );
 };
