@@ -127,47 +127,47 @@ const EditServices = ({ service }) => {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Lundi</td>
-                      <td>
+                      <td data-label="Jour">Lundi</td>
+                      <td data-label="Course">
                         <input type="radio"
                           name="lun" id={`Courselun${service.service_id}`} onChange={() => setlundi("Course")} />
                       </td>
-                      <td><input type="radio" name="lun" id={`Audiencelun${service.service_id}`} onChange={() => setlundi("Audience")} />
+                      <td data-label="Audience"><input type="radio" name="lun" id={`Audiencelun${service.service_id}`} onChange={() => setlundi("Audience")} />
                       </td>
                     </tr>
                     <tr>
-                      <td>Mardi</td>
-                      <td>  <input type="radio" name="mar" id={`Coursemar${service.service_id}`} onClick={() => setmardi("Course")} />
+                      <td data-label="Jour">Mardi</td>
+                      <td data-label="Course">  <input type="radio" name="mar" id={`Coursemar${service.service_id}`} onClick={() => setmardi("Course")} />
                       </td>
-                      <td><input type="radio" name="mar" id={`Audiencemar${service.service_id}`} onClick={() => setmardi("Audience")} />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Mercredi</td>
-                      <td>  <input type="radio" name="mer" id={`Coursemer${service.service_id}`} onClick={() => setmercredi("Course")} />
-                      </td>
-                      <td><input type="radio" name="mer" id={`Audiencemer${service.service_id}`} onClick={() => setmercredi("Audience")} />
+                      <td data-label="Audience"><input type="radio" name="mar" id={`Audiencemar${service.service_id}`} onClick={() => setmardi("Audience")} />
                       </td>
                     </tr>
                     <tr>
-                      <td>Jeudi</td>
-                      <td>  <input type="radio" name="j" id={`Coursejeu${service.service_id}`} onClick={() => setjeudi("Course")} />
+                      <td data-label="Jour">Mercredi</td>
+                      <td data-label="Course">  <input type="radio" name="mer" id={`Coursemer${service.service_id}`} onClick={() => setmercredi("Course")} />
                       </td>
-                      <td><input type="radio" name="j" id={`Audiencejeu${service.service_id}`} onClick={() => setjeudi("Audience")} />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Vendredi</td>
-                      <td>  <input type="radio" name="v" id={`Courseven${service.service_id}`} onClick={() => setvendredi("Course")} />
-                      </td>
-                      <td><input type="radio" name="v" id={`Audienceven${service.service_id}`} onClick={() => setvendredi("Audience")} />
+                      <td data-label="Audience"><input type="radio" name="mer" id={`Audiencemer${service.service_id}`} onClick={() => setmercredi("Audience")} />
                       </td>
                     </tr>
                     <tr>
-                      <td>Samedi</td>
-                      <td>  <input type="radio" name="s" id={`Coursesam${service.service_id}`} onClick={() => setsamedi("Course")} />
+                      <td data-label="Jour">Jeudi</td>
+                      <td data-label="Course">  <input type="radio" name="j" id={`Coursejeu${service.service_id}`} onClick={() => setjeudi("Course")} />
                       </td>
-                      <td><input type="radio" name="s" id={`Audiencesam${service.service_id}`} onClick={() => setsamedi("Audience")} />
+                      <td data-label="Audience"><input type="radio" name="j" id={`Audiencejeu${service.service_id}`} onClick={() => setjeudi("Audience")} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-label="Jour">Vendredi</td>
+                      <td data-label="Course">  <input type="radio" name="v" id={`Courseven${service.service_id}`} onClick={() => setvendredi("Course")} />
+                      </td>
+                      <td data-label="Audience"><input type="radio" name="v" id={`Audienceven${service.service_id}`} onClick={() => setvendredi("Audience")} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-label="Jour">Samedi</td>
+                      <td data-label="Course">  <input type="radio" name="s" id={`Coursesam${service.service_id}`} onClick={() => setsamedi("Course")} />
+                      </td>
+                      <td data-label="Audience"><input type="radio" name="s" id={`Audiencesam${service.service_id}`} onClick={() => setsamedi("Audience")} />
                       </td>
                     </tr>
                   </tbody>

@@ -156,7 +156,7 @@ const InputCollab = () => {
       <div className="row">
       <div className="input-group mb-3">
       <span className="input-group-text">Matricule :</span>
-      <input type="number" className="form-control " 
+      <input className="form-control " 
          value={matricule}
         onChange={e => setmatricule(e.target.value)}/>
       </div>
