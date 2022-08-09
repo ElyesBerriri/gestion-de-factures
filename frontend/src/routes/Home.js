@@ -1,8 +1,9 @@
- 
+import React from "react";
+import back from "../gavel-scaled.jpg";
 
 function Home() {
   return (
-   <h1>Page d'acceuil</h1>
+   <img src={back} className="back"/>
   );
 }
 
