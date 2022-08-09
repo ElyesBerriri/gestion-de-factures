@@ -72,7 +72,7 @@ const ReclasserDossier = ({ dossier }) => {
               </div>
             </div>
             <div className="modal-footer">
-              <Button variant="light" id="valider"
+              <Button variant="light" id="valider" data-bs-dismiss="modal"
                 onClick={e => updateEmplacement(e)}>
                 Valider
               </Button>

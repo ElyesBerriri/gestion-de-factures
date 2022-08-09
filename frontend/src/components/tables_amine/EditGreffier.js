@@ -298,7 +298,7 @@ const EditGreffier = ({gref}) => {
           </div>
 
           <div className="modal-footer">
-      <Button variant="light" id="valider" 
+      <Button variant="light" id="valider" data-bs-dismiss="modal"
      onClick={e => updateGreffier(e)}
       >Valider</Button>
       <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>

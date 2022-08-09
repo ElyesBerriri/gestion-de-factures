@@ -322,7 +322,7 @@ const EditClient = ({ client }) => {
               </div>
             </div>
             <div className="modal-footer">
-              <Button variant="light" id="valider" onClick={e => updateClient(e)}>Valider</Button>
+              <Button variant="light" id="valider" data-bs-dismiss="modal" onClick={e => updateClient(e)}>Valider</Button>
               <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
             </div>
           </div>

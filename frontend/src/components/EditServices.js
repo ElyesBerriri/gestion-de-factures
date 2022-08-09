@@ -175,7 +175,7 @@ const EditServices = ({ service }) => {
               </div>
             </div>
             <div className="modal-footer">
-              <Button variant="light" id="valider"
+              <Button variant="light" id="valider" data-bs-dismiss="modal"
                 onClick={e => updatenom(e)}
               >Valider</Button>
               <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
