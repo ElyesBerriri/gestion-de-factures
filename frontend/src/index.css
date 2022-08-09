@@ -73,7 +73,6 @@ code {
 .navvv {
   justify-content: center;
   z-index: 1000;
-
 }
 
 .navbar {
@@ -168,6 +167,25 @@ code {
 
     display: flex;
     flex-direction: column;
+  }
+}
+@media (orientation: landscape) {
+  .backp{
+    display: none;
+  }.back{
+    width: 100%;
+  }
+}
+@media (orientation: portrait) {
+  .backp{
+    width: 100vw;
+    height: 92vh;
+  }.back{
+    display: none;
+  }
+  .navbar {
+    background-color: #222831;
+    min-height: 8vh;
   }
 }
 
@@ -475,9 +493,6 @@ code {
   margin-bottom: 3vh;
 }
 
-.back{
-  max-width: 100%;
-}
 .mytable-56dossier {
   max-height: 56vh;
   width: 60%;
