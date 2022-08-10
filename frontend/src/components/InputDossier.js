@@ -29,7 +29,7 @@ const InputDossier = () => {
   return (
 
     <Fragment>
-      <h1 className="titlee">Emplacement des dossiers</h1>
+      <h1 className="titlee">Emplacements des dossiers</h1>
        
  
       <button className="ajouter ajoutdossier" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
