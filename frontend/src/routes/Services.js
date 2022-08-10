@@ -131,7 +131,7 @@ const ListServices = () => {
           'backgroundColor': '#868e96'
         }}>Jour de Course</h5>
         <h5 className="audience" style={{
-          'backgroundColor': '#02c3cc'
+          'backgroundColor': '#BBA14A'
         }}>Jour d'Audience</h5>
       </div>
     </>

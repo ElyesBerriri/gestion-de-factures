@@ -24,7 +24,7 @@ export const Container = styled.div`
       width: 30%;
       -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
       box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
-      border: 4px solid #00adb5;
+      border: 4px solid #BBA14A;
 
       @media (min-width: 768px) {
         width: 20%;
@@ -66,7 +66,7 @@ const fadeIn = keyframes`
 const IconCommonCss = css`
   height: 1.25rem;
   width: 1.25rem;
-  fill: #00adb5;
+  fill: #BBA14A;
   z-index: 10;
   animation: ${fadeIn} 1s linear;
 `;

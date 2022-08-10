@@ -44,7 +44,7 @@ const InputCollab = () => {
   return (
     <Fragment>
       
-      <button className="ajouter ajouterr" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+      <button className="ajouter ajouterr" onClick={handleShow} ><GoPlus color="#BBA14A" fontSize="1.5em" />
       </button>
    
 <Modal scrollable show={show} onHide={handleClose} backdrop="static">

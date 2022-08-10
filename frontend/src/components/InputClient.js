@@ -113,7 +113,7 @@ const InputClient = () => {
                 setFax("*");
                 setEmail("*");
               }} >
-                <GoPlus color="#00adb5" fontSize="1.5em" />
+                <GoPlus color="#BBA14A" fontSize="1.5em" />
             </button>
 
             <div className="modal fade" id="id0" data-bs-backdrop="static">

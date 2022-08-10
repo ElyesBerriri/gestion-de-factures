@@ -28,7 +28,7 @@ const ScrollButton = () =>{
   return (
     <button className="scroll  " onClick={scrollToTop} 
     style={{display: visible ? 'inline' : 'none'}}>
-        <BiUpArrowAlt color="#00adb5" fontSize="1.5em"   />
+        <BiUpArrowAlt color="#BBA14A" fontSize="1.5em"   />
     </button>
   );
 }

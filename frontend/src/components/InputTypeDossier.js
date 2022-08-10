@@ -27,7 +27,7 @@ const InputTypeDossier = () => {
         <button data-bs-toggle="modal" data-bs-target="#typdid0" className="ajouter ajoutdossier"
           onClick={() => {
             setLibelle("");
-          }} ><GoPlus color="#00adb5" fontSize="1.5em" />
+          }} ><GoPlus color="#BBA14A" fontSize="1.5em" />
         </button>
       </div>
       <div className="modal fade" id="typdid0" data-bs-backdrop="static">

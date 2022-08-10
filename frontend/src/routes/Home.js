@@ -5,11 +5,12 @@ import backp from "../gavel-scaledp.jpg";
   return (
     <>
       <div className="backgroundd"></div>
-       <img src={backp} className="backp" />
-       <div className="side">
+      <div className="backp"></div>
+
+        <div className="side">
        </div>
        <div> 
-       <h1 className="sidetitle" >Gestion de facture</h1>        </div>
+       <h1 className="sidetitle" >Gestion de facture</h1></div>
        <div> 
 
         <h5 className="sidetitlee" >Soyez l'avocat de l'ère technologique</h5>

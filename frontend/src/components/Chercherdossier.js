@@ -53,7 +53,7 @@ const ChercherDossier = (props) => {
         <div className="rechercheajout">
    
       <button type="button" className="ajouter ajouterr" data-bs-toggle="modal" data-bs-target="#exampleModall">
-      <GoPlus color="#00adb5" fontSize="1.5em" />
+      <GoPlus color="#BBA14A" fontSize="1.5em" />
 </button>
 </div>
 

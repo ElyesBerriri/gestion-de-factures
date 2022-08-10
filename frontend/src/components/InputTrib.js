@@ -31,7 +31,7 @@ const InputTrib = () => {
     <h1 className="title">Liste des tribunaux</h1>
      
 <div className="ajoutdossier">
-    <button className="ajouter" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+    <button className="ajouter" onClick={handleShow} ><GoPlus color="#BBA14A" fontSize="1.5em" />
     </button>
 </div>
     <Modal show={show} onHide={handleClose} backdrop="static">

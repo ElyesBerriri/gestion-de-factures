@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import Modal from 'react-bootstrap/Modal';
 
 const EditGreffier = ({gref}) => {
     const [nom, setNom] = useState(gref.nom);
@@ -21,6 +22,10 @@ const EditGreffier = ({gref}) => {
     const [actif, setActif] = useState(gref.actif);
     const [unk1, setUnk1] = useState(gref.unk1);
     const [unk2, setUnk2] = useState(gref.unk2);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
   const updateGreffier = async e => {
     e.preventDefault();
@@ -43,8 +48,8 @@ const EditGreffier = ({gref}) => {
 
   return (
     <>
-      <Button variant="light" id="grefe" className="mb-3 mx-3 disabled" data-bs-toggle="modal" 
-      data-bs-target={`#id${gref.gref_id}`} onClick={() => {
+      <Button variant="light" id="grefe" className="mb-3 mx-3 disabled"  
+        onClick={() => {handleShow();
         setNom(gref.nom);
         setPrenom(gref.prenom);
         setDate_nais(gref.date_nais);
@@ -66,37 +71,18 @@ const EditGreffier = ({gref}) => {
         setUnk2(gref.unk2);
       }}>
         Modifier
-      </Button>
-      <div className="modal" id={`id${gref.gref_id}`} data-bs-backdrop="static">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h4 className="modal-title">Modification d'un greffier</h4>
-              <button type="button" className="btn-close" data-bs-dismiss="modal"
-                onClick={() => {
-                    setNom(gref.nom);
-                    setPrenom(gref.prenom);
-                    setDate_nais(gref.date_nais);
-                    setAdresse(gref.adresse);
-                    setEtat_civile(gref.etat_civile);
-                    setNombre_e(gref.nombre_e);
-                    setType_payement(gref.type_payement);
-                    setBase(gref.base);
-                    setCin(gref.cin);
-                    setTel(gref.tel);
-                    setCategorie(gref.categorie);
-                    setEchelon(gref.echelon);
-                    setCrss(gref.crss);
-                    setContrat(gref.contrat);
-                    setSexe(gref.sexe);
-                    setDate_emb(gref.date_emb);
-                    setActif(gref.actif);
-                    setUnk1(gref.unk1);
-                    setUnk2(gref.unk2);
-                }}>
-              </button>
-            </div>
-            <div className="modal-body">
+      </Button>          
+            
+            <Modal
+        scrollable
+        show={show}
+        onHide={handleClose}
+        backdrop="static" >
+        <Modal.Header closeButton>
+          <Modal.Title>Modification d'un greffier</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
             <div className="row">
             <div className="input-group mb-3">
               <span className="input-group-text  ">Nom :</span>
@@ -295,18 +281,16 @@ const EditGreffier = ({gref}) => {
               />
             </div>
           </div>
-          </div>
+          </Modal.Body>
 
-          <div className="modal-footer">
-      <Button variant="light" id="valider" data-bs-dismiss="modal"
-     onClick={e => updateGreffier(e)}
-      >Valider</Button>
-      <Button variant="dark" data-bs-dismiss="modal">Fermer</Button>
-      </div>
-            
-          </div>
-        </div>
-      </div>
+<Modal.Footer>
+  <Button variant="light" id="valider"
+    onClick={e => {handleClose(); updateGreffier(e)}}
+  >Valider</Button>
+  <Button variant="dark" onClick={handleClose}>Fermer</Button>
+</Modal.Footer>
+</Modal>
+ 
     </>
   );
 };

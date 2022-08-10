@@ -31,7 +31,7 @@ const InputHono = () => {
   return (
     <Fragment>
       <h1 className="titlee">Honoraires en extra</h1>
-      <button className="ajouter ajoutdossier" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+      <button className="ajouter ajoutdossier" onClick={handleShow} ><GoPlus color="#BBA14A" fontSize="1.5em" />
       </button>
  
 

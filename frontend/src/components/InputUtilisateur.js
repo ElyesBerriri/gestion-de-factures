@@ -31,7 +31,7 @@ const InputUtilisateur = () => {
           setLogin("");
           setPwd("");
           setDomaine("");
-        }} ><GoPlus color="#00adb5" fontSize="1.5em" />
+        }} ><GoPlus color="#BBA14A" fontSize="1.5em" />
         </button>
      
       <div className="modal fade" id="utid0" data-bs-backdrop="static">

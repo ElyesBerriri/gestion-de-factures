@@ -30,11 +30,11 @@ const InputTimbre = () => {
   return (
     <Fragment>
       <h1 className="titlee">Timbres</h1>
-      <button className="ajouter ajoutdossier" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+      <button className="ajouter ajoutdossier" onClick={handleShow} ><GoPlus color="#BBA14A" fontSize="1.5em" />
       </button>
  
 
-      <Modal show={show} onHide={handleClose}   backdrop="static">
+      <Modal show={show} onHide={handleClose}   scrollable backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Ajouter un timbre </Modal.Title>
         </Modal.Header>

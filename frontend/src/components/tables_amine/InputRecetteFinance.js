@@ -31,7 +31,7 @@ const InputRecetteFinance = () => {
     <Fragment>
       <h1 className="titlee">Recettes de finance</h1>
      
-      <button className="ajouter ajoutdossier" onClick={handleShow} ><GoPlus color="#00adb5" fontSize="1.5em" />
+      <button className="ajouter ajoutdossier" onClick={handleShow} ><GoPlus color="#BBA14A" fontSize="1.5em" />
       </button>
        
       
