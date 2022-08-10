@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { GoPlus } from "react-icons/go";
+import Checkboxe from "./Checkboxe";
 
 const InputPrime = () => {
   const [libelle, setLibelle] = useState("");
@@ -67,34 +68,31 @@ const InputPrime = () => {
               </div>
               <div className="form-check mt-3">
                 <label className="form-check-label">
-                  <input className="form-check-input" type="checkbox"
-                    checked={dissociable}
+                Dissociable
+                  <Checkboxe checked={dissociable}
                     onChange={e => {
                       setDissociable(e.target.checked);
                       e.target.checked = dissociable;
                     }} />
-                  Dissociable
                 </label>
               </div>
               <div className="form-check">
-                <label className="form-check-label">
-                  <input className="form-check-input" type="checkbox"
-                    checked={impot}
+                <label className="form-check-label">                  
+                Impot
+                  <Checkboxe checked={impot}
                     onChange={e => {
                       setImpot(e.target.checked);
                       e.target.checked = impot;
                     }} />
-                  Impot
                 </label>
               </div>
               <div className="form-check">
-                <label className="form-check-label">
-                  <input className="form-check-input" type="checkbox"
-                    checked={mensuel} onChange={e => {
+                <label className="form-check-label">                 
+                 Mensuel
+                  <Checkboxe checked={mensuel} onChange={e => {
                       setMensuel(e.target.checked);
                       e.target.checked = mensuel;
                     }} />
-                  Mensuel
                 </label>
               </div>
             </div>

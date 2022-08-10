@@ -68,12 +68,14 @@ const ListTypeDossier = () => {
           </tbody>
         </table>
       </div>
-      <EditTypeDossier type={doc} />
-      <Button
-        variant="dark" id="ldbtnd" className="mb-3 disabled"
-        onClick={() => deletetype(doc.type_id)}>
-        Supprimer
-      </Button>
+      <div className="modifsupp">
+        <EditTypeDossier type={doc} />
+        <Button
+          variant="dark" id="ldbtnd" className="mb-3 disabled"
+          onClick={() => deletetype(doc.type_id)}>
+          Supprimer
+        </Button>
+      </div>
     </>
   );
 };

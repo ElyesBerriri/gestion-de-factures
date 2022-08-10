@@ -73,13 +73,15 @@ const ListHono = () => {
           </tbody>
         </table>
       </div>
-      <EditHono hono={user} />
-      <Button
-        className="mb-3 disabled" variant="dark" id="honod"
-        onClick={() => deletehono(user.gr_id)}
-      >
-        Supprimer
-      </Button>
+      <div className="modifsupp">
+        <EditHono hono={user} />
+        <Button
+          className="mb-3 disabled" variant="dark" id="honod"
+          onClick={() => deletehono(user.gr_id)}
+        >
+          Supprimer
+        </Button>
+      </div>
     </Fragment>
   );
 };

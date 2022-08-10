@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import Checkbox from "./Checkbox";
 
 const EditPrime = ({ prime }) => {
   const [libelle, setLibelle] = useState(prime.libelle);
@@ -69,35 +70,33 @@ const EditPrime = ({ prime }) => {
               </div>
               <div className="form-check mt-3">
                 <label className="form-check-label">
-                  <input className="form-check-input" type="checkbox"
+                Dissociable
+                  <Checkbox 
                     checked={dissociable}
                     onChange={e => {
                       setDissociable(e.target.checked);
                       e.target.checked = dissociable;
                     }} />
-                  Dissociable
                 </label>
               </div>
               <div className="form-check">
                 <label className="form-check-label">
-                  <input className="form-check-input" type="checkbox"
-                    checked={impot}
+                  Impot
+                  <Checkbox checked={impot}
                     onChange={e => {
                       setImpot(e.target.checked);
                       e.target.checked = impot;
                     }} />
-                  Impot
                 </label>
               </div>
               <div className="form-check">
                 <label className="form-check-label">
-                  <input className="form-check-input" type="checkbox"
-                    checked={mensuel}
+                  Mensuel
+                  <Checkbox checked={mensuel}
                     onChange={e => {
                       setMensuel(e.target.checked);
                       e.target.checked = mensuel;
                     }} />
-                  Mensuel
                 </label>
               </div>
             </div>

@@ -71,12 +71,14 @@ const ListUtilisateur = () => {
           </tbody>
         </table>
       </div>
-      <EditUtilisateurs user={user} />
-      <Button
-        className="mb-3 disabled" variant="dark" id="lubtnd"
-        onClick={() => { deleteUser(user.utilisateur_id) }}>
-        Supprimer
-      </Button>
+      <div className="modifsupp">
+        <EditUtilisateurs user={user} />
+        <Button
+          className="mb-3 disabled" variant="dark" id="lubtnd"
+          onClick={() => { deleteUser(user.utilisateur_id) }}>
+          Supprimer
+        </Button>
+      </div>
     </>
   );
 };

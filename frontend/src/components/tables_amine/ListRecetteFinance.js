@@ -68,12 +68,14 @@ const ListRecetteFinance = () => {
           </tbody>
         </table>
       </div>
-      <EditRecetteFinance recette={user} />
-      <Button
-        className="mb-3 disabled" variant="dark" id="recfd"
-        onClick={() => deleterecette(user.rf_id)}>
-        Supprimer
-      </Button>
+      <div className="modifsupp">
+        <EditRecetteFinance recette={user} />
+        <Button
+          className="mb-3 disabled" variant="dark" id="recfd"
+          onClick={() => deleterecette(user.rf_id)}>
+          Supprimer
+        </Button>
+      </div>
     </>
   );
 };

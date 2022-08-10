@@ -122,12 +122,14 @@ const ListGreffier = () => {
           </tbody>
         </table>
       </div>
-      <EditGreffier gref={user} />
-      <Button
-        className="mb-3 disabled" variant="dark" id="grefd"
-        onClick={() => deletegreffier(user.gref_id)}>
-        Supprimer
-      </Button>
+      <div className="modifsupp">
+        <EditGreffier gref={user} />
+        <Button
+          className="mb-3 disabled" variant="dark" id="grefd"
+          onClick={() => deletegreffier(user.gref_id)}>
+          Supprimer
+        </Button>
+      </div>
     </>
   );
 };

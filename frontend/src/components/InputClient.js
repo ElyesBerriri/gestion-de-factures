@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/esm/Button";
 import { GoPlus } from "react-icons/go";
+import Checkbox from "./Checkbox";
 
 const InputClient = () => {
     const [collaborateur, setCollaborateur] = useState("--");
@@ -93,7 +94,6 @@ const InputClient = () => {
                   document.getElementById(`type1client0`).checked = false;
                   document.getElementById(`type2client0`).checked = false;
                 }
-                document.getElementById("manuel").checked = false;
                 setCollaborateur("--");
                 document.getElementById("collabSelector0").selected = true;
                 setCode_client("0/");
@@ -150,16 +150,16 @@ const InputClient = () => {
                                         onChange={e => {
                                             setCode_client2(e.target.value.trim());
                                         }} />
-                                    <div className="form-check m-2">
-                                        <input className="form-check-input" type="checkbox" id="manuel"
+                                    <div className="m-2">
+                                    <label className="form-check-label">
+                                        Manuel
+                                        <Checkbox
                                             onChange={() => {
                                                 if (document.getElementById("code1client").disabled)
                                                     document.getElementById("code1client").disabled = false;
                                                 else
                                                     document.getElementById("code1client").disabled = true;
                                             }} />
-                                        <label className="form-check-label" htmlFor="manuel">
-                                            Manuel
                                         </label>
                                     </div>
                                 </div>

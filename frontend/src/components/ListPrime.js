@@ -52,7 +52,7 @@ const ListPrime = () => {
   return (
     <>
       <InputPrime />
-      <div className="table-responsive   mytable-56prime">
+      <div className="table-responsive mytable-56prime">
         <table className="table table-hover text-center">
           <thead className="table-secondary text-secondary mytableheader">
             <tr>
@@ -86,12 +86,14 @@ const ListPrime = () => {
           </tbody>
         </table>
       </div>
-      <EditPrime prime={doc} />
-      <Button
-        variant="dark" id="lpbtnd" className="mb-3 disabled"
-        onClick={() => deletePrime(doc.id)}>
-        Supprimer
-      </Button>
+      <div className="modifsupp">
+        <EditPrime prime={doc} />
+        <Button
+          variant="dark" id="lpbtnd" className="mb-3 disabled"
+          onClick={() => deletePrime(doc.id)}>
+          Supprimer
+        </Button>
+      </div>
     </>
   );
 };

@@ -71,13 +71,15 @@ const ListTimbre = () => {
           </tbody>
         </table>
       </div>
-      <EditTimbre timbre={user} />
-      <Button
-        className="mb-3 disabled" variant="dark" id="tmd"
-        onClick={() => deletetimbre(user.tim_id)}
-      >
-        Supprimer
-      </Button>
+      <div className="modifsupp">
+        <EditTimbre timbre={user} />
+        <Button
+          className="mb-3 disabled" variant="dark" id="tmd"
+          onClick={() => deletetimbre(user.tim_id)}
+        >
+          Supprimer
+        </Button>
+      </div>
     </Fragment>
   );
 };
