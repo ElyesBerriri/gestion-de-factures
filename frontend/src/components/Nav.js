@@ -48,6 +48,7 @@ function Navv() {
       <Navbar variant="dark" expand="sm" collapseOnSelect>
         <Navbar.Toggle className="coloring" />
         <Navbar.Collapse className="navvv">
+          
           <Nav>
             <Nav.Item>
               <Nav.Link href="/">Accueil</Nav.Link>

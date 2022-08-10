@@ -76,7 +76,8 @@ code {
 }
 
 .navbar {
-  background-color: #222831;
+  background-color: #000000;
+  z-index: 144;
 }
 
 
@@ -172,27 +173,16 @@ code {
 @media (orientation: landscape) {
   .backp{
     display: none;
-  }.back{
+  }.backgroundd{
     width: 100%;
     height: 90vh;
   }
   .navbar {
-    background-color: #222831;
+    background-color: #000000;
     min-height: 10vh;
   }
 }
-@media (orientation: portrait) {
-  .backp{
-    width: 100vw;
-    height: 92vh;
-  }.back{
-    display: none;
-  }
-  .navbar {
-    background-color: #222831;
-    min-height: 8vh;
-  }
-}
+ 
 
 .formdonnees {
   margin-top: 6vh;
@@ -567,4 +557,90 @@ code {
   padding: 2rem 1rem 2rem 1rem;
   font-size: 2.5rem;
   color: white;
+}
+
+.backgroundd{
+  border: solid;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top:0;
+  background-image: url( ./gavel-scaled6.jpg );
+  background-size: 100% 100%;
+   background-repeat: no-repeat;
+background-position: 0  5vh;
+}
+
+.side{
+  background-color: #000000;
+  height: 100vh;
+  width: 35vw;
+  position: absolute;
+  left: 0;
+  top:0;
+  opacity: 0.2 ;
+}
+
+.sidetitle{
+top: 10vh;
+ font-weight: bold;
+position: relative;
+color: rgb(0, 0, 0);
+left: 4vw;
+max-width: 25vw;
+}
+
+.sidetitlee{
+   position: relative;
+font-size: 0.9rem;
+  color: #FFD700;
+  left: 4vw;
+  top:11vh;
+  max-width: 25vw;
+  font-family: 'Pacifico', cursive;
+}
+
+@media (orientation: portrait) {
+  .backp{
+    width: 100vw;
+    height: 92vh;
+  }.backgroundd{
+    display: none;
+  }
+  .navbar {
+    background-color: #000000;
+    min-height: 8vh;
+  }
+
+  .side{
+    background-color: #000000;
+    height: 40vh;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top:0;
+    right: 0;
+    opacity: 0.2 ;
+  }
+
+  .sidetitle{
+    top: 15vh;
+    font-weight: bold;
+    position: absolute;
+    color: rgb(0, 0, 0);
+    left: 25vw;
+    max-width: 100vw;
+    margin-bottom: 12vh;
+
+    }
+
+    .sidetitlee{
+       position: absolute;
+   font-size: 0.9rem;
+     color: #FFD700;
+     left: 28.75vw;
+     top:22vh;
+     max-width: 100vw;
+     font-family: 'Pacifico', cursive;
+   }
 }
