@@ -4,6 +4,7 @@ import CalendarComp from "./CalendarComp";
 
 const DonnéesDossier =(props)=>{
   const [emplacements, setEmplacement] = useState([]);
+  const [types, setTypes] = useState([]);
 
   const getemp = async (query) => {
     try {
@@ -15,8 +16,20 @@ const DonnéesDossier =(props)=>{
     }
   };
 
+  const getTypes = async () => {
+    try {
+      const response = await fetch("/type_dossiers/list");
+      const jsonData = await response.json();
+
+      setTypes(jsonData);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   useEffect(() => {
     getemp();
+    getTypes();
   }, []);
 
      
@@ -29,11 +42,12 @@ const DonnéesDossier =(props)=>{
         <div className="row">
                   <div className="input-group mb-3">
                     <span className="input-group-text">Type de dossier :</span>
-                    <select className="form-select" aria-label="Default select example" value={props.type} onChange={(e)=>props.changetype(e.target.value)}>
-                        <option >--</option>
-                        <option value="Jaze2i">Jaze2i</option>
-                        <option value="Madani">Madani</option>
-                    </select>   
+                    <select name="select_box" className="form-select" id="select_box" value={props.type} onChange={(e)=>props.changetype(e.target.value)}>
+                <option >--</option>
+                {types.map(type => (
+                        <option key={type.libelle}  value={type.libelle}>{type.libelle}</option>
+                ))}
+            </select> 
                   </div>
               </div>
 
@@ -69,7 +83,7 @@ const DonnéesDossier =(props)=>{
                   <div className="input-group mb-3">
                     <span className="input-group-text">Emplacement :</span>
                     <select name="select_box" className="form-select" id="select_box" value={props.emplacement} onChange={(e)=>{props.changeemplacement(e.target.value)}}>
-                <option ></option>
+                <option >--</option>
                 {emplacements.map(emp => (
                         <option key={emp.libelle}  value={emp.libelle}>{emp.libelle}</option>
                 ))}
@@ -94,8 +108,8 @@ const DonnéesDossier =(props)=>{
                     <span className="input-group-text">Service :</span>
                     <select className="form-select" aria-label="Default select example"  value={props.service} onChange={(e)=>props.changeservice(e.target.value)}>
             <option >--</option>
-            <option value="Jaze2i">Jaze2i</option>
-            <option value="Madani">Madani</option>
+            <option value="Jaze2i">Service1</option>
+            <option value="Madani">Service2</option>
             </select>   
                   </div>
               </div>
@@ -105,8 +119,8 @@ const DonnéesDossier =(props)=>{
                     <span className="input-group-text">Lieu :</span>
                     <select className="form-select" aria-label="Default select example"  value={props.lieu} onChange={(e)=>props.changelieu(e.target.value)}>
             <option >--</option>
-            <option value="Jaze2i">Jaze2i</option>
-            <option value="Madani">Madani</option>
+            <option value="Jaze2i">Lieu1</option>
+            <option value="Madani">Lieu2</option>
             </select>   
                   </div>
               </div>
