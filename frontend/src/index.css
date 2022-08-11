@@ -516,14 +516,14 @@ code {
   border-radius: 15px;
   background-color: #e9ecef;
   content: '';
+  position: relative;
+  transform: translateX(-3px);
+  transform: translateY(-1px);
   display: inline-block;
   visibility: visible;
   border: 2px solid #ced4da;
 }
 
-.myradio {
-  visibility: hidden;
-}
 
 .myradio:checked:after {
   width: 15px;
