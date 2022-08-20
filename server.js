@@ -1,10 +1,21 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
 const pool = require("./db");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser");//transforme les données en format .json
+
+const morgan = require('morgan')
+const createError = require('http-errors')
+require('dotenv').config()
+
+//require('./helpers/init_mongodb')
+//const { verifyAccessToken } = require('./helpers/jwt_helper')
+//require('./helpers/init_redis')
+const AuthRoute = require('./Routes/Auth.route')
+
+
+const app = express();
 
 
 // process.env.NODE_ENV => production or undefined
@@ -13,6 +24,33 @@ const bodyParser = require("body-parser");//transforme les données en format .j
 app.use(cors());
 app.use(express.json()); 
 app.use(bodyParser.json());
+
+
+
+app.use(morgan('dev'))
+app.use(express.urlencoded({ extended: true }))
+
+app.get('/', verifyAccessToken, async (req, res, next) => {
+  res.send('Hello from express.')
+})
+
+app.use('/auth', AuthRoute)
+
+app.use(async (req, res, next) => {
+  next(createError.NotFound())
+})
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500)
+  res.send({
+    error: {
+      status: err.status || 500,
+      message: err.message,
+    },
+  })
+})
+
+
  
 if (process.env.NODE_ENV === "production") {
   // service static content
