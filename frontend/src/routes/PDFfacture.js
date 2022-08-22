@@ -3,7 +3,7 @@ import Pdf from "react-to-pdf";
 import logo from '../logo_facture.png';
 const ref = React.createRef();
 
-function Facture() {
+function PDFfacture() {
   return (
     <>
       <Pdf targetRef={ref} filename={"Facture"}>
@@ -62,16 +62,85 @@ function Facture() {
             <div class="row">
               <div className="col-2" style={{ border: '1px solid black' }}>
                 <h6>400.000</h6>
+                <h6>200.000</h6>
               </div>
               <div className="col-4" style={{ textAlign: 'right', border: '1px solid black' }}>
+                <h6>قضية عدد</h6>
                 <h6>قضية عدد</h6>
               </div>
               <div className="col-5" style={{ textAlign: 'right', border: '1px solid black' }}>
                 <h6>أتعاب محاماة قضية مخالفة جبائية جزائية</h6>
+                <h6>أتعاب محاماة قضية مخالفة جبائية جزائية</h6>
               </div>
               <div className="col-1" style={{ textAlign: 'right', border: '1px solid black' }}>
                 <h6>01</h6>
+                <h6>02</h6>{/*()?<h6>:<br>*/}
+                <br/><br/><br/><br/>
               </div>
+            </div>
+            <div class="row">
+              <div className="col-2" style={{ border: '1px solid black' }}>600.000</div>
+              <div className="col-4" style={{ border: '1px solid black' }}>الموضوع</div>
+              <div className="col-5" style={{ border: '1px solid black' }}></div>
+              <div className="col-1" style={{ border: '1px solid black' }}></div>
+            </div>
+            <div class="row">
+              <div class="col-2" style={{ border: '1px solid black' }}>
+                <div class="row">
+                  <div style={{ borderBottom: '1px solid black' }}>78.000</div>
+                </div>
+                <div class="row">
+                  <div style={{ borderBottom: '1px solid black' }}>20.340</div>
+                </div>
+                <div class="row">
+                  <div style={{ borderBottom: '1px solid black' }}>0.600</div>
+                </div>
+              </div>
+              <div class="col-4" style={{ border: '1px solid black' }}>
+                <div class="row">
+                  <div style={{ textAlign: 'right', borderBottom: '1px solid black' }}>الاداء على القيمة المضافة</div>
+                </div>
+                <div class="row">
+                  <div style={{ textAlign: 'right', borderBottom: '1px solid black' }}>الخصم من المورد</div>
+                </div>
+                <div class="row">
+                  <div style={{ textAlign: 'right', borderBottom: '1px solid black' }}>الطابع الجبائي</div>
+                </div>
+              </div>
+              <div className="col-6" style={{ textAlign: 'right', border: '1px solid black' }}>
+                : طريقة التسديد
+                <div class="row">
+                  <div className="col-9" style={{ paddingRight: 0 }}>شاك</div>
+                  <div className="col-1">
+                    <input type="checkbox" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div className="col-9" style={{ paddingRight: 0 }}>كمبيالة</div>
+                  <div className="col-1">
+                    <input type="checkbox" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div className="col-9" style={{ paddingRight: 0 }}>إيداع بنكي</div>
+                  <div className="col-1">
+                    <input type="checkbox" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div className="col-9" style={{ paddingRight: 0 }}>خلافه</div>
+                  <div className="col-1">
+                    <input type="checkbox" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div className="col-2" style={{ border: '1px solid black' }}>658.260</div>
+              <div className="col-4" style={{ border: '1px solid black' }}>المبلغ الصافي</div>
+              <div className="col-5" style={{ border: '1px solid black' }}></div>
+              <div className="col-1" style={{ border: '1px solid black' }}></div>
             </div>
           </div>
         </div>
@@ -81,4 +150,4 @@ function Facture() {
   );
 }
 
-export default Facture;
+export default PDFfacture;
