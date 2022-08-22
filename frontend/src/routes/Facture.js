@@ -11,6 +11,7 @@ function Facture(props) {
   const [query, setQuery] = useState("");
   const [client, setClient] = useState({});
   const [email, setemail] = useState("--");
+  const [payment, setpayment] = useState("--");
 
 
   const getClient = async (query) => {
@@ -145,6 +146,7 @@ function Facture(props) {
               <div className="col-5" style={{ border: '1px solid black' }}>الموضوع</div>
               <div className="col-1" style={{ border: '1px solid black' }}>رقم</div>
             </div>
+
             <div class="row">
               <div className="col-2" style={{ border: '1px solid black' }}>
                 <h6>400.000</h6>
@@ -158,6 +160,47 @@ function Facture(props) {
               <div className="col-1" style={{ textAlign: 'right', border: '1px solid black' }}>
                 <h6>01</h6>
               </div>
+            </div>
+
+            <div class="row">
+            <div className="col-6" style={{ textAlign: 'right', border: '1px solid black' }}></div>
+            <div className="col-6" style={{ textAlign: 'right', border: '1px solid black' }}>
+           
+    
+    <div className="input-group mb-3">
+    <div className="mytext">
+            <input className="myradio ms-3 me-1" type="radio" name="payment"
+            value="chaak"
+            onChange={e => {
+                if(e.target.checked)
+                  setpayment(e.target.value);
+            }} 
+            />
+           شاك
+     
+            <input className="myradio ms-3 me-1" type="radio" name="payment"
+             value="kembyela"
+             onChange={e => {
+                 if(e.target.checked)
+                   setpayment(e.target.value);
+             }} 
+            />
+           كمبيالة
+
+           <input className="myradio ms-3 me-1" type="radio" name="payment"
+             value="kembyela"
+             onChange={e => {
+                 if(e.target.checked)
+                   setpayment(e.target.value);
+             }} 
+            />
+           إيداع بنكي
+           </div>
+           <span className="input-group-text">طريقة التسديد </span>
+    </div>  
+     
+     
+            </div>
             </div>
           </div>
         </div>
