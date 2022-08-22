@@ -142,6 +142,17 @@ function PDFfacture() {
               <div className="col-5" style={{ border: '1px solid black' }}></div>
               <div className="col-1" style={{ border: '1px solid black' }}></div>
             </div>
+            <div className="mt-5">
+              وقفت هذه الفاتورة على مبلغ قدره : ستمائة وثمانية دينار وخمسون دينارا ومليمات 260 (658.260)
+            </div>
+            <div style={{ textAlign: 'left'}} className="mx-5 mt-3 mb-5">
+              الإمضاء
+            </div>
+            <div className="pt-5">
+              <hr/>
+            </div>
+            <h6>CENTRE ELKHALIL N°124 SLIMANE KAHYA MANOUBA 2010-TUNISIE</h6>
+            <h6>Tél:(+216)50409407 / (+216)36442043 Fax:(+216)71601434 Email: lawyer.caat@gmail.com</h6>
           </div>
         </div>
       </div>
