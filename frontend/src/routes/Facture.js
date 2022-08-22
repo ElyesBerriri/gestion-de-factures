@@ -159,44 +159,54 @@ function Facture(props) {
                 <h6>01</h6>
               </div>
             </div>
-
+    
             <div class="row">
             <div className="col-6" style={{ textAlign: 'right', border: '1px solid black' }}></div>
-            <div className="col-6" style={{ textAlign: 'right', border: '1px solid black' }}>
-           
-    
-    <div className="input-group mb-3">
-    <div className="mytext">
-            <input className="myradio ms-3 me-1" type="radio" name="payment"
-            value="chaak"
-            onChange={e => {
-                if(e.target.checked)
-                  setpayment(e.target.value);
-            }} 
-            />
-           شاك
-     
-            <input className="myradio ms-3 me-1" type="radio" name="payment"
-             value="kembyela"
-             onChange={e => {
-                 if(e.target.checked)
-                   setpayment(e.target.value);
-             }} 
-            />
-           كمبيالة
+            <div className="col-6" style={{ border: '1px solid black' }}>
+         
+        <h7>طريقة التسديد</h7>
+        <div className="mb-3">
+        <div className="mytext">
+          
+                <input className="myradio ms-3 me-1" type="radio" name="payment"
+                value="chaak"
+                onChange={e => {
+                    if(e.target.checked)
+                      setpayment(e.target.value);
+                }} 
+                />
+              شاك
+        
+                <input className="myradio ms-3 me-1" type="radio" name="payment"
+                value="kembyela"
+                onChange={e => {
+                    if(e.target.checked)
+                      setpayment(e.target.value);
+                }} 
+                />
+              كمبيالة
 
-           <input className="myradio ms-3 me-1" type="radio" name="payment"
-             value="kembyela"
-             onChange={e => {
-                 if(e.target.checked)
-                   setpayment(e.target.value);
-             }} 
-            />
-           إيداع بنكي
-           </div>
-           <span className="input-group-text">طريقة التسديد </span>
-    </div>  
-     
+              <input className="myradio ms-3 me-1" type="radio" name="payment"
+                value="virement"
+                onChange={e => {
+                    if(e.target.checked)
+                      setpayment(e.target.value);
+                }} 
+                />
+              إيداع بنكي
+
+              
+              <input className="myradio ms-3 me-1" type="radio" name="payment"
+                value="khlefa"
+                onChange={e => {
+                    if(e.target.checked)
+                      setpayment(e.target.value);
+                }} 
+                />
+              خلافة
+              </div>
+        </div>  
+        
      
             </div>
             </div>
