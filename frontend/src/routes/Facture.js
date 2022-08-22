@@ -1,4 +1,6 @@
 import React,{useState,useEffect} from "react";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Search from "../components/Search";
 import logo from '../logo_facture.png';
 const ref = React.createRef();
@@ -160,7 +162,9 @@ function Facture(props) {
           </div>
         </div>
       </div>
-      <div className="mt-5" style={{ color: 'transparent' }}>_</div>
+      <Link to="/PDFfacture" className="mt-5 mb-3">
+          <Button variant="dark" >Générer le PDF</Button>
+      </Link>
     </>
   );
 }
