@@ -55,7 +55,7 @@ function Navv() {
             </Nav.Item>
             <Nav.Item>
               <NavDropdown className="para" title="Paramétres">
-                <NavDropdown.Item href="/Empdossier">Emplacement Dossier</NavDropdown.Item>
+                <NavDropdown.Item  href="/Empdossier">Emplacement Dossier</NavDropdown.Item>
                 <NavDropdown.Item href="/Tribetadmini">Tribunaux</NavDropdown.Item>
                 <NavDropdown.Item href="/Services">Administrations</NavDropdown.Item>
                 <NavDropdown.Item href="/Collab"> Collaborateurs</NavDropdown.Item>
@@ -87,9 +87,6 @@ function Navv() {
                 <NavDropdown.Item href="/EmplacementDossier">Emplacement Dossier</NavDropdown.Item>
                 <NavDropdown.Item href="/Creation">Creation</NavDropdown.Item>
               </NavDropdown>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Facture">Facture</Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
