@@ -3,20 +3,17 @@ import logo from '../logo_facture.png';
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Search from "../components/Search";
-import Tabfac from "../components/Tabfacture";
-
 const ref = React.createRef();
 
 function Facture() {
+  var total = 658.26.toFixed(3);
+
   const [emailavocat, setemailavocat] = useState("--");
   const [clients, setClients] = useState([]);
   const [query, setQuery] = useState("");
   const [client, setClient] = useState({});
   const [email, setemail] = useState("--");
   const [payment, setpayment] = useState("--");
-  const [tabe3, setetabe3] = useState(0);
-  const [kima, setkima] = useState(0);
-  const [khasm, setkhasm] = useState(0);
 
 
   const getClient = async (query) => {
@@ -54,6 +51,8 @@ function Facture() {
     <>
      
       <div style={{
+        marginTop:'5vh',
+        height: '29.7cm',
         width: '21cm',
         margin: 'auto',
         marginTop:'5vh',
@@ -109,7 +108,6 @@ function Facture() {
                   </div>
                 </div>
 
-                <div className="container"> 
                 <div className="input-group mb-4">
                   <input type="text" className="form-control"
                     disabled={true}
@@ -144,69 +142,71 @@ function Facture() {
                   />
                   <span className="input-group-text">: الايمايل</span>
                 </div>
-</div>
+
               </div>
             </div>
 
-            <div className="mt-1" style={{ color: 'transparent' }}>_</div>
+            <div className="myRow">
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '3.56cm' }}>المبلغ خارج الضريبة</h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '6.4cm' }}>المرجع</h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '8.8cm' }}>الموضوع</h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '1.19cm' }}>رقم</h6>
+            </div>
 
-            <Tabfac/>
+            <div className="myRow">
+              <div style={{ border: '0.1mm solid black',width: '3.56cm' }}>
+                <h6 style={{ paddingRight: 0 }}>400.000</h6>
+                <h6 style={{ paddingRight: 0 }}>200.000</h6>
+              </div>
 
-            <div className="mt-4" style={{ color: 'transparent' }}>_</div>
+              <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '6.4cm' }}>
+                <h6>قضية عدد</h6>
+                <h6>قضية عدد</h6>
+              </div>
 
-        
+              <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '8.8cm' }}>
+                <h6>أتعاب محاماة قضية مخالفة جبائية جزائية</h6>
+                <h6>أتعاب محاماة قضية مخالفة جبائية جزائية</h6>
+              </div>
 
-            <div className="myRow" style={{ backgroundColor: '#BBA14A'}} >
-              <h6 style={{ border: '0.1mm solid black',backgroundColor: '#BBA14A', paddingRight: 0,width: '3.56cm' }}>600.000</h6>
-              <h6 style={{ border: '0.1mm solid black', backgroundColor: '#BBA14A',paddingRight: 0,width: '6.4cm' }}>المجموع</h6>
-              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '9.99cm' }}></h6>
+              <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '1.19cm' }}>
+                <h6>01</h6>
+                <h6>02</h6>{/*()?<h6>:<br>*/}
+                <br /><br /><br /><br />
+              </div>
+
+            </div>
+
+            <div className="myRow" style={{ backgroundColor: '#BBA14A' }}>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '3.56cm' }}>600.000</h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '6.4cm' }}>المجموع</h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '8.8cm' }}></h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '1.19cm' }}></h6>
             </div>
 
             <div className="myRow">
 
-              <div style={{ border: '0.1mm solid black',width: '3.56cm' }}>      
-                <div className="myRow" style={{ display: 'block', borderBottom: '0.1mm solid black'}}>
-                <div className="container"> 
-
-                <h6 style={{ paddingRight: 0,height:'1.3cm' }}> 
-                  <input type="number" className="form-control"
-                    value={kima}
-                    onChange={e => setkima(e.target.value)}
-                  /></h6>
+              <div style={{ border: '0.1mm solid black',width: '3.56cm' }}>
+                <div className="myRow" style={{ display: 'block'}}>
+                  <h6 style={{ borderBottom: '0.1mm solid black', paddingRight: 0 }}>78.000</h6>
                 </div>
-                </div>
-
-                <div className="myRow" style={{ display: 'block',borderBottom: '0.1mm solid black' }}>
-                <div className="container"> 
-                  <h6 style={{ paddingRight: 0,height:'1.3cm' }}> 
-                  <input type="number" className="form-control"
-                    value={khasm}
-                    onChange={e => setkhasm(e.target.value)}
-                  /></h6>
-                </div>
-                </div>
-
                 <div className="myRow" style={{ display: 'block' }}>
-                  <div className="container"> 
-                 <h6 style={{ paddingRight: 0,height:'1.3cm' }}> 
-                  <input type="number" className="form-control"
-                    value={tabe3}
-                    onChange={e => setetabe3(e.target.value)}
-                  /></h6>
-                  </div>
+                  <h6 style={{ borderBottom: '0.1mm solid black', paddingRight: 0 }}>20.340</h6>
                 </div>
-
+                <div className="myRow" style={{ display: 'block' }}>
+                  <h6 style={{ borderBottom: '0.1mm solid black', paddingRight: 0 }}>0.600</h6>
+                </div>
               </div>
 
               <div style={{ border: '0.1mm solid black',width: '6.4cm' }}>
                 <div className="myRow" style={{ display: 'block' }}>
-                  <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black',width: '6.4cm',height:'1.3cm' }}>الاداء على القيمة المضافة</h6>
+                  <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black',width: '6.4cm' }}>الاداء على القيمة المضافة</h6>
                 </div>
                 <div className="myRow" style={{ display: 'block' }}>
-                  <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black',width: '6.4cm',height:'1.3cm' }}>الخصم من المورد</h6>
+                  <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black',width: '6.4cm' }}>الخصم من المورد</h6>
                 </div>
                 <div className="myRow" style={{ display: 'block' }}>
-                  <h6 style={{ textAlign: 'right',width: '6.4cm',height:'1.3cm' }}>الطابع الجبائي</h6>
+                  <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black',width: '6.4cm' }}>الطابع الجبائي</h6>
                 </div>
               </div>
 
@@ -258,7 +258,8 @@ function Facture() {
             <div className="myRow" style={{ backgroundColor: '#BBA14A' }}>
               <input id="txt" style={{ border: '0.1mm solid black', textAlign: 'center', fontSize: '0.39cm', fontWeight: 500, lineHeight: 1.2, backgroundColor: '#BBA14A',width: '3.56cm' }} value={0} readOnly />
               <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '6.4cm' }}>المبلغ الصافي</h6>
-              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '9.99cm' }}></h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '8.8cm' }}></h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '1.19cm' }}></h6>
             </div>
           </div>
           
@@ -279,11 +280,9 @@ function Facture() {
 
       <div className="mb-5">
         <Link to="/PDFfacture">
-          <Button variant="dark" >Générer la facture</Button>
+          <Button variant="dark" >Générer le PDF</Button>
         </Link>
       </div>
-
-      {console.log(payment)}
     </>
   );
 }
