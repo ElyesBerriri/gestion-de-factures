@@ -3,15 +3,14 @@ import logo from '../logo_facture.png';
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Search from "../components/Search";
-import Tabfac from "../components/Tabfacture";
+import Tabfac from "../components/Tabfac";
 
 const ref = React.createRef();
 
 function Facture() {
 
   //li fehom commentaire houma les variables li bch test'ha9hom
-
-  const [emailavocat, setemailavocat] = useState("--");//email de l'avocat
+  const [emailavocat, setemailavocat] = useState("lawyer.caat@gmail.com");//email de l'avocat
   const [clients, setClients] = useState([]);
   const [query, setQuery] = useState("");
   const [client, setClient] = useState({});//objet fih les données mta3 lclient. Tow tel9a esemi les données louta fel code
@@ -53,14 +52,14 @@ function Facture() {
     getClient(query);
   }, [query]);
 
-  
+
   return (
     <>
-     
+
       <div style={{
         width: '21cm',
         margin: 'auto',
-        marginTop:'5vh',
+        marginTop: '5vh',
         border: '2px solid black'
       }}>
 
@@ -78,7 +77,7 @@ function Facture() {
             </div>
           </div>{/*style={{border: '2px solid black'}}*/}
 
-          
+
           <div className="input-group mb-3">
             <span className="input-group-text ">Email :</span>
             <input type="text" className="form-control "
@@ -90,16 +89,16 @@ function Facture() {
           </div>
 
           <div style={{ margin: 'auto', marginTop: 0, padding: 0, width: '20cm', border: '0.1mm solid black' }}>
-            
+
             <div className="myRow">
               <h6 className="col-12" style={{ border: '0.1mm solid black', paddingRight: 0 }}>مذكرة أتعاب محاماة فاتورة عدد</h6>
             </div>
 
             <div className="myRow">
 
-              <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '9.96cm' }}></div>
+              <div style={{ textAlign: 'right', border: '0.1mm solid black', width: '9.96cm' }}></div>
 
-              <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '9.99cm' }}>
+              <div style={{ textAlign: 'right', border: '0.1mm solid black', width: '9.99cm' }}>
 
                 <div className="rechercheajoutcreation">
                   <Search setQuery={(e) => setQuery(e)} />
@@ -113,159 +112,160 @@ function Facture() {
                   </div>
                 </div>
 
-                <div className="container"> 
-                <div className="input-group mb-4">
-                  <input type="text" className="form-control"
-                    disabled={true}
-                    placeholder={client.matricule}
-                    defaultValue={client.matricule}
-                  />
-                  <span className="input-group-text">: المعرف الجبائي</span>
-                </div>
+                <div className="container">
+                  <div className="input-group mb-4">
+                    <input type="text" className="form-control"
+                      disabled={true}
+                      placeholder={client.matricule}
+                      defaultValue={client.matricule}
+                    />
+                    <span className="input-group-text">: المعرف الجبائي</span>
+                  </div>
 
-                <div className="input-group  mb-4">
-                  <input type="text" className="form-control"
-                    disabled={true}
-                    placeholder={client.adresse}
-                    defaultValue={client.adresse}
-                  />
-                  <span className="input-group-text">: العنوان</span>
-                </div>
+                  <div className="input-group  mb-4">
+                    <input type="text" className="form-control"
+                      disabled={true}
+                      placeholder={client.adresse}
+                      defaultValue={client.adresse}
+                    />
+                    <span className="input-group-text">: العنوان</span>
+                  </div>
 
-                <div className="input-group  mb-4">
-                  <input type="text" className="form-control"
-                    disabled={true}
-                    placeholder={client.tel}
-                    defaultValue={client.tel}
-                  />
-                  <span className="input-group-text">: الهاتف</span>
-                </div>
+                  <div className="input-group  mb-4">
+                    <input type="text" className="form-control"
+                      disabled={true}
+                      placeholder={client.tel}
+                      defaultValue={client.tel}
+                    />
+                    <span className="input-group-text">: الهاتف</span>
+                  </div>
 
-                <div className="input-group  mb-4">
-                  <input type="text" className="form-control"
-                    value={email}
-                    onChange={e => setemail(e.target.value)}
-                  />
-                  <span className="input-group-text">: الايمايل</span>
+                  <div className="input-group  mb-4">
+                    <input type="text" className="form-control"
+                      value={email}
+                      onChange={e => setemail(e.target.value)}
+                    />
+                    <span className="input-group-text">: الايمايل</span>
+                  </div>
                 </div>
-</div>
               </div>
             </div>
 
             <div className="mt-1" style={{ color: 'transparent' }}>_</div>
 
-            <Tabfac enquetes={enquetes} setenquetes={setenquetes}/>
+            <Tabfac enquetes={enquetes} setenquetes={setenquetes} />
 
             <div className="mt-4" style={{ color: 'transparent' }}>_</div>
 
-        
 
-            <div className="myRow" style={{ backgroundColor: '#BBA14A'}} >
-              <h6 style={{ border: '0.1mm solid black',backgroundColor: '#BBA14A', paddingRight: 0,width: '3.56cm' }}>0</h6>
-              <h6 style={{ border: '0.1mm solid black', backgroundColor: '#BBA14A',paddingRight: 0,width: '6.4cm' }}>المجموع</h6>
-              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '9.99cm' }}></h6>
+
+            <div className="myRow" style={{ backgroundColor: '#BBA14A' }} >
+              <h6 style={{ border: '0.1mm solid black', backgroundColor: '#BBA14A', paddingRight: 0, width: '3.56cm' }}>0</h6>
+              <h6 style={{ border: '0.1mm solid black', backgroundColor: '#BBA14A', paddingRight: 0, width: '6.4cm' }}>المجموع</h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0, width: '9.99cm' }}></h6>
             </div>
 
             <div className="myRow">
 
-              <div style={{ border: '0.1mm solid black',width: '3.56cm' }}>      
-                <div className="myRow" style={{ display: 'block', borderBottom: '0.1mm solid black'}}>
-                <div className="container"> 
+              <div style={{ border: '0.1mm solid black', width: '3.56cm' }}>
+                <div className="myRow" style={{ display: 'block', borderBottom: '0.1mm solid black' }}>
+                  <div className="container">
 
-                <h6 style={{ paddingRight: 0,height:'1.3cm' }}> 
-                  <input type="number" className="form-control"
-                    value={kima}
-                    onChange={e => setkima(e.target.value)}
-                  /></h6>
-                </div>
+                    <h6 style={{ paddingRight: 0, height: '1.3cm' }}>
+                      <input type="number" className="form-control"
+                        value={kima}
+                        onChange={e => setkima(e.target.value)}
+                      /></h6>
+                  </div>
                 </div>
 
-                <div className="myRow" style={{ display: 'block',borderBottom: '0.1mm solid black' }}>
-                <div className="container"> 
-                  <h6 style={{ paddingRight: 0,height:'1.3cm' }}> 
-                  <input type="number" className="form-control"
-                    value={khasm}
-                    onChange={e => setkhasm(e.target.value)}
-                  /></h6>
-                </div>
+                <div className="myRow" style={{ display: 'block', borderBottom: '0.1mm solid black' }}>
+                  <div className="container">
+                    <h6 style={{ paddingRight: 0, height: '1.3cm' }}>
+                      <input type="number" className="form-control"
+                        value={khasm}
+                        onChange={e => setkhasm(e.target.value)}
+                      /></h6>
+                  </div>
                 </div>
 
                 <div className="myRow" style={{ display: 'block' }}>
-                  <div className="container"> 
-                 <h6 style={{ paddingRight: 0,height:'1.3cm' }}> 
-                  <input type="number" className="form-control"
-                    value={tabe3}
-                    onChange={e => setetabe3(e.target.value)}
-                  /></h6>
+                  <div className="container">
+                    <h6 style={{ paddingRight: 0, height: '1.3cm' }}>
+                      <input type="number" className="form-control"
+                        value={tabe3}
+                        onChange={e => setetabe3(e.target.value)}
+                      /></h6>
                   </div>
                 </div>
 
               </div>
 
-              <div style={{ border: '0.1mm solid black',width: '6.4cm' }}>
+              <div style={{ border: '0.1mm solid black', width: '6.4cm' }}>
                 <div className="myRow" style={{ display: 'block' }}>
-                  <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black',width: '6.4cm',height:'1.3cm' }}>الاداء على القيمة المضافة</h6>
+                  <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black', width: '6.4cm', height: '1.3cm' }}>الاداء على القيمة المضافة</h6>
                 </div>
                 <div className="myRow" style={{ display: 'block' }}>
-                  <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black',width: '6.4cm',height:'1.3cm' }}>الخصم من المورد</h6>
+                  <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black', width: '6.4cm', height: '1.3cm' }}>الخصم من المورد</h6>
                 </div>
                 <div className="myRow" style={{ display: 'block' }}>
-                  <h6 style={{ textAlign: 'right',width: '6.4cm',height:'1.3cm' }}>الطابع الجبائي</h6>
+                  <h6 style={{ textAlign: 'right', width: '6.4cm', height: '1.3cm' }}>الطابع الجبائي</h6>
                 </div>
               </div>
 
-              <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '9.99cm' }}>
+              <div style={{ textAlign: 'right', border: '0.1mm solid black', width: '9.99cm' }}>
                 <h6>: طريقة التسديد</h6>
                 <div className="myRow">
                   <div className="col-9" style={{ paddingRight: 0 }}>شاك</div>
                   <div className="col-1">
-                  <input type="checkbox" value="chek"
-                    onChange={e => {
-                    if(e.target.checked)
-                      setpayment(e.target.value);
-                }} />
+                    <input type="radio" value="chek" name="mdp"
+                      onChange={e => {
+                        if (e.target.checked)
+                          setpayment(e.target.value);
+                      
+                      }} />
                   </div>
                 </div>
                 <div className="myRow">
                   <div className="col-9" style={{ paddingRight: 0 }}>كمبيالة</div>
                   <div className="col-1">
-                  <input type="checkbox" value="kembyela"
-                    onChange={e => {
-                    if(e.target.checked)
-                      setpayment(e.target.value);
-                }} />
+                    <input type="radio" value="kembyela" name="mdp"
+                      onChange={e => {
+                        if (e.target.checked)
+                          setpayment(e.target.value);
+                      }} />
                   </div>
                 </div>
                 <div className="myRow">
                   <div className="col-9" style={{ paddingRight: 0 }}>إيداع بنكي</div>
                   <div className="col-1">
-                    <input type="checkbox" value="virement"
-                    onChange={e => {
-                    if(e.target.checked)
-                      setpayment(e.target.value);
-                }} />
+                    <input type="radio" value="virement" name="mdp"
+                      onChange={e => {
+                        if (e.target.checked)
+                          setpayment(e.target.value);
+                      }} />
                   </div>
                 </div>
                 <div className="myRow">
                   <div className="col-9" style={{ paddingRight: 0 }}>خلافه</div>
                   <div className="col-1">
-                    <input type="checkbox" value="khlefa"
-                    onChange={e => {
-                    if(e.target.checked)
-                      setpayment(e.target.value);
-                }} />
+                    <input type="radio" value="khlefa" name="mdp"
+                      onChange={e => {
+                        if (e.target.checked)
+                          setpayment(e.target.value);
+                      }} />
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="myRow" style={{ backgroundColor: '#BBA14A' }}>
-              <input id="txt" style={{ border: '0.1mm solid black', textAlign: 'center', fontSize: '0.39cm', fontWeight: 500, lineHeight: 1.2, backgroundColor: '#BBA14A',width: '3.56cm' }} value={0} readOnly />
-              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '6.4cm' }}>المبلغ الصافي</h6>
-              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '9.99cm' }}></h6>
+              <input id="txt" style={{ border: '0.1mm solid black', textAlign: 'center', fontSize: '0.39cm', fontWeight: 500, lineHeight: 1.2, backgroundColor: '#BBA14A', width: '3.56cm' }} value={0} readOnly />
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0, width: '6.4cm' }}>المبلغ الصافي</h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0, width: '9.99cm' }}></h6>
             </div>
           </div>
-          
+
           <div className="mt-3" style={{ minHeight: '2.2cm' }}>
             <span>وقفت هذه الفاتورة على مبلغ قدره : </span><span id="demo"></span>
           </div>
@@ -273,7 +273,7 @@ function Facture() {
             الإمضاء
           </div>
           <div className="pt-5">
-            <hr style={{height:'2',color:'black',backgroundColor:'black',opacity: '1',height: '0.5mm'}} />
+            <hr style={{ height: '2', color: 'black', backgroundColor: 'black', opacity: '1', height: '0.5mm' }} />
           </div>
           <h6>CENTRE ELKHALIL N°124 SLIMANE KAHYA MANOUBA 2010-TUNISIE</h6>
           <h6>Tél:(+216)50409407 / (+216)36442043 Fax:(+216)71601434 Email: lawyer.caat@gmail.com</h6>
@@ -282,7 +282,7 @@ function Facture() {
       <div className="mt-5" style={{ color: 'transparent' }}>_</div>
 
       <div className="mb-5">
-        <Link to="/PDFfacture">
+        <Link to="/PDFfacture" state={{ ea: emailavocat, cl:client, em:email, pa:payment, ta:tabe3, ki:kima, kh:khasm, en:enquetes }}>
           <Button variant="dark" >Générer la facture</Button>
         </Link>
       </div>

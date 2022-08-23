@@ -1,12 +1,16 @@
 import React from "react";
 import Pdf from "react-to-pdf";
+import { useLocation } from 'react-router-dom';
 import logo from '../logo_facture.png';
 import tafqeet from './tafqeet';
 const ref = React.createRef();
 
 function PDFfacture() {
 
-  var total = 658.26.toFixed(3);
+  const location = useLocation()
+  const { ea, cl, em, pa, ta, ki, kh, en } = location.state;console.log("khhh"+kh+"hhh");
+  var tot=0;
+  var total = (-parseFloat(kh).toFixed(3)-(-parseFloat(ki).toFixed(3)-parseFloat(ta).toFixed(3))).toFixed(3);
   const main = () => {
     var fraction = document.getElementById("txt").value.split(".");
     if (fraction.length == 2) {
@@ -43,7 +47,7 @@ function PDFfacture() {
 
           <div className="row">
             <div className="col-6">
-              <h6>Email: lawyer.caat@gmail.com</h6>
+              <h6>Email: {ea}</h6>
             </div>
             <div className="col" style={{ textAlign: 'right' }}>
               <h6>2022/02/03 تونس في</h6>
@@ -57,11 +61,11 @@ function PDFfacture() {
             <div className="myRow">
               <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '9.96cm' }}></div>
               <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '9.99cm' }}>
-                <h6>{total} : الحريف</h6>
-                <h6>{total} : المعرف الجبائي</h6>
-                <h6>{total} : العنوان</h6>
-                <h6>{total} : الهاتف</h6>
-                <h6>{total} : الايمايل</h6>
+                <h6>{cl.raison} : الحريف</h6>
+                <h6>{cl.matricule} : المعرف الجبائي</h6>
+                <h6>{cl.adresse} : العنوان</h6>
+                <h6>{cl.tel} : الهاتف</h6>
+                <h6>{em} : الايمايل</h6>
               </div>
             </div>
 
@@ -71,84 +75,85 @@ function PDFfacture() {
               <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '8.8cm' }}>الموضوع</h6>
               <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '1.19cm' }}>رقم</h6>
             </div>
-            <div className="myRow">
+            <div className="myRow" style={{minHeight: '4cm'}}>
               <div style={{ border: '0.1mm solid black',width: '3.56cm' }}>
-                <h6 style={{ paddingRight: 0 }}>400.000</h6>
-                <h6 style={{ paddingRight: 0 }}>200.000</h6>
+                {en.map((en) =>{ tot-=-parseFloat(en.somme).toFixed(3); return (<h6 style={{ paddingRight: 0 }}>{parseFloat(en.somme).toFixed(3)}</h6>)})}
               </div>
               <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '6.4cm' }}>
-                <h6>قضية عدد</h6>
-                <h6>قضية عدد</h6>
+                {en.map(en=>(<h6>{en.resource}</h6>))}
               </div>
               <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '8.8cm' }}>
-                <h6>أتعاب محاماة قضية مخالفة جبائية جزائية</h6>
-                <h6>أتعاب محاماة قضية مخالفة جبائية جزائية</h6>
+                {en.map(en=>(<h6>{en.sujet}</h6>))}
               </div>
               <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '1.19cm' }}>
-                <h6>01</h6>
-                <h6>02</h6>{/*()?<h6>:<br>*/}
-                <br /><br /><br /><br />
+                {en.map(en=>(<h6>{en.enquete_id}</h6>))}{/*()?<h6>:<br>*/}
               </div>
             </div>
             <div className="myRow" style={{ backgroundColor: '#BBA14A' }}>
-              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '3.56cm' }}>600.000</h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '3.56cm' }}>{parseFloat(tot).toFixed(3)}</h6>
               <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '6.4cm' }}>المجموع</h6>
               <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '8.8cm' }}></h6>
               <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '1.19cm' }}></h6>
             </div>
             <div className="myRow">
               <div style={{ border: '0.1mm solid black',width: '3.56cm' }}>
+                {(ki!==0)?
                 <div className="myRow" style={{ display: 'block'}}>
-                  <h6 style={{ borderBottom: '0.1mm solid black', paddingRight: 0 }}>78.000</h6>
-                </div>
+                  <h6 style={{ borderBottom: '0.1mm solid black', paddingRight: 0 }}>{parseFloat(ki).toFixed(3)}</h6>
+                </div>:<></>}
+                {(kh!==0)?
                 <div className="myRow" style={{ display: 'block' }}>
-                  <h6 style={{ borderBottom: '0.1mm solid black', paddingRight: 0 }}>20.340</h6>
-                </div>
+                  <h6 style={{ borderBottom: '0.1mm solid black', paddingRight: 0 }}>{parseFloat(kh).toFixed(3)}</h6>
+                </div>:<></>}
+                {(ta!==0)?
                 <div className="myRow" style={{ display: 'block' }}>
-                  <h6 style={{ borderBottom: '0.1mm solid black', paddingRight: 0 }}>0.600</h6>
-                </div>
+                  <h6 style={{ borderBottom: '0.1mm solid black', paddingRight: 0 }}>{parseFloat(ta).toFixed(3)}</h6>
+                </div>:<></>}
               </div>
               <div style={{ border: '0.1mm solid black',width: '6.4cm' }}>
+                {(ki!==0)?
                 <div className="myRow" style={{ display: 'block' }}>
                   <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black',width: '6.4cm' }}>الاداء على القيمة المضافة</h6>
-                </div>
+                </div>:<></>}
+                {(kh!==0)?
                 <div className="myRow" style={{ display: 'block' }}>
                   <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black',width: '6.4cm' }}>الخصم من المورد</h6>
-                </div>
+                </div>:<></>}
+                {(ta!==0)?
                 <div className="myRow" style={{ display: 'block' }}>
                   <h6 style={{ textAlign: 'right', borderBottom: '0.1mm solid black',width: '6.4cm' }}>الطابع الجبائي</h6>
-                </div>
+                </div>:<></>}
               </div>
               <div style={{ textAlign: 'right', border: '0.1mm solid black',width: '9.99cm' }}>
                 <h6>: طريقة التسديد</h6>
                 <div className="myRow">
                   <div className="col-9" style={{ paddingRight: 0 }}>شاك</div>
                   <div className="col-1">
-                    <input type="checkbox" />
+                    <input type="checkbox" defaultChecked={(pa==="chek")} disabled />
                   </div>
                 </div>
                 <div className="myRow">
                   <div className="col-9" style={{ paddingRight: 0 }}>كمبيالة</div>
                   <div className="col-1">
-                    <input type="checkbox" />
+                    <input type="checkbox" defaultChecked={(pa==="kembyela")} disabled />
                   </div>
                 </div>
                 <div className="myRow">
                   <div className="col-9" style={{ paddingRight: 0 }}>إيداع بنكي</div>
                   <div className="col-1">
-                    <input type="checkbox" />
+                    <input type="checkbox" defaultChecked={(pa==="virement")} disabled />
                   </div>
                 </div>
                 <div className="myRow">
                   <div className="col-9" style={{ paddingRight: 0 }}>خلافه</div>
                   <div className="col-1">
-                    <input type="checkbox" />
+                    <input type="checkbox" defaultChecked={(pa==="khlefa")} disabled />
                   </div>
                 </div>
               </div>
             </div>
             <div className="myRow" style={{ backgroundColor: '#BBA14A' }}>
-              <input id="txt" style={{ border: '0.1mm solid black', textAlign: 'center', fontSize: '0.39cm', fontWeight: 500, lineHeight: 1.2, backgroundColor: '#BBA14A',width: '3.56cm' }} value={total} readOnly />
+              <input id="txt" style={{ border: '0.1mm solid black', textAlign: 'center', fontSize: '0.39cm', fontWeight: 500, lineHeight: 1.2, backgroundColor: '#BBA14A',width: '3.56cm' }} value={(total-(-parseFloat(tot).toFixed(3))).toFixed(3)} readOnly />
               <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '6.4cm' }}>المبلغ الصافي</h6>
               <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '8.8cm' }}></h6>
               <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '1.19cm' }}></h6>
@@ -156,7 +161,7 @@ function PDFfacture() {
           </div>
           <div className="mt-3" style={{ minHeight: '2.2cm' }}>
             <span>وقفت هذه الفاتورة على مبلغ قدره : </span><span id="demo"></span>
-            <div>({total})</div>
+            <div>({(total-(-parseFloat(tot).toFixed(3))).toFixed(3)})</div>
           </div>
           <div style={{ textAlign: 'left' }} className="mx-5 mb-5">
             الإمضاء
