@@ -2,9 +2,8 @@ import React, { Fragment, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Inputfacture from "./inputfacture";
 
-const Tabfac = () => {
+const Tabfac = (props) => {
   const [id, setid] = useState(1);
-  const [enquetes, setenquetes] = useState([]);
   const [enqueteid, setenqueteid] = useState(0);
   const [row, setRow] = useState("");
 
@@ -12,8 +11,8 @@ const Tabfac = () => {
   const deletedemandeur = (id) => {
     setRow("");
     document.getElementById("clbtnrr").className="btn btn-dark disabled";
-    setenquetes(enquetes.filter(enquete => enquete.enquete_id !== id));
-    enquetes.map(enquete =>{if (enquete.enquete_id>id) 
+    props.setenquetes(props.enquetes.filter(enquete => enquete.enquete_id !== id));
+    props.enquetes.map(enquete =>{if (enquete.enquete_id>id) 
     {enquete.enquete_id=enquete.enquete_id-1}});
     
   };
@@ -21,7 +20,7 @@ const Tabfac = () => {
 return (
     <Fragment >
            
-            <Inputfacture enquetes={enquetes} id={id} setid={setid} setenquetes={setenquetes}/>
+            <Inputfacture enquetes={props.enquetes} id={id} setid={setid} setenquetes={props.setenquetes}/>
 
       <div className="table-responsive m-3 mytable  mytable-56creation ">
         <table className="table table-hover text-center">
@@ -35,7 +34,7 @@ return (
           </thead>
 
           <tbody>
-            {enquetes.map(enquete => (
+            {props.enquetes.map(enquete => (
               <tr key={enquete.enquete_id} id={`enquete${enquete.enquete_id}`} onClick={() => {
                 setenqueteid(enquete.enquete_id);
                 let e = document.getElementById(`enquete${enquete.enquete_id}`);

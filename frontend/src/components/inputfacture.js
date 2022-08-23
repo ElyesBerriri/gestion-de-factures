@@ -68,7 +68,7 @@ const Inputfacture = (props) => {
 
     <div className="row">
       <div className="input-group mb-3">
-        <input type="text" className="form-control "  
+        <input type="number" className="form-control "  
         value={somme}
         onChange={e => setsomme(e.target.value)}/>
         <span className="input-group-text ">المبلغ خارج الضريبة</span>

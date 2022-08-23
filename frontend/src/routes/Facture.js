@@ -8,16 +8,20 @@ import Tabfac from "../components/Tabfacture";
 const ref = React.createRef();
 
 function Facture() {
-  const [emailavocat, setemailavocat] = useState("--");
+
+  //li fehom commentaire houma les variables li bch test'ha9hom
+
+  const [emailavocat, setemailavocat] = useState("--");//email de l'avocat
   const [clients, setClients] = useState([]);
   const [query, setQuery] = useState("");
-  const [client, setClient] = useState({});
-  const [email, setemail] = useState("--");
-  const [payment, setpayment] = useState("--");
-  const [tabe3, setetabe3] = useState(0);
-  const [kima, setkima] = useState(0);
-  const [khasm, setkhasm] = useState(0);
-
+  const [client, setClient] = useState({});//objet fih les données mta3 lclient. Tow tel9a esemi les données louta fel code
+  const [email, setemail] = useState("--");//email lclient
+  const [payment, setpayment] = useState("--");//mode de payment mta3 lclient. Tow tel9a les valeurs louta
+  const [tabe3, setetabe3] = useState(0);//الطابع الجبائي
+  const [kima, setkima] = useState(0);//الاداء على القيمة المضافة
+  const [khasm, setkhasm] = useState(0);//الخصم من المورد
+  const [enquetes, setenquetes] = useState([]);/*hedhi liste feha des objets fehom les données mta3 أتعاب محاماة. 
+  Kol objet fih : رقم,الموضوع etc .. Tow tel9a esemhom bedhabt fel Tabfacture */
 
   const getClient = async (query) => {
     try {
@@ -150,14 +154,14 @@ function Facture() {
 
             <div className="mt-1" style={{ color: 'transparent' }}>_</div>
 
-            <Tabfac/>
+            <Tabfac enquetes={enquetes} setenquetes={setenquetes}/>
 
             <div className="mt-4" style={{ color: 'transparent' }}>_</div>
 
         
 
             <div className="myRow" style={{ backgroundColor: '#BBA14A'}} >
-              <h6 style={{ border: '0.1mm solid black',backgroundColor: '#BBA14A', paddingRight: 0,width: '3.56cm' }}>600.000</h6>
+              <h6 style={{ border: '0.1mm solid black',backgroundColor: '#BBA14A', paddingRight: 0,width: '3.56cm' }}>0</h6>
               <h6 style={{ border: '0.1mm solid black', backgroundColor: '#BBA14A',paddingRight: 0,width: '6.4cm' }}>المجموع</h6>
               <h6 style={{ border: '0.1mm solid black', paddingRight: 0,width: '9.99cm' }}></h6>
             </div>
