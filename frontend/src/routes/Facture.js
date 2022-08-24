@@ -4,10 +4,14 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Search from "../components/Search";
 import Tabfac from "../components/Tabfac";
+import { set } from "date-fns";
 
 const ref = React.createRef();
 
 function Facture() {
+  const [facture,setfacture]=useState();
+  const current = new Date();
+  const date = `${current.getFullYear()}/${current.getMonth()+1}/${current.getDate()}`;
 
   //li fehom commentaire houma les variables li bch test'ha9hom
   const [emailavocat, setemailavocat] = useState("lawyer.caat@gmail.com");//email de l'avocat
@@ -38,6 +42,19 @@ function Facture() {
   const [enquetes, setenquetes] = useState([]);/*hedhi liste feha des objets fehom les données mta3 أتعاب محاماة. 
   Kol objet fih : رقم,الموضوع etc .. Tow tel9a esemhom bedhabt fel Tabfacture */
 
+   
+
+  const getfacture = async () => {
+    try {
+      const response = await fetch("/facture");
+      const jsonData = await response.json();
+
+      setfacture(jsonData[0].facture);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   const getClient = async (query) => {
     try {
       const response = await fetch(`/clients/list/creation/?q=${query}`);
@@ -62,6 +79,11 @@ function Facture() {
       setClient({});
     }
   };
+
+  useEffect((e) => {
+    getfacture();
+  }, []);
+
 
   useEffect(() => {
     getClient(query);
@@ -94,12 +116,12 @@ function Facture() {
               value={emailavocat}
               onChange={e => setemailavocat(e.target.value)} />
             <div className="col" style={{ textAlign: 'right' }}>
-              <h6>2022/02/03 تونس في</h6>
+              <h6>{date} تونس في</h6>
             </div>
           </div>
           <div style={{ margin: 'auto', marginTop: 0, padding: 0, width: '20cm', border: '0.1mm solid black' }}>
             <div className="myRow">
-              <h6 className="col-12" style={{ border: '0.1mm solid black', paddingRight: 0 }}>مذكرة أتعاب محاماة فاتورة عدد</h6>
+              <h6 className="col-12" style={{ border: '0.1mm solid black', paddingRight: 0 }}>مذكرة أتعاب محاماة فاتورة عدد {facture} / {current.getFullYear()}  </h6>
             </div>
             <div className="myRow">
               <div style={{ textAlign: 'right', border: '0.1mm solid black', width: '9.96cm' }}></div>
@@ -283,9 +305,10 @@ function Facture() {
       </div>
       <div className="mt-5" style={{ color: 'transparent' }}>_</div>
 
+   
       <div className="mb-5">
-        <Link to="/PDFfacture" state={{ ea: emailavocat, cl:client, em:email, pa:payment, ta:tabe3, ki:kima, kh:khasm, en:enquetes }}>
-          <Button variant="dark" >Générer la facture</Button>
+        <Link to="/PDFfacture" state={{ date:date,facture:facture+1 ,facturenow:facture,year:current.getFullYear(), ea: emailavocat, cl:client, em:email, pa:payment, ta:tabe3, ki:kima, kh:khasm, en:enquetes }}>
+          <Button variant="dark">Générer la facture</Button>
         </Link>
       </div>
     </>

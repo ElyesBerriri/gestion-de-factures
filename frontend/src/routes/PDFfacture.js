@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState, useEffect } from "react";
 import Pdf from "react-to-pdf";
 import { useLocation } from 'react-router-dom';
 import logo from '../logo_facture.png';
@@ -8,7 +8,7 @@ const ref = React.createRef();
 function PDFfacture() {
 
   const location = useLocation();
-  const { ea, cl, em, pa, ta, ki, kh, en } = location.state;
+  const { date,facture,facturenow ,year, ea, cl, em, pa, ta, ki, kh, en } = location.state;
   var tot = 0;
   var total = (-parseFloat(kh||0).toFixed(3) - (-parseFloat(ki||0).toFixed(3) - parseFloat(ta||0).toFixed(3))).toFixed(3);
   const main = () => {
@@ -20,10 +20,33 @@ function PDFfacture() {
       document.getElementById("demo").innerHTML = tafqeet(fraction[0]);
     }
   }
+
+  const updatefacture = async e => {
+    e.preventDefault();
+ 
+    try {
+      const body = { facture };
+      await fetch(
+        `/facture/update`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        }
+      );
+
+      window.location.reload();
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+
+
   return (
     <>
       <Pdf targetRef={ref} filename={"Facture"}>
-        {({ toPdf }) => <button onClick={() => { main(); toPdf() }} className="mt-5 mb-5">Télécharger le PDF</button>}
+        {({ toPdf }) => <button onClick={(e) => { main(); toPdf(); updatefacture(e)}} className="mt-5 mb-5">Télécharger le PDF</button>}
       </Pdf>
       <div style={{
         height: '29.7cm',
@@ -50,13 +73,13 @@ function PDFfacture() {
               <h6>Email: {ea}</h6>
             </div>
             <div className="col" style={{ textAlign: 'right' }}>
-              <h6>2022/02/03 تونس في</h6>
+              <h6> {date} تونس في</h6>
             </div>
           </div>
 
           <div style={{ margin: 'auto', marginTop: 0, padding: 0, width: '20cm', border: '0.1mm solid black' }}>
             <div className="myRow">
-              <h6 className="col-12" style={{ border: '0.1mm solid black', paddingRight: 0 }}>مذكرة أتعاب محاماة فاتورة عدد</h6>
+              <h6 className="col-12" style={{ border: '0.1mm solid black', paddingRight: 0 }}>مذكرة أتعاب محاماة فاتورة عدد {facturenow} / {year}  </h6>
             </div>
             <div className="myRow">
               <div style={{ textAlign: 'right', border: '0.1mm solid black', width: '9.96cm' }}></div>

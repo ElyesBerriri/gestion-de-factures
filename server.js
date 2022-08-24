@@ -919,7 +919,43 @@ app.delete("/services/list/:id", async (req, res) => {
 });
 
 
+//facture
+app.get("/facture", async (req, res) => {
+  try {
+    const all = await pool.query("SELECT * from facture");
+    res.status(200).json(all.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
+
+
+app.delete("/facture/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query("DELETE FROM facture WHERE facture = $1", [
+      id,
+    ]);
+    res.status(200).json("parametre was deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.put("/facture/update", async (req, res) => {
+  try {
+    const { facture} = req.body;
+    await pool.query(
+      `UPDATE facture SET facture=$1 `,
+      [facture]
+    );
+
+    res.status(200).json("service was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 //Parametres
 
