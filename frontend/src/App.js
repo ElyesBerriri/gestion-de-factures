@@ -55,7 +55,7 @@ function App() {
             <Route path="Greffier" element={<Greffier />} />
             <Route path="Creation" element={<Creation />} />
             <Route path="PDF" element={<PDF />} />
-            <Route path="Facture" element={<Facture />} />
+            <Route path="Factures" element={<Facture />} />
             <Route path="PDFfacture" element={<PDFfacture />} /> 
           </Routes>
         </div>

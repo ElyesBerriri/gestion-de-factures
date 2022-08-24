@@ -89,7 +89,7 @@ function Navv() {
               </NavDropdown>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/Facture">Facture</Nav.Link>
+              <Nav.Link href="/Factures">Facture</Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
