@@ -124,7 +124,7 @@ function Facture() {
                 <div style={{ textAlign: 'right', border: '0.1mm solid black', width: '9.99cm' }}>
                   <div className="rechercheajoutcreation" style={{ display:'flex',justifyContent:'space-around'}}>
                     <Search setQuery={(e) => setQuery(e)} />
-                      <select className="myselectcreation col-5" onChange={(e) => specificClient(e.target.value)}>
+                      <select className="myselectcreation col-9" onChange={(e) => specificClient(e.target.value)}>
                         <option>: الحريف</option>
                         {clients.map(client => (
                           <option key={client.client_id} value={client.client_id}>{client.raison} {client.code_client}</option>

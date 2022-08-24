@@ -41,7 +41,7 @@ function PDFfacture() {
 
   return (
     <>
-      <Pdf targetRef={ref} filename={"Facture"}>
+      <Pdf targetRef={ref} filename={`Facture_${facturenow}_${year}`}>
         {({ toPdf }) => <button onClick={(e) => { main();toPdf();updatefacture(e) }} className="mt-5 mb-5">Télécharger le PDF</button>}
       </Pdf>
       <div className="pdf">
