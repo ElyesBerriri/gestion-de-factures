@@ -13,12 +13,12 @@ function PDFfacture() {
   var total = (-parseFloat(kh||0).toFixed(3) - (-parseFloat(ki||0).toFixed(3) - parseFloat(ta||0).toFixed(3))).toFixed(3);
   const main = () => {
     var fraction = document.getElementById("txt").value.split(".");
-    if (fraction.length == 2) {
-      document.getElementById("demo").innerHTML = tafqeet(fraction[0]) + " دينار " + "و " + tafqeet(fraction[1]) + " مليم";
-    }
-    else if (fraction.length == 1) {
-      document.getElementById("demo").innerHTML = tafqeet(fraction[0]);
-    }
+      var ch="";
+      if(fraction[0]=="0"&&fraction[1]=="000") ch="صفر";
+      else if(fraction[0]=="0") ch = tafqeet(fraction[1]) + " مليم";
+      else if(fraction[1]=="000") ch = tafqeet(fraction[0]) + " دينار ";
+      else ch = tafqeet(fraction[0]) + " دينار " + "و " + tafqeet(fraction[1]) + " مليم";
+      document.getElementById("demo").innerHTML = ch;
   }
 
   const updatefacture = async e => {
@@ -46,7 +46,7 @@ function PDFfacture() {
   return (
     <>
       <Pdf targetRef={ref} filename={"Facture"}>
-        {({ toPdf }) => <button onClick={(e) => { main(); toPdf(); updatefacture(e)}} className="mt-5 mb-5">Télécharger le PDF</button>}
+        {({ toPdf }) => <button onClick={(e) => { main();toPdf(); updatefacture(e)}} className="mt-5 mb-5">Télécharger le PDF</button>}
       </Pdf>
       <div style={{
         height: '29.7cm',
