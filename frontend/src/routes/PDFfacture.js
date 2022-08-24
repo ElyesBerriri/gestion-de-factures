@@ -10,7 +10,7 @@ function PDFfacture() {
   const location = useLocation();
   const { ea, cl, em, pa, ta, ki, kh, en } = location.state;
   var tot = 0;
-  var total = (-parseFloat(kh).toFixed(3) - (-parseFloat(ki).toFixed(3) - parseFloat(ta).toFixed(3))).toFixed(3);
+  var total = (-parseFloat(kh||0).toFixed(3) - (-parseFloat(ki||0).toFixed(3) - parseFloat(ta||0).toFixed(3))).toFixed(3);
   const main = () => {
     var fraction = document.getElementById("txt").value.split(".");
     if (fraction.length == 2) {
@@ -92,7 +92,7 @@ function PDFfacture() {
             </div>
             <div className="myRow" style={{ minHeight: '3.5cm' }}>
               <div style={{ border: '0.1mm solid black', width: '3.56cm' }}>
-                {en.map((en) => { tot -= -parseFloat(en.somme).toFixed(3); return (<h6 style={{ paddingRight: 0 }}>{parseFloat(en.somme).toFixed(3)}</h6>) })}
+                {en.map((en) => { tot -= -parseFloat(en.somme||0).toFixed(3); return (<h6 style={{ paddingRight: 0 }}>{parseFloat(en.somme||0).toFixed(3)}</h6>) })}
               </div>
               <div style={{ textAlign: 'right', border: '0.1mm solid black', width: '6.4cm' }}>
                 {en.map(en => (<h6>{en.resource}</h6>))}

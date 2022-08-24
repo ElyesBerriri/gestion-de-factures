@@ -31,7 +31,7 @@ function Facture() {
     "email": ""
   });//objet fih les données mta3 lclient. Tow tel9a esemi les données louta fel code
   const [email, setemail] = useState("");//email lclient
-  const [payment, setpayment] = useState("*");//mode de payment mta3 lclient. Tow tel9a les valeurs louta
+  const [payment, setpayment] = useState("--");//mode de payment mta3 lclient. Tow tel9a les valeurs louta
   const [tabe3, setetabe3] = useState(0);//الطابع الجبائي
   const [kima, setkima] = useState(0);//الاداء على القيمة المضافة
   const [khasm, setkhasm] = useState(0);//الخصم من المورد
