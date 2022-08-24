@@ -13,9 +13,25 @@ function Facture() {
   const [emailavocat, setemailavocat] = useState("lawyer.caat@gmail.com");//email de l'avocat
   const [clients, setClients] = useState([]);
   const [query, setQuery] = useState("");
-  const [client, setClient] = useState({});//objet fih les données mta3 lclient. Tow tel9a esemi les données louta fel code
-  const [email, setemail] = useState("--");//email lclient
-  const [payment, setpayment] = useState("--");//mode de payment mta3 lclient. Tow tel9a les valeurs louta
+  const [client, setClient] = useState({
+    "collaborateur": "",
+    "code_client": "",
+    "raison": "",
+    "situation_fiscale": "",
+    "type_client": "",
+    "matricule": "",
+    "ville": "",
+    "rue": "",
+    "num": 0,
+    "code_postale": 0,
+    "adresse": "",
+    "activite": "",
+    "tel": "",
+    "fax": "",
+    "email": ""
+  });//objet fih les données mta3 lclient. Tow tel9a esemi les données louta fel code
+  const [email, setemail] = useState("");//email lclient
+  const [payment, setpayment] = useState("*");//mode de payment mta3 lclient. Tow tel9a les valeurs louta
   const [tabe3, setetabe3] = useState(0);//الطابع الجبائي
   const [kima, setkima] = useState(0);//الاداء على القيمة المضافة
   const [khasm, setkhasm] = useState(0);//الخصم من المورد
@@ -27,7 +43,6 @@ function Facture() {
       const response = await fetch(`/clients/list/creation/?q=${query}`);
       const jsonData = await response.json();
       setClients(jsonData);
-      console.log(clients);
     } catch (err) {
       console.error(err.message);
     }
@@ -39,6 +54,7 @@ function Facture() {
         const response = await fetch(`/clients/list/${id}`);
         const jsonData = await response.json();
         setClient(jsonData);
+        setemail(jsonData.email);
       } catch (err) {
         console.error(err.message);
       }
@@ -47,22 +63,18 @@ function Facture() {
     }
   };
 
-
   useEffect(() => {
     getClient(query);
   }, [query]);
 
-
   return (
     <>
-
       <div style={{
         width: '21cm',
         margin: 'auto',
         marginTop: '5vh',
         border: '2px solid black'
       }}>
-
         <div ref={ref} style={{ padding: '0.5cm' }}>
           <div className="row" style={{ textAlign: 'left' }}>
             <div className="col-6" style={{ display: 'flex' }}><img src={logo} alt="Logo" width="220" style={{ margin: 'auto' }} /></div>
@@ -76,8 +88,6 @@ function Facture() {
               <h6>IBAN N° TN9 0303 4164 0115 0041 8158</h6>
             </div>
           </div>{/*style={{border: '2px solid black'}}*/}
-
-
           <div className="input-group mb-3">
             <span className="input-group-text ">Email :</span>
             <input type="text" className="form-control "
@@ -87,19 +97,13 @@ function Facture() {
               <h6>2022/02/03 تونس في</h6>
             </div>
           </div>
-
           <div style={{ margin: 'auto', marginTop: 0, padding: 0, width: '20cm', border: '0.1mm solid black' }}>
-
             <div className="myRow">
               <h6 className="col-12" style={{ border: '0.1mm solid black', paddingRight: 0 }}>مذكرة أتعاب محاماة فاتورة عدد</h6>
             </div>
-
             <div className="myRow">
-
               <div style={{ textAlign: 'right', border: '0.1mm solid black', width: '9.96cm' }}></div>
-
               <div style={{ textAlign: 'right', border: '0.1mm solid black', width: '9.99cm' }}>
-
                 <div className="rechercheajoutcreation">
                   <Search setQuery={(e) => setQuery(e)} />
                   <div className="mycontainercreation">
@@ -142,7 +146,7 @@ function Facture() {
 
                   <div className="input-group  mb-4">
                     <input type="text" className="form-control"
-                      value={email}
+                      defaultValue={client.email}
                       onChange={e => setemail(e.target.value)}
                     />
                     <span className="input-group-text">: الايمايل</span>
@@ -157,12 +161,10 @@ function Facture() {
 
             <div className="mt-4" style={{ color: 'transparent' }}>_</div>
 
-
-
             <div className="myRow" style={{ backgroundColor: '#BBA14A' }} >
               <h6 style={{ border: '0.1mm solid black', backgroundColor: '#BBA14A', paddingRight: 0, width: '3.56cm' }}>0</h6>
               <h6 style={{ border: '0.1mm solid black', backgroundColor: '#BBA14A', paddingRight: 0, width: '6.4cm' }}>المجموع</h6>
-              <h6 style={{ border: '0.1mm solid black', paddingRight: 0, width: '9.99cm' }}></h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0, width: '9.99cm',color: 'transparent' }}>-</h6>
             </div>
 
             <div className="myRow">
@@ -262,7 +264,7 @@ function Facture() {
             <div className="myRow" style={{ backgroundColor: '#BBA14A' }}>
               <input id="txt" style={{ border: '0.1mm solid black', textAlign: 'center', fontSize: '0.39cm', fontWeight: 500, lineHeight: 1.2, backgroundColor: '#BBA14A', width: '3.56cm' }} value={0} readOnly />
               <h6 style={{ border: '0.1mm solid black', paddingRight: 0, width: '6.4cm' }}>المبلغ الصافي</h6>
-              <h6 style={{ border: '0.1mm solid black', paddingRight: 0, width: '9.99cm' }}></h6>
+              <h6 style={{ border: '0.1mm solid black', paddingRight: 0, width: '9.99cm',color: 'transparent' }}>-</h6>
             </div>
           </div>
 
@@ -273,7 +275,7 @@ function Facture() {
             الإمضاء
           </div>
           <div className="pt-5">
-            <hr style={{ height: '2', color: 'black', backgroundColor: 'black', opacity: '1', height: '0.5mm' }} />
+            <hr style={{ color: 'black', backgroundColor: 'black', opacity: '1', height: '0.5mm' }} />
           </div>
           <h6>CENTRE ELKHALIL N°124 SLIMANE KAHYA MANOUBA 2010-TUNISIE</h6>
           <h6>Tél:(+216)50409407 / (+216)36442043 Fax:(+216)71601434 Email: lawyer.caat@gmail.com</h6>
@@ -286,8 +288,6 @@ function Facture() {
           <Button variant="dark" >Générer la facture</Button>
         </Link>
       </div>
-
-      {console.log(payment)}
     </>
   );
 }

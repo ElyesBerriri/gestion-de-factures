@@ -99,21 +99,21 @@ const ListClient = () => {
                 }
               }}>
                 <td data-label="id">{client.client_id}</td>
-                <td data-label="Collaborateur">{client.collaborateur}</td>
-                <td data-label="Code Client">{client.code_client}</td>
-                <td data-label="Raison">{client.raison}</td>
-                <td data-label="Situation Fiscale">{client.situation_fiscale}</td>
-                <td data-label="Type Client">{client.type_client}</td>
-                <td data-label="Matricule">{client.matricule}</td>
-                <td data-label="Ville">{client.ville}</td>
-                <td data-label="Rue">{client.rue}</td>
-                <td data-label="Num">{client.num}</td>
-                <td data-label="Code Postale">{client.code_postale}</td>
-                <td data-label="Adresse">{client.adresse}</td>
-                <td data-label="Activité">{client.activite}</td>
-                <td data-label="Téléphone">{client.tel}</td>
-                <td data-label="Fax">{client.fax}</td>
-                <td data-label="Email">{client.email}</td>
+                <td data-label="Collaborateur" className="text-nowrap">{client.collaborateur}</td>
+                <td data-label="Code Client" className="text-nowrap">{client.code_client}</td>
+                <td data-label="Raison" className="text-nowrap">{client.raison}</td>
+                <td data-label="Situation Fiscale" className="text-nowrap">{client.situation_fiscale}</td>
+                <td data-label="Type Client" className="text-nowrap">{client.type_client}</td>
+                <td data-label="Matricule" className="text-nowrap">{client.matricule}</td>
+                <td data-label="Ville" className="text-nowrap">{client.ville}</td>
+                <td data-label="Rue" className="text-nowrap">{client.rue}</td>
+                <td data-label="Num" className="text-nowrap">{client.num}</td>
+                <td data-label="Code Postale" className="text-nowrap">{client.code_postale}</td>
+                <td data-label="Adresse" className="text-nowrap">{client.adresse}</td>
+                <td data-label="Activité" className="text-nowrap">{client.activite}</td>
+                <td data-label="Téléphone" className="text-nowrap">{client.tel}</td>
+                <td data-label="Fax" className="text-nowrap">{client.fax}</td>
+                <td data-label="Email" className="text-nowrap">{client.email}</td>
               </tr>
             ))}
           </tbody>
