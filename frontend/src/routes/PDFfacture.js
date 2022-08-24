@@ -8,7 +8,7 @@ const ref = React.createRef();
 function PDFfacture() {
 
   const location = useLocation();
-  const { date, facture, facturenow, year, ea, cl, em, pa, ta, ki, kh, en } = location.state;
+  const { date, facture, facturenow, datee, ea, cl, em, pa, ta, ki, kh, en } = location.state;
   var tot = 0;
   var total = (-parseFloat(kh || 0).toFixed(3) - (-parseFloat(ki || 0).toFixed(3) - parseFloat(ta || 0).toFixed(3))).toFixed(3);
   const main = () => {
@@ -24,7 +24,7 @@ function PDFfacture() {
   const updatefacture = async e => {
     e.preventDefault();
     try {
-      const body = { facture };
+      const body = { facture,datee };
       await fetch(
         `/facture/update`,
         {
@@ -41,7 +41,7 @@ function PDFfacture() {
 
   return (
     <>
-      <Pdf targetRef={ref} filename={`Facture_${facturenow}_${year}`}>
+      <Pdf targetRef={ref} filename={`Facture_${facturenow}_${datee}`}>
         {({ toPdf }) => <button onClick={(e) => { main();toPdf();updatefacture(e) }} className="mt-5 mb-5">Télécharger le PDF</button>}
       </Pdf>
       <div className="pdf">
@@ -71,7 +71,7 @@ function PDFfacture() {
 
             <div style={{ margin: 'auto', marginTop: 0, padding: 0, width: '20cm', border: '0.1mm solid black' }}>
               <div className="myRow">
-                <h6 className="col-12" style={{ border: '0.1mm solid black', paddingRight: 0 }}>مذكرة أتعاب محاماة فاتورة عدد {facturenow} / {year}  </h6>
+                <h6 className="col-12" style={{ border: '0.1mm solid black', paddingRight: 0 }}>مذكرة أتعاب محاماة فاتورة عدد {facturenow} / {datee}  </h6>
               </div>
               <div className="myRow">
                 <div style={{ textAlign: 'right', border: '0.1mm solid black', width: '9.96cm' }}></div>

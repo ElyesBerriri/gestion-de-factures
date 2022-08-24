@@ -945,13 +945,24 @@ app.delete("/facture/:id", async (req, res) => {
 
 app.put("/facture/update", async (req, res) => {
   try {
-    const { facture} = req.body;
+    const { facture,datee} = req.body;
     await pool.query(
-      `UPDATE facture SET facture=$1 `,
-      [facture]
+      `UPDATE facture SET facture=$1, datee=$2 `,
+      [facture,datee]
     );
 
     res.status(200).json("service was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.post("/facture", async (req, res) => {
+  try {
+    const { facture,datee } = req.body;
+    const services = await pool.query(
+    "INSERT INTO facture (facture,datee) VALUES($1,$2) RETURNING *",[facture,datee]);
+    res.status(200).json(services.rows[0]);
   } catch (err) {
     console.error(err.message);
   }

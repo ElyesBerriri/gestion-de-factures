@@ -49,7 +49,11 @@ function Facture() {
       const response = await fetch("/facture");
       const jsonData = await response.json();
 
-      setfacture(jsonData[0].facture);
+      if(jsonData[0].datee<current.getFullYear()){
+        setfacture(1);}
+      else{
+        setfacture(jsonData[0].facture);
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -301,7 +305,7 @@ function Facture() {
       <div className="mt-5" style={{ color: 'transparent' }}>_</div>
 
       <div className="mb-5">
-        <Link to="/PDFfacture" state={{ date: date, facture: facture + 1, facturenow: facture, year: current.getFullYear(), ea: emailavocat, cl: client, em: email, pa: payment, ta: tabe3, ki: kima, kh: khasm, en: enquetes }}>
+        <Link to="/PDFfacture" state={{ date: date, facture: facture + 1, facturenow: facture, datee: current.getFullYear(), ea: emailavocat, cl: client, em: email, pa: payment, ta: tabe3, ki: kima, kh: khasm, en: enquetes }}>
           <Button variant="dark">Générer la facture</Button>
         </Link>
       </div>

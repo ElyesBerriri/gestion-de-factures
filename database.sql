@@ -12,7 +12,8 @@ CREATE TABLE parametree(
 );
 
 CREATE TABLE facture(
-  facture INTEGER
+  facture INTEGER,
+  datee INTEGER
 );
 
 CREATE TABLE collaborateurs(
