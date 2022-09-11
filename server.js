@@ -4,19 +4,20 @@ const pool = require("./db");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser");//transforme les données en format .json
+const cookieParser = require("cookie-parser");
 
 const morgan = require('morgan')
 const createError = require('http-errors')
 require('dotenv').config()
 
 //require('./helpers/init_mongodb')
-//const { verifyAccessToken } = require('./helpers/jwt_helper')
+const { verifyAccessToken } = require('./helpers/jwt_helper')
 //require('./helpers/init_redis')
 const AuthRoute = require('./Routes/Auth.route')
 
 
 const app = express();
-
+app.use(cookieParser);
 
 // process.env.NODE_ENV => production or undefined
 // middleware
@@ -24,6 +25,9 @@ const app = express();
 app.use(cors());
 app.use(express.json()); 
 app.use(bodyParser.json());
+
+
+
 
 
 
@@ -49,6 +53,9 @@ app.use((err, req, res, next) => {
     },
   })
 })
+
+
+
 
 
  

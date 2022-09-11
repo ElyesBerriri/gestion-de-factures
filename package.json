@@ -22,13 +22,17 @@
   "license": "ISC",
   "dependencies": {
     "@mayank1513/sticky-section-header": "^0.0.9",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "bootstrap": "^5.2.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "date-fns": "^2.28.0",
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "framer-motion": "^6.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
     "pg": "^8.3.0",
     "react-alert": "^7.0.3",
     "react-anchor-link-smooth-scroll": "^1.0.12",
@@ -38,6 +42,7 @@
     "react-router-hash-link": "^2.4.3",
     "react-sticky": "^6.0.3",
     "react-sticky-box": "^1.0.2",
+    "redis": "^4.3.0",
     "styled-components": "^5.3.5"
   }
 }

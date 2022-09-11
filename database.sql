@@ -72,3 +72,10 @@ CREATE TABLE servicess(
       fax varchar(255),
       brouillon varchar(255)
       );
+
+
+      CREATE TABLE uusers(
+      id_uusers serial PRIMARY KEY,
+      username varchar(255) UNIQUE NOT NULL,
+      password varchar(255) NOT NULL 
+      );
