@@ -108,10 +108,9 @@ module.exports = {
                         else{
                             const accessToken = await signAccessToken(String(result.rows[0].id_uusers) )
                             const refreshToken = await signRefreshToken(String(result.rows[0].id_uusers ))
-                            console.log(req.cookies.result.rows[0].id_uusers)
+                            //console.log(req.cookies.result.rows[0].id_uusers)
                             res.json({ accessToken , refreshToken })
-                            //res.send({accessToken})
-                        }
+                         }
                     })
                 }
             }
@@ -152,7 +151,7 @@ module.exports = {
     }
   },
 
-  logout: async (req, res, next) => {
+  /*logout: async (req, res, next) => {
     try {
       const { refreshToken } = req.body
       if (refreshToken==undefined) throw createError.BadRequest()
@@ -166,7 +165,7 @@ module.exports = {
         console.log(val)
         res.sendStatus(204)
       });
-      
+      */
 
       /*client.DEL(userId, (err, val) => {
         if (err) {
@@ -176,8 +175,8 @@ module.exports = {
         console.log(val)
         res.sendStatus(204)
       })*/
-    } catch (error) {
+    /*} catch (error) {
       next(error)
     }
-  },
+  },*/
 }

@@ -49,15 +49,20 @@ module.exports = {
         if (err) {
           console.log(err.message)
           reject(createError.InternalServerError())
+          console.log("hi if") 
           return
         }
+        //resolve(token);
         else{
-        
-          res.cookieParser(userId,token,{
-          httpOnly:true,
-          maxAge:365*24*60*60*1000
+          console.log("hi else"); 
+
+          res.cookie(String(userId),token,{
+            httpOnly: true,
+            maxAge:365*24*60*60*1000
           });
-        
+
+          console.log("hi else2"); 
+
           if(req.cookies.userId==undefined){
               console.log(err.message)
               reject(createError.InternalServerError())
@@ -101,9 +106,10 @@ module.exports = {
         process.env.REFRESH_TOKEN_SECRET,
         (err, payload) => {
           if (err) return reject(createError.Unauthorized())
-          const userId = payload.aud
+          const userId = payload.aud;
+          resolve(userId);
 
-          const result=req.cookies.userId;
+          /*const result=req.cookies.userId;
           if(result==undefined){
               console.log(err.message)
               reject(createError.InternalServerError())
@@ -112,7 +118,7 @@ module.exports = {
           if (refreshToken === result) return resolve(userId)
           else{
             reject(createError.Unauthorized())
-          }
+          }*/
 
 
           /*client.GET(userId, (err, result) => {

@@ -17,7 +17,7 @@ const AuthRoute = require('./Routes/Auth.route')
 
 
 const app = express();
-app.use(cookieParser);
+app.use(cookieParser());
 
 // process.env.NODE_ENV => production or undefined
 // middleware
