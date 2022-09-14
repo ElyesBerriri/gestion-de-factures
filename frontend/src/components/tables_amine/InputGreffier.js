@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import { GoPlus } from "react-icons/go";
 import Modal from 'react-bootstrap/Modal';
+import CalendarComp from "../CalendarComp";
 
 const InputGreffier = () => {
   const [nom, setNom] = useState("");
@@ -9,14 +10,14 @@ const InputGreffier = () => {
   const [date_nais, setDate_nais] = useState("");
   const [adresse, setAdresse] = useState("");
   const [etat_civile, setEtat_civile] = useState("");
-  const [nombre_e, setNombre_e] = useState("");
+  const [nombre_e, setNombre_e] = useState(0);
   const [type_payement, setType_payement] = useState("");
-  const [base, setBase] = useState("");
-  const [cin, setCin] = useState("");
-  const [tel, setTel] = useState("");
-  const [categorie, setCategorie] = useState("");
-  const [echelon, setEchelon] = useState("");
-  const [crss, setCrss] = useState("");
+  const [base, setBase] = useState(0);
+  const [cin, setCin] = useState(0);
+  const [tel, setTel] = useState(0);
+  const [categorie, setCategorie] = useState(0);
+  const [echelon, setEchelon] = useState(0);
+  const [crss, setCrss] = useState(0);
   const [contrat, setContrat] = useState("");
   const [sexe, setSexe] = useState("");
   const [date_emb, setDate_emb] = useState("");
@@ -78,11 +79,11 @@ const InputGreffier = () => {
 
           <div className="row">
             <div className="input-group mb-3">
-              <span className="input-group-text  ">Data de naissance :</span>
-              <input type="text"
-                className="form-control"
-                value={date_nais}
-                onChange={e => setDate_nais(e.target.value)} />
+              <span className="input-group-text  ">Date de naissance :</span>
+              
+              <CalendarComp changecalendar={(e)=>setDate_nais(e)} calendar={date_nais}/>
+              
+              
             </div>
           </div>
 
@@ -214,11 +215,10 @@ const InputGreffier = () => {
           <div className="row">
             <div className="input-group mb-3">
               <span className="input-group-text  ">Date_emb :</span>
-              <input type="text"
-                className="form-control"
-                value={date_emb}
-                onChange={e => setDate_emb(e.target.value)}
-              />
+
+              <CalendarComp changecalendar={(e)=>setDate_emb(e)} calendar={date_emb}/>
+
+              
             </div>
           </div>
 
