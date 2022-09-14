@@ -124,7 +124,7 @@ const InputService = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="light" id="valider"
-            onClick={()=>{handleClose();onSubmitForm()}}>Valider</Button>
+            onClick={(e)=>{handleClose();onSubmitForm(e)}}>Valider</Button>
           <Button variant="dark" data-bs-dismiss="modal" onClick={handleClose}>Fermer</Button>
         </Modal.Footer>
       </Modal>
