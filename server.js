@@ -826,7 +826,7 @@ app.get("/services/list", async (req, res) => {
   }
 });
 
-app.get("/services/list", async (req, res) => {
+app.get("/services/listt", async (req, res) => {
   try{
     const { q } = req.query;
 

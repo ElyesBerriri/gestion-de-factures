@@ -46,7 +46,7 @@ const ListServices = () => {
 
   const getservice = async () => {
     try {
-      const response = await fetch(`/services/list/?q=${query}`);
+      const response = await fetch(`/services/listt/?q=${query}`);
       const jsonData = await response.json();
       setservice(jsonData);
     } catch (err) {
@@ -63,7 +63,7 @@ const ListServices = () => {
       <h1 className='title' >Liste des Administrations</h1>
       <div className="rechercheajout">
         <InputService />
-        <Search setQuery={(e) => setQuery(e.target.value.toLowerCase())} />
+        <Search setQuery={(e) => setQuery(e)} />
       </div>
       <div className="table-responsive mytable-56service">
         <table className="table table-hover text-center">
