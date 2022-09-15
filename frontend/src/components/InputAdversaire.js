@@ -4,12 +4,12 @@ import Modal from 'react-bootstrap/Modal';
 import { GoPlus } from "react-icons/go";
 
 const InputAdversaire = (props) => {
-  const [nom, setNom] = useState("*");
-  const [registre, setRegistre] = useState("*");
-  const [adresse, setAdresse] = useState("*");
-  const [adresse_d, setAdressed] = useState("*");
-  const [avocat, setAvocat] = useState("*");
-  const [adresse_a, setAdresseav] = useState("*");
+  const [nom, setNom] = useState("-");
+  const [registre, setRegistre] = useState("-");
+  const [adresse, setAdresse] = useState("-");
+  const [adresse_d, setAdressed] = useState("-");
+  const [avocat, setAvocat] = useState("-");
+  const [adresse_a, setAdresseav] = useState("-");
   const [dossier_id, setidd] = useState(10);
   const [brouillon, setbrouillon] = useState("oui");
   const [show, setShow] = useState(false);
@@ -25,12 +25,12 @@ const InputAdversaire = (props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
       });
-      setNom("*");
-      setRegistre("*");
-      setAdresse("*");
-      setAdresseav("*");
-      setAvocat("*");
-      setAdressed("*");
+      setNom("-");
+      setRegistre("-");
+      setAdresse("-");
+      setAdresseav("-");
+      setAvocat("-");
+      setAdressed("-");
       props.changeadv(props.dossier_id);
     } catch (err) {
       console.error(err.message);
@@ -59,8 +59,8 @@ const InputAdversaire = (props) => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Nom et Prénom :</span>
               <input type="text" className="form-control "
-                value={nom}
-                onChange={e => setNom(e.target.value)} />
+                placeholder="Nom"
+                onChange={e => setNom(e.target.value || "-")} />
             </div>
           </div>
 
@@ -68,8 +68,8 @@ const InputAdversaire = (props) => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Registre :</span>
               <input type="text" className="form-control "
-                value={registre}
-                onChange={e => setRegistre(e.target.value)} />
+                placeholder="Registre"
+                onChange={e => setRegistre(e.target.value || "-")} />
             </div>
           </div>
 
@@ -77,8 +77,8 @@ const InputAdversaire = (props) => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Adresse :</span>
               <input type="text" className="form-control "
-                value={adresse}
-                onChange={e => setAdresse(e.target.value)} />
+                placeholder="Adresse"
+                onChange={e => setAdresse(e.target.value || "-")} />
             </div>
           </div>
 
@@ -86,8 +86,8 @@ const InputAdversaire = (props) => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Adresse Designée :</span>
               <input type="text" className="form-control "
-                value={adresse_d}
-                onChange={e => setAdressed(e.target.value)} />
+                placeholder="Adresse Designée"
+                onChange={e => setAdressed(e.target.value || "-")} />
             </div>
           </div>
 
@@ -95,8 +95,8 @@ const InputAdversaire = (props) => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Avocat :</span>
               <input type="text" className="form-control "
-                value={avocat}
-                onChange={e => setAvocat(e.target.value)} />
+                placeholder="Avocat"
+                onChange={e => setAvocat(e.target.value || "-")} />
             </div>
           </div>
 
@@ -104,8 +104,8 @@ const InputAdversaire = (props) => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Adresse avocat :</span>
               <input type="text" className="form-control "
-                value={adresse_a}
-                onChange={e => setAdresseav(e.target.value)} />
+                placeholder="Adresse avocat"
+                onChange={e => setAdresseav(e.target.value || "-")} />
             </div>
           </div>
         </Modal.Body>

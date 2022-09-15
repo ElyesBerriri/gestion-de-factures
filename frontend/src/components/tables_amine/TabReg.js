@@ -5,16 +5,16 @@ import Button from 'react-bootstrap/Button';
 const TabReg = (props) => {
 
   const [reglement, setReglement] = useState([]);
-  const [reg, setReg] = useState("--");
-  const [montant, setMontant] = useState("--");
-  const [typee, setTypee] = useState("--");
-  const [bare, setBare] = useState("--");
-  const [num_operation, setNumOp] = useState("--");
-  const [banque, setBanque] = useState("--");
-  const [porteur, setPorteur] = useState("--");
+  const [reg, setReg] = useState("-");
+  const [montant, setMontant] = useState("-");
+  const [typee, setTypee] = useState("-");
+  const [bare, setBare] = useState("-");
+  const [num_operation, setNumOp] = useState("-");
+  const [banque, setBanque] = useState("-");
+  const [porteur, setPorteur] = useState("-");
   const [dossier_id, setidd] = useState(10);
-  const [echeance, setEcheance] = useState("--");
-  const [idreg, setIdReg] = useState("--");
+  const [echeance, setEcheance] = useState("-");
+  const [idreg, setIdReg] = useState("-");
   const [row, setRow] = useState("");
 
   const getreglement = async (id, a) => {

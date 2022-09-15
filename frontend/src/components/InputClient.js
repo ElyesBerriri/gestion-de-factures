@@ -169,8 +169,7 @@ const InputClient = () => {
                                     <span className="input-group-text">Raison :</span>
                                     <input type="text" className="form-control"
                                         placeholder="raison"
-                                        value={raison}
-                                        onChange={e => setRaison(e.target.value)} />
+                                        onChange={e => setRaison(e.target.value || "*")} />
                                 </div>
                             </div>
 

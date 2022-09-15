@@ -35,7 +35,7 @@ function Facture() {
     "email": ""
   });//objet fih les données mta3 lclient. Tow tel9a esemi les données louta fel code
   const [email, setemail] = useState("");//email lclient
-  const [payment, setpayment] = useState("--");//mode de payment mta3 lclient. Tow tel9a les valeurs louta
+  const [payment, setpayment] = useState("-");//mode de payment mta3 lclient. Tow tel9a les valeurs louta
   const [tabe3, setetabe3] = useState(0);//الطابع الجبائي
   const [kima, setkima] = useState(0);//الاداء على القيمة المضافة
   const [khasm, setkhasm] = useState(0);//الخصم من المورد
@@ -167,7 +167,8 @@ function Facture() {
                     <div className="input-group  mb-4">
                       <input type="text" className="form-control"
                         defaultValue={client.email}
-                        onChange={e => setemail(e.target.value)}
+                        placeholder="email"
+                        onChange={e => setemail(e.target.value||"-")}
                       />
                       <span className="input-group-text">: الايمايل</span>
                     </div>
@@ -195,8 +196,8 @@ function Facture() {
 
                       <h6 style={{ paddingRight: 0, height: '1.3cm' }}>
                         <input type="number" className="form-control"
-                          value={kima}
-                          onChange={e => setkima(e.target.value)}
+                          placeholder="0"
+                          onChange={e => setkima(e.target.value||0)}
                         /></h6>
                     </div>
                   </div>
@@ -205,8 +206,8 @@ function Facture() {
                     <div className="container">
                       <h6 style={{ paddingRight: 0, height: '1.3cm' }}>
                         <input type="number" className="form-control"
-                          value={khasm}
-                          onChange={e => setkhasm(e.target.value)}
+                          placeholder="0"
+                          onChange={e => setkhasm(e.target.value||0)}
                         /></h6>
                     </div>
                   </div>
@@ -215,8 +216,8 @@ function Facture() {
                     <div className="container">
                       <h6 style={{ paddingRight: 0, height: '1.3cm' }}>
                         <input type="number" className="form-control"
-                          value={tabe3}
-                          onChange={e => setetabe3(e.target.value)}
+                          placeholder="0"
+                          onChange={e => setetabe3(e.target.value||0)}
                         /></h6>
                     </div>
                   </div>
@@ -282,7 +283,9 @@ function Facture() {
               </div>
 
               <div className="myRow" style={{ backgroundColor: '#BBA14A' }}>
-                <input id="txt" style={{ border: '0.1mm solid black', textAlign: 'center', fontSize: '0.39cm', fontWeight: 500, lineHeight: 1.2, backgroundColor: '#BBA14A', width: '3.56cm' }} value={0} readOnly />
+                <input id="txt" style={{ border: '0.1mm solid black', textAlign: 'center', fontSize: '0.39cm', fontWeight: 500, lineHeight: 1.2, backgroundColor: '#BBA14A', width: '3.56cm' }} value={
+                  (-parseFloat(khasm || 0).toFixed(3) - (-parseFloat(kima || 0).toFixed(3) - parseFloat(tabe3 || 0).toFixed(3))).toFixed(3)
+                } readOnly />
                 <h6 style={{ border: '0.1mm solid black', paddingRight: 0, width: '6.4cm' }}>المبلغ الصافي</h6>
                 <h6 style={{ border: '0.1mm solid black', paddingRight: 0, width: '9.99cm', color: 'transparent' }}>-</h6>
               </div>

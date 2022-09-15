@@ -316,8 +316,8 @@ const EditClient = ({ client }) => {
                   <span className="input-group-text ">Email :</span>
                   <input type="email" className="form-control"
                     placeholder="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)} />
+                    defaultValue={email}
+                    onChange={e => setEmail(e.target.value || "-")} />
                 </div>
               </div>
             </div>
