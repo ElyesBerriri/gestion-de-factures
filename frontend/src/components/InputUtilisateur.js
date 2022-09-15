@@ -3,9 +3,9 @@ import { Button } from "react-bootstrap";
 import { GoPlus } from "react-icons/go";
 
 const InputUtilisateur = () => {
-  const [login, setLogin] = useState("");
-  const [pwd, setPwd] = useState("");
-  const [domaine, setDomaine] = useState("");
+  const [login, setLogin] = useState("-");
+  const [pwd, setPwd] = useState("-");
+  const [domaine, setDomaine] = useState("-");
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -28,9 +28,9 @@ const InputUtilisateur = () => {
       
         <button data-bs-toggle="modal" data-bs-target="#utid0" className="ajouter ajoutdossier" 
         onClick={() => {
-          setLogin("");
-          setPwd("");
-          setDomaine("");
+          setLogin("-");
+          setPwd("-");
+          setDomaine("-");
         }} ><GoPlus color="#BBA14A" fontSize="1.5em" />
         </button>
      
@@ -38,7 +38,7 @@ const InputUtilisateur = () => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">Ajout d'un utilisateur</h4>
+              <h4 className="modal-title">Ajouter un utilisateur</h4>
               <button type="button" className="btn-close" data-bs-dismiss="modal">
               </button>
             </div>
@@ -48,17 +48,15 @@ const InputUtilisateur = () => {
                   <span className="input-group-text">Login :</span>
                   <input type="text" className="form-control"
                     placeholder="login"
-                    value={login}
-                    onChange={e => setLogin(e.target.value)} />
+                    onChange={e => setLogin(e.target.value||"-")} />
                 </div>
               </div>
               <div className="row">
                 <div className="input-group mb-3">
-                  <span className="input-group-text">Pwd :</span>
+                  <span className="input-group-text">Mot de passe :</span>
                   <input type="text" className="form-control"
-                    placeholder="pwd"
-                    value={pwd}
-                    onChange={e => setPwd(e.target.value)} />
+                    placeholder="Mot de passe"
+                    onChange={e => setPwd(e.target.value||"-")} />
                 </div>
               </div>
               <div className="row">
@@ -66,8 +64,7 @@ const InputUtilisateur = () => {
                   <span className="input-group-text">Domaine :</span>
                   <input type="text" className="form-control"
                     placeholder="domaine"
-                    value={domaine}
-                    onChange={e => setDomaine(e.target.value)} />
+                    onChange={e => setDomaine(e.target.value||"-")} />
                 </div>
               </div>
               <div className="modal-footer">

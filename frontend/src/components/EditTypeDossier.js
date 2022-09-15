@@ -43,9 +43,9 @@ const EditTypeDossier = ({ type }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text">Libellé :</span>
                   <input type="text" className="form-control"
-                    placeholder="libellé"
-                    value={libelle}
-                    onChange={e => setLibelle(e.target.value)} />
+                    placeholder="Libellé"
+                    defaultValue={libelle}
+                    onChange={e => setLibelle(e.target.value||"-")} />
                 </div>
               </div>
             </div>

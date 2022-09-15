@@ -4,7 +4,7 @@ import { GoPlus } from "react-icons/go";
 import Modal from 'react-bootstrap/Modal';
 
 const InputTrib = () => {
-  const [lieux, setlieux] = useState("");
+  const [lieux, setlieux] = useState("-");
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -47,8 +47,8 @@ const InputTrib = () => {
             <input
         type="text"
         className="form-control"
-        value={lieux}
-        onChange={e => setlieux(e.target.value)}
+        placeholder="Tribunal"
+        onChange={e => setlieux(e.target.value||"-")}
       />
           </div>
     </div></Modal.Body>

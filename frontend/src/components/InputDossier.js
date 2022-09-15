@@ -4,7 +4,7 @@ import { GoPlus } from "react-icons/go";
 import Modal from 'react-bootstrap/Modal';
 
 const InputDossier = () => {
-  const [libelle, setLibelle] = useState("");
+  const [libelle, setLibelle] = useState("-");
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -49,8 +49,8 @@ const InputDossier = () => {
               <input
           type="text"
           className="form-control"
-          value={libelle}
-          onChange={e => setLibelle(e.target.value)}
+          placeholder="Libellé"
+          onChange={e => setLibelle(e.target.value||"-")}
         />
       </div>
       </div>

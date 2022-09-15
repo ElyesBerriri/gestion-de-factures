@@ -5,8 +5,8 @@ import { GoPlus } from "react-icons/go";
  
 
 const Inputfacture = (props) => {
-  const [sujet, setsujet] = useState("--");
-  const [resource, setresource] = useState("--");
+  const [sujet, setsujet] = useState("-");
+  const [resource, setresource] = useState("-");
   const [somme, setsomme] = useState(0);
   
   const [show, setShow] = useState(false);
@@ -17,8 +17,8 @@ const Inputfacture = (props) => {
   const onSubmitForm =() =>{
         props.setenquetes([...props.enquetes,{enquete_id:props.id,sujet:sujet,resource:resource,somme:somme}]);
         props.setid(props.id+1);
-        setsujet("--");
-        setresource("--");
+        setsujet("-");
+        setresource("-");
         setsomme(0);
   };
 
@@ -50,8 +50,7 @@ const Inputfacture = (props) => {
     <div className="row">
       <div className="input-group mb-3">
         <input type="text" className="form-control "  
-         value={sujet}
-        onChange={e => setsujet(e.target.value)}/>
+        onChange={e => setsujet(e.target.value||"-")}/>
         <span className="input-group-text ">الموضوع</span>
     </div>
     </div>
@@ -60,8 +59,7 @@ const Inputfacture = (props) => {
     <div className="row">
       <div className="input-group mb-3">
         <input type="text" className="form-control "  
-         value={resource}
-         onChange={e => setresource(e.target.value)}/>
+         onChange={e => setresource(e.target.value||"-")}/>
       <span className="input-group-text ">المرجع</span>
     </div>
     </div>
@@ -69,8 +67,7 @@ const Inputfacture = (props) => {
     <div className="row">
       <div className="input-group mb-3">
         <input type="number" className="form-control "  
-        value={somme}
-        onChange={e => setsomme(e.target.value)}/>
+        onChange={e => setsomme(e.target.value||0)}/>
         <span className="input-group-text ">المبلغ خارج الضريبة</span>
 
     </div>

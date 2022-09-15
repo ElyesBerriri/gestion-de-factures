@@ -44,8 +44,8 @@ const EditTrib = ({ trib, id }) => {
                   <input
                     type="text"
                     className="form-control"
-                    value={lieux}
-                    onChange={e => setlieux(e.target.value)}
+                    defaultValue={lieux}
+                    onChange={e => setlieux(e.target.value||"-")}
                   />
                 </div>
               </div>
