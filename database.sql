@@ -11,6 +11,11 @@ CREATE TABLE parametree(
   transport real
 );
 
+CREATE TABLE facture(
+  facture INTEGER,
+  datee INTEGER
+);
+
 CREATE TABLE collaborateurs(
   collab_id SERIAL PRIMARY KEY,
   nom VARCHAR(25),

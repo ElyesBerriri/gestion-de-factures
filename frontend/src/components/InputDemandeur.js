@@ -5,12 +5,12 @@ import { GoPlus } from "react-icons/go";
  
 
 const InputDemandeur = (props) => {
-  const [nom, setNom] = useState("--");
-  const [CIN, setCin] = useState("--");
-  const [adresse, setAdresse] = useState("--");
-  const [adresse_d, setAdresseD] = useState("--");
-  const [tel, setTel] = useState("--");
-  const [fax, setFax] = useState("--");
+  const [nom, setNom] = useState("-");
+  const [CIN, setCin] = useState("-");
+  const [adresse, setAdresse] = useState("-");
+  const [adresse_d, setAdresseD] = useState("-");
+  const [tel, setTel] = useState("-");
+  const [fax, setFax] = useState("-");
   const [dossier_id, setidd] = useState(10);
   const [brouillon, setbrouillon] = useState("oui");
   const [show, setShow] = useState(false);
@@ -28,12 +28,12 @@ const InputDemandeur = (props) => {
         });
      
         //props.changedemandeur(props.demandeur+" , "+nom);
-        setFax("--");
-        setAdresse("--");
-        setNom("--");
-        setCin("--");
-        setAdresseD("--");
-        setTel("--")
+        setFax("-");
+        setAdresse("-");
+        setNom("-");
+        setCin("-");
+        setAdresseD("-");
+        setTel("-")
         props.changedem(props.dossier_id);
          
      } catch (err) {
@@ -63,18 +63,18 @@ const InputDemandeur = (props) => {
         <div className="row">
       <div className="input-group mb-3">
       <span className="input-group-text ">Nom et Prénom :</span>
-        <input type="text" className="form-control "  
-         value={nom}
-        onChange={e => setNom(e.target.value)}/>
+        <input type="text" className="form-control"
+        placeholder="Entrez le nom"
+        onChange={e => setNom(e.target.value || "-")}/>
     </div>
     </div>
 
     <div className="row">
       <div className="input-group mb-3">
       <span className="input-group-text ">CIN :</span>
-        <input type="text" className="form-control "  
-         value={CIN}
-        onChange={e => setCin(e.target.value)}/>
+        <input type="text" className="form-control "
+        placeholder="Entrez le cin"
+        onChange={e => setCin(e.target.value || "-")}/>
     </div>
     </div>
 
@@ -82,36 +82,36 @@ const InputDemandeur = (props) => {
     <div className="row">
       <div className="input-group mb-3">
       <span className="input-group-text ">Adresse :</span>
-        <input type="text" className="form-control "  
-         value={adresse}
-         onChange={e => setAdresse(e.target.value)}/>
+        <input type="text" className="form-control "
+        placeholder="Entrez l'adresse"
+         onChange={e => setAdresse(e.target.value || "-")}/>
     </div>
     </div>
 
     <div className="row">
       <div className="input-group mb-3">
       <span className="input-group-text ">Adresse Designée :</span>
-        <input type="text" className="form-control "  
-        value={adresse_d}
-        onChange={e => setAdresseD(e.target.value)}/>
+        <input type="text" className="form-control " 
+        placeholder="Entrez l'adresse designée"
+        onChange={e => setAdresseD(e.target.value || "-")}/>
     </div>
     </div>
      
     <div className="row">
       <div className="input-group mb-3">
       <span className="input-group-text ">Téléphone :</span>
-        <input type="text" className="form-control "  
-         value={tel}
-         onChange={e => setTel(e.target.value)}/>
+        <input type="text" className="form-control "
+        placeholder="Entrez le téléphone"
+         onChange={e => setTel(e.target.value || "-")}/>
     </div>
     </div>
     
     <div className="row">
       <div className="input-group mb-3">
       <span className="input-group-text ">Fax :</span>
-        <input type="text" className="form-control "  
-         value={fax}
-         onChange={e => setFax(e.target.value)}/>
+        <input type="text" className="form-control"
+        placeholder="Entrez le fax"
+         onChange={e => setFax(e.target.value || "-")}/>
     </div>
     </div>
      

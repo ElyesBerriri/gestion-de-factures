@@ -15,7 +15,7 @@ const TabReg = (props) => {
   const [dossier_id, setidd] = useState(10);
   const [echeance, setEcheance] = useState("-");
   const [idreg, setIdReg] = useState("-");
-  const [row, setRow] = useState("-");
+  const [row, setRow] = useState("");
 
   const getreglement = async (id, a) => {
     if (id !== 0) {

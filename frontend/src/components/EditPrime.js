@@ -54,18 +54,18 @@ const EditPrime = ({ prime }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text">Libellé :</span>
                   <input type="text" className="form-control"
-                    placeholder="libellé"
-                    value={libelle}
-                    onChange={e => setLibelle(e.target.value)} />
+                    placeholder="Libellé"
+                    defaultValue={libelle}
+                    onChange={e => setLibelle(e.target.value||"-")} />
                 </div>
               </div>
               <div className="row">
                 <div className="input-group">
                   <span className="input-group-text">Montant :</span>
                   <input type="number" className="form-control"
-                    placeholder="montant"
-                    value={montant}
-                    onChange={e => setMontant(e.target.value)} />
+                    placeholder="Montant"
+                    defaultValue={montant}
+                    onChange={e => setMontant(e.target.value||0)} />
                 </div>
               </div>
               <div className="form-check mt-3">

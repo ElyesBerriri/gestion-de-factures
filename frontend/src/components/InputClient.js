@@ -4,23 +4,23 @@ import { GoPlus } from "react-icons/go";
 import Checkbox from "./Checkbox";
 
 const InputClient = () => {
-    const [collaborateur, setCollaborateur] = useState("--");
-    const [code_client, setCode_client] = useState("0/");
+    const [collaborateur, setCollaborateur] = useState("-");
+    const [code_client, setCode_client] = useState("0/-");
     const [code_client1, setCode_client1] = useState(0);
-    const [code_client2, setCode_client2] = useState("");
-    const [raison, setRaison] = useState("*");
-    const [situation_fiscale, setSituation_fiscale] = useState("*");
-    const [type_client, setType_client] = useState("*");
-    const [matricule, setMatricule] = useState("*");
-    const [ville, setVille] = useState("*");
-    const [rue, setRue] = useState("*");
+    const [code_client2, setCode_client2] = useState("-");
+    const [raison, setRaison] = useState("-");
+    const [situation_fiscale, setSituation_fiscale] = useState("-");
+    const [type_client, setType_client] = useState("-");
+    const [matricule, setMatricule] = useState("-");
+    const [ville, setVille] = useState("-");
+    const [rue, setRue] = useState("-");
     const [num, setNum] = useState(0);
     const [code_postale, setCode_postale] = useState(0);
-    const [adresse, setAdresse] = useState("*");
-    const [activite, setActivite] = useState("*");
-    const [tel, setTel] = useState("*");
-    const [fax, setFax] = useState("*");
-    const [email, setEmail] = useState("*");
+    const [adresse, setAdresse] = useState("-");
+    const [activite, setActivite] = useState("-");
+    const [tel, setTel] = useState("-");
+    const [fax, setFax] = useState("-");
+    const [email, setEmail] = useState("-");
     const [collab, setCollab] = useState([]);
 
     const onSubmitForm = async (e) => {
@@ -94,24 +94,24 @@ const InputClient = () => {
                   document.getElementById(`type1client0`).checked = false;
                   document.getElementById(`type2client0`).checked = false;
                 }
-                setCollaborateur("--");
+                setCollaborateur("-");
                 document.getElementById("collabSelector0").selected = true;
-                setCode_client("0/");
+                setCode_client("0/-");
                 setCode_client1(0);
-                setCode_client2("");
-                setRaison("*");
-                setSituation_fiscale("*");
-                setType_client("*");
-                setMatricule("*");
-                setVille("*");
-                setRue("*");
+                setCode_client2("-");
+                setRaison("-");
+                setSituation_fiscale("-");
+                setType_client("-");
+                setMatricule("-");
+                setVille("-");
+                setRue("-");
                 setNum(0);
                 setCode_postale(0);
-                setAdresse("*");
-                setActivite("*");
-                setTel("*");
-                setFax("*");
-                setEmail("*");
+                setAdresse("-");
+                setActivite("-");
+                setTel("-");
+                setFax("-");
+                setEmail("-");
               }} >
                 <GoPlus color="#BBA14A" fontSize="1.5em" />
             </button>
@@ -129,7 +129,7 @@ const InputClient = () => {
                                     <span className="input-group-text ">Collaborateur :</span>
                                     <select className="form-select" aria-label="Default select example"
                                         onChange={e => setCollaborateur(e.target.options[e.target.selectedIndex].value)}>
-                                        <option value="--" defaultValue key='co0' id="collabSelector0">--</option>
+                                        <option value="-" defaultValue key='co0' id="collabSelector0">-</option>
                                         {collab.map(collab => (<option value={collab.nom} key={`co${collab.collab_id}`}>{collab.nom}</option>))}
                                     </select>
                                 </div>
@@ -146,9 +146,9 @@ const InputClient = () => {
                                         }} />
                                     <span className="input-group-text">/</span>
                                     <input type="text" className="form-control"
-                                        placeholder="code client" value={code_client2}
+                                        placeholder="Code client"
                                         onChange={e => {
-                                            setCode_client2(e.target.value.trim());
+                                            setCode_client2(e.target.value.trim()||"-");
                                         }} />
                                     <div className="m-2">
                                     <label className="form-check-label">
@@ -168,9 +168,8 @@ const InputClient = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text">Raison :</span>
                                     <input type="text" className="form-control"
-                                        placeholder="raison"
-                                        value={raison}
-                                        onChange={e => setRaison(e.target.value)} />
+                                        placeholder="Raison"
+                                        onChange={e => setRaison(e.target.value || "-")} />
                                 </div>
                             </div>
 
@@ -227,8 +226,8 @@ const InputClient = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text ">Matricule :</span>
                                     <input type="text" className="form-control"
-                                        placeholder="matricule" value={matricule}
-                                        onChange={e => setMatricule(e.target.value)} />
+                                        placeholder="Matricule" 
+                                        onChange={e => setMatricule(e.target.value||"-")} />
                                 </div>
                             </div>
 
@@ -236,8 +235,8 @@ const InputClient = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text">Ville :</span>
                                     <input type="text" className="form-control"
-                                        placeholder="ville" value={ville}
-                                        onChange={e => setVille(e.target.value)} />
+                                        placeholder="Ville" 
+                                        onChange={e => setVille(e.target.value||"-")} />
                                 </div>
                             </div>
 
@@ -245,8 +244,8 @@ const InputClient = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text ">Rue :</span>
                                     <input type="text" className="form-control"
-                                        placeholder="rue" value={rue}
-                                        onChange={e => setRue(e.target.value)} />
+                                        placeholder="Rue"
+                                        onChange={e => setRue(e.target.value||"-")} />
                                 </div>
                             </div>
 
@@ -254,8 +253,8 @@ const InputClient = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text">Numéro :</span>
                                     <input type="number" className="form-control"
-                                        placeholder="numéro" value={num}
-                                        onChange={e => setNum(e.target.value)} />
+                                        placeholder="Numéro"
+                                        onChange={e => setNum(e.target.value||0)} />
                                 </div>
                             </div>
 
@@ -263,8 +262,8 @@ const InputClient = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text ">Code Postale :</span>
                                     <input type="number" className="form-control"
-                                        placeholder="code postale" value={code_postale}
-                                        onChange={e => setCode_postale(e.target.value)} />
+                                        placeholder="Code postale" 
+                                        onChange={e => setCode_postale(e.target.value||0)} />
                                 </div>
                             </div>
 
@@ -272,8 +271,8 @@ const InputClient = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text">Adresse :</span>
                                     <input type="text" className="form-control"
-                                        placeholder="adresse" value={adresse}
-                                        onChange={e => setAdresse(e.target.value)} />
+                                        placeholder="Adresse"
+                                        onChange={e => setAdresse(e.target.value||"-")} />
                                 </div>
                             </div>
 
@@ -281,8 +280,8 @@ const InputClient = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text ">Activité :</span>
                                     <input type="text" className="form-control"
-                                        placeholder="activité" value={activite}
-                                        onChange={e => setActivite(e.target.value)} />
+                                        placeholder="Activité" 
+                                        onChange={e => setActivite(e.target.value||"-")} />
                                 </div>
                             </div>
 
@@ -290,8 +289,8 @@ const InputClient = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text ">Téléphone :</span>
                                     <input type="text" className="form-control"
-                                        placeholder="téléphone" value={tel}
-                                        onChange={e => setTel(e.target.value)} />
+                                        placeholder="Téléphone"
+                                        onChange={e => setTel(e.target.value||"-")} />
                                 </div>
                             </div>
 
@@ -299,8 +298,8 @@ const InputClient = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text">Fax :</span>
                                     <input type="text" className="form-control"
-                                        placeholder="fax" value={fax}
-                                        onChange={e => setFax(e.target.value)} />
+                                        placeholder="Fax"
+                                        onChange={e => setFax(e.target.value||"-")} />
                                 </div>
                             </div>
 
@@ -308,8 +307,8 @@ const InputClient = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text ">Email :</span>
                                     <input type="email" className="form-control"
-                                        placeholder="email" value={email}
-                                        onChange={e => setEmail(e.target.value)} />
+                                        placeholder="Email"
+                                        onChange={e => setEmail(e.target.value||"-")} />
                                 </div>
                             </div>
                         </div>

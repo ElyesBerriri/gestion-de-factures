@@ -118,13 +118,8 @@ const Collaborateur = (props) => {
         <div className="input-group mb-4">
           <span className="input-group-text">Part Collaborateur :</span>
           <input type="number" className="form-control"
-            defaultValue={props.part_c}
-            onChange={e => {
-              if (e.target.value != "")
-                props.changepart_c(e.target.value);
-              else
-                props.changepart_c(0);
-            }} />
+            placeholder="Part Collaborateur"
+            onChange={e => props.changepart_c(e.target.value || 0)} />
         </div>
         <div className="input-group   mb-4">
           <span className="input-group-text">Type Réglement :</span>

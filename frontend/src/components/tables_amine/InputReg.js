@@ -1,4 +1,4 @@
-import React, { Fragment,useState,useEffect }  from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { GoPlus } from "react-icons/go";
@@ -22,7 +22,7 @@ const InputReg = (props) => {
 
   const onSubmitForm = async (e) => {
     try {
-      const body = { dossier_id,hono_avo,net_payer,montant,typee,bare,num_operation,banque,porteur,echeance,broui };
+      const body = { dossier_id, hono_avo, net_payer, montant, typee, bare, num_operation, banque, porteur, echeance, broui };
       await fetch("/reglement/list", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -52,127 +52,118 @@ const InputReg = (props) => {
   return (
 
     <Fragment>
-      
-     <div className="rechercheajout">
-     <button className="ajouter ajouterr" onClick={handleShow} ><GoPlus color="#BBA14A" fontSize="1.5em" />
-      </button>
-</div>
 
-  
-<Modal show={show} onHide={handleClose} animation={false}   backdrop="static">
+      <div className="rechercheajout">
+        <button className="ajouter ajouterr" onClick={handleShow} ><GoPlus color="#BBA14A" fontSize="1.5em" />
+        </button>
+      </div>
+
+
+      <Modal show={show} onHide={handleClose} animation={false} backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Nouveau Réglement</Modal.Title>
         </Modal.Header>
-  
-        <Modal.Body> 
 
-        <div className="row">
-      <div className="input-group mb-3">
-      <span className="input-group-text ">Honoraire de l'avocat :</span>
-        <input type="number" className="form-control "  
-        placeholder="Honoraire de l'avocat"
-         //value={hono_avo}
-         onChange={e => setHonoAvo(e.target.value||0)}/>
-    </div>
-    </div>
-        
+        <Modal.Body>
 
-    <div className="row">
-      <div className="input-group mb-3">
-      <span className="input-group-text ">Net à payer :</span>
-        <input type="number" className="form-control " 
-          placeholder="Net à payer"
-          //value={net_payer}
-          onChange={e => setNetPayer(e.target.value||0)}/>
-    </div>
-    </div>
-   
-    <div className="row">
-      <div className="input-group mb-3">
-      <span className="input-group-text ">Montant :</span>
-        <input type="number" className="form-control "  
-          placeholder="Montant"
-          //value={montant}
-          onChange={e => setMontant(e.target.value||0)}/>
-    </div>
-    </div>
-   
-    <div className="row">
-      <div className="input-group mb-3">
-      <span className="input-group-text ">Type :</span>
-        <input type="text" className="form-control "  
-           placeholder="Type"
-           //value={typee}
-           onChange={e => setTypee(e.target.value||"-")}/>
-    </div>
-    </div>
-    
-    <div className="row">
-      <div className="input-group mb-3">
-      <span className="input-group-text ">Baré :</span>
-        <input type="text" className="form-control "  
-          placeholder="Baré"
-          //value={bare}
-          onChange={e => setBare(e.target.value||"-")}/>
-    </div>
-    </div>
-   
-    <div className="row">
-      <div className="input-group mb-3">
-      <span className="input-group-text ">Numéro opération :</span>
-        <input type="text" className="form-control "  
-          placeholder="Numéro opération"
-          //value={num_operation}
-          onChange={e => setNumOp(e.target.value||"-")}/>
-    </div>
-    </div>
-    
-    <div className="row">
-      <div className="input-group mb-3">
-      <span className="input-group-text ">Banque :</span>
-        <input type="text" className="form-control "  
-          placeholder="Banque"
-          //value={banque}
-          onChange={e => setBanque(e.target.value||"-")}/>
-    </div>
-    </div>
-    
-    <div className="row">
-      <div className="input-group mb-3">
-      <span className="input-group-text ">Porteur :</span>
-        <input type="text" className="form-control "  
-          placeholder="Porteur"
-          //value={porteur}
-          onChange={e => setPorteur(e.target.value||"-")}/>
-    </div>
-    </div>
-    
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text ">Honoraire de l'avocat :</span>
+              <input type="number" className="form-control "
+                placeholder="Honoraire de l'avocat"
+                onChange={e => setHonoAvo(e.target.value||0)} />
+            </div>
+          </div>
 
-    <div className="row">
-      <div className="input-group mb-3">
-      <span className="input-group-text ">Echéance :</span>
-        <input type="text" className="form-control "  
-          placeholder="Echéance"
-           //value={echeance}
-           onChange={e => setEcheance(e.target.value||"-")}/>
-    </div>
-    </div>
-    
-    </Modal.Body>
- 
-    <Modal.Footer>
-           
-           <Button variant="light" id="valider" onClick={()=>{handleClose();onSubmitForm()}}>
-             Valider
-           </Button>
-           <Button variant="dark" onClick={handleClose}>
-             Fermer
-           </Button>
-         </Modal.Footer>
-       </Modal>
-      
 
-  </Fragment>
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text ">Net à payer :</span>
+              <input type="number" className="form-control "
+                placeholder="Net à payer"
+                onChange={e => setNetPayer(e.target.value||0)} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text ">Montant :</span>
+              <input type="number" className="form-control "
+                placeholder="Montant"
+                onChange={e => setMontant(e.target.value||0)} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text ">Type :</span>
+              <input type="text" className="form-control "
+                placeholder="Type"
+                onChange={e => setTypee(e.target.value||"-")} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text ">Baré :</span>
+              <input type="text" className="form-control "
+                placeholder="Baré"
+                onChange={e => setBare(e.target.value||"-")} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text ">Numéro d'opération :</span>
+              <input type="text" className="form-control "
+                placeholder="Numéro d'opération"
+                onChange={e => setNumOp(e.target.value||"-")} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text ">Banque :</span>
+              <input type="text" className="form-control "
+                placeholder="Banque"
+                onChange={e => setBanque(e.target.value||"-")} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text ">Porteur :</span>
+              <input type="text" className="form-control "
+                placeholder="Porteur"
+                onChange={e => setPorteur(e.target.value||"-")} />
+            </div>
+          </div>
+
+
+          <div className="row">
+            <div className="input-group mb-3">
+              <span className="input-group-text ">Echéance :</span>
+              <input type="text" className="form-control "
+                placeholder="Echéance"
+                onChange={e => setEcheance(e.target.value||"-")} />
+            </div>
+          </div>
+
+        </Modal.Body>
+
+        <Modal.Footer>
+
+          <Button variant="light" id="valider" onClick={() => { handleClose(); onSubmitForm() }}>
+            Valider
+          </Button>
+          <Button variant="dark" onClick={handleClose}>
+            Fermer
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+
+    </Fragment>
 
   );
 };
