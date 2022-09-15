@@ -4,9 +4,9 @@ import { GoPlus } from "react-icons/go";
 import Modal from 'react-bootstrap/Modal';
 
 const InputHono = () => {
-  const [lib_arab, setLib_arab] = useState("");
-  const [lib_fr, setLib_fr] = useState("");
-  const [montant, setMontant] = useState("");
+  const [lib_arab, setLib_arab] = useState("-");
+  const [lib_fr, setLib_fr] = useState("-");
+  const [montant, setMontant] = useState(0);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -49,8 +49,9 @@ const InputHono = () => {
               <input
           type="text"
           className="form-control"
-          value={lib_arab}
-          onChange={e => setLib_arab(e.target.value)}
+          placeholder="Libellé en arabe"
+          //value={lib_arab}
+          onChange={e => setLib_arab(e.target.value||"-")}
         />
       </div>
       </div>
@@ -62,8 +63,9 @@ const InputHono = () => {
               <input
           type="text"
           className="form-control"
-          value={lib_fr}
-          onChange={e => setLib_fr(e.target.value)}
+          placeholder="Libellé en français"
+          //value={lib_fr}
+          onChange={e => setLib_fr(e.target.value||"-")}
         />
       </div>
       </div>
@@ -73,10 +75,11 @@ const InputHono = () => {
       <span className="input-group-text ">Montant :</span>
 
               <input
-          type="text"
+          type="number"
           className="form-control"
-          value={montant}
-          onChange={e => setMontant(e.target.value)}
+          placeholder="Montant"
+          //value={montant}
+          onChange={e => setMontant(e.target.value||0)}
         />
       </div>
       </div>

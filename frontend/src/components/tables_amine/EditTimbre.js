@@ -57,8 +57,9 @@ const EditTimbre = ({ timbre }) => {
                   <input
                     type="text"
                     className="form-control"
-                    value={libelle}
-                    onChange={e => setLibelle(e.target.value)} />
+                    placeholder="Libellé"
+                    defaultValue={libelle}
+                    onChange={e => setLibelle(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -68,8 +69,9 @@ const EditTimbre = ({ timbre }) => {
                   <input
                     type="number"
                     className="form-control"
-                    value={montant}
-                    onChange={e => setMontant(e.target.value)} />
+                    placeholder="Montant"
+                    defaultValue={montant}
+                    onChange={e => setMontant(e.target.value||0)} />
                 </div>
               </div>
               </Modal.Body>

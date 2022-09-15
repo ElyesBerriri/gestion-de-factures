@@ -56,8 +56,9 @@ const EditHono = ({ hono }) => {
                   <input
                     type="text"
                     className="form-control"
-                    value={lib_arab}
-                    onChange={e => setLib_arab(e.target.value)}
+                    placeholder="Libellé en arabe"
+                    defaultValue={lib_arab}
+                    onChange={e => setLib_arab(e.target.value||"-")}
                   />
                 </div>
               </div>
@@ -68,8 +69,9 @@ const EditHono = ({ hono }) => {
                   <input
                     type="text"
                     className="form-control"
-                    value={lib_fr}
-                    onChange={e => setLib_fr(e.target.value)} />
+                    placeholder="Libellé en français"
+                    defaultValue={lib_fr}
+                    onChange={e => setLib_fr(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -79,8 +81,9 @@ const EditHono = ({ hono }) => {
                   <input
                     type="number"
                     className="form-control"
-                    value={montant}
-                    onChange={e => setMontant(e.target.value)} />
+                    placeholder="Montant"
+                    defaultValue={montant}
+                    onChange={e => setMontant(e.target.value||0)} />
                 </div>
               </div>
             </div>

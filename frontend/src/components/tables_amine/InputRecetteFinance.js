@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 
 const InputRecetteFinance = () => {
   const [libelle, setLibelle] = useState("");
-  const [montant, setMontant] = useState("");
+  const [montant, setMontant] = useState(0);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -48,17 +48,20 @@ const InputRecetteFinance = () => {
       <span className="input-group-text">Libellé :</span>
       <input type="text" 
           className="form-control  "  
-          value={libelle}
-          onChange={e => setLibelle(e.target.value)}/>
+          placeholder="Libellé"
+         // value={libelle}
+          onChange={e => setLibelle(e.target.value||"-")}/>
       </div>
       </div>
        
       <div className="row">
       <div className="input-group mb-3">
       <span className="input-group-text">Montant :</span>
-      <input type="number" className="form-control  "  
-           value={montant}
-           onChange={e => setMontant(e.target.value)}/>
+      <input type="number" 
+        className="form-control  "  
+        placeholder="Montant"
+        //value={montant}
+        onChange={e => setMontant(e.target.value||0)}/>
       </div>
       </div>
       

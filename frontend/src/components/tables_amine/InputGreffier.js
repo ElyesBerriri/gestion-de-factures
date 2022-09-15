@@ -5,25 +5,25 @@ import Modal from 'react-bootstrap/Modal';
 import CalendarComp from "../CalendarComp";
 
 const InputGreffier = () => {
-  const [nom, setNom] = useState("");
-  const [prenom, setPrenom] = useState("");
-  const [date_nais, setDate_nais] = useState("");
-  const [adresse, setAdresse] = useState("");
-  const [etat_civile, setEtat_civile] = useState("");
+  const [nom, setNom] = useState("-");
+  const [prenom, setPrenom] = useState("-");
+  const [date_nais, setDate_nais] = useState("-");
+  const [adresse, setAdresse] = useState("-");
+  const [etat_civile, setEtat_civile] = useState("-");
   const [nombre_e, setNombre_e] = useState(0);
-  const [type_payement, setType_payement] = useState("");
+  const [type_payement, setType_payement] = useState("-");
   const [base, setBase] = useState(0);
   const [cin, setCin] = useState(0);
   const [tel, setTel] = useState(0);
   const [categorie, setCategorie] = useState(0);
   const [echelon, setEchelon] = useState(0);
   const [crss, setCrss] = useState(0);
-  const [contrat, setContrat] = useState("");
-  const [sexe, setSexe] = useState("");
-  const [date_emb, setDate_emb] = useState("");
-  const [actif, setActif] = useState("");
-  const [unk1, setUnk1] = useState("");
-  const [unk2, setUnk2] = useState("");
+  const [contrat, setContrat] = useState("-");
+  const [sexe, setSexe] = useState("-");
+  const [date_emb, setDate_emb] = useState("-");
+  const [actif, setActif] = useState("-");
+  const [unk1, setUnk1] = useState("-");
+  const [unk2, setUnk2] = useState("-");
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -62,8 +62,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Nom :</span>
               <input type="text"
                 className="form-control"
-                value={nom}
-                onChange={e => setNom(e.target.value)} />
+                placeholder="Nom"
+                //value={nom}
+                onChange={e => setNom(e.target.value||"-")} />
             </div>
           </div>
 
@@ -72,8 +73,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Prénom :</span>
               <input type="text"
                 className="form-control"
-                value={prenom}
-                onChange={e => setPrenom(e.target.value)} />
+                placeholder="Prénom"
+                //value={prenom}
+                onChange={e => setPrenom(e.target.value||"-")} />
             </div>
           </div>
 
@@ -92,8 +94,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Adresse :</span>
               <input type="text"
                 className="form-control"
-                value={adresse}
-                onChange={e => setAdresse(e.target.value)}
+                placeholder="Adresse"
+                //value={adresse}
+                onChange={e => setAdresse(e.target.value||"-")}
               />
             </div>
           </div>
@@ -103,8 +106,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Etat civil :</span>
               <input type="text"
                 className="form-control"
-                value={etat_civile}
-                onChange={e => setEtat_civile(e.target.value)}
+                placeholder="Etat civil"
+                //value={etat_civile}
+                onChange={e => setEtat_civile(e.target.value||"-")}
               />
             </div>
           </div>
@@ -114,8 +118,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Nombre_e :</span>
               <input type="number"
                 className="form-control"
-                value={nombre_e}
-                onChange={e => setNombre_e(e.target.value)} />
+                placeholder="Nombre_e"
+                //value={nombre_e}
+                onChange={e => setNombre_e(e.target.value||0)} />
             </div>
           </div>
 
@@ -124,8 +129,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Type de paiement :</span>
               <input type="text"
                 className="form-control"
-                value={type_payement}
-                onChange={e => setType_payement(e.target.value)}
+                placeholder="Type de paiement"
+                //value={type_payement}
+                onChange={e => setType_payement(e.target.value||"-")}
               />
             </div>
           </div>
@@ -136,8 +142,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Base :</span>
               <input type="number"
                 className="form-control"
-                value={base}
-                onChange={e => setBase(e.target.value)} />
+                placeholder="Base"
+                //value={base}
+                onChange={e => setBase(e.target.value||0)} />
             </div>
           </div>
 
@@ -146,8 +153,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">CIN :</span>
               <input type="number"
                 className="form-control"
-                value={cin}
-                onChange={e => setCin(e.target.value)} />
+                placeholder="CIN"
+                //value={cin}
+                onChange={e => setCin(e.target.value||0)} />
             </div>
           </div>
 
@@ -156,8 +164,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Téléphone :</span>
               <input type="number"
                 className="form-control"
-                value={tel}
-                onChange={e => setTel(e.target.value)} />
+                placeholder="Téléphone"
+                //value={tel}
+                onChange={e => setTel(e.target.value||0)} />
             </div>
           </div>
 
@@ -166,8 +175,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Catégorie :</span>
               <input type="number"
                 className="form-control"
-                value={categorie}
-                onChange={e => setCategorie(e.target.value)} />
+                placeholder="Catégorie"
+                //value={categorie}
+                onChange={e => setCategorie(e.target.value||0)} />
             </div>
           </div>
 
@@ -176,8 +186,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Echelon :</span>
               <input type="number"
                 className="form-control"
-                value={echelon}
-                onChange={e => setEchelon(e.target.value)} />
+                placeholder="Echelon"
+                //value={echelon}
+                onChange={e => setEchelon(e.target.value||0)} />
             </div>
           </div>
 
@@ -186,8 +197,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Crss :</span>
               <input type="number"
                 className="form-control"
-                value={crss}
-                onChange={e => setCrss(e.target.value)} />
+                placeholder="Crss"
+                //value={crss}
+                onChange={e => setCrss(e.target.value||0)} />
             </div>
           </div>
 
@@ -197,8 +209,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Contrat :</span>
               <input type="text"
                 className="form-control"
-                value={contrat}
-                onChange={e => setContrat(e.target.value)} />
+                placeholder="Contrat"
+                //value={contrat}
+                onChange={e => setContrat(e.target.value||"-")} />
             </div>
           </div>
 
@@ -207,8 +220,9 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Sexe :</span>
               <input type="text"
                 className="form-control"
-                value={sexe}
-                onChange={e => setSexe(e.target.value)} />
+                placeholder="Sexe"
+                //value={sexe}
+                onChange={e => setSexe(e.target.value||"-")} />
             </div>
           </div>
 
@@ -227,30 +241,33 @@ const InputGreffier = () => {
               <span className="input-group-text  ">Actif :</span>
               <input type="text"
                 className="form-control"
-                value={actif}
-                onChange={e => setActif(e.target.value)}
+                placeholder=" Actif"
+                //value={actif}
+                onChange={e => setActif(e.target.value||"-")}
               />
             </div>
           </div>
 
           <div className="row">
             <div className="input-group mb-3">
-              <span className="input-group-text  ">unk1 :</span>
+              <span className="input-group-text  ">Unk1 :</span>
               <input type="text"
                 className="form-control"
-                value={unk1}
-                onChange={e => setUnk1(e.target.value)}
+                placeholder="Unk1"
+                //value={unk1}
+                onChange={e => setUnk1(e.target.value||"-")}
               />
             </div>
           </div>
 
           <div className="row">
             <div className="input-group mb-3">
-              <span className="input-group-text  ">unk2 :</span>
+              <span className="input-group-text  ">Unk2 :</span>
               <input type="text"
                 className="form-control"
-                value={unk2}
-                onChange={e => setUnk2(e.target.value)}
+                placeholder="Unk2"
+                //value={unk2}
+                onChange={e => setUnk2(e.target.value||"-")}
               />
             </div>
           </div>

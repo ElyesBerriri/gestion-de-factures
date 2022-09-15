@@ -4,8 +4,8 @@ import { GoPlus } from "react-icons/go";
 import Modal from 'react-bootstrap/Modal';
 
 const InputTimbre = () => {
-  const [libelle, setLibelle] = useState("");
-  const [montant, setMontant] = useState("");
+  const [libelle, setLibelle] = useState("-");
+  const [montant, setMontant] = useState(0);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -47,8 +47,9 @@ const InputTimbre = () => {
               <input
           type="text"
           className="form-control"
-          value={libelle}
-          onChange={e => setLibelle(e.target.value)}
+          placeholder="Libellé"
+          //value={libelle}
+          onChange={e => setLibelle(e.target.value||"-")}
         />
       </div>
       </div>
@@ -60,8 +61,9 @@ const InputTimbre = () => {
               <input
           type="number"
           className="form-control"
-          value={montant}
-          onChange={e => setMontant(e.target.value)}
+          placeholder="Montant"
+          //value={montant}
+          onChange={e => setMontant(e.target.value||0)}
         />
       </div>
       </div>

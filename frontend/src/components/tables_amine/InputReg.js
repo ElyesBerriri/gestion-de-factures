@@ -8,12 +8,12 @@ const InputReg = (props) => {
   const [hono_avo, setHonoAvo] = useState(0);
   const [net_payer, setNetPayer] = useState(0);
   const [montant, setMontant] = useState(0);
-  const [typee, setTypee] = useState("--");
-  const [bare, setBare] = useState("--");
-  const [num_operation, setNumOp] = useState("--");
-  const [banque, setBanque] = useState("--");
-  const [porteur, setPorteur] = useState("--");
-  const [echeance, setEcheance] = useState("--");
+  const [typee, setTypee] = useState("-");
+  const [bare, setBare] = useState("-");
+  const [num_operation, setNumOp] = useState("-");
+  const [banque, setBanque] = useState("-");
+  const [porteur, setPorteur] = useState("-");
+  const [echeance, setEcheance] = useState("-");
   const [broui, setbroui] = useState("oui");
   const [show, setShow] = useState(false);
 
@@ -28,15 +28,15 @@ const InputReg = (props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
       });
-      setEcheance("--");
-      setPorteur("--");
-      setBanque("--");
-      setNumOp("--");
+      setEcheance("-");
+      setPorteur("-");
+      setBanque("-");
+      setNumOp("-");
       setNetPayer(0);
       setHonoAvo(0);
       setMontant(0);
-      setTypee("--");
-      setBare("--");
+      setTypee("-");
+      setBare("-");
       
       props.changereg(props.dossier_id);
     } catch (err) {
@@ -70,8 +70,9 @@ const InputReg = (props) => {
       <div className="input-group mb-3">
       <span className="input-group-text ">Honoraire de l'avocat :</span>
         <input type="number" className="form-control "  
-         value={hono_avo}
-         onChange={e => setHonoAvo(e.target.value)}/>
+        placeholder="Honoraire de l'avocat"
+         //value={hono_avo}
+         onChange={e => setHonoAvo(e.target.value||0)}/>
     </div>
     </div>
         
@@ -79,9 +80,10 @@ const InputReg = (props) => {
     <div className="row">
       <div className="input-group mb-3">
       <span className="input-group-text ">Net à payer :</span>
-        <input type="number" className="form-control "  
-          value={net_payer}
-          onChange={e => setNetPayer(e.target.value)}/>
+        <input type="number" className="form-control " 
+          placeholder="Net à payer"
+          //value={net_payer}
+          onChange={e => setNetPayer(e.target.value||0)}/>
     </div>
     </div>
    
@@ -89,8 +91,9 @@ const InputReg = (props) => {
       <div className="input-group mb-3">
       <span className="input-group-text ">Montant :</span>
         <input type="number" className="form-control "  
-          value={montant}
-          onChange={e => setMontant(e.target.value)}/>
+          placeholder="Montant"
+          //value={montant}
+          onChange={e => setMontant(e.target.value||0)}/>
     </div>
     </div>
    
@@ -98,8 +101,9 @@ const InputReg = (props) => {
       <div className="input-group mb-3">
       <span className="input-group-text ">Type :</span>
         <input type="text" className="form-control "  
-           value={typee}
-           onChange={e => setTypee(e.target.value)}/>
+           placeholder="Type"
+           //value={typee}
+           onChange={e => setTypee(e.target.value||"-")}/>
     </div>
     </div>
     
@@ -107,8 +111,9 @@ const InputReg = (props) => {
       <div className="input-group mb-3">
       <span className="input-group-text ">Baré :</span>
         <input type="text" className="form-control "  
-          value={bare}
-          onChange={e => setBare(e.target.value)}/>
+          placeholder="Baré"
+          //value={bare}
+          onChange={e => setBare(e.target.value||"-")}/>
     </div>
     </div>
    
@@ -116,8 +121,9 @@ const InputReg = (props) => {
       <div className="input-group mb-3">
       <span className="input-group-text ">Numéro opération :</span>
         <input type="text" className="form-control "  
-          value={num_operation}
-          onChange={e => setNumOp(e.target.value)}/>
+          placeholder="Numéro opération"
+          //value={num_operation}
+          onChange={e => setNumOp(e.target.value||"-")}/>
     </div>
     </div>
     
@@ -125,8 +131,9 @@ const InputReg = (props) => {
       <div className="input-group mb-3">
       <span className="input-group-text ">Banque :</span>
         <input type="text" className="form-control "  
-          value={banque}
-          onChange={e => setBanque(e.target.value)}/>
+          placeholder="Banque"
+          //value={banque}
+          onChange={e => setBanque(e.target.value||"-")}/>
     </div>
     </div>
     
@@ -134,8 +141,9 @@ const InputReg = (props) => {
       <div className="input-group mb-3">
       <span className="input-group-text ">Porteur :</span>
         <input type="text" className="form-control "  
-          value={porteur}
-          onChange={e => setPorteur(e.target.value)}/>
+          placeholder="Porteur"
+          //value={porteur}
+          onChange={e => setPorteur(e.target.value||"-")}/>
     </div>
     </div>
     
@@ -144,8 +152,9 @@ const InputReg = (props) => {
       <div className="input-group mb-3">
       <span className="input-group-text ">Echéance :</span>
         <input type="text" className="form-control "  
-           value={echeance}
-           onChange={e => setEcheance(e.target.value)}/>
+          placeholder="Echéance"
+           //value={echeance}
+           onChange={e => setEcheance(e.target.value||"-")}/>
     </div>
     </div>
     
