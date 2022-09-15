@@ -141,8 +141,8 @@ const EditClient = ({ client }) => {
                       else
                         return (<option value={collab.nom} key={`cs${collab.collab_id}`}>{collab.nom}</option>)
                     })}
-                    {(selectTest === false) ? <option value="--" defaultChecked
-                      id={"collabSelector" + client.client_id} key={'cs0'}>--</option> : <option value="--">--</option>}
+                    {(selectTest === false) ? <option value="-" defaultChecked
+                      id={"collabSelector" + client.client_id} key={'cs0'}>-</option> : <option value="-">-</option>}
                   </select>
                 </div>
               </div>
@@ -166,9 +166,9 @@ const EditClient = ({ client }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text">Raison :</span>
                   <input type="text" className="form-control"
-                    placeholder="raison"
-                    value={raison}
-                    onChange={e => setRaison(e.target.value)} />
+                    placeholder="Raison"
+                    defaultValue={raison}
+                    onChange={e => setRaison(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -225,9 +225,9 @@ const EditClient = ({ client }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text ">Matricule :</span>
                   <input type="text" className="form-control"
-                    placeholder="matricule"
-                    value={matricule}
-                    onChange={e => setMatricule(e.target.value)} />
+                    placeholder="Matricule"
+                    defaultValue={matricule}
+                    onChange={e => setMatricule(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -235,9 +235,9 @@ const EditClient = ({ client }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text">Ville :</span>
                   <input type="text" className="form-control"
-                    placeholder="ville"
-                    value={ville}
-                    onChange={e => setVille(e.target.value)} />
+                    placeholder="Ville"
+                    defaultValue={ville}
+                    onChange={e => setVille(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -245,9 +245,9 @@ const EditClient = ({ client }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text ">Rue :</span>
                   <input type="text" className="form-control"
-                    placeholder="rue"
-                    value={rue}
-                    onChange={e => setRue(e.target.value)} />
+                    placeholder="Rue"
+                    defaultValue={rue}
+                    onChange={e => setRue(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -255,9 +255,9 @@ const EditClient = ({ client }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text">Numéro :</span>
                   <input type="number" className="form-control"
-                    placeholder="numéro"
-                    value={num}
-                    onChange={e => setNum(e.target.value)} />
+                    placeholder="Numéro"
+                    defaultValue={num}
+                    onChange={e => setNum(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -265,9 +265,9 @@ const EditClient = ({ client }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text ">Code Postale :</span>
                   <input type="number" className="form-control"
-                    placeholder="code postale"
-                    value={code_postale}
-                    onChange={e => setCode_postale(e.target.value)} />
+                    placeholder="Code postale"
+                    defaultValue={code_postale}
+                    onChange={e => setCode_postale(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -275,9 +275,9 @@ const EditClient = ({ client }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text">Adresse :</span>
                   <input type="text" className="form-control"
-                    placeholder="adresse"
-                    value={adresse}
-                    onChange={e => setAdresse(e.target.value)} />
+                    placeholder="Adresse"
+                    defaultValue={adresse}
+                    onChange={e => setAdresse(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -285,9 +285,9 @@ const EditClient = ({ client }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text ">Activité :</span>
                   <input type="text" className="form-control"
-                    placeholder="activité"
-                    value={activite}
-                    onChange={e => setActivite(e.target.value)} />
+                    placeholder="Activité"
+                    defaultValue={activite}
+                    onChange={e => setActivite(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -295,9 +295,9 @@ const EditClient = ({ client }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text ">Téléphone :</span>
                   <input type="text" className="form-control"
-                    placeholder="téléphone"
-                    value={tel}
-                    onChange={e => setTel(e.target.value)} />
+                    placeholder="Téléphone"
+                    defaultValue={tel}
+                    onChange={e => setTel(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -305,9 +305,9 @@ const EditClient = ({ client }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text">Fax :</span>
                   <input type="text" className="form-control"
-                    placeholder="fax"
-                    value={fax}
-                    onChange={e => setFax(e.target.value)} />
+                    placeholder="Fax"
+                    defaultValue={fax}
+                    onChange={e => setFax(e.target.value||"-")} />
                 </div>
               </div>
 
@@ -315,7 +315,7 @@ const EditClient = ({ client }) => {
                 <div className="input-group mb-3">
                   <span className="input-group-text ">Email :</span>
                   <input type="email" className="form-control"
-                    placeholder="email"
+                    placeholder="Email"
                     defaultValue={email}
                     onChange={e => setEmail(e.target.value || "-")} />
                 </div>
