@@ -8,13 +8,13 @@ const Tabfac = (props) => {
   const [row, setRow] = useState("");
 
 
-  const deletedemandeur = (id) => {
+  const deletedemandeur = (idd) => {
     setRow("");
     document.getElementById("clbtnrr").className="btn btn-dark disabled";
-    props.setenquetes(props.enquetes.filter(enquete => enquete.enquete_id !== id));
-    props.enquetes.map(enquete =>{if (enquete.enquete_id>id) 
+    props.setenquetes(props.enquetes.filter(enquete => enquete.enquete_id !== idd));
+    props.enquetes.map(enquete =>{if (enquete.enquete_id>idd) 
     {enquete.enquete_id=enquete.enquete_id-1}});
-    
+    setid(id-1);
   };
 
 return (

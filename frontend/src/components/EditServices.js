@@ -98,8 +98,8 @@ const EditServices = ({ service }) => {
                   <input
                     type="text"
                     className="form-control"
-                    value={tribunal}
-                    onChange={e => settribunal(e.target.value)}
+                    defaultValue={tribunal}
+                    onChange={e => settribunal(e.target.value||"-")}
                   />
                 </div>
               </div>
@@ -110,8 +110,8 @@ const EditServices = ({ service }) => {
                   <input
                     type="text"
                     className="form-control"
-                    value={nom}
-                    onChange={e => setnom(e.target.value)}
+                    defaultValue={nom}
+                    onChange={e => setnom(e.target.value||"-")}
                   />
                 </div>
               </div>

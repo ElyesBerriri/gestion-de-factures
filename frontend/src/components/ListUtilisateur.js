@@ -46,7 +46,7 @@ const ListUtilisateur = () => {
           <thead className="table-secondary text-secondary mytableheader">
             <tr>
               <th>Login</th>
-              <th>Pwd</th>
+              <th>Mot de passe</th>
               <th>Domaine</th>
             </tr>
           </thead>

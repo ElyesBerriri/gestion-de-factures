@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { GoPlus } from "react-icons/go";
 
 const InputTypeDossier = () => {
-  const [libelle, setLibelle] = useState("");
+  const [libelle, setLibelle] = useState("-");
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const InputTypeDossier = () => {
       <div className="mx-5">
         <button data-bs-toggle="modal" data-bs-target="#typdid0" className="ajouter ajoutdossier"
           onClick={() => {
-            setLibelle("");
+            setLibelle("-");
           }} ><GoPlus color="#BBA14A" fontSize="1.5em" />
         </button>
       </div>
@@ -34,7 +34,7 @@ const InputTypeDossier = () => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">Ajout d'une prime</h4>
+              <h4 className="modal-title">Ajouter une prime</h4>
               <button type="button" className="btn-close" data-bs-dismiss="modal">
               </button>
             </div>
@@ -43,9 +43,8 @@ const InputTypeDossier = () => {
                 <div className="input-group mb-3">
                   <span className="input-group-text">Libellé :</span>
                   <input type="text" className="form-control"
-                    placeholder="libellé"
-                    value={libelle}
-                    onChange={e => setLibelle(e.target.value)} />
+                    placeholder="Libellé"
+                    onChange={e => setLibelle(e.target.value||"-")} />
                 </div>
               </div>
             </div>

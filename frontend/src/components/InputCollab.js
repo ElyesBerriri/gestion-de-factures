@@ -4,18 +4,19 @@ import { GoPlus } from "react-icons/go";
 import Modal from 'react-bootstrap/Modal';
 
 const InputCollab = () => {
-  const [nom, setnom] = useState("..");
+
+  const [nom, setnom] = useState("-");
   const [cin, setcin] = useState(0);
-  const [ville, setville] = useState("..");
-  const [rue, setrue] = useState("..");
+  const [ville, setville] = useState("-");
+  const [rue, setrue] = useState("-");
   const [num, setnum] = useState(0);
   const [codepostale, setcodepostale] = useState(0);
-  const [activite, setactivite] = useState("..");
+  const [activite, setactivite] = useState("-");
   const [tel, settel] = useState(0);
   const [fax, setfax] = useState(0);
-  const [email, setemail] = useState("..");
-  const [matricule, setmatricule] = useState("..");
-  const [methodepaiment, setmethodepaiment] = useState("..");
+  const [email, setemail] = useState("-");
+  const [matricule, setmatricule] = useState("-");
+  const [methodepaiment, setmethodepaiment] = useState("-");
   const [montant, setmontant] = useState(0);
   const [nombre_dossier, setnombre_dossier] = useState(0);
   const [show, setShow] = useState(false);
@@ -25,7 +26,9 @@ const InputCollab = () => {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
+
     try {
+
       const body = { nom, cin, ville, rue, num, codepostale, activite, tel, fax, email, matricule, methodepaiment, montant, nombre_dossier };
       await fetch("/collaborateurs/list", {
         method: "POST",
@@ -55,16 +58,16 @@ const InputCollab = () => {
 
         <Modal.Body>
 
-          <div className="row">
-            <div className="input-group mb-3">
-              <span className="input-group-text  ">Nom :</span>
+      <div className="row">
+        <div className="input-group mb-3">
+          <span className="input-group-text  ">Nom :</span>
 
-              <input type="text"
-                className="form-control"
-                value={nom}
-                onChange={e => setnom(e.target.value)} />
-            </div>
-          </div>
+          <input type="text"
+            className="form-control"
+            value={nom}
+            onChange={e => setnom(e.target.value)} />
+        </div>
+      </div>
 
           <div className="row">
             <div className="input-group mb-3">
@@ -191,18 +194,19 @@ const InputCollab = () => {
             </div>
           </div>
 
-        </Modal.Body>
+        </Modal.Body >
 
 
-        <Modal.Footer>
-          <Button variant="light" id="valider"
-            onClick={onSubmitForm}>Valider</Button>
-          <Button variant="dark" data-bs-dismiss="modal" onClick={handleClose}>Fermer</Button>
-        </Modal.Footer>
+  <Modal.Footer>
+    <Button variant="light" id="valider"
+      onClick={onSubmitForm}>Valider</Button>
+    <Button variant="dark" data-bs-dismiss="modal" onClick={handleClose}>Fermer</Button>
+  </Modal.Footer>
 
 
-      </Modal>
-    </Fragment>
+      </Modal >
+    </Fragment >
+     
   );
 };
 

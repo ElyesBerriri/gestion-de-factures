@@ -44,8 +44,8 @@ const EditDossier = ({ dossier, id }) => {
                   <input
                     type="text"
                     className="form-control"
-                    value={libelle}
-                    onChange={e => setLibelle(e.target.value)}
+                    defaultValue={libelle}
+                    onChange={e => setLibelle(e.target.value||"-")}
                   />
                 </div>
               </div>

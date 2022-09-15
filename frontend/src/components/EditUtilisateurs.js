@@ -49,17 +49,17 @@ const EditUtilisateurs = ({user}) => {
                   <span className="input-group-text">Login :</span>
                   <input type="text" className="form-control"
                     placeholder="login"
-                    value={login}
-                    onChange={e => setLogin(e.target.value)} />
+                    defaultValue={login}
+                    onChange={e => setLogin(e.target.value||"-")} />
                 </div>
               </div>
               <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Pwd :</span>
                   <input type="text" className="form-control"
-                    placeholder="pwd"
-                    value={pwd}
-                    onChange={e => setPwd(e.target.value)} />
+                    placeholder="Mot de passe"
+                    defaultValue={pwd}
+                    onChange={e => setPwd(e.target.value||"-")} />
                 </div>
               </div>
               <div className="row">
@@ -67,8 +67,8 @@ const EditUtilisateurs = ({user}) => {
                   <span className="input-group-text">Domaine :</span>
                   <input type="text" className="form-control"
                     placeholder="domaine"
-                    value={domaine}
-                    onChange={e => setDomaine(e.target.value)} />
+                    defaultValue={domaine}
+                    onChange={e => setDomaine(e.target.value||"-")} />
                 </div>
               </div>
             </div>
