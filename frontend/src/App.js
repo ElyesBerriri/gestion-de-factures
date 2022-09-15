@@ -26,6 +26,8 @@ import Greffier from './routes/Greffier';
 import Hono from './routes/Hono';
 import Creation from './routes/Creation';
 import PDF from './components/PDF';
+import Facture from './routes/Facture';
+import PDFfacture from './routes/PDFfacture';
 
 function App() {
   return (
@@ -53,6 +55,8 @@ function App() {
             <Route path="Greffier" element={<Greffier />} />
             <Route path="Creation" element={<Creation />} />
             <Route path="PDF" element={<PDF />} />
+            <Route path="Factures" element={<Facture />} />
+            <Route path="PDFfacture" element={<PDFfacture />} /> 
           </Routes>
         </div>
       </div>

@@ -11,7 +11,6 @@ body {
 
 * {
   text-decoration: none;
-
 }
 
 code {
@@ -19,7 +18,24 @@ code {
     monospace;
 }
 
-
+.myRow{
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+.myRow h6{
+  padding-right: 0.3cm;
+  padding-top: 0.1cm;
+  padding-bottom: 0.19cm;
+  margin-bottom: 0;
+  font-size: 0.39cm;
+}
 
 .checkboxe {
   --border-default-2: #bbbbc1;
