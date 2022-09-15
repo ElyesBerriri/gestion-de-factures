@@ -43,7 +43,6 @@ function Facture() {
   Kol objet fih : رقم,الموضوع etc .. Tow tel9a esemhom bedhabt fel Tabfacture */
 
 
-
   const getfacture = async () => {
     try {
       const response = await fetch("/facture");

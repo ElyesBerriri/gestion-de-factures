@@ -11,6 +11,7 @@ function PDFfacture() {
   const { date, facture, facturenow, datee, ea, cl, em, pa, ta, ki, kh, en } = location.state;
   var tot = 0;
   var total = (-parseFloat(kh || 0).toFixed(3) - (-parseFloat(ki || 0).toFixed(3) - parseFloat(ta || 0).toFixed(3))).toFixed(3);
+  
   const main = () => {
     var fraction = document.getElementById("txt").value.split(".");
     var ch = "";
@@ -38,10 +39,14 @@ function PDFfacture() {
     }
   };
 
+  useEffect(() => {
+    main();
+  }, []);
+
   return (
     <>
       <Pdf targetRef={ref} filename={`Facture_${facturenow}_${datee}`}>
-        {({ toPdf }) => <button onClick={(e) => { main();toPdf();updatefacture(e) }} className="mt-5 mb-5">Télécharger le PDF</button>}
+        {({ toPdf }) => <button onClick={(e) => { toPdf();updatefacture(e) }} className="mt-5 mb-5">Télécharger le PDF</button>}
       </Pdf>
       <div className="pdf">
         <div className="border border-2 m-3" style={{ width: '21cm', height: '29.7cm' }} >
