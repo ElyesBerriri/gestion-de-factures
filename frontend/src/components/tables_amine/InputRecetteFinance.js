@@ -4,7 +4,7 @@ import { GoPlus } from "react-icons/go";
 import Modal from 'react-bootstrap/Modal';
 
 const InputRecetteFinance = () => {
-  const [libelle, setLibelle] = useState("");
+  const [libelle, setLibelle] = useState("-");
   const [montant, setMontant] = useState(0);
   const [show, setShow] = useState(false);
 
@@ -37,7 +37,7 @@ const InputRecetteFinance = () => {
       
       <Modal scrollable show={show} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
-          <Modal.Title>Ajouter un collaborateur</Modal.Title>
+          <Modal.Title>Ajouter une recette</Modal.Title>
         </Modal.Header>
   
   

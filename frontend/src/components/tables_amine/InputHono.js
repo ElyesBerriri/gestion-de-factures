@@ -37,7 +37,7 @@ const InputHono = () => {
 
       <Modal show={show} onHide={handleClose}   backdrop="static">
         <Modal.Header closeButton>
-          <Modal.Title>Ajouter un dossier</Modal.Title>
+          <Modal.Title>Ajouter un honoraire</Modal.Title>
         </Modal.Header>
 
 
