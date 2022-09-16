@@ -18,7 +18,7 @@ function Navv() {
     try {
       const body = { timbreFiscale, tauxTVA, prixPhotocopie, montantTransport };
       await fetch(
-        `/parametres/list/5`,
+        `/parametres/list/1`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -36,8 +36,11 @@ function Navv() {
     try {
       const response = await fetch("/parametres/list");
       const jsonData = await response.json();
-
       setParams(jsonData);
+      setTimbreFiscale(jsonData[0].timbre);
+      setTauxTVA(jsonData[0].tva);
+      setPrixPhotocopie(jsonData[0].photocopie);
+      setMontantTransport(jsonData[0].transport);
     } catch (err) {
       console.error(err.message);
     }
@@ -68,12 +71,12 @@ function Navv() {
                 <NavDropdown.Item href="/Greffier">Greffier</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <button type="button" className="dropdown-item" data-bs-toggle="modal"
-                  data-bs-target="#params" onClick={() => {
-                    setTimbreFiscale(params[0].timbre);
-                    setTauxTVA(params[0].tva);
-                    setPrixPhotocopie(params[0].photocopie);
-                    setMontantTransport(params[0].transport);
-                  }} >
+                  data-bs-target="#params" onClick={() => {if(params!=[]){
+                    document.getElementById("timi").value = params[0].timbre;
+                    document.getElementById("tvai").value = params[0].tva;
+                    document.getElementById("ppi").value = params[0].photocopie;
+                    document.getElementById("mti").value = params[0].transport;
+                  }}}>
                   Paramétres Globales
                 </button>
               </NavDropdown>
@@ -106,37 +109,33 @@ function Navv() {
             <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Timbre Fiscale :</span>
-                  <input type="text" className="form-control"
+                  <input type="text" className="form-control" id="timi"
                     placeholder="timbre fiscale"
-                    value={timbreFiscale}
-                    onChange={e => setTimbreFiscale(e.target.value)} />
+                    onChange={e => setTimbreFiscale(e.target.value||0)} />
                 </div>
               </div>
               <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Taux TVA :</span>
-                  <input type="text" className="form-control"
+                  <input type="text" className="form-control" id="tvai"
                     placeholder="taux tva"
-                    value={tauxTVA}
-                    onChange={e => setTauxTVA(e.target.value)} />
+                    onChange={e => setTauxTVA(e.target.value||0)} />
                 </div>
               </div>
               <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Prix Photocopie :</span>
-                  <input type="text" className="form-control"
+                  <input type="text" className="form-control" id="ppi"
                     placeholder="prix photocopie"
-                    value={prixPhotocopie}
-                    onChange={e => setPrixPhotocopie(e.target.value)} />
+                    onChange={e => setPrixPhotocopie(e.target.value||0)} />
                 </div>
               </div>
               <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Montant de transport par jours :</span>
-                  <input type="text" className="form-control"
+                  <input type="text" className="form-control" id="mti"
                     placeholder="montant"
-                    value={montantTransport}
-                    onChange={e => setMontantTransport(e.target.value)} />
+                    onChange={e => setMontantTransport(e.target.value||0)} />
                 </div>
               </div>
             </div>
