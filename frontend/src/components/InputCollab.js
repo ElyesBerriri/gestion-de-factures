@@ -64,8 +64,8 @@ const InputCollab = () => {
 
           <input type="text"
             className="form-control"
-            value={nom}
-            onChange={e => setnom(e.target.value)} />
+            placeholder="Nom"
+            onChange={e => setnom(e.target.value||"-")} />
         </div>
       </div>
 
@@ -75,8 +75,8 @@ const InputCollab = () => {
 
               <input type="number"
                 className="form-control"
-                value={cin}
-                onChange={e => setcin(e.target.value)} />
+                placeholder="CIN"
+                onChange={e => setcin(e.target.value||0)} />
             </div>
           </div>
 
@@ -86,8 +86,8 @@ const InputCollab = () => {
 
               <input type="text"
                 className="form-control"
-                value={ville}
-                onChange={e => setville(e.target.value)} />
+                placeholder="Ville"
+                onChange={e => setville(e.target.value||"-")} />
             </div>
           </div>
 
@@ -96,8 +96,8 @@ const InputCollab = () => {
               <span className="input-group-text  ">Rue :</span>
 
               <input type="text" className="form-control "
-                value={rue}
-                onChange={e => setrue(e.target.value)} />
+                placeholder="Rue"
+                onChange={e => setrue(e.target.value||"-")} />
             </div>
           </div>
 
@@ -106,8 +106,8 @@ const InputCollab = () => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Numéro :</span>
               <input type="number" className="form-control "
-                value={num}
-                onChange={e => setnum(e.target.value)} />
+                placeholder="Numéro"
+                onChange={e => setnum(e.target.value||0)} />
             </div>
           </div>
 
@@ -115,8 +115,8 @@ const InputCollab = () => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Code postale :</span>
               <input type="number" className="form-control "
-                value={codepostale}
-                onChange={e => setcodepostale(e.target.value)} />
+                placeholder="Code postale"
+                onChange={e => setcodepostale(e.target.value||0)} />
             </div>
           </div>
 
@@ -124,8 +124,8 @@ const InputCollab = () => {
             <div className="input-group mb-3">
               <span className="input-group-text  ">Activité :</span>
               <input type="text" className="form-control "
-                value={activite}
-                onChange={e => setactivite(e.target.value)} />
+                placeholder="Activité"
+                onChange={e => setactivite(e.target.value||"-")} />
             </div>
           </div>
 
@@ -133,8 +133,8 @@ const InputCollab = () => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Téléphone :</span>
               <input type="number" className="form-control "
-                value={tel}
-                onChange={e => settel(e.target.value)} />
+                placeholder="Téléphone"
+                onChange={e => settel(e.target.value||0)} />
             </div>
           </div>
 
@@ -142,8 +142,8 @@ const InputCollab = () => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Fax :</span>
               <input type="number" className="form-control "
-                value={fax}
-                onChange={e => setfax(e.target.value)} />
+                placeholder="Fax"
+                onChange={e => setfax(e.target.value||0)} />
             </div>
           </div>
 
@@ -151,17 +151,17 @@ const InputCollab = () => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Email :</span>
               <input type="text" className="form-control "
-                value={email}
-                onChange={e => setemail(e.target.value)} />
+                placeholder="Email"
+                onChange={e => setemail(e.target.value||"-")} />
             </div>
           </div>
 
           <div className="row">
             <div className="input-group mb-3">
               <span className="input-group-text">Matricule :</span>
-              <input className="form-control "
-                value={matricule}
-                onChange={e => setmatricule(e.target.value)} />
+              <input type="text" className="form-control "
+                placeholder="Matricule"
+                onChange={e => setmatricule(e.target.value||"-")} />
             </div>
           </div>
 
@@ -169,8 +169,8 @@ const InputCollab = () => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Methode de paiement :</span>
               <input type="text" className="form-control "
-                value={methodepaiment}
-                onChange={e => setmethodepaiment(e.target.value)} />
+                placeholder="Methode de paiement "
+                onChange={e => setmethodepaiment(e.target.value||"-")} />
             </div>
           </div>
 
@@ -179,8 +179,8 @@ const InputCollab = () => {
             <div className="input-group mb-3">
               <span className="input-group-text ">Montant :</span>
               <input type="number" className="form-control " id="colFormLabelSm"
-                value={montant}
-                onChange={e => setmontant(e.target.value)} />
+                placeholder="Montant"
+                onChange={e => setmontant(e.target.value||0)} />
             </div>
           </div>
 
@@ -189,8 +189,8 @@ const InputCollab = () => {
             <div className="input-group mb-3">
               <span className="input-group-text">Nombre Dossier :</span>
               <input type="number" className="form-control  "
-                value={nombre_dossier}
-                onChange={e => setnombre_dossier(e.target.value)} />
+                placeholder="Nombre Dossier"
+                onChange={e => setnombre_dossier(e.target.value||0)} />
             </div>
           </div>
 

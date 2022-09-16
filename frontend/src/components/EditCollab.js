@@ -77,8 +77,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="text"
                 className="form-control"
-                value={nom}
-                onChange={e => setnom(e.target.value)}
+                defaultValue={nom}
+                onChange={e => setnom(e.target.value||"-")}
               />
             </div>
           </div>
@@ -89,8 +89,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="number"
                 className="form-control"
-                value={cin}
-                onChange={e => setcin(e.target.value)}
+                defaultValue={cin}
+                onChange={e => setcin(e.target.value||0)}
               />
             </div>
           </div>
@@ -101,8 +101,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="text"
                 className="form-control"
-                value={ville}
-                onChange={e => setville(e.target.value)}
+                defaultValue={ville}
+                onChange={e => setville(e.target.value||"-")}
               />
             </div>
           </div>
@@ -113,8 +113,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="text"
                 className="form-control"
-                value={rue}
-                onChange={e => setrue(e.target.value)}
+                defaultValue={rue}
+                onChange={e => setrue(e.target.value||"-")}
               />
             </div>
           </div>
@@ -126,8 +126,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="number"
                 className="form-control"
-                value={num}
-                onChange={e => setnum(e.target.value)}
+                defaultValue={num}
+                onChange={e => setnum(e.target.value||0)}
               />
             </div>
           </div>
@@ -138,8 +138,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="number"
                 className="form-control"
-                value={codepostale}
-                onChange={e => setcodepostale(e.target.value)}
+                defaultValue={codepostale}
+                onChange={e => setcodepostale(e.target.value||0)}
               />
             </div>
 
@@ -150,8 +150,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="text"
                 className="form-control"
-                value={activite}
-                onChange={e => setactivite(e.target.value)}
+                defaultValue={activite}
+                onChange={e => setactivite(e.target.value||"-")}
               />
             </div>
           </div>
@@ -162,8 +162,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="number"
                 className="form-control"
-                value={tel}
-                onChange={e => settel(e.target.value)}
+                defaultValue={tel}
+                onChange={e => settel(e.target.value||0)}
               />
             </div>
           </div>
@@ -174,8 +174,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="number"
                 className="form-control"
-                value={fax}
-                onChange={e => setfax(e.target.value)}
+                defaultValue={fax}
+                onChange={e => setfax(e.target.value||0)}
               />
             </div>
           </div>
@@ -186,8 +186,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="text"
                 className="form-control"
-                value={email}
-                onChange={e => setemail(e.target.value)}
+                defaultValue={email}
+                onChange={e => setemail(e.target.value||"-")}
               />
             </div>
           </div>
@@ -195,10 +195,10 @@ const EditCollab = ({ collab }) => {
           <div className="row">
             <div className="input-group mb-3">
               <span className="input-group-text  ">Matricule :</span>
-              <input type="number"
+              <input type="text"
                 className="form-control"
-                value={matricule}
-                onChange={e => setmatricule(e.target.value)}
+                defaultValue={matricule}
+                onChange={e => setmatricule(e.target.value||"-")}
               />
             </div>
           </div>
@@ -210,8 +210,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="text"
                 className="form-control"
-                value={methodepaiment}
-                onChange={e => setmethodepaiment(e.target.value)}
+                defaultValue={methodepaiment}
+                onChange={e => setmethodepaiment(e.target.value||"-")}
               />
             </div>
           </div>
@@ -222,8 +222,8 @@ const EditCollab = ({ collab }) => {
               <input
                 type="number"
                 className="form-control"
-                value={montant}
-                onChange={e => setmontant(e.target.value)}
+                defaultValue={montant}
+                onChange={e => setmontant(e.target.value||0)}
               />
             </div>
           </div>
@@ -233,8 +233,8 @@ const EditCollab = ({ collab }) => {
               <span className="input-group-text  ">Nombre dossier :</span>
               <input type="number"
                 className="form-control"
-                value={nombre_dossier}
-                onChange={e => setnombre_dossier(e.target.value)}
+                defaultValue={nombre_dossier}
+                onChange={e => setnombre_dossier(e.target.value||0)}
               />
             </div>
           </div>
