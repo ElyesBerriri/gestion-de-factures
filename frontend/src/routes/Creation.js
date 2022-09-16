@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLocation } from "react";
 import ClientDemandeur from "../components/ClientDemandeur";
 import DonnéesDossier from "../components/DonnéesDossier";
 import Taches from "../components/Taches";
@@ -51,6 +51,7 @@ const Creation = () => {
   //const [tache,settache]= useState("*");
   const [adversaires, setadversaires] = useState([]);
   const [reglements, setreglements] = useState([]);
+
 
 
   var adversaire = "";
@@ -160,7 +161,7 @@ const Creation = () => {
       } catch (err) {
         console.error(err.message);
       }
-      window.location.reload();
+      window.location.href = "/Creation";
     }
 
     else {
