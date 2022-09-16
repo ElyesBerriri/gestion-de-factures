@@ -109,7 +109,7 @@ function Navv() {
             <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Timbre Fiscale :</span>
-                  <input type="text" className="form-control" id="timi"
+                  <input type="number" className="form-control" id="timi"
                     placeholder="timbre fiscale"
                     onChange={e => setTimbreFiscale(e.target.value||0)} />
                 </div>
@@ -117,7 +117,7 @@ function Navv() {
               <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Taux TVA :</span>
-                  <input type="text" className="form-control" id="tvai"
+                  <input type="number" className="form-control" id="tvai"
                     placeholder="taux tva"
                     onChange={e => setTauxTVA(e.target.value||0)} />
                 </div>
@@ -125,7 +125,7 @@ function Navv() {
               <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Prix Photocopie :</span>
-                  <input type="text" className="form-control" id="ppi"
+                  <input type="number" className="form-control" id="ppi"
                     placeholder="prix photocopie"
                     onChange={e => setPrixPhotocopie(e.target.value||0)} />
                 </div>
@@ -133,7 +133,7 @@ function Navv() {
               <div className="row">
                 <div className="input-group mb-3">
                   <span className="input-group-text">Montant de transport par jours :</span>
-                  <input type="text" className="form-control" id="mti"
+                  <input type="number" className="form-control" id="mti"
                     placeholder="montant"
                     onChange={e => setMontantTransport(e.target.value||0)} />
                 </div>
