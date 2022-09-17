@@ -1,4 +1,4 @@
-#Gestion de factures
+#Gestion-de-factures
 
 ## Table of contents
 * [General info](#general-info)
