@@ -4,6 +4,8 @@ const pool = require("./db");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser");//transforme les données en format .json
+
+const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 
 const morgan = require('morgan')
@@ -17,6 +19,7 @@ const AuthRoute = require('./Routes/Auth.route')
 
 
 const app = express();
+app.use(helmet());
 app.use(cookieParser());
 
 // process.env.NODE_ENV => production or undefined
@@ -38,11 +41,12 @@ app.get('/', verifyAccessToken, async (req, res, next) => {
   res.send('Hello from express.')
 })
 
-app.use('/auth', AuthRoute)
 
-app.use(async (req, res, next) => {
+app.use('/', AuthRoute)
+
+/*app.use(async (req, res, next) => {
   next(createError.NotFound())
-})
+})*/
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500)
@@ -56,27 +60,28 @@ app.use((err, req, res, next) => {
 
 
 
-
-
- 
 if (process.env.NODE_ENV === "production") {
   // service static content
   // npm run build
   app.use(express.static(path.join(__dirname, "frontend/build")));
 }
 
+
 // ROUTES
 
 ///////////////////////// get all type_dossiers//////////////////////////
-app.get("/type_dossiers/list", async (req, res) => {
+
+
+app.get('/type_dossiers/list',verifyAccessToken, async (req, res,next) => {
   try {
     const alltype_dossiers = await pool.query("SELECT * from type_dossiers");
     res.status(200).json(alltype_dossiers.rows);
+    
   } catch (err) {
     console.error(err.message);
+    //next()
   }
 });
-
 
 // get a type_dossier
 app.get("/type_dossiers/list/:id", async (req, res) => {
@@ -1566,7 +1571,15 @@ app.put("/reglement/list/", async (req, res) => {
 
 
 
-
+app.use((err, req, res, next) => {
+  res.status(err.status || 500)
+  res.send({
+    error: {
+      status: err.status || 500,
+      message: err.message,
+    },
+  })
+})
 
 
 

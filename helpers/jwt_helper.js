@@ -34,6 +34,8 @@ module.exports = {
         return next(createError.Unauthorized(message))
       }
       req.payload = payload
+      //console.log(req.payload)
+      //console.log(payload)
       next()
     })
   },
@@ -49,14 +51,14 @@ module.exports = {
         if (err) {
           console.log(err.message)
           reject(createError.InternalServerError())
-          console.log("hi if") 
+          //console.log("hi if") 
           return
         }
-        //resolve(token);
-        else{
+        else{resolve(token)};
+        /*else{
           console.log("hi else"); 
-
-          res.cookie(String(userId),token,{
+ 
+          res.cookie(String(userId),String(token),{
             httpOnly: true,
             maxAge:365*24*60*60*1000
           });
@@ -68,7 +70,7 @@ module.exports = {
               reject(createError.InternalServerError())
               return
             }
-        resolve(token)}
+        resolve(token)}*/
       })
     })
 
@@ -99,27 +101,37 @@ module.exports = {
       })
     })*/
   },
-  verifyRefreshToken: (refreshToken) => {
+  verifyRefreshToken: (refreshToken,result) => {
     return new Promise((resolve, reject) => {
       JWT.verify(
         refreshToken,
         process.env.REFRESH_TOKEN_SECRET,
         (err, payload) => {
-          if (err) return reject(createError.Unauthorized())
+          if (err) {return reject(createError.Unauthorized())}
+          else{
           const userId = payload.aud;
-          resolve(userId);
+          //console.log(`${userId} DANS payload.aud`)
+          //resolve(userId);
 
-          /*const result=req.cookies.userId;
+          //const result=req.cookies.userId;
+          //console.log(`${result} contenue de cookie avant`)
+
           if(result==undefined){
               console.log(err.message)
               reject(createError.InternalServerError())
               return
           }
-          if (refreshToken === result) return resolve(userId)
           else{
+          if (refreshToken == result[userId]) return resolve(userId)
+          else{
+            //console.log("nooooooooooooon")
+            //console.log(typeof(userId))
+            //console.log(result[userId])
             reject(createError.Unauthorized())
-          }*/
-
+            //console.log("try")
+            
+          }
+        }
 
           /*client.GET(userId, (err, result) => {
             if (err) {
@@ -131,6 +143,7 @@ module.exports = {
             reject(createError.Unauthorized())
           })*/
         }
+      }
       )
     })
   },

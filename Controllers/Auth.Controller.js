@@ -43,12 +43,14 @@ module.exports = {
                                     throw err;
                                 } else {
                     
-                                  const new_id=await pool.query("SELECT * FROM uusers WHERE (username=$1)",[username]);
+                                  /*const new_id=await pool.query("SELECT * FROM uusers WHERE (username=$1)",[username]);
                                   
                                   const accessToken = await signAccessToken(String(new_id.rows[0].id_uusers))
                                   const refreshToken = await signRefreshToken(String(new_id.rows[0].id_uusers))
-                                  res.json({ accessToken,refreshToken })
-                                    //res.json("SUCCESS"); //renvoi sucess au client
+                                  res.json({ accessToken,refreshToken });
+                                  
+                                  console.log(req.cookies)*/
+                                  res.send(`${username} have been successfully registered!`)
                                 }
                             }
                         );
@@ -81,7 +83,6 @@ module.exports = {
 
 
   login: async (req, res, next) => {
-    console.log("1")
     try {
         const { username, password } = req.body
         if (username==undefined || password==undefined)
@@ -95,21 +96,33 @@ module.exports = {
                     throw error;
                 } else {
                     if (!(result.rows.length > 0)) {
-                    res.json(createError.NotFound(`${username} is not registered`))
+                    res.json(createError.NotFound(`${username} is not registered !`))
                 } else {
                     //console.log(result.rows[0]);
                     //console.log(result.rows[0].id_uusers);
                     //console.log(result.rows[0].username);
                     //console.log(result.rows[0].password);
                     bcrypt.compare(password, result.rows[0].password, async (error, match) => {
-                        console.log(match);
+                        //console.log(match);
                         if (!match) {
-                            res.json(createError.Unauthorized('Username/password not valid'))}
+                            res.json(createError.Unauthorized('Username/password not valid !'))}
                         else{
                             const accessToken = await signAccessToken(String(result.rows[0].id_uusers) )
                             const refreshToken = await signRefreshToken(String(result.rows[0].id_uusers ))
-                            //console.log(req.cookies.result.rows[0].id_uusers)
+                            //console.log("refreshtoken créé est:")
+                            //console.log(refreshToken)
+                            if(refreshToken!=undefined){
+                              res.cookie(String(result.rows[0].id_uusers),refreshToken,{
+                                httpOnly: true,
+                                maxAge:365*24*60*60*1000,
+                                sameSite: "lax",
+                              });
+                            }
+                            else{
+                              res.json(next(createError.InternalServerError()))
+                            }
                             res.json({ accessToken , refreshToken })
+                            //console.log(req.cookies)
                          }
                     })
                 }
@@ -140,32 +153,72 @@ module.exports = {
   refreshToken: async (req, res, next) => {
     try {
       const { refreshToken } = req.body
-      if (refreshToken==undefined) throw createError.BadRequest()
-      const userId = await verifyRefreshToken(refreshToken)
+      const result=req.cookies;
+      //console.log(result)
 
+      //console.log("contenue de cookie avant")
+      
+      if (refreshToken==undefined) {
+        throw createError.BadRequest()}
+      else{
+      const userId = await verifyRefreshToken(refreshToken,result)
+      //console.log(`${userId} à la sortie`)
+      //console.log(typeof(userId))
       const accessToken = await signAccessToken(userId)
       const refToken = await signRefreshToken(userId)
+
+      if(refToken!=undefined){
+      
+        res.cookie(userId,refToken,{
+          httpOnly: true,
+          maxAge:365*24*60*60*1000,
+          sameSite: "lax",
+        });
+        
+      }
+      else{
+        res.json(next(createError.InternalServerError()))
+      }
+
       res.send({ accessToken: accessToken, refreshToken: refToken })
+    }
+      //console.log(req.cookies)
     } catch (error) {
       next(error)
     }
   },
 
-  /*logout: async (req, res, next) => {
+  logout: async (req, res, next) => {
     try {
       const { refreshToken } = req.body
-      if (refreshToken==undefined) throw createError.BadRequest()
-      const userId = await verifyRefreshToken(refreshToken)
-      
+      if (refreshToken==undefined) {throw createError.BadRequest()}
+      else{
+
+      /*JWT.verify(
+        refreshToken,
+        process.env.REFRESH_TOKEN_SECRET,
+        (err, payload) => {
+          if (err) {return reject(createError.Unauthorized())}
+          else{
+          const userId = payload.aud;}})*/
+        let result=req.cookies;
+        const userId = await verifyRefreshToken(refreshToken,result)
+        console.log(userId)
       res.clearCookie(userId,(err,val)=>{
         if (err) {
           console.log(err.message)
           throw createError.InternalServerError()
         }
+        console.log("val")
         console.log(val)
         res.sendStatus(204)
+        
       });
-      */
+     // console.log("hello")
+     const username=await pool.query("SELECT username FROM uusers WHERE (id_uusers=$1)",[userId]);
+     //console.log(username.rows[0].username)
+      res.send(`${username.rows[0].username} have been successfully logged out!`)
+      
 
       /*client.DEL(userId, (err, val) => {
         if (err) {
@@ -175,8 +228,12 @@ module.exports = {
         console.log(val)
         res.sendStatus(204)
       })*/
-    /*} catch (error) {
-      next(error)
     }
-  },*/
+    } catch (error) {
+      console.log("ici")
+      console.log(error.message)
+      next(error)
+      
+    }
+  },
 }
